@@ -1,0 +1,1 @@
+var e={apex:``,zilt:``,booked:``,curb:``,afterglow:``,people:``,wrace:`https://project-5des9hz.rork.app`,radr:``,noir:``},t=`https://apps.apple.com/app/testflight/id899247664`;function n(t){return e[t]||`/beta#${t}`}export{t as n,n as r,e as t};
