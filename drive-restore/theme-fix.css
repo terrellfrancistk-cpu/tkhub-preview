@@ -1,0 +1,184 @@
+/* theme-fix.css — additive only. Makes Claude's always-dark / always-cream bands
+   follow html[data-theme], using the same --bg/--ink/--line/--teal tokens the shell uses.
+   Does not remove sections or change layout. */
+
+/* ---------- Quote (#quote / .tkq): was always #090a0c ---------- */
+html[data-theme="light"] .tkq{
+  color:var(--ink);
+  background:var(--bg-2);
+  border-block-color:color-mix(in srgb, var(--teal) 28%, transparent);
+}
+html[data-theme="light"] .tkq-k{color:var(--teal)}
+html[data-theme="light"] .tkq h2{color:var(--ink)}
+html[data-theme="light"] .tkq-sub{color:var(--muted)}
+html[data-theme="light"] .tkq legend{color:var(--ink)}
+html[data-theme="light"] .tkq-opt span{
+  background:var(--bg);
+  border-color:var(--line);
+  color:var(--ink);
+}
+html[data-theme="light"] .tkq-opt small{color:var(--muted)}
+html[data-theme="light"] .tkq-opt input:checked+span{
+  border-color:var(--teal);
+  background:color-mix(in srgb, var(--teal) 12%, var(--bg));
+  box-shadow:inset 0 0 0 1px var(--teal);
+}
+html[data-theme="light"] .tkq-opt:hover span{border-color:color-mix(in srgb, var(--teal) 55%, var(--line))}
+html[data-theme="light"] .tkq-card{
+  background:linear-gradient(160deg, color-mix(in srgb, var(--teal) 10%, var(--bg)) 0%, var(--bg-2) 60%);
+  border-color:color-mix(in srgb, var(--teal) 35%, var(--line));
+}
+html[data-theme="light"] .tkq-lbl{color:var(--muted)}
+html[data-theme="light"] .tkq-total{color:var(--teal)}
+html[data-theme="light"] .tkq-lines{border-top-color:var(--line)}
+html[data-theme="light"] .tkq-lines li{border-bottom-color:var(--line);color:var(--ink)}
+html[data-theme="light"] .tkq-lines li span:last-child{color:var(--ink)}
+html[data-theme="light"] .tkq-call{
+  color:var(--ink);
+  border-color:color-mix(in srgb, var(--teal) 50%, var(--line));
+}
+html[data-theme="light"] .tkq-fine{color:var(--muted)}
+html[data-theme="light"] .tkq-fine a{color:var(--teal)!important}
+html[data-theme="light"] .tkq-alt{color:var(--teal)}
+
+html[data-theme="dark"] .tkq{
+  color:var(--ink);
+  background:var(--bg);
+  border-block-color:color-mix(in srgb, var(--teal) 28%, transparent);
+}
+
+/* ---------- Close band (.tkf-close) + founders row: was always dark ---------- */
+html[data-theme="light"] .tkf-close{
+  color:var(--ink);
+  background:var(--bg);
+  border-top-color:var(--line);
+}
+html[data-theme="light"] .tkf-k{color:var(--teal)}
+html[data-theme="light"] .tkf-close h2{color:var(--ink)}
+html[data-theme="light"] .tkf-s{color:var(--muted);opacity:1}
+html[data-theme="light"] .tkf-mail{color:var(--muted);opacity:1}
+html[data-theme="light"] .tkf-mail a{color:var(--teal)}
+html[data-theme="light"] .tkf-acts .phone-link{color:var(--teal)}
+html[data-theme="light"] .ds5-people{color:var(--muted)}
+html[data-theme="light"] .ds5-names a{color:var(--ink);border-bottom-color:color-mix(in srgb, var(--teal) 50%, transparent)}
+html[data-theme="light"] .ds5-names a:hover{color:var(--teal)}
+html[data-theme="light"] .ds5-faces a{border-color:var(--bg);box-shadow:0 0 0 1px color-mix(in srgb, var(--teal) 45%, transparent)}
+/* Keep primary CTA readable on light close band */
+html[data-theme="light"] .tkf-close .tkf-acts .actions .btn.ds5-p{
+  color:var(--teal-ink)!important;
+  background:var(--teal)!important;
+  border-color:var(--teal)!important;
+}
+html[data-theme="light"] .tkf-close .tkf-acts .actions .btn.ds5-o{
+  color:var(--ink)!important;
+  background:transparent!important;
+  box-shadow:inset 0 0 0 1.5px color-mix(in srgb, var(--teal) 55%, var(--line))!important;
+}
+
+html[data-theme="dark"] .tkf-close{
+  color:var(--ink);
+  background:var(--bg);
+  border-top-color:var(--line);
+}
+html[data-theme="dark"] .ds5-people{color:color-mix(in srgb, var(--ink) 78%, transparent)}
+html[data-theme="dark"] .ds5-names a{color:var(--ink)}
+html[data-theme="dark"] .ds5-faces a{border-color:var(--bg)}
+
+/* ---------- Proof phones (.tka / #work): was always cream ---------- */
+html[data-theme="dark"] .tka,
+html[data-theme="dark"] #work.tka-host,
+html[data-theme="dark"] .ds1{
+  color:var(--ink);
+  background:var(--bg-2);
+}
+html[data-theme="dark"] .tka-k{color:var(--teal)}
+html[data-theme="dark"] .tka h2{color:var(--ink)}
+html[data-theme="dark"] .tka-sub{color:var(--muted)}
+html[data-theme="dark"] .tka-tab{
+  background:color-mix(in srgb, var(--bg) 70%, transparent);
+  border-color:var(--line);
+  color:var(--ink);
+}
+html[data-theme="dark"] .tka-tab:hover{
+  background:var(--bg);
+  border-color:color-mix(in srgb, var(--ink) 25%, var(--line));
+}
+html[data-theme="dark"] .tka-tab[aria-selected="true"]{
+  color:var(--bg);
+  background:var(--ink);
+  border-color:var(--ink);
+}
+html[data-theme="dark"] .tka-tab small{opacity:.7}
+html[data-theme="dark"] .tka-meta p{color:var(--muted)}
+html[data-theme="dark"] .tka-links a,
+html[data-theme="dark"] .tka-links button{
+  color:var(--ink);
+  background:var(--bg);
+  border-color:var(--line);
+}
+html[data-theme="dark"] .tka-links a.pri{
+  color:var(--bg);
+  background:var(--ink);
+  border-color:var(--ink);
+}
+html[data-theme="dark"] .tka-links a:hover{border-color:var(--ink)}
+html[data-theme="dark"] .tka-dots button{background:color-mix(in srgb, var(--ink) 28%, transparent)}
+html[data-theme="dark"] .tka-dots button[aria-current="true"]{background:var(--ink)}
+
+html[data-theme="light"] .tka,
+html[data-theme="light"] #work.tka-host,
+html[data-theme="light"] .ds1{
+  color:var(--ink);
+  background:var(--bg-2);
+}
+html[data-theme="light"] .tka-k{color:var(--teal)}
+html[data-theme="light"] .tka h2{color:var(--ink)}
+html[data-theme="light"] .tka-sub{color:var(--muted)}
+html[data-theme="light"] .tka-tab{
+  background:color-mix(in srgb, #fff 70%, transparent);
+  border-color:var(--line);
+  color:var(--ink);
+}
+html[data-theme="light"] .tka-tab[aria-selected="true"]{
+  color:#fff;
+  background:#111;
+  border-color:#111;
+}
+html[data-theme="light"] .tka-meta p{color:var(--muted)}
+html[data-theme="light"] .ds1{color:var(--ink)}
+html[data-theme="light"] .ds1 h2{color:var(--ink)}
+
+/* App icon row on hero: surface chips follow theme */
+html[data-theme="dark"] .n6p a{
+  background:var(--bg-2);
+  box-shadow:0 0 0 1px var(--line), 0 6px 14px -8px #00000088;
+}
+html[data-theme="light"] .n6p a{
+  background:#fff;
+  box-shadow:0 0 0 1px #00000014, 0 6px 14px -8px #00000059;
+}
+
+/* Sticky mobile quote bar (ds3) already dark; tone for light */
+html[data-theme="light"] .ds3-bar{
+  color:var(--ink);
+  background:color-mix(in srgb, var(--bg-2) 92%, transparent);
+  border-color:color-mix(in srgb, var(--teal) 40%, var(--line));
+}
+html[data-theme="light"] .ds3-l small{color:var(--muted)}
+html[data-theme="light"] .ds3-t{color:var(--teal)}
+
+/* Order sheet dialog inherits page theme */
+html[data-theme="light"] .tks-dlg{background:var(--bg);color:var(--ink)}
+html[data-theme="dark"] .tks-dlg{background:var(--bg);color:var(--ink)}
+html[data-theme="light"] .tks-top,
+html[data-theme="light"] .tks-foot{border-color:var(--line)}
+html[data-theme="dark"] .tks-top,
+html[data-theme="dark"] .tks-foot{border-color:var(--line)}
+
+/* Ensure body/header/footer stay on tokens (belt-and-suspenders) */
+html[data-theme="light"] body,
+html[data-theme="dark"] body{background:var(--bg);color:var(--ink)}
+html[data-theme="light"] .site-header,
+html[data-theme="dark"] .site-header{background:var(--bg);color:var(--ink);border-bottom-color:var(--line)}
+html[data-theme="light"] .site-footer,
+html[data-theme="dark"] .site-footer{border-top-color:var(--line)}
