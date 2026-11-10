@@ -1,0 +1,216 @@
+<!doctype html><html lang="en"><head><style>html,body{overscroll-behavior:none}</style><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>RADR · Try it (demo)</title><meta name="robots" content="noindex">
+<style>
+@font-face{font-family:I;src:url(a/inter.woff) format("woff");font-weight:100 900;font-display:optional}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:#050705;overflow:hidden;font:15px/1.35 -apple-system,"SF Pro Text",I,system-ui,sans-serif;color:#E8F0EA}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+#wrap{position:absolute;inset:0;overflow:hidden}
+#stage{position:absolute;left:0;top:0;width:393px;height:852px;overflow:hidden;background:#0A0D0A;transform-origin:top left}
+.sb{position:absolute;left:0;right:0;top:0;height:calc(50px + env(safe-area-inset-top,0px));z-index:90;display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 8px 50px;font-weight:600;font-size:16.5px;pointer-events:none;color:#fff}
+.isl{position:absolute;left:50%;top:11px;width:124px;height:36px;border-radius:20px;background:#000;transform:translateX(-50%)}.sbi{display:flex;gap:6px;align-items:center}
+.pre{position:absolute;inset:0;z-index:65;background:#0A0D0A;overflow-y:auto;scrollbar-width:none}.pre::-webkit-scrollbar{display:none}
+.hide{display:none!important}
+.R{font-family:ui-rounded,"SF Pro Rounded",-apple-system,I,sans-serif}
+.ch{--c:14px;clip-path:polygon(var(--c) 0,calc(100% - var(--c)) 0,100% var(--c),100% calc(100% - var(--c)),calc(100% - var(--c)) 100%,var(--c) 100%,0 calc(100% - var(--c)),0 var(--c))}
+.bd{padding:1px}.bd>.in{height:100%}
+/* disclaimer */
+#dc{padding:calc(70px + env(safe-area-inset-top,0px)) 16px 40px}
+.dic{width:46px;height:46px;color:#1FE08A;filter:drop-shadow(0 0 10px rgba(31,224,138,.75))}
+.dh{font:800 34px/1.12 ui-rounded,"SF Pro Rounded",-apple-system,I,sans-serif;margin-top:10px;color:#E8F0EA}
+.cl{display:flex;gap:14px;margin-top:22px}.cl .ic{--c:8px;width:34px;height:34px;flex:none;background:rgba(31,224,138,.12);display:grid;place-items:center;color:#1FE08A}
+.cl b{display:block;font-size:15px;font-weight:700}.cl p{font-size:13px;color:#91A797;margin-top:4px;line-height:1.38}
+.cp{font-size:11px;color:#91A797;margin-top:28px;line-height:1.45}.cp b{font-weight:500}
+.ll{display:flex;gap:10px;margin-top:22px}.ll .bd{flex:1;--c:8px;background:rgba(31,224,138,.4)}.ll .in{--c:8px;background:#0E1A12;height:46px;display:flex;align-items:center;justify-content:center;gap:7px;color:#1FE08A;font-size:13px;font-weight:600;cursor:pointer}
+.acc{font-size:12px;color:#91A797;margin-top:22px;line-height:1.4}
+.tb{width:100%;--c:14px;background:#1FE08A;margin-top:16px;cursor:pointer;box-shadow:0 0 12px rgba(31,224,138,.3)}.tb .in{height:56px;display:grid;place-items:center;background:linear-gradient(180deg,#1FE08A,rgba(31,224,138,.75));color:#0A0D0A;font:700 17px ui-rounded,"SF Pro Rounded",-apple-system,I,sans-serif}
+.tb.off{opacity:.55}
+/* tutorial */
+#tu{background:radial-gradient(420px 420px at 50% 0,rgba(31,224,138,.16),transparent 100%),#0A0D0A;display:flex;flex-direction:column;padding-top:calc(56px + env(safe-area-inset-top,0px))}
+.segs{display:flex;gap:4px;padding:12px 20px 0}.segs i{flex:1;height:3px;border-radius:2px;background:#233026;overflow:hidden}.segs i b{display:block;height:100%;background:#1FE08A;width:0}
+.tl{display:flex;align-items:center;gap:10px;padding:10px 20px 0}.tl .bar{flex:1;height:4px;border-radius:2px;background:#233026;position:relative}.tl .bar b{position:absolute;left:0;top:0;bottom:0;border-radius:2px;background:linear-gradient(90deg,rgba(31,224,138,.5),#1FE08A);box-shadow:0 0 4px rgba(31,224,138,.5)}
+.mono{font-family:ui-monospace,"SF Mono",Menlo,monospace}
+.tl .lab{font:700 10px ui-monospace,monospace;letter-spacing:.11em;color:#91A797}.tl .pc{--c:5px;font:800 12px ui-monospace,monospace;color:#0A0D0A;background:#1FE08A;padding:3px 7px}
+.th{display:flex;align-items:center;gap:8px;padding:18px 20px 14px;color:#1FE08A}.th .eb{font:700 10px ui-monospace,monospace;letter-spacing:.15em}.th .sp{flex:1}
+.mt{display:flex;--c:7px;background:#233026;padding:1px}.mt>div{display:flex;--c:7px;background:#141914}.mt button{width:38px;height:30px;display:grid;place-items:center;color:#91A797;--c:7px}.mt button.on{background:#1FE08A;color:#0A0D0A}
+.hi{width:32px;height:32px;display:grid;place-items:center;color:#91A797;cursor:pointer}
+.stg{margin:4px 20px 0;height:250px;position:relative;--c:14px;background:rgba(31,224,138,.3);padding:1px}.stg .in{--c:14px;background:#0E140F;height:100%;position:relative;overflow:hidden}
+.sw{position:absolute;left:50%;top:50%;width:420px;height:420px;margin:-210px;border-radius:50%;background:conic-gradient(from 0deg,rgba(31,224,138,.38),transparent 70deg);animation:sw 3.2s linear infinite}@keyframes sw{to{transform:rotate(360deg)}}
+.rg{position:absolute;left:50%;top:50%;border:1px solid rgba(31,224,138,.22);border-radius:50%;transform:translate(-50%,-50%)}
+.hx{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#1FE08A;filter:drop-shadow(0 0 12px rgba(31,224,138,.8))}
+.cpy{padding:18px 20px 0}.cpy h2{font:800 26px/1.15 ui-rounded,"SF Pro Rounded",-apple-system,I,sans-serif}.cpy p{font-size:15px;color:#91A797;margin-top:8px;line-height:1.4}
+.cpy li{list-style:none;display:flex;gap:10px;font-size:14px;margin-top:10px;line-height:1.35}.cpy li:before{content:"";flex:none;width:7px;height:7px;margin-top:6px;background:#1FE08A;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+.ctl{margin-top:auto;padding:0 20px 40px;display:flex;gap:10px}.ctl .tb{margin:0}.ctl .gh{flex:none;width:110px;--c:14px;background:#233026;padding:1px}.ctl .gh .in{--c:14px;height:56px;display:grid;place-items:center;background:#0A0D0A;color:#1FE08A;font-weight:700;font-size:16px}
+/* sign in */
+#si .wrapI{padding:calc(62px + env(safe-area-inset-top,0px)) 22px 50px}
+.hd{text-align:center;padding-top:24px}.hd svg{color:#1FE08A;filter:drop-shadow(0 0 14px rgba(31,224,138,.45))}
+.hd h1{font:900 28px/1.12 ui-rounded,"SF Pro Rounded",-apple-system,I,sans-serif;color:#1FE08A;margin-top:12px}.hd p{font-size:13px;color:#91A797;margin-top:8px}
+.pv{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:52px;border-radius:14px;background:#000;color:#fff;font-size:17px;font-weight:600;margin-top:9px;border:1px solid #1d221e}.pv.gg{background:#1F1F1F}
+.or{display:flex;align-items:center;gap:10px;font-size:13px;color:#91A797;margin:18px 0 0}.or:before,.or:after{content:"";flex:1;height:1px;background:#233026}
+.mp{display:flex;gap:10px;margin-top:18px}.mp button{flex:1;height:76px;border-radius:16px;border:1px solid #233026;background:#0A0D0A;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.05em;color:#E8F0EA}.mp button.on{background:#1FE08A;color:#0A0D0A;border-color:transparent}
+.fm{margin-top:18px;background:rgba(31,224,138,.3);padding:1px;box-shadow:0 4px 14px rgba(31,224,138,.06)}.fm>.in{background:#141914;padding:18px}
+.fl{font-size:11px;font-weight:800;letter-spacing:.1em;color:#91A797;margin:13px 0 8px}.fl:first-child{margin-top:0}
+.fi{--c:10px;background:#233026;padding:1px}.fi input{--c:10px;display:block;width:100%;height:48px;border:0;outline:0;background:#0A0D0A;color:#E8F0EA;font:16px -apple-system,I,sans-serif;padding:0 14px}.fi input::placeholder{color:#5f7064}
+.hint{font-size:11px;color:#91A797;margin:8px 0 4px}
+.hc{margin-top:13px;--c:8px;background:#233026;padding:1px;cursor:pointer}.hc.on{background:rgba(31,224,138,.5)}.hc>.in{--c:8px;background:#0A0D0A;display:flex;align-items:center;gap:12px;padding:12px}
+.hc .bx{--c:6px;width:26px;height:26px;flex:none;background:#233026;padding:1.5px}.hc .bx i{--c:6px;display:grid;place-items:center;height:100%;background:#0A0D0A}.hc.on .bx{background:#1FE08A}.hc.on .bx i{background:#1FE08A}
+.hc b{display:block;font-size:13px;font-weight:700}.hc span{font-size:11px;color:#91A797}
+.lg{font-size:12px;color:#91A797;text-align:center;margin-top:13px;line-height:1.4}.lg a{color:#1FE08A;cursor:pointer}
+.swt{text-align:center;font-size:13px;color:#91A797;margin-top:18px}.swt b{color:#1FE08A;cursor:pointer}
+.ntc{margin-top:18px;--c:14px;background:rgba(31,224,138,.3);padding:1px}.ntc .in{background:#141914;padding:14px;display:flex;gap:11px}.ntc b{font-size:13px}.ntc p{font-size:12px;color:#91A797;margin-top:4px}
+.ov{position:absolute;inset:0;background:rgba(10,13,10,.72);display:grid;place-items:center;z-index:5}.ov div{text-align:center;font-size:13px;font-weight:600;color:#91A797}.spin{width:30px;height:30px;margin:0 auto 10px;border:3px solid #233026;border-top-color:#1FE08A;border-radius:50%;animation:sp 1s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+.dtoast{position:absolute;left:16px;right:16px;bottom:40px;z-index:95;background:#E8F0EA;color:#0A0D0A;padding:12px 14px;border-radius:12px;font-size:14px;font-weight:700;transition:opacity .2s;opacity:0;pointer-events:none}.dtoast.on{opacity:1}
+
+:root{--bg:#0A0D0A;--sf:#141914;--rs:#1B231C;--ln:#233026;--sc:#1FE08A;--amb:#FFB020;--warn:#FF4D4D;--ink:#E8F0EA;--mut:#91A797}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+#app{position:absolute;inset:0;display:flex;flex-direction:column}
+.demo{position:absolute;top:calc(58px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:60;font:800 10px ui-monospace,monospace;letter-spacing:.14em;background:var(--amb);color:#000;padding:3px 9px;border-radius:99px}
+.scr{flex:1;overflow-y:auto;padding:calc(88px + env(safe-area-inset-top,0px)) 16px calc(100px + env(safe-area-inset-bottom,0px))}
+.h1{font-size:28px;font-weight:800;letter-spacing:.01em;text-transform:uppercase}.mut{color:var(--mut);font-size:13px}.mono{font-family:ui-monospace,"SF Mono",monospace}
+.k{font:700 10px ui-monospace,monospace;letter-spacing:.16em;color:var(--sc);text-transform:uppercase}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:14px;margin-top:12px}
+.btn{display:block;width:100%;padding:14px;border-radius:12px;background:var(--sc);color:#04140b;font-weight:800;font-size:15px;text-align:center;margin-top:12px;letter-spacing:.02em}
+.btn.ghost{background:transparent;border:1px solid var(--ln);color:var(--ink)}.btn.red{background:var(--warn);color:#fff}
+.row{display:flex;align-items:center;gap:12px}.sp{flex:1}
+.tabs{position:absolute;left:0;right:0;bottom:0;display:flex;background:rgba(10,13,10,.97);border-top:1px solid var(--ln);padding:6px 2px 30px}
+.tabs button{flex:1;display:flex;flex-direction:column;align-items:center;font-size:10px;gap:2px;color:var(--mut)}.tabs button.on{color:var(--sc)}.tabs b{font-size:19px;line-height:1}
+.map{position:relative;height:330px;border-radius:16px;overflow:hidden;border:1px solid var(--ln);background:radial-gradient(circle at 50% 60%,#11221a,#070a07)}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.pin{position:absolute;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:16px;border:2px solid;background:#0a0d0acc}
+.me{position:absolute;left:50%;top:62%;width:16px;height:16px;border-radius:50%;background:var(--sc);transform:translate(-50%,-50%);box-shadow:0 0 0 6px #1fe08a33,0 0 0 18px #1fe08a14}
+.sweep{position:absolute;left:50%;top:62%;width:300px;height:300px;margin:-150px;border-radius:50%;background:conic-gradient(from 0deg,#1fe08a40,transparent 60deg);animation:sw 3.2s linear infinite}
+@keyframes sw{to{transform:rotate(360deg)}}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.rep{background:var(--rs);border:1px solid var(--ln);border-radius:12px;padding:10px 4px;text-align:center;font-size:11.5px;font-weight:600}.rep span{display:block;font-size:22px}
+.al{border-left:3px solid var(--amb)}.al.w{border-left-color:var(--warn)}
+.toast{position:absolute;left:14px;right:14px;bottom:96px;background:var(--ink);color:var(--bg);padding:12px 14px;border-radius:12px;font-weight:700;z-index:70;font-size:14px}
+.big{font:800 46px ui-monospace,monospace;color:var(--sc)}
+.bar{height:6px;border-radius:9px;background:var(--rs);overflow:hidden;margin-top:6px}.bar i{display:block;height:100%;background:var(--sc)}
+.rec{width:12px;height:12px;border-radius:50%;background:var(--warn);animation:bl 1s infinite}@keyframes bl{50%{opacity:.2}}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.chip{padding:8px 12px;border-radius:99px;border:1px solid var(--ln);font-size:13px;font-weight:600}.chip.on{background:var(--sc);color:#04140b;border-color:var(--sc)}
+.wave{display:flex;gap:3px;align-items:center;height:40px}.wave i{width:4px;background:var(--sc);border-radius:2px;animation:wv 1s ease-in-out infinite}@keyframes wv{50%{height:8px}}
+.tabs{background:rgba(14,18,14,.94)!important;backdrop-filter:blur(20px);border-top:.5px solid #233026!important}
+.tabs button{font-size:10px;font-weight:500;gap:3px;color:#7d8c80;line-height:1.1;text-align:center}.tabs button.on{color:#1FE08A}.tabs svg{width:26px;height:23px}
+.tabs .bdg{position:absolute;margin-left:18px;margin-top:-2px;background:#FF3B30;color:#fff;font-size:11px;font-weight:600;min-width:17px;height:17px;border-radius:9px;display:grid;place-items:center;padding:0 4px}
+.mrow{display:flex;align-items:center;gap:14px;padding:13px 14px;border-bottom:.5px solid #233026;cursor:pointer;font-size:16px}.mrow:last-child{border:0}.mrow svg{color:#1FE08A}.mrow i{margin-left:auto;color:#5f7064;font-style:normal;font-size:18px}
+.mlist{background:#141914;border-radius:12px;margin-top:14px;overflow:hidden}.mh{font-size:34px;font-weight:700;letter-spacing:-.01em}
+</style></head><body><div id="wrap"><div id="stage">
+<div class="sb"><span id="sb-time">9:41</span><span class="sbi"><svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor"><path d="M9 2.2c2.6 0 5 1 6.8 2.7l1.2-1.2A11.3 11.3 0 0 0 9 .5 11.3 11.3 0 0 0 1 3.7l1.2 1.2A9.6 9.6 0 0 1 9 2.2m0 3.4c1.7 0 3.2.6 4.4 1.7l1.2-1.2A8 8 0 0 0 9 3.9a8 8 0 0 0-5.6 2.2l1.2 1.2A6.3 6.3 0 0 1 9 5.6m0 3.4c.8 0 1.5.3 2 .8L9 12 7 9.8c.5-.5 1.2-.8 2-.8"/></svg><svg width="27" height="13" viewBox="0 0 27 13"><rect x=".5" y=".5" width="23" height="12" rx="3.8" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="20" height="9" rx="2.5" fill="currentColor"/><path d="M25 4.5v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2" fill="currentColor" opacity=".4"/></svg></span></div>
+
+<div class="pre" id="dc"><div>
+ <svg class="dic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.5 3.5 4.8v6.4c0 5.2 3.6 10 8.5 11.3 4.9-1.3 8.5-6.1 8.5-11.3V4.8zM12 3.6v7.6H5.5V6.2zm0 7.6h6.5c-.2 4.1-3 7.9-6.5 9.1z"/></svg>
+ <h1 class="dh">Drive informed.<br>Stay compliant.</h1></div>
+ <div id="cls"></div>
+ <p class="cp"><b>© 2026 RADR. All rights reserved.</b><br>Get On Curb™, Curb™, Booked™, Zilt™, Noir™, Our People™, WRACE™, RADR™ and Afterglow™ are trademarks of RADR's publisher.</p>
+ <div class="ll"><div class="bd ch"><div class="in ch" onclick="dt('Opens the Terms of Use in the app.')"><svg width="14" height="15" viewBox="0 0 14 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 1h7l3 3v11H2z"/><path d="M5 8h4M5 11h4"/></svg>Terms of Use <small>↗</small></div></div><div class="bd ch"><div class="in ch" onclick="dt('Opens the Privacy Policy in the app.')"><svg width="14" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 0 1.7.8 1.7 1.7V11h.6V4.6a1.6 1.6 0 1 1 3.2 0V12h.5V7.6a1.6 1.6 0 1 1 3.2 0V15c0 4-3 7-7 7h-1.7c-2.3 0-3.9-1-5.3-2.8L3 14.2a1.6 1.6 0 0 1 2.5-2l2.2 2V4.7a1.6 1.6 0 1 1 3.2 0V11h.4V3.7C11.3 2.8 11 2 12 2"/></svg>Privacy Policy <small>↗</small></div></div></div>
+ <p class="acc">By continuing you accept the Terms of Use and the Privacy Policy linked above.</p>
+ <div class="tb ch bd" onclick="toTour()"><div class="in ch">I Understand — Continue</div></div>
+</div>
+<div class="pre hide" id="tu">
+ <div class="segs" id="segs"></div>
+ <div class="tl"><div class="bar"><b id="tlb"></b></div><span class="lab" id="tll">1:30 LEFT</span><span class="pc ch" id="tlp">0%</span></div>
+ <div class="th"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" id="tsy"><path d="M12 1l10 5.75v11.5L12 24 2 18.25V6.75z"/></svg><span class="eb" id="teb"></span><span class="sp"></span>
+  <div class="mt ch"><div class="ch"><button class="ch" id="mv" onclick="tmode(1)"><svg width="13" height="11" viewBox="0 0 26 22" fill="currentColor"><path d="M3 0h20a3 3 0 0 1 3 3v16a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V3a3 3 0 0 1 3-3m7 6v10l8-5z"/></svg></button><button class="ch on" id="mr" onclick="tmode(0)"><svg width="12" height="11" viewBox="0 0 12 11" fill="currentColor"><rect width="12" height="2" rx="1"/><rect y="4.5" width="9" height="2" rx="1"/><rect y="9" width="11" height="2" rx="1"/></svg></button></div></div>
+  <span class="hi" onclick="dt('Summary of all 12 chapters. Demo: skipping ahead.');toSign()"><svg width="17" height="15" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M1 3l2 2 4-4M1 11l2 2 4-4M1 18l2 2 4-4M11 3h12M11 11h12M11 18h12"/></svg></span>
+  <span class="hi" onclick="toSign()"><svg width="13" height="13" viewBox="0 0 14 14" stroke="currentColor" stroke-width="2.4"><path d="M1 1l12 12M13 1 1 13"/></svg></span></div>
+ <div class="stg ch"><div class="in ch"><div class="rg" style="width:80px;height:80px"></div><div class="rg" style="width:160px;height:160px"></div><div class="rg" style="width:240px;height:240px"></div><div class="rg" style="width:320px;height:320px"></div><div class="sw"></div><svg class="hx" width="54" height="54" viewBox="0 0 24 24" fill="currentColor" id="tic"><path d="M12 1l10 5.75v11.5L12 24 2 18.25V6.75z"/></svg></div></div>
+ <div class="cpy"><h2 id="tt"></h2><p id="ts"></p><ul id="tp"></ul></div>
+ <div class="ctl"><div class="gh ch hide" id="tbk" onclick="tgo(-1)"><div class="in ch">Back</div></div><div class="tb ch bd" style="flex:1" onclick="tgo(1)"><div class="in ch" id="tnx">Next</div></div></div>
+</div>
+<div class="pre hide" id="si"><div class="wrapI">
+ <div class="hd"><svg width="40" height="44" viewBox="0 0 24 26" fill="currentColor"><path d="M12 0 1.5 4v7.6C1.5 18 6 23.8 12 25.5c6-1.7 10.5-7.5 10.5-13.9V4zm0 2.3v20.9C7.2 21.6 3.7 16.7 3.7 11.6V5.5z"/></svg>
+ <h1 id="ttl">CREATE YOUR ACCOUNT</h1><p>Your email is your username.</p></div>
+ <div id="ntc"></div>
+ <div id="form">
+ <div style="margin-top:18px">
+  <button class="pv gg" onclick="enter('Google')"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.9h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.8 3-4.4 3-7.4M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22M6.4 14a6 6 0 0 1 0-3.9V7.5H3.1a10 10 0 0 0 0 9zM12 5.9c1.5 0 2.8.5 3.8 1.5l2.9-2.8A10 10 0 0 0 3.1 7.5l3.3 2.6C7.2 7.7 9.4 5.9 12 5.9"/></svg>Continue with Google</button>
+  <button class="pv" onclick="enter('Apple')"><svg width="16" height="19" viewBox="0 0 16 19" fill="#fff"><path d="M13.3 10.1c0-2.3 1.9-3.4 2-3.5a4.3 4.3 0 0 0-3.4-1.8c-1.4-.2-2.8.8-3.5.8s-1.9-.8-3-.8A4.5 4.5 0 0 0 1.6 7.1c-1.6 2.8-.4 6.9 1.1 9.1.8 1.1 1.7 2.3 2.8 2.3s1.6-.7 3-.7 1.8.7 3 .7 2-1.1 2.7-2.2a9.6 9.6 0 0 0 1.2-2.5 3.9 3.9 0 0 1-2.1-3.7M11.1 3.3A3.9 3.9 0 0 0 12 .5a4 4 0 0 0-2.6 1.4 3.7 3.7 0 0 0-.9 2.7 3.3 3.3 0 0 0 2.6-1.3"/></svg>Continue with Apple</button>
+  <div class="or">or</div>
+  <div class="mp"><button class="on" id="m-pw" onclick="meth('pw')"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 1.5a7 7 0 0 0-6.6 9.3L1.5 18.2V22.5h4.3v-2.3h2.3v-2.3h2.3l2.3-2.3a7 7 0 1 0 2.8-14.1m1.8 3.4a1.9 1.9 0 1 1 0 3.8 1.9 1.9 0 0 1 0-3.8"/></svg>PASSWORD</button><button id="m-ml" onclick="meth('ml')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3.3-3.3a4.5 4.5 0 0 0-6.4-6.4L12 5.6M14 10a4.5 4.5 0 0 0-6.4 0l-3.3 3.3a4.5 4.5 0 0 0 6.4 6.4l1.3-1.3"/></svg>EMAIL LINK</button></div>
+ </div>
+ <div class="fm ch"><div class="in ch">
+  <div class="fl">EMAIL</div><div class="fi ch"><input class="ch" id="em" type="email" placeholder="you@example.com" autocomplete="off" oninput="chk()"></div>
+  <div class="hint">Your email is your username.</div>
+  <div id="pwb"><div class="fl">PASSWORD</div><div class="fi ch"><input class="ch" id="pw" type="password" placeholder="At least 8 characters" oninput="chk()"></div></div>
+  <div class="hc ch" id="hv" onclick="human()"><div class="in ch"><div class="bx ch"><i class="ch" id="hck"></i></div><div><b>I'm a person, not a script</b><span>Keeps bulk sign-ups off RADR. Nothing is sent anywhere.</span></div></div></div>
+  <div class="tb ch bd off" id="go" onclick="submitS()" style="margin-top:17px"><div class="in ch" id="gol" style="height:54px">Create account</div></div>
+  <p class="lg" id="lgl">By creating an account you agree to the <a onclick="dt('Opens the Terms in the app.')">Terms</a> and <a onclick="dt('Opens the Privacy Policy in the app.')">Privacy Policy</a>.</p>
+  <p class="lg hide" id="fgt"><a onclick="dt('Demo: the reset screen sends nothing.')"><b>Forgot your password?</b></a></p>
+ </div></div>
+ <p class="swt"><span id="swq">Already have an account?</span> <b id="swb" onclick="swm()">Sign in</b></p>
+ </div>
+</div><div class="ov hide" id="ov"><div><div class="spin"></div>Signing you in</div></div></div>
+<div id="app"></div><div class="dtoast" id="dt"></div>
+</div></div>
+<script src="try-bridge.js"></script>
+<script>
+const g=i=>document.getElementById(i);
+function fit(){const w=innerWidth||document.documentElement.clientWidth,h=innerHeight||document.documentElement.clientHeight;if(w<2||h<2)return;const k=Math.min(w/393,h/852),stage=g('stage');stage.style.transformOrigin='top left';stage.style.transform='scale('+k+')';stage.style.left=((w-393*k)/2)+'px';stage.style.top=((h-852*k)/2)+'px'}addEventListener('resize',fit);if(window.ResizeObserver)new ResizeObserver(fit).observe(document.documentElement);addEventListener('load',fit);fit();requestAnimationFrame(fit);
+let dtt;function dt(m){const t=g('dt');t.textContent=m;t.classList.add('on');clearTimeout(dtt);dtt=setTimeout(()=>t.classList.remove('on'),1600)}
+const CL=[["Local law comes first","Radar-detector use, scanner access and recording consent rules vary by state, and some countries restrict camera-warning apps outright. RADR is published for the United States — know your local vehicle code, and switch alerts off before you cross a border where they are prohibited.",'<path d="M5 2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H5zm2 4v2h9V6z"/>'],
+["Hands on the wheel","RADR is a passive companion. Report hazards only when safely stopped or with a passenger, never interact with the screen while driving, and obey the road, the signs and law enforcement regardless of what the app shows.",'<path d="M7 11V5a1.5 1.5 0 0 1 3 0v5h.5V3.5a1.5 1.5 0 0 1 3 0V10h.5V4.5a1.5 1.5 0 0 1 3 0V12l.6-1.6a1.5 1.5 0 0 1 2.8 1.1l-2 5.7A6 6 0 0 1 12.8 22h-1.6A5.2 5.2 0 0 1 6 16.8V8a1.5 1.5 0 0 1 1 3"/>'],
+["No help evading a checkpoint","RADR never accepts a driver-reported sobriety or licence checkpoint. A checkpoint appears only when a law enforcement agency published it, and nothing in this app is built to route you around impaired-driving enforcement.",'<path d="M10.4 2h3.2l1.2 5H9.2zm-1.6 7h6.4l1 4H7.8zM7.3 15h9.4l1.3 5H21v2H3v-2h3z"/>'],
+["Feeds can be late, wrong or missing","Where an agency publishes its own incident data, RADR reads that public record and names the agency on the pin. RADR plays a public call only after the listener taps it. RADR never tracks an individual officer. Agency feeds can arrive late, be incomplete or be corrected after display, and RADR is not affiliated with any law enforcement agency. Verify against the road.",'<path d="M12 2 1 21h22zm-1 7h2v6h-2zm0 8h2v2h-2z"/>'],
+["Your recordings stay on this device","Trip logs, cases and the driver card stay on this device and are sealed with app-managed AES-GCM. On iPhone the key is in the Keychain. The PIN is not that key. Encounter audio, video, clips and photos are files in the app container. File protection makes them unreadable while the phone is locked. They are not sealed with the vault key, and they never leave the device until you export them yourself. Three things do leave, and all three are named here: public map services are asked about the area you are driving through, the same way any map app does; the assistant, which is ON by default and sends text only — never audio, video or a GPS trace — to write drafts; and Share ETA, which only runs when you tap it and publishes one coarse position plus your arrival time to a temporary link, overwritten as you drive, never a route history, ended by you or by its own expiry. Turn the assistant off in Profile › Assistant, never tap Share, and nothing about your drive is sent to anyone.",'<path d="M12 1 3 4.5v6.6c0 5.5 3.8 10.6 9 11.9 5.2-1.3 9-6.4 9-11.9V4.5zm0 6a2.5 2.5 0 0 1 2.5 2.5V11h.5v6H9v-6h.5V9.5A2.5 2.5 0 0 1 12 7m0 1.5a1 1 0 0 0-1 1V11h2V9.5a1 1 0 0 0-1-1"/>'],
+["Not legal advice, and nothing pays you","Exported defence packages support your own counsel — they are not a substitute for one. RADR has no wallet, no earnings and no cash out: Signal and Depot items are not money, and payout terms would apply only if an earnings feature ships in a later release.",'<path d="M11 2h2v3h6l3 8a4 4 0 0 1-8 0l2.7-6.5H13V20h5v2H6v-2h5V6.5H7.3L10 13a4 4 0 0 1-8 0l3-8h6zM5 8.4 3.6 12h2.8zm14 0L17.6 12h2.8z"/>']];
+g('cls').innerHTML=CL.map(([t,b,p])=>`<div class="cl"><div class="ic ch"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">${p}</svg></div><div><b>${t}</b><p>${b}</p></div></div>`).join('');
+const CH=[["Walkthrough · 1 of 12","Welcome to RADR","A road scope, a black box and a defence file in one app. Here is the whole thing in about a minute.",["Everything is free — no subscription, no account","Your drive data never leaves this phone","You can replay this tour any time from Profile"],7],
+["The Map · 2 of 12","The scope is your home screen","Your position sits at the centre of a live map of what other drivers have reported around you.",["Pins show radar, laser, cameras, cruisers and hazards","A pin fades as it gets older, so stale reports quietly disappear","Tap any pin to confirm it or clear it off the map"],8],
+["Speed · 3 of 12","Your speed, and how much to trust it","The corner readout shows your speed against the posted limit — and always tells you where that limit came from.",["POSTED means it was read from map data and can be trusted","ESTIMATE means it was inferred from the road type — never a warning","Spoken warnings only ever fire on a posted limit"],9],
+["Reporting · 4 of 12","Report what you see","Tap the round button on the map, pick what you spotted, and it lands on the map for drivers behind you.",["Every type is one tap — no typing required","Only report when stopped or with a passenger","Every report earns Signal you can spend in the Depot"],8],
+["Alerts · 5 of 12","The feed, when you want the list","The Alerts tab is the same information as a scrollable list, with a reliability score on every row.",["Filter by radar, dispatch or community reports","Reliability blends the source with other drivers' votes","Spoken alerts call out a hazard before you reach it"],8]];
+let TX=0;const TOT=90;
+function toTour(){g('dc').classList.add('hide');g('tu').classList.remove('hide');tshow()}
+function tshow(){const c=CH[TX];g('teb').textContent=c[0].toUpperCase();g('tt').textContent=c[1];g('ts').textContent=c[2];g('tp').innerHTML=c[3].map(x=>'<li>'+x+'</li>').join('');
+ g('segs').innerHTML=Array.from({length:12},(_,i)=>`<i><b style="width:${i<TX?100:i===TX?35:0}%"></b></i>`).join('');
+ const ex=Math.round((TX+.35)/12*100);g('tlb').style.width=ex+'%';g('tlp').textContent=ex+'%';const left=Math.max(0,TOT-TX*8-3);g('tll').textContent=Math.floor(left/60)+':'+String(left%60).padStart(2,'0')+' LEFT';
+ g('tbk').classList.toggle('hide',TX===0);g('tnx').textContent=TX===CH.length-1?'Skip to sign-in':'Next'}
+function tgo(d){TX+=d;if(TX>=CH.length)return toSign();if(TX<0)TX=0;tshow()}
+function tmode(v){g('mv').classList.toggle('on',!!v);g('mr').classList.toggle('on',!v);if(v)dt('Demo: the narrated demonstration plays in the app. Reading the steps here.')}
+function toSign(){g('tu').classList.add('hide');g('si').classList.remove('hide')}
+let M='pw',H=false,MODE='up';
+function meth(m){M=m;g('m-pw').classList.toggle('on',m==='pw');g('m-ml').classList.toggle('on',m==='ml');g('pwb').classList.toggle('hide',m==='ml');lab();chk()}
+function lab(){g('gol').textContent=M==='ml'?'Email me a link':MODE==='up'?'Create account':'Sign in';g('ttl').textContent=MODE==='up'?'CREATE YOUR ACCOUNT':'SIGN IN TO RADR';g('hv').classList.toggle('hide',MODE!=='up');g('lgl').classList.toggle('hide',MODE!=='up');g('fgt').classList.toggle('hide',!(MODE==='in'&&M==='pw'));g('swq').textContent=MODE==='up'?'Already have an account?':'New here?';g('swb').textContent=MODE==='up'?'Sign in':'Create account';g('pw').placeholder=MODE==='up'?'At least 8 characters':'Your password'}
+function swm(){MODE=MODE==='up'?'in':'up';g('ntc').innerHTML='';lab();chk()}
+function human(){H=!H;g('hv').classList.toggle('on',H);g('hck').innerHTML=H?'<svg width="13" height="11" viewBox="0 0 12 10" fill="none" stroke="#0A0D0A" stroke-width="2.6"><path d="M1 5l3.5 3.5L11 1"/></svg>':'';chk()}
+function ok(){const e=/.+@.+\..+/.test(g('em').value);if(!e)return false;if(MODE==='in')return M==='ml'||g('pw').value.length>0;return (M==='ml'||g('pw').value.length>=8)&&H}
+function chk(){g('go').classList.toggle('off',!ok())}
+function submitS(){if(!ok()){dt(MODE==='up'&&!H?'Tick “I\'m a person, not a script” first.':'Enter your email'+(M==='pw'?(MODE==='up'?' and a password of 8+ characters.':' and password.'):'.'));return}
+ if(M==='ml'){g('ntc').innerHTML='<div class="ntc ch"><div class="in ch"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1FE08A" stroke-width="2.6" stroke-linecap="round"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3.3-3.3a4.5 4.5 0 0 0-6.4-6.4L12 5.6M14 10a4.5 4.5 0 0 0-6.4 0l-3.3 3.3a4.5 4.5 0 0 0 6.4 6.4l1.3-1.3"/></svg><div><b>Sign-in link sent to '+g('em').value.replace(/</g,'')+'</b><p>Open that mail on this phone and tap the link — nothing to type. It expires in 15 minutes.</p></div></div></div>';dt('Demo: no email is sent. Signing you in shortly.');clearTimeout(window.wtT);window.wtT=setTimeout(spinIn,3000)}else spinIn()}
+function spinIn(){g('ov').classList.remove('hide');setTimeout(enterApp,700)}
+function enter(p){dt('Demo: '+p+' sign-in is simulated. Nothing leaves this page.');setTimeout(spinIn,400)}
+function enterApp(){clearTimeout(window.wtT);g('ov').classList.add('hide');g('si').classList.add('hide');g('dc').classList.add('hide');g('tu').classList.add('hide');S.screen='app';render()}
+</script>
+<script>
+const TI={"map": "<path d=\"M8 3 2 5.3v15.5l6-2.3 8 2.5 6-2.3V3.2l-6 2.3z\" opacity=\".95\"/><path d=\"M8 3v15.5M16 5.5V21\" stroke=\"#0E120E\" stroke-width=\"1.4\"/>", "alerts": "<path d=\"M12 2a6.5 6.5 0 0 1 6.5 6.5v4.8l1.8 3.2v1.3H3.7v-1.3l1.8-3.2V8.5A6.5 6.5 0 0 1 12 2m-2.6 17h5.2a2.6 2.6 0 0 1-5.2 0\"/>", "radio": "<circle cx=\"12\" cy=\"12\" r=\"2.6\"/><path d=\"M7.8 7.8a6 6 0 0 0 0 8.4M16.2 7.8a6 6 0 0 1 0 8.4M4.8 4.8a10.2 10.2 0 0 0 0 14.4M19.2 4.8a10.2 10.2 0 0 1 0 14.4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"/>", "box": "<circle cx=\"12\" cy=\"12\" r=\"9.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/><path d=\"M12 2.5 15 9H5M21.3 10.5 16.5 16 13 9.6M14.5 21 10 15.5 17 15.5M3 14 7.5 8.5 11 15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"/>", "more": "<circle cx=\"5\" cy=\"12\" r=\"2.2\"/><circle cx=\"12\" cy=\"12\" r=\"2.2\"/><circle cx=\"19\" cy=\"12\" r=\"2.2\"/>", "defence": "<path d=\"M12 1.5 3.5 4.8v6.4c0 5.2 3.6 10 8.5 11.3 4.9-1.3 8.5-6.1 8.5-11.3V4.8zm-1.3 14.3-4-4 1.5-1.5 2.5 2.5 5.6-5.6 1.5 1.5z\"/>", "profile": "<path d=\"M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20m0 4a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7m0 9c-2.7 0-5 1.3-6.2 3.2A8 8 0 0 0 12 20a8 8 0 0 0 6.2-1.8C17 16.3 14.7 15 12 15\"/>"};
+
+/* RADR demo. Runs entirely in this page: no location, no camera, no microphone, no network, no account. */
+const $=s=>document.querySelector(s),app=$('#app');
+const TYPES=[['police','Police','🚓','#4DA3FF'],['radar','Radar trap','📡','#FFB020'],['cam','Speed camera','📷','#FFB020'],['red','Red light camera','🚦','#FF4D4D'],['crash','Collision','💥','#FF4D4D'],['hazard','Road hazard','⚠️','#FFB020']];
+const S={screen:'app',tab:'map',pins:[['police',30,30,'Vine St','92% reliable',4],['cam',72,22,'Route 9 NB','fixed',0],['radar',22,78,'Old Mill Rd','78% reliable',9],['hazard',78,70,'I-80 EB','debris in lane',2]],report:false,alerts:[],rec:null,drives:[{d:'Yesterday',mi:14.2,top:58,avg:31,over:0},{d:'Mon',mi:6.8,top:44,avg:24,over:3}],ticket:null,radio:false};
+let toastT;function toast(t){clearTimeout(toastT);let e=$('.toast');if(!e){e=document.createElement('div');e.className='toast';app.appendChild(e)}e.textContent=t;toastT=setTimeout(()=>e.remove(),1600)}
+const T=k=>TYPES.find(t=>t[0]===k);
+function go(t){S.tab=t;const e=$('.toast');e&&e.remove();render()}
+function render(){let h='<div class="demo">DEMO</div>';if(S.screen==='signin')h+=signin();else h+=`<div class="scr">${({map,alerts,radio,box,defence,profile,more})[S.tab]()}</div>`+tabs();app.innerHTML=h}
+function tabs(){const T=[['map','Map'],['alerts','Alerts'],['radio','Radio and recordings'],['box','Black Box'],['more','More']];const cur=['defence','profile'].includes(S.tab)?'more':S.tab;return `<nav class="tabs">${T.map(([k,l])=>`<button class="${cur===k?'on':''}" onclick="go('${k}')"><svg viewBox="0 0 24 24" fill="currentColor">${TI[k]}</svg>${k==='alerts'&&S.alerts.length?`<span class="bdg">${S.alerts.length}</span>`:''}${l}</button>`).join('')}</nav>`}
+function more(){return `<div class="mh">More</div><div class="mlist"><div class="mrow" onclick="go('defence')"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">${TI.defence}</svg>Defence<i>›</i></div><div class="mrow" onclick="go('profile')"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">${TI.profile}</svg>Profile<i>›</i></div></div><p class="mut" style="margin-top:12px">iPhone shows four tabs and puts Defence and Profile under More.</p>`}
+function signin(){MODE='in';lab();document.getElementById('si').classList.remove('hide');return ''}
+function map(){return `<div class="row"><div><p class="k">Road scope</p><div class="h1">Live map</div></div><span class="sp"></span><span class="mono mut">${S.pins.length} nearby</span></div><div class="map" style="margin-top:10px"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><g stroke="#233026" stroke-width=".8" fill="none"><path d="M0 62H100M50 0V100M0 20L100 90M10 100L90 0"/><path d="M0 40H100M75 0V100M25 0V100" stroke-width=".4"/></g></svg><div class="sweep"></div>${S.pins.map((p,i)=>{const t=T(p[0]);return `<button class="pin" style="left:${p[1]}%;top:${p[2]}%;border-color:${t[3]}" onclick="pinInfo(${i})">${t[2]}</button>`}).join('')}<div class="me"></div></div><button class="btn red" onclick="S.report=!S.report;render()">${S.report?'Close':'＋ Report'}</button>${S.report?`<div class="grid">${TYPES.map(t=>`<button class="rep" onclick="report('${t[0]}')"><span>${t[2]}</span>${t[1]}</button>`).join('')}</div>`:''}${S.pins.map((p,i)=>{const t=T(p[0]);return `<button class="card row" style="width:100%;text-align:left;padding:10px 12px" onclick="pinInfo(${i})"><span style="font-size:20px">${t[2]}</span><div><b>${t[1]} · ${p[3]}</b><br><span class="mut">${p[4]} · ${p[5]?p[5]+' min old':'just now'}</span></div></button>`}).join('')}`}
+function pinInfo(i){const p=S.pins[i],t=T(p[0]);toast(`${t[1]} · ${p[3]} — tap 👍 in the app to confirm it's still there.`)}
+function report(k){S.pins.unshift([k,35+Math.random()*30,45+Math.random()*12,'Your location','reported by you',0]);S.report=false;toast(T(k)[1]+' reported (demo). Nothing was sent.');render()}
+let alertT;function startAlerts(){clearInterval(alertT);const L=[['radar','Radar trap ahead','0.6 mi · Old Mill Rd',0],['police','Police reported','1.2 mi · Vine St',0],['red','Red light camera','0.3 mi · Alder Ave',1]];let n=0;alertT=setInterval(()=>{if(n>=L.length){clearInterval(alertT);return}S.alerts.unshift(L[n++]);if(S.tab==='alerts'||S.tab==='map'){toast('🔔 '+S.alerts[0][1]+' · '+S.alerts[0][2])}if(S.tab==='alerts')render();else if(S.screen==='app')render()},9000)}
+function alerts(){return `<p class="k">Heads up</p><div class="h1">Alerts</div>${S.alerts.length?S.alerts.map(a=>`<div class="card al ${a[3]?'w':''} row"><span style="font-size:22px">${T(a[0])[2]}</span><div><b>${a[1]}</b><br><span class="mut">${a[2]} · spoken aloud while you drive</span></div></div>`).join(''):'<div class="card"><b>Quiet road</b><p class="mut">Alerts arrive as you drive. Give it a few seconds.</p></div>'}<div class="card"><b>Alert distance</b><div class="chips">${['0.25 mi','0.5 mi','1 mi'].map((x,i)=>`<button class="chip ${i===1?'on':''}" onclick="toast('Set to ${x} (demo)')">${x}</button>`).join('')}</div></div>`}
+function radio(){return `<p class="k">Radio and recordings</p><div class="h1">Scanner</div><div class="card"><div class="row"><div><b>County dispatch · sample</b><br><span class="mut">Public scanner feed, where it's legal to listen</span></div><span class="sp"></span>${S.radio?'<span class="rec"></span>':''}</div>${S.radio?`<div class="wave" style="margin-top:12px">${Array.from({length:28},(_,i)=>`<i style="height:${10+(i*37%28)}px;animation-delay:${(i%7)/10}s"></i>`).join('')}</div><p class="mut mono">“Unit 12, traffic stop, Vine and 4th…” (demo transcript)</p>`:''}<button class="btn ${S.radio?'ghost':''}" onclick="S.radio=!S.radio;render()">${S.radio?'Stop listening':'▶ Listen (demo)'}</button></div><div class="card"><b>Recordings</b><div class="row" style="margin-top:8px"><span>🎙️</span><div><b>Traffic stop · Mon 6:42 PM</b><br><span class="mut">3:18 · saved on this phone only</span></div></div></div>`}
+let recT;function box(){const r=S.rec;return `<p class="k">Black Box</p><div class="h1">Drives</div>${r?`<div class="card"><div class="row"><span class="rec"></span><b>Recording drive</b><span class="sp"></span><span class="mono">${Math.floor(r.s/60)}:${String(r.s%60).padStart(2,'0')}</span></div><div class="row" style="margin-top:10px"><div><p class="mut">Speed</p><div class="big">${r.mph}</div><p class="mut">mph · limit 45</p></div><span class="sp"></span><div style="text-align:right"><p class="mut">Distance</p><p class="mono" style="font-size:22px">${r.mi.toFixed(2)} mi</p><p class="mut">Top ${r.top} mph</p></div></div><button class="btn red" onclick="stopDrive()">Stop and save</button></div>`:`<button class="btn" onclick="startDrive()">● Start a drive</button><p class="mut" style="margin-top:6px">Logs speed, route and limits. Stays on your phone.</p>`}${S.drives.map(d=>`<div class="card"><div class="row"><b>${d.d}</b><span class="sp"></span><span class="mono">${d.mi.toFixed(1)} mi</span></div><div class="row mono mut" style="margin-top:6px;gap:16px"><span>Top ${d.top}</span><span>Avg ${d.avg}</span><span style="color:${d.over?'var(--amb)':'var(--sc)'}">${d.over?d.over+' over limit':'Clean'}</span></div></div>`).join('')}`}
+function startDrive(){S.rec={s:0,mph:0,mi:0,top:0};recT=setInterval(()=>{const r=S.rec;if(!r)return;r.s++;r.mph=Math.max(0,Math.min(52,Math.round(r.mph+(Math.random()*9-3.5))));r.top=Math.max(r.top,r.mph);r.mi+=r.mph/3600;if(S.tab==='box')render()},1000);render()}
+function stopDrive(){clearInterval(recT);const r=S.rec;S.drives.unshift({d:'Just now',mi:r.mi,top:r.top,avg:Math.round(r.mi/(r.s/3600||1)),over:r.top>45?1:0});S.rec=null;toast('Drive saved on this phone (demo).');render()}
+function defence(){const t=S.ticket;if(!t)return `<p class="k">Defence file</p><div class="h1">Fight a ticket</div><p class="mut">Snap your citation. Practices bid to take it. You pick.</p><div class="card"><b>1 · Your ticket</b><p class="mut">Sample: Speeding 54 in a 40 · Tarrant County</p><button class="btn" onclick="S.ticket={stage:'bids'};render();setTimeout(()=>{if(S.ticket){S.ticket.bids=3;render()}},2500)">📷 Use sample ticket</button></div><div class="card mut">Your Black Box drive for that day is attached only if you choose.</div>`;
+ if(t.stage==='bids')return `<p class="k">Defence file</p><div class="h1">Bids</div><p class="mut">Speeding 54/40 · Tarrant County</p>${t.bids?[['Lone Star Traffic Law','$149','4.9★ · 1,200 cases'],['North TX Defense','$175','4.8★ · 860 cases'],['Ruiz & Park','$199','4.9★ · 410 cases']].map(b=>`<div class="card"><div class="row"><div><b>${b[0]}</b><br><span class="mut">${b[2]} · flat fee, no cold calls</span></div><span class="sp"></span><b class="mono" style="font-size:18px">${b[1]}</b></div><button class="btn" onclick="S.ticket={stage:'hired',firm:'${b[0]}',fee:'${b[1]}'};toast('Hired (demo). Nothing was charged.');render()">Hire</button></div>`).join(''):'<div class="card"><b>Waiting for bids…</b><div class="bar"><i style="width:40%"></i></div></div>'}`;
+ return `<p class="k">Defence file</p><div class="h1">Case open</div><div class="card"><b>${t.firm}</b><p class="mut">${t.fee} flat · they'll appear for you</p>${['Ticket received','Practice assigned','Court date requested','Outcome'].map((s,i)=>`<div class="row" style="margin-top:8px"><span style="color:${i<2?'var(--sc)':'var(--mut)'}">${i<2?'●':'○'}</span>${s}</div>`).join('')}</div><button class="btn ghost" onclick="S.ticket=null;render()">Start over</button>`}
+function profile(){return `<p class="k">Profile</p><div class="h1">Demo driver</div><div class="card"><div class="row"><b>Reports confirmed</b><span class="sp"></span><span class="mono">${12+S.pins.length-4}</span></div><div class="row" style="margin-top:6px"><b>Drives logged</b><span class="sp"></span><span class="mono">${S.drives.length}</span></div><div class="row" style="margin-top:6px"><b>Theme</b><span class="sp"></span><span class="mono" style="color:var(--sc)">Nightscope</span></div></div><div class="card mut">Your drives and recordings stay on your phone. Nothing here is stored on a server.</div><button class="btn ghost" onclick="clearInterval(alertT);clearInterval(recT);S.rec=null;S.tab='map';render()">Sign out of demo</button>`}
+
+</script><script id="nologin">/* Website demo: no sign-in. Opens straight into the signed-in app. */
+
+enterApp();
+</script></body></html>
