@@ -1,0 +1,1 @@
+import{Lt as e,b as t,gt as n}from"./index-BgXPohLu.js";function r(){let{user:r,isLoading:i}=n(),a=e({queryKey:[`studio-access`,r?.id??`signed-out`],queryFn:t,enabled:!!r&&!i,retry:!1,staleTime:6e4});return{user:r,isLoading:i||!!r&&a.isLoading,isOwner:a.data?.owner===!0}}export{r as t};

@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "GF7Q89UD42.app.rork.ivvjsw68rwbrkh312y96z",
+        "paths": [
+          "/auth/callback",
+          "/auth/callback*",
+          "/join/*"
+        ]
+      }
+    ]
+  }
+}

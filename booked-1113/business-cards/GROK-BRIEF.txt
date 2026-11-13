@@ -1,0 +1,228 @@
+BOOKED — BUSINESS CARD DESIGN BRIEF
+Paste everything below into Grok. Ask it for a print-ready PDF,
+front and back, 3.5 x 2 in at 300 DPI with 0.125 in bleed.
+====================================================================
+
+You are designing a double-sided business card for an iPhone and Android
+app called Booked. Follow this brief exactly. Do not invent new colours,
+new fees, or new taglines. Every number below is what the app actually
+charges.
+
+--------------------------------------------------------------------
+1. TRIM, BLEED AND SAFE AREA
+--------------------------------------------------------------------
+Finished size      3.5 x 2 inches (US standard), LANDSCAPE
+Resolution         300 DPI  -> 1050 x 600 pixels at trim
+Bleed              0.125 in on all four sides
+Full artboard      3.75 x 2.25 in -> 1126 x 676 pixels
+Safe margin        Keep all text at least 0.125 in (38 px) inside trim
+Sides              2 (front and back). Same trim for both.
+Colour mode        Deliver CMYK for print; the hex values below are the
+                   RGB masters, convert them, do not re-pick them.
+Output             One PDF, 2 pages: page 1 = front, page 2 = back.
+                   Fonts embedded or outlined. No crop marks needed
+                   unless the printer asks.
+
+--------------------------------------------------------------------
+2. EXACT COLOUR PALETTE (these are the app's real values)
+--------------------------------------------------------------------
+NAME              HEX        RGB              USE
+Paper             #F6F4EF    246, 244, 239    Front background. Warm off-white,
+                                              never pure white.
+Paper deep        #EFEBE1    239, 235, 225     Soft shading on the paper side.
+Surface white     #FFFFFF    255, 255, 255     Only behind the QR code.
+Ink               #1F1B16    31, 27, 22        All primary text on paper. Warm
+                                              near-black, never #000000.
+Ink secondary     #6E655A    110, 101, 90      Supporting lines, captions.
+Ink tertiary      #9A9084    154, 144, 132     Fine print only.
+Hairline          #E5E0D5    229, 224, 213     Thin dividing rules, 2 px.
+Terracotta        #C45C26    196, 92, 38       The brand accent. Badges, dots.
+Terracotta deep   #A5461A    165, 70, 26       Back background. The card's
+                                              signature block of colour.
+Terracotta soft   #F8E8DC    248, 232, 220     Faint warm glow on the paper side.
+Cream             #F6F4EF    246, 244, 239     Text sitting ON terracotta.
+Warm cream tint   #FFDBC6    255, 219, 198     Secondary text ON terracotta.
+Highlight tint    #FFD6BE    255, 214, 190     Small kicker text ON terracotta.
+
+Colour rules:
+- Only two background colours exist: paper #F6F4EF and terracotta deep #A5461A.
+  Nothing else. No gradients across the whole card, no purple, no blue,
+  no black slab, no drop shadows on text.
+- Terracotta is an accent, not a wash. On the paper side it appears only as
+  a very faint blurred glow bleeding off the right edge and in small
+  elements, never as a heavy panel.
+- If asked for a Pantone match, terracotta deep is closest to Pantone 1675 C.
+
+--------------------------------------------------------------------
+3. TYPEFACES
+--------------------------------------------------------------------
+Display / wordmark   Source Serif 4, weight Black. Free from Google Fonts.
+                     Acceptable substitutes if unavailable, in order:
+                     Source Serif Pro Black, Newsreader ExtraBold,
+                     Spectral ExtraBold. Never a slab serif, never Playfair,
+                     never a script.
+Tagline              Source Serif 4 Italic, regular weight.
+All other text       Inter. Regular for body, Medium and SemiBold for
+                     emphasis, Bold for small caps labels.
+                     Substitute: Söhne, Suisse Int'l, or Helvetica Now.
+                     Never Montserrat, never Poppins, never Space Grotesk.
+
+Type sizes at 300 DPI (pixels):
+Wordmark "Booked"    104 px, Source Serif Black, colour #1F1B16
+Tagline              34 px, Source Serif Italic, colour #6E655A
+Headline on back     52 px, Source Serif Black, colour #F6F4EF
+Money headline       34 px, Source Serif Bold, colour #1F1B16
+Lead body line       30 px, Inter SemiBold, colour #1F1B16
+Body                 27 px, Inter Regular, colour #6E655A
+Small body           23 px, Inter Regular
+Small caps labels    18-21 px, Inter SemiBold/Bold, letter-spaced +1.5 to
+                     +2.5 px, ALL CAPS
+Fine print           19 px, Inter Regular, colour #6E655A
+
+--------------------------------------------------------------------
+4. THE LOGO
+--------------------------------------------------------------------
+The app icon is a cream house silhouette on a terracotta field with a
+serif letter B knocked out of it. Use the supplied icon file. Place it as
+a rounded square (corner radius = 22.5% of its width, matching iOS) at
+roughly 124 x 124 px, top-left of the FRONT.
+Do not recolour it. Do not put it in a circle. Do not add a glow.
+
+--------------------------------------------------------------------
+5. FRONT OF CARD — layout and exact copy
+--------------------------------------------------------------------
+Background: paper #F6F4EF, with a soft blurred terracotta-soft (#F8E8DC)
+glow bleeding off the top-right corner and a faint paper-deep (#EFEBE1)
+pool at the bottom-left. Both heavily blurred, subtle, atmospheric only.
+
+TOP LEFT       App icon, 124 px square, rounded.
+TO ITS RIGHT   Wordmark:   Booked
+               Under it, italic:   Home services, done right.
+
+DIVIDER        A 2 px hairline (#E5E0D5) spanning the full safe width,
+               under the wordmark block.
+
+MIDDLE BLOCK   Three lines, left aligned:
+               Post a job. Say what you will pay.
+               One verified pro takes it and sets the real price.
+               No bidding wars. No five callbacks. No lead fees.
+               (Line 1 in Inter SemiBold ink; lines 2 and 3 in Inter
+               Regular secondary.)
+
+BOTTOM LEFT    The Booked team                      (Source Serif Bold, ink)
+               Dallas–Fort Worth                    (Inter Medium, #A5461A)
+               booked@tkhub.app                    (Inter Medium, ink)
+               trybooked.app  (Inter SemiBold,
+                                                     #A5461A)
+
+               The web address must be set in type, not only inside the
+               QR code. Half the people handed a card will type it, and a
+               QR square is the one thing on a card a human cannot read.
+
+BOTTOM RIGHT   QR code, about 158 px square, black modules on a white
+               rounded card with about 14 px of white padding around it.
+               QR content (use this URL exactly):
+               https://trybooked.app
+               Caption underneath, right-aligned, small caps:
+               SCAN FOR THE LAUNCH DATE
+
+               Do NOT print a launch date on the card. A card outlives a
+               date; the page behind the code carries a live countdown, so
+               a slipped date costs nothing instead of a reprint.
+
+--------------------------------------------------------------------
+6. BACK OF CARD — two versions
+--------------------------------------------------------------------
+Make TWO backs. Same layout, different words. The front is shared.
+
+Shared back structure:
+- Background terracotta deep #A5461A, with a slightly lighter terracotta
+  (#C45C26) blurred pool in the top-left for depth.
+- A paper (#F6F4EF) band across the bottom, about 196 px tall, running
+  edge to edge including bleed. This band carries the money facts.
+- Top-left small caps kicker in #FFD6BE.
+- Top-right: the word Booked in Source Serif Black, 40 px, cream.
+- Headline under the kicker: "How Booked works", 52 px, cream.
+- Three numbered steps. Each step is a 40 px cream filled circle with the
+  number in terracotta deep, then a bold cream title and a #FFDBC6
+  detail line beside it.
+- One line in #FFDBC6 sitting just above the paper band, on both backs:
+  "Coming to iPhone first, Android next — scan the front for the countdown."
+  The cards are being handed out before the app is downloadable, so they
+  have to say so rather than let someone search a store and find nothing.
+- In the paper band: a serif bold headline, a secondary sub-line, then a
+  terracotta pill badge with the plan name in white small caps and the
+  plan benefit beside it in ink, then a fine-print line.
+
+BACK VERSION A — FOR HOMEOWNERS
+Kicker:     FOR HOMEOWNERS
+Headline:   How Booked works
+Step 1      Post the job
+            Describe the work, pick a time, name your budget.
+Step 2      One pro takes it
+            Verified, background-checked, and yours alone.
+Step 3      They set the price
+            You approve it, then pay in the app when it is done.
+Band headline:  8% service fee. That is the whole fee.
+Band sub:       Added on top of the pro's price. $15 minimum job.
+                Cash or card, your call.
+Pill:           BOOKED PLUS
+Pill line:      0% service fee, priority matching, free cancellation,
+                $1,000 work guarantee.
+Fine print:     Cancel anytime · trybooked.app ·
+                booked@tkhub.app
+
+BACK VERSION B — FOR PROS
+Kicker:     FOR PROS
+Headline:   How Booked works
+Step 1      Join free
+            No lead fees, ever. We verify your ID.
+Step 2      Take the job you want
+            It is yours alone — never resold to five pros.
+Step 3      Set the price, get paid
+            Weekly payouts, or cash out a finished job.
+Band headline:  Keep 90% of every job.
+Band sub:       $0 to join. 10% only on work you finish and get paid for.
+                No lead fees.
+Pill:           PRO+
+Pill line:      Keep 95%, first look at new jobs, no Booked fee on
+                cash-outs.
+Fine print:     Cancel anytime · trybooked.app ·
+                booked@tkhub.app
+
+--------------------------------------------------------------------
+7. FACTS YOU MUST NOT CHANGE
+--------------------------------------------------------------------
+- Customer service fee is 8%. Booked Plus members pay 0%.
+- Pro fee is 10%, so pros keep 90%. Pro+ members pay 5% and keep 95%.
+- Minimum job is $15.
+- Joining as a pro is free. Booked never charges lead fees.
+- A job goes to ONE pro. It is never resold to several pros.
+- Pro+ waives Booked's own fee on cash-outs. It does NOT waive
+  the card processor's fee, and it does not promise when the money arrives.
+  Never write "free instant cash-out", "cash out in minutes", or "same day".
+- Support email is booked@tkhub.app. That is Booked's own inbox. Do not print a personal Gmail address.
+- Launch market is Dallas–Fort Worth.
+- The app is NOT in the stores yet. iPhone comes first, Android follows.
+  Never write "download it now" or print an App Store badge.
+- The only web address is https://trybooked.app
+  Do not shorten it, do not invent booked.app or booked.com.
+
+--------------------------------------------------------------------
+8. TONE
+--------------------------------------------------------------------
+Plain, calm, confident. Short sentences. No exclamation marks. No
+marketing filler like "revolutionising" or "seamless". No emoji. No
+stock photography of smiling handymen. The card is paper, ink, and one
+warm terracotta block — it should feel like a well-made letterpress
+card, not a flyer.
+
+--------------------------------------------------------------------
+9. PRINTING NOTES TO CARRY INTO THE FILE
+--------------------------------------------------------------------
+Stock     16pt or 18pt uncoated / matte. Not glossy — gloss fights this
+          design.
+Finish    Matte or soft-touch. No UV coating.
+Sides     Double-sided, full colour.
+Bleed     0.125 in, already included in the artboard.
+====================================================================

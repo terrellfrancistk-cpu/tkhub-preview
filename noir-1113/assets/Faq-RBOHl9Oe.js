@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-BWRPWl8p.js";import{t}from"./Chrome-CfGoHGJp.js";import{t as n}from"./index-BGuTS9bi.js";var r=e(),i=()=>(0,r.jsx)(t,{children:(0,r.jsx)(`div`,{className:`pt-24`,children:(0,r.jsx)(n,{headingLevel:`h1`})})});export{i as default};

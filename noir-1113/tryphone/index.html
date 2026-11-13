@@ -1,0 +1,373 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NOIR · Try it</title><meta name="robots" content="noindex">
+<link rel="preload" href="a/baskerville.ttf" as="font" type="font/ttf" crossorigin>
+<style>
+@font-face{font-family:Bask;src:url(a/baskerville.ttf) format("truetype");font-weight:400 700;font-display:swap}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:#f6f0e7;overflow:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Segoe UI",Roboto,system-ui,sans-serif;color:#1d1810}
+button{font:inherit;border:0;background:none;color:inherit;cursor:pointer}
+#stage{position:absolute;left:0;top:0;width:393px;height:852px;transform-origin:0 0;overflow:hidden;background:#f6f0e7}
+.abs{position:absolute}.c{left:0;right:0;text-align:center}
+.scr{position:absolute;inset:0;display:none;overflow:hidden;background:#f6f0e7}.scr.on{display:block}
+.sb{position:absolute;top:0;left:0;right:0;height:54px;display:flex;align-items:center;justify-content:space-between;padding:6px 40px 0 52px;font:600 17px -apple-system,system-ui,sans-serif;z-index:30;pointer-events:none;color:#111}
+.isl{position:absolute;left:136px;top:11px;width:124px;height:36px;border-radius:20px;background:#000;z-index:31}
+.ser{font-family:Bask,Georgia,serif;font-weight:700}
+.gold{background:linear-gradient(180deg,#8d6a26,#6e5016);color:#fff;box-shadow:0 3px 10px rgba(110,80,22,.3)}
+.goldtx{color:#8a6a22}
+.card{background:#fffaf2;border:1px solid #e3d6bf;border-radius:16px}
+.ghost{background:#fffaf2;border:1px solid #d9ccb5;border-radius:12px;color:#3a332a}
+.mut{color:#7b746a}
+.coin{display:inline-flex;width:24px;height:24px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#a8853e,#6c4e15);color:#fbefd0;align-items:center;justify-content:center;font-size:15px;font-weight:800;vertical-align:middle}
+.coin.s{width:15px;height:15px;font-size:10px}
+.round{width:44px;height:44px;border-radius:50%;background:#efe6d6;border:1px solid #e0d3bd;display:flex;align-items:center;justify-content:center;color:#5b4520;font-weight:700;font-size:17px}
+.tabbar{position:absolute;left:20px;right:18px;top:779px;height:63px;border-radius:32px;background:rgba(253,248,240,.94);box-shadow:0 4px 18px rgba(80,60,30,.18);display:flex;align-items:center;justify-content:space-around;padding:0 6px;z-index:20}
+.tab{flex:1;height:55px;border-radius:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:11px;font-weight:600;color:#1d1810}
+.tab.on{background:#efe5d3;color:#8a6a22}.tab svg{width:24px;height:24px}
+.chip{height:38px;border-radius:19px;padding:0 18px;display:inline-flex;align-items:center;background:#fbf5ea;border:1px solid #e8dcc8;font-size:15px;color:#3a332a;margin-right:8px}
+.chip.on{background:linear-gradient(180deg,#8d6a26,#6e5016);color:#fff;border:0}
+.tile{position:absolute;width:176px;height:163px;border-radius:14px;overflow:hidden;background:#111 center/cover}
+.tile i{position:absolute;left:8px;top:8px;width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(255,255,255,.5);background:rgba(255,255,255,.12)}
+.tile em{position:absolute;left:8px;bottom:8px;right:8px;font-style:normal;font-size:10.5px;color:#eee;line-height:1.25}
+.tname{position:absolute;width:176px;text-align:center;font-size:14.5px;font-weight:600}
+.sheet{position:absolute;left:5px;right:5px;bottom:5px;background:#f8f2e8;border-radius:36px 36px 40px 40px;box-shadow:0 -6px 30px rgba(0,0,0,.18);z-index:40}
+.scrim{position:absolute;inset:0;background:rgba(40,30,15,.35);z-index:39}
+.grab{position:absolute;left:181px;top:7px;width:36px;height:5px;border-radius:3px;background:#cfc6b8}
+.mrow{position:absolute;left:16px;width:362px;height:52px}
+.mrow .ic{position:absolute;left:16px;top:4px;width:36px;height:36px;border-radius:9px;background:#f0e6d3;display:flex;align-items:center;justify-content:center;color:#8a6a22}
+.mrow b{position:absolute;left:65px;top:4px;font-size:14.5px;font-weight:500}
+.mrow .bar{position:absolute;left:65px;top:30px;width:197px;height:4px;border-radius:2px;background:#ece5d9}
+.mrow .bar:before{content:"";position:absolute;left:0;top:-1px;width:6px;height:6px;border-radius:3px;background:#6e5016}
+.mrow .n{position:absolute;right:100px;top:10px;font-size:11px;color:#6b645a}
+.mrow .r{position:absolute;right:14px;top:10px;font-size:12px;font-weight:700;color:#5b4520}
+.priv{position:absolute;width:116px;height:100px;border-radius:14px;background:#fcf8f1;border:1px solid #e6dcc9;text-align:center;font-size:11.5px;color:#3a332a;padding-top:22px;line-height:1.25}
+.priv svg{display:block;margin:0 auto 6px}
+.opt{position:absolute;left:17px;width:348px;height:54px;border-radius:12px;background:#f3ead9;border:1px solid #e3d6bf}
+.opt .ic{position:absolute;left:9px;top:7px;width:40px;height:40px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#a8853e,#6c4e15);display:flex;align-items:center;justify-content:center}
+.opt b{position:absolute;left:61px;top:10px;font-size:15px}
+.opt span{position:absolute;left:61px;top:30px;font-size:10.5px;color:#6b645a;width:250px;line-height:1.3}
+.opt:after{content:"›";position:absolute;right:14px;top:12px;font-size:22px;color:#6b645a}
+.seat{position:absolute;text-align:center;width:44px}
+.seat i{display:block;margin:0 auto 6px;width:28px;height:28px;border-radius:50%;border:1.5px dashed rgba(255,255,255,.6);background:rgba(255,255,255,.18)}
+.seat span{display:inline-block;background:#1b1b1b;color:#fff;font-size:11.5px;line-height:1.15;border-radius:6px;padding:3px 4px;font-weight:600}
+.pc{position:absolute;width:64px;height:92px;border-radius:6px;background:#fbf7ee;box-shadow:0 3px 8px rgba(0,0,0,.35);font-family:Georgia,serif}
+.pc b{position:absolute;left:6px;top:5px;font-size:19px;line-height:.95;text-align:center}
+.pc u{position:absolute;right:5px;bottom:4px;font-size:17px;line-height:.95;text-decoration:none;transform:rotate(180deg);text-align:center}
+.pc.red{color:#c0242c}
+.pc.back{background:linear-gradient(135deg,#e9dcc3,#d5c19b);border:3px solid #f6efe0}
+.act{position:absolute;top:651px;width:48px;height:51px;border-radius:12px;background:#fbf6ec;border:1px solid #e3d6bf;font-size:10.5px;font-weight:600;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.toast{position:absolute;left:50%;top:70px;transform:translateX(-50%);background:#2a2216;color:#f6e6c2;font-size:12px;font-weight:600;padding:9px 14px;border-radius:18px;z-index:60;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap}
+.toast.on{opacity:1}
+</style></head><body>
+<div id="stage">
+<div class="sb"><span>22:35</span><svg width="70" height="13" viewBox="0 0 70 13"><g fill="#bbb"><circle cx="3" cy="7" r="1.6"/><circle cx="8" cy="7" r="1.6"/><circle cx="13" cy="7" r="1.6"/><circle cx="18" cy="7" r="1.6"/></g><path d="M34 11.5l-2.2-2.4a3.2 3.2 0 0 1 4.4 0zM29.6 6.8a6.4 6.4 0 0 1 8.8 0l-1.3 1.4a4.5 4.5 0 0 0-6.2 0zM27.4 4.4a9.6 9.6 0 0 1 13.2 0l-1.3 1.4a7.7 7.7 0 0 0-10.6 0z" fill="#111"/><rect x="45" y="1.5" width="22" height="10.5" rx="3" fill="none" stroke="#999"/><rect x="47" y="3.5" width="18" height="6.5" rx="1.5" fill="#111"/></svg></div>
+
+<div class="toast" id="toast"></div>
+
+<!-- 01 AGE GATE -->
+<section class="scr on" id="s-age" style="background:linear-gradient(180deg,#f8efe4,#f6f0e7 40%,#f3ece0)">
+ <div class="abs" style="left:166px;top:100px;width:63px;height:63px;border-radius:15px;background:linear-gradient(160deg,#9b7a35,#6a4c14);box-shadow:0 6px 16px rgba(110,80,22,.35);display:flex;align-items:center;justify-content:center"><svg width="26" height="28" viewBox="0 0 26 28"><path d="M13 1C9 7 1 10 1 16.5A5.6 5.6 0 0 0 11 20c-.3 2.6-1.4 4.6-3.4 6.4h10.8c-2-1.8-3.1-3.8-3.4-6.4A5.6 5.6 0 0 0 25 16.5C25 10 17 7 13 1z" fill="#fbf1dc"/></svg></div>
+ <div class="abs c ser" style="top:174px;font-size:27px;letter-spacing:5px;color:#1d1810">NOIR</div>
+ <div class="abs c mut" style="top:221px;font-size:11.5px">Before you come in.</div>
+ <div class="abs card" style="left:24px;top:262px;width:348px;height:366px;border-color:#e2d3b5;box-shadow:0 2px 10px rgba(120,90,40,.08)">
+  <div class="abs c" style="top:24px;font-size:30px">✋</div>
+  <div class="abs c ser" style="top:80px;font-size:22px">Are you 18 or over?</div>
+  <div class="abs c" style="top:122px;padding:0 22px;font-size:12.3px;line-height:1.3;color:#5d564c">NOIR is a casino game with simulated stakes. You must be 18 or over to play, even though the coins are virtual and can never be cashed out.</div>
+  <button class="abs gold" style="left:23px;top:191px;width:301px;height:50px;border-radius:9px;font-size:15px;font-weight:500" onclick="go('auth')">Yes, I'm 18 or over</button>
+  <button class="abs ghost" style="left:23px;top:252px;width:301px;height:46px;border-radius:9px;font-size:14px" onclick="toast('Demo · you must be 18+ to play NOIR')">No, I'm under 18</button>
+  <div class="abs c mut" style="top:316px;font-size:10.5px;line-height:1.35;padding:0 40px">We don't ask for your date of birth and we don't store one.</div>
+ </div>
+ <div class="abs c mut" style="top:662px;font-size:9.8px;line-height:1.45;padding:0 70px">By continuing you agree to the Terms of Use and Privacy Policy.</div>
+ <div class="abs c" style="top:691px;font-size:10.5px;font-weight:600;color:#6e5016"><u>Terms of Use</u> ↗ &nbsp; <u>Privacy Policy</u> ↗</div>
+ <div class="abs c mut" style="top:712px;font-size:9.6px;line-height:1.5;padding:0 70px">18+. Virtual coins only — no real-money wagering, no cash payouts.<br>© 2026 TK Hub LLC. All rights reserved.<br><span style="line-height:2">NOIR™ is a trademark of TK Hub LLC.</span></div>
+</section>
+
+<!-- 02 AUTH -->
+<section class="scr" id="s-auth" style="background:linear-gradient(180deg,#f6eee2,#f5efe6)">
+ <div class="abs" style="left:24px;top:84px;width:348px;height:48px;border-radius:12px;background:#fbf6ec;border:1px solid #e6dac4"></div>
+ <button class="abs gold" style="left:27px;top:87px;width:170px;height:42px;border-radius:10px;font-size:14.5px;font-weight:500" onclick="toast('Demo · accounts are made in the app')">Create account</button>
+ <button class="abs" style="left:200px;top:87px;width:170px;height:42px;font-size:15px" onclick="toast('Demo · sign-in is in the app')">Sign in</button>
+ <button class="abs ghost" style="left:24px;top:155px;width:348px;height:47px;border-radius:12px;font-size:15px;font-weight:600;color:#7a5a21;background:#f9f2e6;border-color:#d8c7a6" onclick="go('terms')">Play as Guest</button>
+ <div class="abs c mut" style="top:208px;font-size:10.5px;line-height:1.35;padding:0 26px">Play every game in the lobby. Coins stay on this device, not on an account. You can create one later.</div>
+ <div class="abs ser" style="left:24px;top:330px;font-size:25px;letter-spacing:.8px;color:#8a6a22">CREATE ACCOUNT</div>
+ <div class="abs mut" style="left:24px;top:367px;font-size:12.3px;color:#5d564c">Email is your username. Same NOIR account everywhere.</div>
+ <div class="abs mut" style="left:24px;top:403px;font-size:11px;color:#5d564c">By continuing you agree to the <u style="color:#6e5016">Terms</u> ↗ and <u style="color:#6e5016">Privacy Policy</u> ↗</div>
+ <div class="abs mut" style="left:24px;top:439px;font-size:9.5px;letter-spacing:1.4px;font-weight:600">EMAIL</div>
+ <div class="abs" style="left:24px;top:458px;width:348px;height:48px;border-radius:9px;background:#fffbf3;border:1.3px solid #c9b48c;padding:14px 13px;font-size:14px;color:#bdb5a8">you@gmail.com</div>
+ <div class="abs mut" style="left:24px;top:519px;font-size:9.5px;letter-spacing:1.4px;font-weight:600">PASSWORD</div>
+ <div class="abs" style="left:24px;top:538px;width:348px;height:48px;border-radius:9px;background:#fffbf3;border:1px solid #e6dac4;padding:14px 13px;font-size:14px;color:#bdb5a8">At least 6 characters</div>
+ <button class="abs gold" style="left:24px;top:604px;width:348px;height:48px;border-radius:12px;font-size:15px;font-weight:600;opacity:.5" onclick="toast('Demo · accounts are made in the app')">Create account</button>
+ <div class="abs c mut" style="top:672px;font-size:10.5px">or</div>
+ <div class="abs" style="left:24px;top:696px;width:348px;display:flex;gap:10px">
+  <button class="ghost" style="flex:1;height:46px;display:flex;align-items:center;justify-content:center" onclick="toast('Demo · sign-in is in the app')"><svg width="16" height="19" viewBox="0 0 17 20"><path fill="#111" d="M14 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9C3.5 4.8 1.9 5.8 1 7.4c-1.8 3.2-.5 7.9 1.3 10.5.9 1.3 1.9 2.7 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.6 1-1.5 1.4-2.9 1.4-3-.1 0-2.7-1-2.7-4.3zM11.5 3c.7-.9 1.2-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/></svg></button>
+  <button class="ghost" style="flex:1;height:46px" onclick="toast('Demo · sign-in is in the app')"><img src="a/google.svg" width="18" alt=""></button>
+  <button class="ghost" style="flex:1;height:46px" onclick="toast('Demo · sign-in is in the app')"><img src="a/x.svg" width="16" alt="" style="filter:invert(1)"></button>
+  <button class="ghost" style="flex:1;height:46px" onclick="toast('Demo · sign-in is in the app')"><img src="a/facebook.svg" width="18" alt=""></button>
+ </div>
+</section>
+
+<!-- 03 TERMS -->
+<section class="scr" id="s-terms" style="background:#e9e2d6">
+ <div class="abs" style="left:2px;right:2px;top:62px;bottom:0;border-radius:38px 38px 0 0;background:#f8f2e8">
+  <div class="abs c" style="top:26px;font-size:15px;font-weight:600">Terms of Play</div>
+  <div class="abs" style="left:14px;top:76px;height:26px;padding:0 12px;border-radius:13px;background:linear-gradient(180deg,#8d6a26,#6e5016);color:#fbefd0;font-size:10px;letter-spacing:1.6px;font-weight:600;display:flex;align-items:center">▦ &nbsp;VIRTUAL COINS</div>
+  <div class="abs ser" style="left:14px;top:112px;font-size:22px">How NOIR works</div>
+  <div class="abs" style="left:14px;top:150px;font-size:12.2px;color:#5d564c">The same terms apply to every player, wherever you are.</div>
+  <div id="terms-list"></div>
+  <button class="abs gold" style="left:14px;top:709px;width:363px;height:47px;border-radius:24px;font-size:15.5px;font-weight:600" onclick="intro()">I understand</button>
+ </div>
+</section>
+
+<!-- LOBBY (main) -->
+<section class="scr" id="s-main">
+ <div class="abs" id="hdr" style="left:0;right:0;top:0;height:200px;background:linear-gradient(180deg,#f2ebdf,#f6f0e7);z-index:10">
+  <div class="abs" style="left:16px;top:66px;width:24px;height:24px;border-radius:50%;border:1.5px solid #6b5a40;font-size:10px;display:flex;align-items:center;justify-content:center;color:#5b4520">👤</div>
+  <div class="abs" style="right:16px;top:64px;display:flex;gap:6px" id="hdr-icons">
+   <div class="round" style="width:44px">?</div><div class="round">↻</div><div class="round" style="width:30px;height:30px;margin-top:7px;font-size:13px">🎙</div><div class="round">🔊</div><div class="round">⚙</div>
+  </div>
+  <div class="abs card" style="left:16px;top:115px;width:359px;height:74px;border-radius:18px;background:#fcf7ef">
+   <div class="abs" style="left:12px;top:17px;width:38px;height:38px;border-radius:50%;background:#efe5d3;border:1.5px solid #8a6a22;display:flex;align-items:center;justify-content:center;color:#6e5016">👤</div>
+   <span class="abs coin" style="left:58px;top:23px;width:28px;height:28px">✱</span>
+   <div class="abs" style="left:94px;top:22px;font-size:22px;font-weight:700"><span id="bal">100,000</span> <span class="coin s" style="background:#a8853e;width:17px;height:17px">+</span></div>
+   <div class="abs" style="right:12px;top:11px;width:118px;height:51px;border-radius:14px;background:#efe5d3;display:flex;align-items:center;padding-left:12px;gap:8px;font-size:13.5px;font-weight:600;line-height:1.2;color:#3a2e1c">♛<span>Bronze<br>Tier</span><span style="margin-left:auto;margin-right:10px;font-size:18px">›</span></div>
+  </div>
+ </div>
+ <div class="abs" id="tab-lobby" style="inset:0">
+  <div class="abs" style="left:410px;top:0"></div>
+  <div class="abs" style="left:16px;top:198px;width:365px;height:143px;border-radius:0 0 16px 16px;overflow:hidden;background:linear-gradient(90deg,#e8e0d2,#cfc6b6 45%,#2a1f10 70%)">
+   <div class="abs" style="inset:0;background:url(a/egyptian_pharaoh_mask_gold.webp) 30% 22%/120% auto"></div><div class="abs" style="inset:0;background:linear-gradient(90deg,rgba(235,228,214,.92),rgba(235,228,214,.55) 38%,rgba(0,0,0,0) 60%)"></div>
+   <div class="abs ser" style="left:20px;top:6px;font-size:25px;color:#8a6a22">Wheels</div>
+   <div class="abs" style="left:20px;top:44px;font:italic 700 19px Bask,Georgia,serif;color:#8a6a22">New</div>
+   <div class="abs" style="left:20px;top:81px;width:148px;height:43px;border-radius:8px;border:1.5px solid #c9b68e;background:rgba(240,232,218,.85);display:flex;align-items:center;justify-content:center;gap:8px;font-size:20px;font-weight:700;color:#7a5a21"><span class="coin">✱</span>640,000</div>
+  </div>
+  <div class="abs c" style="top:350px;font-size:0"><span style="display:inline-block;width:7px;height:7px;border-radius:4px;background:#8a6a22;margin:0 4px"></span><span style="display:inline-block;width:5px;height:5px;border-radius:3px;background:#c9c0b0;margin:0 4px"></span><span style="display:inline-block;width:5px;height:5px;border-radius:3px;background:#c9c0b0;margin:0 4px"></span><span style="display:inline-block;width:5px;height:5px;border-radius:3px;background:#c9c0b0;margin:0 4px"></span></div>
+  <div class="abs" style="left:15px;top:385px;white-space:nowrap" id="chips"><span class="chip on" style="width:58px;justify-content:center">All</span><span class="chip">Slots</span><span class="chip">Table Games</span><span class="chip">Dice</span><span class="chip">Cards</span></div>
+  <div class="tile" style="left:15px;top:448px;background-image:url(a/egyptian_pharaoh_mask_gold.webp);background-position:60% 30%" onclick="toast('Demo · try Royal Blackjack below')"><i></i><em>Hold &amp; spin · 5 jackpots</em></div>
+  <div class="tname" style="left:15px;top:619px">Wildfire Wheels</div>
+  <div class="tile" style="left:204px;top:448px;background-image:url(a/royal_flush_casino_banner.webp);background-position:70% 50%" onclick="toast('Demo · try Royal Blackjack below')"><i></i><em>Full poker · blinds, flop,<br>turn, river</em></div>
+  <div class="tname" style="left:204px;top:619px">Texas Hold'em Poker</div>
+  <div class="tile" style="left:15px;top:652px;background-image:url(a/diamond_slot_game_tile.webp)" onclick="toast('Demo · try Royal Blackjack')"><i></i></div>
+  <div class="tile" style="left:204px;top:652px;background-image:url(a/playing_cards_casino_chip.webp)" onclick="bjSheet()"><i></i><em style="font-size:12px;font-weight:700">Royal Blackjack · tap to play</em></div>
+ </div>
+ <div class="abs" id="tab-rewards" style="inset:0;display:none;background:#f6f0e7;z-index:12">
+  <div class="abs" style="left:16px;top:69px;font-size:10.5px;letter-spacing:1.6px;font-weight:600;color:#8a6a22">REWARDS</div>
+  <div class="abs" style="left:143px;top:64px;height:24px;padding:0 12px;border-radius:12px;background:linear-gradient(180deg,#8d6a26,#6e5016);color:#fff;font-size:11px;display:flex;align-items:center;gap:6px">ᯤ Back online</div>
+  <div class="abs ser" style="left:16px;top:86px;font-size:24px;line-height:1.18">Play. Collect.<br>Climb.</div>
+  <div class="abs" style="right:16px;top:114px;height:30px;padding:0 12px 0 6px;border-radius:15px;background:#efe5d3;display:flex;align-items:center;gap:8px;font-size:15px;font-weight:600"><span class="coin s" style="width:18px;height:18px">✱</span>100,000</div>
+  <div class="abs" style="left:15px;top:163px;display:flex;gap:6px;font-size:13px;font-weight:600"><span style="height:34px;padding:0 16px;border-radius:17px;background:linear-gradient(180deg,#8d6a26,#6e5016);color:#fff;display:flex;align-items:center;gap:8px">◎ Missions</span><span style="height:34px;padding:0 14px;display:flex;align-items:center;gap:8px">⚑ Season</span><span style="height:34px;padding:0 14px;display:flex;align-items:center;gap:8px">▬ Albums</span><span style="height:34px;padding:0 6px;display:flex;align-items:center">👥</span></div>
+  <div class="abs card" style="left:15px;top:213px;width:366px;height:99px;border:1.5px solid #c9b68e">
+   <div class="abs" style="left:16px;top:16px;font-size:15px;font-weight:600">Season 37 · Tier 0 of 30</div>
+   <div class="abs mut" style="left:16px;top:37px;font-size:11px;line-height:1.25;width:230px">Missions and every round you play earn season XP.</div>
+   <div class="abs" style="right:16px;top:33px;font-size:11.5px;font-weight:700;color:#8a6a22">0/100 XP</div>
+   <div class="abs" style="left:16px;top:76px;width:334px;height:7px;border-radius:4px;background:#ece5d9"><i style="position:absolute;left:0;top:0;width:7px;height:7px;border-radius:4px;background:#6e5016"></i></div>
+  </div>
+  <div class="abs card" style="left:15px;top:326px;width:366px;height:198px">
+   <div class="abs" style="left:16px;top:16px;font-size:10px;letter-spacing:1.6px;font-weight:600;color:#3a332a">DAILY MISSIONS</div><div class="abs mut" style="right:16px;top:16px;font-size:10px">Resets in 1h 23m</div>
+  </div>
+  <div class="mrow" style="top:367px"><div class="ic">✸</div><b>Land a 10× win</b><div class="bar"></div><span class="n">0/1</span><span class="r"><span class="coin s">✱</span> 2.5K</span></div>
+  <div class="mrow" style="top:416px"><div class="ic">📈</div><b>Stake 25,000 coins</b><div class="bar"></div><span class="n">0/25,000</span><span class="r"><span class="coin s">✱</span> 2K</span></div>
+  <div class="mrow" style="top:465px"><div class="ic">⚄</div><b style="line-height:1.18">Play 15 dice or<br>arcade rounds</b><div class="bar" style="top:38px"></div><span class="n">0/15</span><span class="r"><span class="coin s">✱</span> 1.5K</span></div>
+  <div class="abs card" style="left:15px;top:539px;width:366px;height:192px">
+   <div class="abs" style="left:16px;top:16px;font-size:10px;letter-spacing:1.6px;font-weight:600;color:#3a332a">WEEKLY MISSIONS</div><div class="abs mut" style="right:16px;top:16px;font-size:10px">Resets in 1d 20h</div>
+  </div>
+  <div class="mrow" style="top:579px"><div class="ic">✸</div><b>Land eight 10× wins</b><div class="bar"></div><span class="n">0/8</span><span class="r"><span class="coin s">✱</span> 15K</span></div>
+  <div class="mrow" style="top:628px"><div class="ic">✔</div><b>Win 100 rounds</b><div class="bar"></div><span class="n">0/100</span><span class="r"><span class="coin s">✱</span> 12K</span></div>
+  <div class="mrow" style="top:677px"><div class="ic">♠</div><b>Play 80 table hands</b><div class="bar"></div><span class="n">0/80</span><span class="r"><span class="coin s">✱</span> 10K</span></div>
+  <div class="abs c mut" style="top:743px;font-size:11.5px;color:#5d564c">Sign in to collect mission rewards.</div>
+ </div>
+ <div class="abs" id="tab-vip" style="inset:0;display:none;background:#f6f0e7;z-index:12">
+  <div class="abs" style="left:0;right:0;top:0;height:164px;background:#efe8dc"></div>
+  <div class="abs" style="right:16px;top:57px;width:50px;height:50px;border-radius:50%;background:#fffaf2;box-shadow:0 2px 8px rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;font-size:22px">⚙</div>
+  <div class="abs card" style="left:16px;top:170px;width:359px;height:286px">
+   <div class="abs" style="left:94px;top:16px;width:176px;height:176px;border-radius:50%;border:10px solid #ddd3c0"></div>
+   <div class="abs" style="left:117px;top:39px;width:130px;height:130px;border-radius:50%;border:1px solid #e3d9c6;background:#fffcf6"></div>
+   <div class="abs" style="left:176px;top:13px;width:10px;height:10px;border-radius:5px;background:#8a6a22"></div>
+   <div class="abs c" style="top:68px;font-size:22px;color:#a8853e">♛</div>
+   <div class="abs c ser" style="top:94px;font-size:19px;letter-spacing:1.2px">BRONZE</div>
+   <div class="abs c mut" style="top:122px;font-size:12px">0 pts</div>
+   <div class="abs c" style="top:201px;font-size:12px;color:#5d564c">1,000 points to Silver</div>
+   <div class="abs" style="left:0;right:0;top:232px;display:flex;text-align:center"><div style="flex:1"><b style="font-size:16px">#3</b><div class="mut" style="font-size:8.5px;letter-spacing:1px;font-weight:700;margin-top:6px">RANK</div></div><div style="flex:1;border-left:1px solid #e3d6bf;border-right:1px solid #e3d6bf"><b style="font-size:16px">0</b><div class="mut" style="font-size:8.5px;letter-spacing:1px;font-weight:700;margin-top:6px">SPINS</div></div><div style="flex:1"><b style="font-size:16px">0</b><div class="mut" style="font-size:8.5px;letter-spacing:1px;font-weight:700;margin-top:6px">BEST WIN</div></div></div>
+  </div>
+  <div class="abs" style="left:16px;top:480px;font-size:16px;font-weight:600">Your Privileges</div>
+  <div id="privs"></div>
+  <div class="abs" style="left:16px;top:748px;font-size:16px;font-weight:600">Tier Ladder</div>
+ </div>
+ <div class="abs" id="tab-coins" style="inset:0;display:none;background:#f6f0e7;z-index:12">
+  <div class="abs" style="left:0;right:0;top:0;height:164px;background:#efe8dc"></div>
+  <div class="abs" style="left:16px;top:62px;width:42px;height:42px;border-radius:50%;background:#f6eee0;display:flex;align-items:center;justify-content:center;font-size:14px">👤</div>
+  <div class="abs" style="right:16px;top:57px;width:46px;height:46px;border-radius:50%;background:#fffaf2;display:flex;align-items:center;justify-content:center;font-size:22px;color:#6e5016">⚙</div>
+  <div class="abs card" style="left:16px;top:170px;width:365px;height:164px;border-color:#c9b68e">
+   <div class="abs c" style="top:21px;font-size:9.5px;letter-spacing:1.6px;font-weight:600">GOLD COINS</div>
+   <div class="abs c" style="top:40px;font-size:35px;font-weight:700"><span class="coin" style="width:33px;height:33px;font-size:18px">✱</span> 100,000</div>
+   <div class="abs" style="left:16px;right:16px;top:96px;border-top:1px solid #e3d6bf"></div>
+   <div class="abs" style="left:0;width:182px;top:112px;text-align:center;font-size:16px;font-weight:700;color:#2a5f9a">◆ <span style="color:#1d1810">0</span> ›<div style="font-size:8.5px;letter-spacing:1px;color:#3a332a;margin-top:6px">DIAMONDS</div></div>
+   <div class="abs" style="left:182px;top:112px;height:36px;border-left:1px solid #e3d6bf"></div>
+   <div class="abs" style="left:182px;width:182px;top:112px;text-align:center;font-size:15px;font-weight:700;color:#a7763a">Bronze<div style="font-size:8.5px;letter-spacing:1px;color:#3a332a;margin-top:6px">TIER</div></div>
+  </div>
+  <div class="abs card" style="left:16px;top:430px;width:365px;height:221px;background:#f3eadb;border-color:#c9b68e">
+   <div class="abs coin" style="left:15px;top:15px;width:38px;height:38px;font-size:14px">👤</div>
+   <div class="abs" style="left:63px;top:16px;font-size:15px;font-weight:600">Your guest stake</div>
+   <div class="abs mut" style="left:63px;top:36px;font-size:11.5px;color:#5d564c">100,000 coins to play with</div>
+   <div class="abs" style="left:15px;right:15px;top:63px;border-top:1px solid #dacdb5"></div>
+   <div class="abs" style="left:15px;right:15px;top:77px;font-size:11.4px;line-height:1.36;color:#4d463c">Play it up or play it down — every table is open. Guests can't buy, claim or exchange coins, so this stake is all yours to work with. Create an account to unlock the cashier, daily chests and the diamond exchange, and to keep your coins if you change phone.</div>
+   <button class="abs gold" style="left:15px;top:159px;width:333px;height:48px;border-radius:24px;font-size:16px;font-weight:600" onclick="toast('Demo · accounts are made in the app')">Create an account</button>
+  </div>
+  <div class="abs" style="left:16px;top:675px;font-size:16px;font-weight:600">Recent Activity</div>
+  <div class="abs" style="right:14px;top:678px;font-size:13px;font-weight:600;color:#8a6a22">Wins &nbsp;&nbsp; See all</div>
+  <div class="abs card" style="left:16px;top:707px;width:365px;height:120px"><div class="abs c" style="top:26px;font-size:20px;color:#6b645a">☰</div><div class="abs c mut" style="top:55px;font-size:12.5px">Your coin history will appear here</div></div>
+ </div>
+ <div class="tabbar">
+  <button class="tab on" data-t="lobby" onclick="tab('lobby')"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="9" height="9" rx="2"/><rect x="13" y="2" width="9" height="9" rx="2"/><rect x="2" y="13" width="9" height="9" rx="2"/><rect x="13" y="13" width="9" height="9" rx="2"/></svg>Lobby</button>
+  <button class="tab" data-t="rewards" onclick="tab('rewards')"><svg viewBox="0 0 24 24"><path d="M3 9h18v4H3zM4 13h16v9H4z"/><path d="M12 9v13" stroke="#fff" stroke-width="1.5"/><path d="M12 9C9 3 5 5 7 9M12 9c3-6 7-4 5 0" stroke="currentColor" stroke-width="2" fill="none"/></svg>Rewards</button>
+  <button class="tab" data-t="vip" onclick="tab('vip')"><svg viewBox="0 0 24 24"><path d="M2 7l5 5 5-8 5 8 5-5-2 12H4z"/><rect x="4" y="20" width="16" height="2"/></svg>VIP</button>
+  <button class="tab" data-t="coins" onclick="tab('coins')"><svg viewBox="0 0 24 24"><g id="d3"><circle cx="5" cy="5" r="2.5"/><circle cx="12" cy="5" r="2.5"/><circle cx="19" cy="5" r="2.5"/></g><use href="#d3" y="7"/><use href="#d3" y="14"/></svg>My Coins</button>
+ </div>
+ <!-- 04 intro overlay -->
+ <div class="abs" id="intro" style="left:0;right:0;top:200px;bottom:0;display:none;z-index:25;background:#f6f0e7">
+  <div class="abs" style="left:16px;top:8px;width:362px;height:130px;border-radius:14px;background:#f1e5cd;border:1.5px solid #c9b68e">
+   <div class="abs" style="left:16px;top:15px;font-size:14.5px;font-weight:600">Playing as a guest</div>
+   <div class="abs" style="left:16px;top:41px;width:335px;font-size:12.3px;line-height:1.33;color:#5d564c">Coins stay on this device. Create an account when you want them on another phone. Purchases and social features need one.</div>
+   <div class="abs" style="left:16px;top:105px;font-size:12.5px;font-weight:600;color:#3a332a">Not now &nbsp;&nbsp; <span style="color:#8a6a22">Create an account</span></div>
+  </div>
+  <div class="abs card" style="left:16px;top:158px;width:359px;height:84px;border-color:#d9ccb5">
+   <div class="abs coin" style="left:13px;top:12px;font-size:12px;background:#4a3810">1</div><div class="abs" style="left:47px;top:16px;font-size:11.5px;letter-spacing:1.6px;font-weight:800">NEWCOMER</div>
+   <div class="abs" style="right:14px;top:16px;font-size:11px;font-weight:600;color:#6e5016">🎨 Themes ›</div>
+   <div class="abs" style="left:13px;right:13px;top:44px;height:9px;border-radius:5px;background:#ece5d9"></div>
+   <div class="abs mut" style="left:13px;top:62px;font-size:10px">0 won</div><div class="abs" style="right:13px;top:62px;font-size:10px;color:#3a332a">49,000 to Regular</div>
+  </div>
+  <div class="abs" style="left:0;right:0;top:264px;height:250px;overflow:hidden;background:#0b0905">
+   <img src="a/casino_chips_cards.webp" alt="" style="position:absolute;left:150px;top:-40px;width:300px">
+   <div class="abs" style="left:0;right:0;bottom:0;height:120px;background:linear-gradient(180deg,rgba(246,240,231,0),#f6f0e7)"></div>
+   <div class="abs" style="left:15px;top:86px;display:flex;gap:5px"><i style="width:22px;height:4px;border-radius:2px;background:#c9a24a"></i><i style="width:6px;height:4px;border-radius:2px;background:#ddd"></i><i style="width:6px;height:4px;border-radius:2px;background:#ddd"></i><i style="width:6px;height:4px;border-radius:2px;background:#ddd"></i><i style="width:6px;height:4px;border-radius:2px;background:#ddd"></i><i style="width:6px;height:4px;border-radius:2px;background:#ddd"></i><i style="width:6px;height:4px;border-radius:2px;background:#ddd"></i><i style="width:6px;height:4px;border-radius:2px;background:#ddd"></i><i style="width:6px;height:4px;border-radius:2px;background:#ddd"></i><i style="width:6px;height:4px;border-radius:2px;background:#ddd"></i><i style="width:6px;height:4px;border-radius:2px;background:#ddd"></i><i style="width:6px;height:4px;border-radius:2px;background:#ddd"></i><i style="width:6px;height:4px;border-radius:2px;background:#ddd"></i></div>
+   <div class="abs" style="left:218px;top:74px;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.85);font-size:12px;display:flex;align-items:center;justify-content:center">💬</div>
+   <div class="abs" style="left:271px;top:74px;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.85);font-size:12px;display:flex;align-items:center;justify-content:center">🔊</div>
+   <button class="abs" style="left:318px;top:74px;width:62px;height:30px;border-radius:15px;background:#f0b928;font-size:13px;font-weight:700" onclick="emptySheet()">Skip</button>
+  </div>
+  <div class="abs" style="left:19px;top:528px;font:700 8.5px Bask,Georgia,serif;letter-spacing:2.4px;color:#8a6a22">CHAPTER ONE</div>
+  <div class="abs ser" style="left:19px;top:550px;font-size:26px">Welcome to NOIR</div>
+  <div class="abs" style="left:19px;top:600px;width:300px;font-size:15px;line-height:1.5;color:#4d463c">A private casino floor that deals only in gold. Two minutes and you'll know the whole house.</div>
+  <div class="abs" style="left:340px;top:609px;width:16px;height:16px;border-radius:8px;border:1.3px solid #9a8d78;font-size:10px;text-align:center;color:#9a8d78">i</div>
+ </div>
+ <!-- sheets -->
+ <div class="scrim" id="scrim" style="display:none"></div>
+ <div class="sheet" id="sh-empty" style="top:62px;display:none;border-radius:38px 38px 0 0;bottom:0;left:2px;right:2px;box-shadow:none">
+  <div class="abs" style="left:178px;top:35px;width:34px;height:38px"><svg width="34" height="38" viewBox="0 0 34 38"><rect x="7" y="1" width="20" height="4" rx="2" fill="#8a6a22"/><rect x="4" y="6" width="26" height="4" rx="2" fill="#8a6a22"/><rect x="1.5" y="12" width="31" height="24" rx="4" fill="none" stroke="#8a6a22" stroke-width="3"/><path d="M17 17l1.6 4 4 1.6-4 1.6-1.6 4-1.6-4-4-1.6 4-1.6z" fill="#8a6a22"/></svg></div>
+  <div class="abs c ser" style="top:94px;font-size:22px">Your account is empty</div>
+  <div class="abs c" style="top:140px;padding:0 22px;font-size:12.6px;line-height:1.38;color:#5d564c">That's how a new account should start — every coin in it will be one you won. If you'd rather look around a furnished floor first, NOIR can fill it with sample play.</div>
+  <div class="abs" style="left:14px;top:216px;width:363px;height:150px;border-radius:14px;background:#fffbf4;border:1px solid #efe5d5;font-size:12.2px;line-height:1.38;color:#5d564c">
+   <div class="abs" style="left:19px;top:16px;width:320px;padding-left:28px"><i class="abs" style="left:0;top:0;font-style:normal;color:#8a6a22">☰</i>Demo play is kept in its own wallet. Your real account isn't touched by it.</div>
+   <div class="abs" style="left:19px;top:58px;width:320px;padding-left:28px"><i class="abs" style="left:0;top:0;font-style:normal;color:#8a6a22">↶</i>Switch it off whenever you like in Profile — your empty account is still waiting underneath.</div>
+   <div class="abs" style="left:19px;top:100px;width:320px;padding-left:28px"><i class="abs" style="left:0;top:0;font-style:normal;color:#8a6a22">✋</i>Skip and nothing changes. NOIR won't ask again or turn it on by itself.</div>
+  </div>
+  <button class="abs" style="left:14px;top:393px;width:363px;height:46px;border-radius:23px;font-size:15px;font-weight:700;letter-spacing:.3px;color:#fff;background:linear-gradient(90deg,#6e5016,#9a772c 50%,#6e5016)" onclick="shareSheet()">SHOW ME A FURNISHED FLOOR</button>
+  <button class="abs" style="left:14px;top:451px;width:363px;height:35px;border-radius:18px;font-size:12.5px;font-weight:700;color:#7a5a21;background:#f1e7d6;border:1px solid #d9c49c" onclick="shareSheet()">START EMPTY</button>
+ </div>
+<div class="sheet" id="sh-share" style="top:503px;display:none">
+  <div class="grab"></div>
+  <div class="abs" style="left:28px;top:30px;width:28px;height:28px;border-radius:50%;background:#efe5d3;display:flex;align-items:center;justify-content:center;font-size:12px;color:#6e5016">▥</div>
+  <button class="abs" style="right:28px;top:33px;font-size:18px;color:#3a332a" onclick="toLobby()">✕</button>
+  <div class="abs ser" style="left:24px;top:74px;font-size:21px">Share usage data?</div>
+  <div class="abs" style="left:24px;top:112px;width:340px;font-size:12px;line-height:1.36;color:#5d564c">This stays off until you say yes. You can change it in Settings. We do not pay you. The app works either way.</div>
+  <button class="abs ghost" style="left:24px;top:189px;width:92px;height:42px;border-radius:21px;font-size:13px" onclick="toLobby()">Not now</button>
+  <button class="abs gold" style="left:125px;top:189px;width:230px;height:42px;border-radius:21px;font-size:14px;font-weight:600" onclick="toLobby()">Share</button>
+ </div>
+ <div class="sheet" id="sh-bj" style="top:220px;display:none">
+  <div class="grab"></div>
+  <img class="abs" src="a/playing_cards_casino_chip.webp" alt="" style="left:17px;top:46px;width:44px;height:44px;border-radius:9px;object-fit:cover">
+  <div class="abs ser" style="left:71px;top:49px;font-size:16px">Royal Blackjack</div>
+  <div class="abs mut" style="left:71px;top:72px;font-size:11px;color:#5d564c">Pick who sits with you.</div>
+  <div class="opt" style="top:103px" onclick="table()"><div class="ic">👤</div><b>Solo</b><span>You alone at the table.</span></div>
+  <div class="opt" style="top:166px;height:56px" onclick="table()"><div class="ic">▣</div><b>Bots</b><span>Bots fill every empty seat. A private table, just you and the bots.</span></div>
+  <div class="opt" style="top:236px" onclick="toast('Demo · live tables are in the app')"><div class="ic">👥</div><b>People</b><span>Waits for real people. A bot never sits.</span></div>
+  <div class="opt" style="top:298px;height:56px" onclick="table()"><div class="ic">👥</div><b>Mix</b><span>Starts with bots. A bot stands up when a person sits.</span></div>
+  <div class="opt" style="top:368px;height:56px" onclick="toast('Demo · private tables are in the app')"><div class="ic">🔒</div><b>Private</b><span>Invite only. Hidden from the lobby; invite players by username.</span></div>
+  <div class="abs c mut" style="top:441px;font-size:10.5px">Coins are for play only and never cash out.</div>
+  <div class="abs" style="left:0;right:0;top:470px;height:50px"></div>
+ </div>
+</section>
+
+<!-- 12/13 TABLE -->
+<section class="scr" id="s-table" style="background:#ebe6dc">
+ <div class="abs" style="left:-80px;top:132px;width:553px;height:620px;border-radius:50% 50% 0 0/36% 36% 0 0;background:#6b2a1a;padding:4px"></div>
+ <div class="abs" style="left:-76px;top:138px;width:545px;height:620px;border-radius:50% 50% 0 0/36% 36% 0 0;background:#d8b878"></div>
+ <div class="abs" style="left:-72px;top:144px;width:537px;height:620px;border-radius:50% 50% 0 0/36% 36% 0 0;background:radial-gradient(ellipse at 50% 35%,#7a8a80,#677a6f 60%,#5f7064)"></div>
+ <div class="abs" style="left:0;right:0;top:0;height:700px;background:radial-gradient(ellipse at 50% 30%,rgba(0,0,0,0),rgba(0,0,0,0) 45%,rgba(230,226,218,.35) 80%);pointer-events:none"></div>
+ <div class="abs" style="left:16px;top:52px;width:140px;height:46px;border-radius:23px;background:rgba(250,246,238,.92)"></div>
+ <button class="abs" style="left:24px;top:60px;font-size:24px;color:#e0a92a;font-weight:300" onclick="tab('lobby');go('main')">‹</button>
+ <div class="abs" style="left:61px;top:66px;width:24px;height:24px;border-radius:50%;border:1.5px solid #6b5a40;font-size:9px;display:flex;align-items:center;justify-content:center">👤</div>
+ <div class="abs" style="left:108px;top:72px;font-size:16px;font-weight:600">Royal Blackjack</div>
+ <div class="abs" style="left:250px;top:52px;width:127px;height:46px;border-radius:23px;background:rgba(250,246,238,.92)"></div>
+ <div class="abs" style="left:250px;top:62px;width:26px;height:26px;border-radius:50%;border:1.8px solid #6e5016;font-size:14px;font-weight:700;text-align:center;color:#6e5016;line-height:23px">?</div>
+ <div class="abs" style="left:300px;top:63px;width:70px;height:26px;border-radius:13px;background:#efe5d3;display:flex;align-items:center;gap:8px;padding:0 3px"><span class="coin s" style="width:20px;height:20px">✱</span><b>…</b><span class="coin s" style="width:20px;height:20px;margin-left:auto">+</span></div>
+ <div class="abs c" style="top:132px;font-size:10.5px;letter-spacing:2.4px;font-weight:700;color:#9a958c">DEALER <span id="dtot" style="display:none;margin-left:6px;background:#8a6a22;color:#fff;border-radius:9px;padding:1px 8px;letter-spacing:0">7</span></div>
+ <div class="abs" style="right:16px;top:121px;padding:5px 9px;border-radius:12px;background:#f5efe2;border:1px solid #d9ccb5;font-size:9px;letter-spacing:1px;font-weight:700;color:#6b645a">DEALER &nbsp;<b style="color:#a01f2a;font-size:11px">0W 0L</b></div>
+ <div class="abs c" style="top:281px;font-size:10.5px;color:rgba(230,230,220,.55)" id="pairtx">Pair splits · Side bets pay to 100 : 1</div>
+ <div class="abs c" style="top:321px;font:700 12.5px Bask,Georgia,serif;letter-spacing:2px;line-height:1.2;color:#d8c38a;transform:perspective(300px) rotateX(18deg)">BLACKJACK PAYS 3 TO 2<br><span style="font-size:10.5px">DEALER MUST STAND ON ALL 17s</span><br><span style="font-size:10px">INSURANCE PAYS 2 TO 1</span></div>
+ <div id="dcards"></div>
+ <div id="seats"></div>
+ <div class="abs c" id="youlbl" style="top:563px;font-size:10px;letter-spacing:2.4px;font-weight:700;color:rgba(230,230,220,.45)">YOU</div>
+ <div id="pcards"></div>
+ <div id="betpanel">
+  <div class="abs" style="left:0;right:0;top:690px;height:162px;background:#f5efe4;border-top:1px solid #ddd2c0"></div>
+  <div class="abs" style="left:16px;top:706px;width:361px;height:57px;border-radius:29px;background:#fffaf2;border:1px solid #e3d6bf"></div>
+  <button class="abs" style="left:22px;top:711px;width:39px;height:39px;border-radius:50%;background:#f0e5d0;border:1px solid #d9c49c;font-size:22px;color:#6e5016" onclick="bet(-100)">−</button>
+  <button class="abs" style="left:333px;top:711px;width:39px;height:39px;border-radius:50%;background:#f0e5d0;border:1px solid #d9c49c;font-size:22px;color:#6e5016" onclick="bet(100)">+</button>
+  <div class="abs c" style="top:714px;font-size:9.5px;letter-spacing:1.6px;font-weight:600">BET PER BOX</div>
+  <div class="abs c" style="top:727px;font-size:17px;font-weight:700;color:#8a6a22" id="betv">500</div>
+  <div class="act" style="left:16px;top:764px">⚡<span>1×</span></div>
+  <div class="act" style="left:74px;top:764px">⇄<span>AUTO</span></div>
+  <button class="abs gold" style="left:132px;top:764px;width:245px;height:48px;border-radius:24px;font-size:16px;font-weight:600" onclick="deal()" id="dealbtn">Deal · 500</button>
+ </div>
+ <div id="playpanel" style="display:none">
+  <div class="abs" style="left:0;right:0;top:700px;height:152px;background:#f3ede2"></div>
+  <div class="abs" style="left:0;right:0;top:737px;height:115px;background:#efe8db;border-top:1px solid #ddd2c0"></div>
+  <div class="abs c" style="top:711px;font-size:10px;letter-spacing:2px;font-weight:700;color:#5d564c">IN PLAY &nbsp;<span class="coin s">✱</span> <b style="font-size:14px;letter-spacing:0;color:#1d1810" id="inplay">500</b></div>
+  <div class="act" style="left:16px;top:754px;width:48px;height:52px;color:#8a6a22">⚡<span style="color:#3a332a">1×</span></div>
+  <div class="act" style="left:75px;top:754px;width:48px;height:52px;color:#8a6a22">⇄<span style="color:#3a332a">AUTO</span></div>
+  <button class="act" style="left:133px;top:748px;width:56px;height:60px;color:#fff;border:0;background:linear-gradient(180deg,#8d6a26,#6e5016);font-size:12px" onclick="hit()"><span style="font-size:18px">⧉</span>Hit</button>
+  <button class="act" style="left:196px;top:748px;width:56px;height:60px;font-size:12px" onclick="stand()"><span style="font-size:18px">✋</span>Stand</button>
+  <button class="act" style="left:259px;top:748px;width:56px;height:60px;font-size:12px" onclick="dbl()"><span style="font-size:18px">➚</span>Double</button>
+  <div class="act" style="left:322px;top:748px;width:56px;height:60px;font-size:12px;opacity:.45"><span style="font-size:18px">◫</span>Split</div>
+ </div>
+</section>
+</div>
+<script src="try-bridge.js"></script>
+<script>
+const $=id=>document.getElementById(id),stage=$('stage');
+function fit(){const s=Math.min(innerWidth/393,innerHeight/852);stage.style.transform=`translate(${(innerWidth-393*s)/2}px,${(innerHeight-852*s)/2}px) scale(${s})`}addEventListener('resize',fit);fit();
+let tt;function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),1800)}
+function go(n){document.querySelectorAll('.scr').forEach(s=>s.classList.toggle('on',s.id=='s-'+n))}
+const TERMS=[['♠','Everything is open','Every game, every table and every feature is available to every player. Nothing is held back, locked behind a region check, or switched on and off from a server.',187,117],['▦','Coins are virtual items, not money','Gold coins and diamonds are entertainment items. They have no cash value, no exchange rate, and cannot be converted into money, prizes, goods or anything else of value. Buying them buys play time and nothing more.',316,130],['⊗','There is no cash out','NOIR has no cash-desk. There is no withdrawal and no balance to withdraw. Coins cannot be cashed out, sold or transferred.',459,93],['✋','This is not gambling','No real money is wagered and no real money can be won. Outcomes decide how many virtual coins you hold, like a score in any other game.',572,108]];
+$('terms-list').innerHTML=TERMS.map(([i,t,b,y,h])=>`<div class="abs card" style="left:14px;top:${y}px;width:364px;height:${h}px;border-radius:14px;border-color:#efe5d5"><div class="abs" style="left:13px;top:18px;width:27px;height:27px;border-radius:50%;background:#efe5d3;color:#6e5016;font-size:12px;display:flex;align-items:center;justify-content:center">${i}</div><div class="abs" style="left:57px;top:13px;font-size:14.5px;font-weight:600">${t}</div><div class="abs" style="left:57px;top:35px;width:290px;font-size:12px;line-height:1.33;color:#6b645a">${b}</div></div>`).join('');
+const LOCK='<svg width="14" height="17" viewBox="0 0 14 17"><rect x="1" y="7" width="12" height="10" rx="2" fill="#6b645a"/><path d="M3.5 7V5a3.5 3.5 0 0 1 7 0v2" stroke="#6b645a" stroke-width="2" fill="none"/></svg>';
+const PR=[['Daily 500<br>Bonus',1],['Points<br>Accelerator'],['Priority<br>Support'],['Exclusive<br>Tables'],['The<br>Concierge'],['The Penthouse<br>Key']];
+$('privs').innerHTML=PR.map(([t,on],i)=>`<div class="priv" style="left:${16+(i%3)*124}px;top:${511+Math.floor(i/3)*113}px;${on?'background:#efe5d3;border-color:#c9b68e':''}">${on?'<div style="font-size:24px;color:#8a6a22;line-height:1;margin-bottom:6px">✱</div>':LOCK}${t}</div>`).join('');
+function tab(t){['lobby','rewards','vip','coins'].forEach(n=>{$('tab-'+n).style.display=(n==t||n=='lobby')?'block':'none'});document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.t==t));$('hdr').style.display=t=='lobby'?'block':'none'}
+function intro(){go('main');tab('lobby');$('intro').style.display='block'}
+function emptySheet(){$('intro').style.display='none';$('sh-empty').style.display='block'}
+function shareSheet(){$('sh-empty').style.display='none';$('scrim').style.display='block';$('sh-share').style.display='block'}
+function toLobby(){['sh-share','sh-bj','sh-empty','scrim','intro'].forEach(i=>$(i).style.display='none')}
+function bjSheet(){$('scrim').style.display='block';$('sh-bj').style.display='block'}
+$('scrim').onclick=toLobby;
+/* blackjack (local only) */
+const SX=[[14,456],[69,478],[125,490],[181,0],[236,490],[292,478],[347,456]];
+let B=500,bal=100000,P=[],D=[],deck=[],busy=0;
+function seats(chip){$('seats').innerHTML=SX.map(([x,y],i)=>i==3?`<div class="seat" style="left:${x+3}px;top:${chip?425:466}px">${chip?'<div style="width:28px;height:10px;margin:0 auto;border-radius:50%;background:#a1232c;box-shadow:0 2px 0 #6a1218"></div><div style="font-size:8px;color:#fff;font-weight:700;margin:2px 0 3px">'+B+'</div>':''}<i style="border:0;background:radial-gradient(circle at 35% 30%,#c99a3a,#7a5410)"></i><span style="background:#2a2010;color:#e8b84a;font-size:11px">YOU</span></div>`:`<div class="seat" style="left:${x}px;top:${y-(chip?10:0)}px"><i></i><span>Open<br>seat</span></div>`).join('')}
+seats(0);
+function bet(d){B=Math.max(100,Math.min(5000,B+d));$('betv').textContent=B.toLocaleString();$('dealbtn').textContent='Deal · '+B.toLocaleString()}
+function table(){toLobby();go('table');reset()}
+function reset(){P=[];D=[];$('dcards').innerHTML='';$('pcards').innerHTML='';$('betpanel').style.display='block';$('playpanel').style.display='none';$('dtot').style.display='none';$('pairtx').style.display='block';$('youlbl').textContent='YOU';$('youlbl').style.top='563px';seats(0);busy=0}
+function draw(){if(!deck.length){deck=[];for(const s of '♠♥♦♣')for(const r of ['A','2','3','4','5','6','7','8','9','10','J','Q','K'])deck.push([r,s]);deck.sort(()=>Math.random()-.5)}return deck.pop()}
+const val=h=>{let t=0,a=0;h.forEach(([r])=>{t+=r=='A'?11:'JQK'.includes(r)?10:+r;if(r=='A')a++});while(t>21&&a){t-=10;a--}return t};
+const cardH=([r,s],x,y,back)=>back?`<div class="pc back" style="left:${x}px;top:${y}px"></div>`:`<div class="pc ${'♥♦'.includes(s)?'red':''}" style="left:${x}px;top:${y}px"><b>${r}<br>${s}</b><u>${r}<br>${s}</u><span style="position:absolute;left:0;right:0;top:30px;text-align:center;font-size:28px">${s}</span></div>`;
+function render(hide){$('dcards').innerHTML=D.map((c,i)=>cardH(c,164-(D.length-1)*14+i*28,158,hide&&i==1)).join('');$('pcards').innerHTML=P.map((c,i)=>cardH(c,164-(P.length-1)*20+i*40,582)).join('');
+ $('dtot').style.display='inline';$('dtot').textContent=hide?val([D[0]]):val(D);$('youlbl').innerHTML='YOU <span style="margin-left:6px;background:#8a6a22;color:#fff;border-radius:9px;padding:1px 8px;letter-spacing:0">'+val(P)+'</span>'}
+function deal(){if(busy)return;busy=1;P=[draw(),draw()];D=[draw(),draw()];$('betpanel').style.display='none';$('playpanel').style.display='block';$('inplay').textContent=B.toLocaleString();$('pairtx').style.display='none';$('youlbl').style.top='553px';seats(1);render(1);if(val(P)==21)setTimeout(stand,500)}
+function hit(){P.push(draw());render(1);if(val(P)>21)setTimeout(()=>end('Bust · dealer takes '+B),400)}
+function dbl(){B*=2;$('inplay').textContent=B.toLocaleString();P.push(draw());render(1);setTimeout(val(P)>21?()=>end('Bust · dealer takes '+B):stand,400)}
+function stand(){while(val(D)<17)D.push(draw());render(0);const p=val(P),d=val(D);end(p>21?'Bust':d>21||p>d?'You win '+B+' · demo coins':p==d?'Push · bet returned':'Dealer wins')}
+function end(m){toast(m);setTimeout(()=>{B=500;bet(0);reset()},1900)}
+</script><script id="nologin">/* Website demo: no sign-in. Opens straight into the signed-in app. */
+
+intro();
+</script></body></html>

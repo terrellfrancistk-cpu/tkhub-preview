@@ -1,0 +1,1 @@
+function e(e){if(!(typeof navigator>`u`||typeof navigator.vibrate!=`function`))try{navigator.vibrate(e)}catch{}}function t(){e(8)}function n(){e(18)}function r(){e([10,40,14])}export{r as n,t as r,n as t};

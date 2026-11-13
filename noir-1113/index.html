@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head><meta name="robots" content="noindex,nofollow">
+    <meta charset="UTF-8" />
+    <!-- Marks the page as handling Rork's toolkit sign-in itself, so the host does not inject its own copy, which asks
+         api.rork.com for a token on every visit and fails CORS (a console error and a 5 KB script before the charset). -->
+    <script data-rork-toolkit-auth="true">(function(s){s.__rorkToolkitAuthInstalled=true;s.__rorkToolkitAuthReady=Promise.resolve(null);s.__rorkGetToolkitToken=function(){return Promise.resolve(null)};s.__rorkLoadToolkitModule=function(u){return import(u)}})(window);</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0A0A0A" />
+    <link rel="preload" as="font" type="font/woff2" href="/tkhub-preview/noir-1113/fonts/bodoni-moda-normal-latin-v2.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/tkhub-preview/noir-1113/fonts/jost-normal-latin-v2.woff2" crossorigin />
+    <title>NOIR — Nights of Riches | Social casino for iPhone & Android</title>
+    <meta
+      name="description"
+      content="A black-tie social casino. Sixteen tables, five jackpot tiers and the Wildfire Wheel, played with virtual gold coins. Free, 18+, no real-money gambling."
+    />
+
+    <meta property="og:title" content="NOIR — Nights of Riches" />
+    <meta
+      property="og:description"
+      content="A black-tie social casino. Sixteen tables, five jackpot tiers and the Wildfire Wheel, played with virtual gold coins. Free, 18+, no real-money gambling."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/tkhub-preview/noir-1113/noir-icon-512.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="NOIR — Nights of Riches" />
+    <meta
+      name="twitter:description"
+      content="A black-tie social casino played with virtual gold coins. Free, 18+, no real-money gambling."
+    />
+
+    <link rel="icon" href="/tkhub-preview/noir-1113/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/tkhub-preview/noir-1113/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/tkhub-preview/noir-1113/apple-touch-icon.png" />
+
+      <!-- TK Hub launch sequence. Removed when it ends, so it does not override the app background. -->
+    <style id="launch-early-bg">
+      html, body { background: #000; margin: 0; }
+      #launch-sequence {
+        position: fixed; inset: 0; z-index: 10000; display: flex;
+        align-items: center; justify-content: center; background: #000;
+      }
+      #launch-sequence img { -o-object-fit: contain; object-fit: contain; }
+      #launch-mark { width: 140px; height: 140px; border-radius: 32px; }
+      #launch-tk { width: 140px; height: 140px; display: none; }
+    </style>
+    <link rel="stylesheet" crossorigin href="/tkhub-preview/noir-1113/assets/index-DwXe0cS0.css">
+  </head>
+
+  <body>
+    <script>
+      (function () {
+        var path = location.pathname || "/";
+        if (path.indexOf("/auth/callback") === -1) return;
+        var search = location.search || "";
+        var hash = location.hash || "";
+        if (!search && !hash) return;
+        try { sessionStorage.setItem("noir.auth.handoff", search + hash); } catch (e) {}
+        if (hash.indexOf("access_token=") === -1 && hash.indexOf("refresh_token=") === -1) return;
+        history.replaceState(null, "", path + search);
+        var frame = document.createElement("iframe");
+        frame.style.display = "none";
+        frame.src = "noir://auth-callback" + search + hash;
+        document.body.appendChild(frame);
+      })();
+    </script>
+    <div id="launch-sequence" role="img" aria-label="NOIR">
+      <!-- data-src: the logos are only fetched when the sequence actually plays (not for automation, not twice) -->
+      <img id="launch-mark" data-src="/brand/mark-280.webp" alt="NOIR" width="140" height="140" />
+      <img id="launch-tk" data-src="/brand/tk-hub-280.webp" alt="TK Hub LLC" width="140" height="140" />
+    </div>
+    <script>
+      (function () {
+        var launch = document.getElementById("launch-sequence");
+        var early = document.getElementById("launch-early-bg");
+        function clearEarly() { if (early && early.parentNode) early.parentNode.removeChild(early); }
+        if (navigator.webdriver || !launch) {
+          if (launch) launch.remove();
+          clearEarly();
+          return;
+        }
+        var mark = document.getElementById("launch-mark");
+        var tk = document.getElementById("launch-tk");
+        if (mark) mark.src = mark.getAttribute("data-src");
+        if (tk) tk.src = tk.getAttribute("data-src");
+        // Product logo 600ms -> TK Hub 1000ms -> fade 200ms (same as Our People).
+        setTimeout(function () {
+          if (mark) mark.style.display = "none";
+          if (tk) tk.style.display = "block";
+          launch.setAttribute("aria-label", "TK Hub LLC");
+        }, 600);
+        setTimeout(function () {
+          launch.style.transition = "opacity 200ms ease-out";
+          launch.style.opacity = "0";
+        }, 1600);
+        setTimeout(function () { launch.remove(); clearEarly(); }, 1800);
+      })();
+    </script>
+    <div id="root"><!--hero-shell--><div class="min-h-screen noir-night bg-[#060608] text-[#f3f1ec]" data-hero-shell=""><header class="fixed inset-x-0 top-0 z-50 transition-all duration-500 bg-transparent"><div class="container flex h-20 items-center justify-between"><a class="group inline-flex flex-col items-start leading-none" href="/"><span class="font-display text-xl font-semibold tracking-[0.5em] text-metal">NOIR</span><span class="mt-1 h-px w-full bg-gold/40 transition-colors group-hover:bg-gold/80"></span></a><nav class="hidden items-center gap-5 xl:flex"><a class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-muted-foreground transition-colors hover:text-gold-pale" href="/login"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round" aria-hidden="true"><circle cx="12" cy="8" r="5"></circle><path d="M20 21a8 8 0 0 0-16 0"></path></svg>Sign in</a><a class="border border-[#d4af37]/70 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.24em] text-[#f3e6c0] transition-colors hover:bg-[#d4af37]/15" href="/play">Play</a></nav><div class="flex items-center gap-2 xl:hidden"><a class="border border-[#d4af37]/70 px-4 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-[#f3e6c0]" href="/play">Play</a><button type="button" aria-label="Open menu" class="border border-gold/30 p-2 text-gold"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button></div></div><div class="h-px transition-opacity duration-500 opacity-0"></div></header><main><section class="relative isolate min-h-[100svh] overflow-hidden bg-[#060608] text-[#f3f1ec]"><div aria-hidden="true" class="pointer-events-none absolute inset-0" style="background: radial-gradient(55% 45% at 72% 48%, rgba(212, 175, 55, 0.16), transparent 70%);"></div><div class="pointer-events-none absolute inset-0 grain opacity-60"></div><div class="relative mx-auto grid min-h-[100svh] w-full max-w-[1400px] items-center gap-6 px-6 pb-40 pt-24 sm:gap-10 sm:px-10 sm:pb-16 sm:pt-28 lg:grid-cols-[1.1fr_0.9fr] lg:gap-6 lg:px-16 lg:pb-0 lg:pt-24"><div class="order-1 max-w-xl"><p class="text-[0.62rem] uppercase tracking-[0.42em] text-[#d4af37]">NOIR</p><h1 class="mt-4 font-display text-[clamp(4.4rem,11vw,9.2rem)] font-semibold leading-[0.86] tracking-[-0.04em] text-[#f3f1ec]">After dark.</h1><p class="mt-6 max-w-[28ch] text-[clamp(1.05rem,1.5vw,1.35rem)] leading-snug text-[#9a978f]">A private house of virtual tables. File the case. Sit the table. The coins never become cash.</p><a id="hero-cta" class="group relative mt-9 inline-flex overflow-hidden bg-gradient-to-b from-[#f3e6c0] via-[#d4af37] to-[#8a6a1f] px-9 py-4 text-xs font-semibold uppercase tracking-[0.28em] text-[#0b0b0c] transition-transform active:scale-[0.96] motion-reduce:transition-none motion-reduce:active:scale-100" href="/play"><span class="relative z-10">Play on this site</span><span class="pointer-events-none absolute inset-y-0 -left-10 w-12 -skew-x-12 bg-white/40 animate-sheen"></span></a><p class="mt-4 text-xs uppercase tracking-[0.2em] text-[#9a978f]">Free to play · 18+ · No real-money gambling</p></div><div class="order-2 flex justify-center lg:justify-end"><div class="w-[min(240px,64%)] sm:w-[min(270px,60%)] lg:w-[min(300px,72%)]"><div id="try" class="relative mx-auto w-full"><div class="pointer-events-none absolute -inset-y-16 -inset-x-4 sm:-inset-x-16 -z-10 rounded-full bg-gold/10 blur-3xl"></div><div class="relative rounded-[2.6rem] border border-gold/35 bg-black p-3 shadow-[0_50px_100px_-40px_rgba(212,175,55,0.45)]"><div class="relative aspect-[9/19.3] overflow-hidden rounded-[2rem] bg-black"><button type="button" aria-label="Try it now: the NOIR demo" class="absolute inset-0 flex flex-col items-center justify-center gap-4 text-[#f6edd4]" style="background: radial-gradient(circle at 50% 38%, rgb(168, 132, 44), rgb(5, 5, 5) 72%);"><picture><source media="(min-width: 1024px)" srcset="/tkhub-preview/noir-1113/marketing/tryphone-poster-480.webp" type="image/webp"><img alt="" aria-hidden="true" width="480" height="1041" decoding="async" class="absolute inset-0 h-full w-full object-cover opacity-80" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></picture><span class="relative flex h-16 w-16 items-center justify-center rounded-full border border-[#f6edd4]/40 bg-black/60"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play ml-0.5" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path></svg></span><span class="relative bg-black/60 px-3 py-1 text-[0.62rem] uppercase tracking-[0.32em]">Try it now</span></button></div></div></div></div></div></div></section></main></div><div role="dialog" aria-modal="true" aria-label="Age confirmation — 18 or over" class="fixed inset-0 z-[80] flex items-center justify-center bg-canvas/95 px-5 backdrop-blur-md" data-shell-extra=""><div class="panel w-full max-w-lg p-8 sm:p-10"><p class="eyebrow">NOIR</p><h2 class="mt-4 font-display text-[clamp(1.6rem,4vw,2.25rem)] leading-tight text-metal">Are you 18 or over?</h2><p class="mt-5 text-sm leading-relaxed text-muted-foreground">NOIR is an adults-only social casino. Simulated gambling content is rated 18+ on both app stores, and the same house rule applies here.</p><div class="mt-8 flex flex-col gap-3 sm:flex-row"><button type="button" class="inline-flex flex-1 items-center justify-center bg-gradient-to-b from-gold-pale via-gold to-gold-deep px-8 py-4 text-xs font-semibold uppercase tracking-[0.28em] text-canvas transition-transform active:scale-[0.98]">I am 18 or over</button><button type="button" class="inline-flex flex-1 items-center justify-center border border-gold/25 px-8 py-4 text-xs uppercase tracking-[0.24em] text-muted-foreground transition-colors hover:border-gold/50 hover:text-foreground">I am under 18</button></div><p class="mt-7 text-xs leading-relaxed text-muted-foreground">Confirming records your answer in this browser only. Read the <a class="text-gold-pale underline decoration-gold/40 underline-offset-4" href="/terms">Terms of Use</a> and <a class="text-gold-pale underline decoration-gold/40 underline-offset-4" href="/privacy">Privacy Policy</a>.</p></div></div><!--/hero-shell--></div>
+    <script>
+      // The static first screen carries the 18+ gate. A visitor who already answered, or a page the gate never covers,
+      // drops it before the first paint; React then draws the real gate (or none) when it mounts.
+      (function () {
+        var gate = document.querySelector("[data-shell-extra]");
+        if (!gate) return;
+        var answered = false;
+        try { answered = localStorage.getItem("noir.age.confirmed") === "yes" || localStorage.getItem("noir.age.declined") === "yes"; } catch (e) { answered = true; }
+        if (answered || location.pathname !== "/") gate.remove();
+      })();
+    </script>
+  <script>(function(){function go(){var s=document.createElement("script");s.type="module";s.crossOrigin="";s.src="/tkhub-preview/noir-1113/assets/index-BGuTS9bi.js";document.head.appendChild(s)}function after(){requestAnimationFrame(function(){setTimeout(go,0)})}function next(){var done=false,t;function once(){if(done)return;done=true;clearTimeout(t);after()}t=setTimeout(once,1500);try{var o=new PerformanceObserver(function(l){l.getEntries().forEach(function(e){if(e.name==="first-contentful-paint"){o.disconnect();once()}})});o.observe({type:"paint",buffered:true})}catch(x){once()}}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",next);else next()})();</script>
+<div style="position:fixed;left:8px;bottom:8px;z-index:2147483647;background:#111;color:#0cf;font:600 11px system-ui;padding:4px 8px;border-radius:6px;opacity:.85;pointer-events:none">PREVIEW · restore 2026-11-13 · not live</div></body>
+</html>

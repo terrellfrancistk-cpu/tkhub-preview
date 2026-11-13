@@ -1,0 +1,1 @@
+import{r as e}from"./chunk-QTnfLwEv.js";import{n as t}from"./jsx-runtime-BWRPWl8p.js";var n=e(t(),1),r=!1,i=new Set;function a(e){return e===!0}function o(){return a(!1)}function s(e){return i.add(e),()=>i.delete(e)}function c(){return o()&&r}function l(){return(0,n.useSyncExternalStore)(s,()=>o()&&r,()=>!1)}var u=Date.now();u-25*6e4,u-3*36e5,u-26*36e5;export{l as n,c as t};
