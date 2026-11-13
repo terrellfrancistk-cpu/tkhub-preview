@@ -1,0 +1,1 @@
+import{i as e}from"./chunk-aKtaBQYM.js";import{t}from"./react-DxZHKUKd.js";import{N as n,ui as r}from"./index-GkBA5KuP.js";var i=e(t(),1);function a(){let e=r();return(0,i.useEffect)(()=>{n(),e(`/app`,{replace:!0})},[e]),null}export{a as default};
