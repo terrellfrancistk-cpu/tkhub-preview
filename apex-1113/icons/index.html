@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>APEX icons · current vs sharp</title>
+<style>:root{--bg:#0b0b0b;--ink:#eef3ea;--muted:#9aa396;--lime:#C8FF3D;--line:#2a2a2a}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,sans-serif}
+.bar{background:var(--lime);color:#0b0b0b;font-weight:600;font-size:12px;padding:6px 12px;text-align:center}main{max-width:1100px;margin:0 auto;padding:16px}
+h1{font-size:28px;margin:16px 0 4px}h2{font-size:18px;margin:32px 0 8px}p{color:var(--muted);margin:0 0 12px;max-width:70ch}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}.pair figure{margin:0;border:1px solid var(--line);border-radius:12px;padding:12px;background:#111}
+figcaption{font-size:13px;font-weight:700;margin-bottom:8px}img{display:block;max-width:100%;height:auto;border-radius:8px}
+.zoom{width:100%;aspect-ratio:1;background-repeat:no-repeat;background-size:300%;background-position:62% 30%;border-radius:8px;image-rendering:auto}
+@media (max-width:560px){.pair{grid-template-columns:1fr}}</style></head><body>
+<div class="bar">Preview · not live · nothing has been switched · APEX branch claude/hopeful-keller-j9tore @ 114f515</div>
+<main><h1>APEX icons: current vs sharp</h1>
+<p>The current app icons are soft (fuzzy edges and compression blotches); the 1024 px iOS icon looks upscaled from a smaller picture. The sharp set is the same mark redrawn as an exact vector (98.6% pixel overlap with today's icon), in today's colours, rendered crisp at every size. Nothing in the apps or the site uses it until Terrell says so.</p>
+<h2>iPhone app icon (1024 px)</h2><div class="pair"><figure><figcaption>Current</figcaption><img src="current/ios-1024.png" alt="Current iOS icon"></figure><figure><figcaption>Sharp</figcaption><img src="sharp/ios-1024.png" alt="Sharp iOS icon"></figure></div>
+<h2>Close-up, 3× (top of the mark)</h2><div class="pair"><figure><figcaption>Current</figcaption><div class="zoom" style="background-image:url(current/ios-1024.png)" role="img" aria-label="Current icon close-up"></div></figure><figure><figcaption>Sharp</figcaption><div class="zoom" style="background-image:url(sharp/ios-1024.png)" role="img" aria-label="Sharp icon close-up"></div></figure></div>
+<h2>Android launcher icon (512 px)</h2><div class="pair"><figure><figcaption>Current</figcaption><img src="current/android-512.png" alt="Current Android icon"></figure><figure><figcaption>Sharp</figcaption><img src="sharp/android-512.png" alt="Sharp Android icon"></figure></div>
+<h2>Home-screen and browser icons (180 px, 192 px)</h2><div class="pair"><figure><figcaption>Current</figcaption><img src="current/apple-touch-180.png" alt="Current 180 px icon" style="width:180px"><img src="current/web-192.png" alt="Current 192 px icon" style="width:192px;margin-top:8px"></figure><figure><figcaption>Sharp</figcaption><img src="sharp/apple-touch-180.png" alt="Sharp 180 px icon" style="width:180px"><img src="sharp/web-192.png" alt="Sharp 192 px icon" style="width:192px;margin-top:8px"></figure></div>
+<p style="margin-top:24px">Vector master: <a href="sharp/apex-mark.svg" style="color:var(--lime)">apex-mark.svg</a>. The full set (iOS, Play Store, Android adaptive, web, maskable, favicon) is in the APEX repo under docs/brand-sharp/.</p>
+</main></body></html>

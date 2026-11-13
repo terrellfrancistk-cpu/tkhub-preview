@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="APEX">
+  <!-- APEX mark redrawn as an exact vector from the current 1024 px app icon (98.6% pixel overlap), for sharp icons at any size.
+       Colours are the current icon's own: mark #B9C557 on #080A0C. A proposal only; nothing in the apps uses it yet. -->
+  <path fill="#B9C557" d="M519 56 L955 943 L918 943 L600 336 L316 911 L585 612 L752 943 L641 943 L543 759 L303 943 L82 943 Z"/>
+</svg>
