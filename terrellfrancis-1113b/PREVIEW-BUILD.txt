@@ -1,8 +1,8 @@
 terrellfrancis.app preview (not the live site)
 
-Build fingerprint: 6bc9f6005afb81ff
+Build fingerprint: db03980d4050be2b
 Source: terrellfrancistk-cpu/terrell-francis-portfolio, branch claude/sharp-franklin-6cwtfa,
-commit 0018ac7 (PR #7). Check before any merge: bash tests/build-fingerprint.sh prints the same.
+commit c13a2a8 (PR #7). Check before any merge: bash tests/build-fingerprint.sh prints the same.
 
 Built exactly as pages.yml publishes it (terser + clean-css), minus files that do nothing in a
 subfolder (CNAME, .github, README.md, .nojekyll). Preview-only edits, per this repo's convention:

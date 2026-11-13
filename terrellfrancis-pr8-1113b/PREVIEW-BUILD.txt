@@ -1,0 +1,14 @@
+terrellfrancis.app preview for PR #8 (not the live site)
+
+Build fingerprint: 949a061b13dd5dda
+Source: terrellfrancistk-cpu/terrell-francis-portfolio, branch talencia-public-safe (PR #8),
+commit 82591b8. Check before any merge: bash tests/build-fingerprint.sh prints the same.
+
+This is PR #7's build plus PR #8's portfolio copy update: "Talencia by KAD" name, public-safe role
+bullets added (all existing bullets kept), role labelled Full-time (W-2), and the approved Asurion
+entry removed (Terrell, Nov 13). Also carries Terrell's 1:05 PM CT decision: live link-preview
+image kept, TORQ studio panel and About's second paragraph restored (it says "Talencia by KAD").
+
+Built exactly as pages.yml publishes it (minified), minus files that do nothing in a subfolder.
+Preview-only edits, per this repo's convention: noindex, nofollow on every page; 404 root links
+made relative. Nothing goes live until Terrell has seen and approved this exact build.
