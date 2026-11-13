@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="robots" content="noindex" />
+    <title>Security check — Booked</title>
+    <!--
+      The captcha widget, served from Booked's own domain.
+
+      The iPhone and Android apps load this page inside a web view rather than
+      drawing a captcha themselves, for one unavoidable reason: a Turnstile site
+      key is tied to a domain, and HTML injected straight into a web view has no
+      domain at all — the check would be refused every time. Loading it from the
+      real address is what makes the key valid.
+
+      It also means the challenge can be changed, tuned or switched off for every
+      app at once without shipping a store build.
+    -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileReady" async defer></script>
+    <style>
+      :root { color-scheme: light dark; }
+      html.dark { color-scheme: dark; }
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        /* Transparent so the host screen (cream or dark) shows through. */
+        background: transparent;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        -webkit-text-size-adjust: 100%;
+      }
+      .wrap {
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        padding: 20px;
+        box-sizing: border-box;
+        text-align: center;
+      }
+      /*
+        The sign-in card gives this page a 70pt slot. With 20px of padding the
+        65px widget overflowed it and painted over "Stay signed in" and the
+        Sign in button (seen on the iPhone simulator, 7 Nov). In a short slot
+        the padding goes and the widget sits flush.
+      */
+      @media (max-height: 120px) {
+        .wrap { padding: 0; gap: 4px; }
+      }
+      .label {
+        font-size: 14px;
+        font-weight: 600;
+        color: #4a423b;
+        margin: 0;
+      }
+      .hint {
+        font-size: 12px;
+        line-height: 1.45;
+        color: #8a8078;
+        margin: 0;
+        max-width: 280px;
+      }
+      .fail {
+        font-size: 13px;
+        font-weight: 600;
+        color: #b03a2e;
+        margin: 0;
+      }
+      [aria-label="Publish"],
+      a[href*="rork.app"],
+      a[href*="rork.com"] { display: none !important; visibility: hidden !important; }
+      /*
+        Host chrome uses class and id names containing "preview". Those rules
+        must not match #widget, anything inside it, or any ancestor that
+        contains it. Hiding the Turnstile container (or a parent of it) is what
+        makes Cloudflare fail with error 300030 and leave a blank box.
+        :not(:has()) is dropped by a WebView that does not understand it, which
+        leaves the widget visible; the script below does the same exclusion.
+      */
+      [class*="preview" i]:not(:has(#widget)):not(#widget):not(#widget *),
+      [id*="preview" i]:not(:has(#widget)):not(#widget):not(#widget *) {
+        display: none !important;
+        visibility: hidden !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div id="widget"></div>
+      <p class="fail" id="fail" hidden>That check didn't pass. It will try again in a moment.</p>
+    </div>
+
+    <script>
+      (function () {
+        "use strict";
+
+        var params = new URLSearchParams(window.location.search);
+        var siteKey = params.get("sitekey") || "";
+        // Lets the apps tint the widget to whichever appearance they are in.
+        var themeParam = params.get("theme");
+        var theme = themeParam === "dark" || themeParam === "light" ? themeParam : "auto";
+        if (theme === "dark") document.documentElement.classList.add("dark");
+
+        /**
+         * Hands a solved token back to whichever shell is hosting this page.
+         *
+         * Three bridges, tried in order, because the same file is loaded by an
+         * iOS web view, an Android web view, and an ordinary browser tab.
+         */
+        function deliver(token) {
+          try {
+            if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.bookedCaptcha) {
+              window.webkit.messageHandlers.bookedCaptcha.postMessage(token);
+              return;
+            }
+          } catch (error) {}
+          try {
+            if (window.BookedCaptcha && typeof window.BookedCaptcha.onToken === "function") {
+              window.BookedCaptcha.onToken(token);
+              return;
+            }
+          } catch (error) {}
+          try {
+            window.parent.postMessage({ source: "booked-captcha", token: token }, "*");
+          } catch (error) {}
+        }
+
+        function fail(message) {
+          var node = document.getElementById("fail");
+          if (!node) return;
+          if (message) node.textContent = message;
+          node.hidden = false;
+        }
+
+        /** The native shells show this code. A blank box is not an explanation. */
+        /**
+         * The widget is on screen. Native watchdogs must stop: a person may
+         * still be looking at "Verify you are human".
+         */
+        function reportStatus(status) {
+          var text = status == null ? "" : String(status);
+          if (!text) return;
+          try {
+            if (window.BookedCaptcha && typeof window.BookedCaptcha.onStatus === "function") {
+              window.BookedCaptcha.onStatus(text);
+            }
+          } catch (error) {}
+          try {
+            if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.bookedCaptchaStatus) {
+              window.webkit.messageHandlers.bookedCaptchaStatus.postMessage(text);
+            }
+          } catch (error) {}
+          try {
+            window.parent.postMessage({ source: "booked-captcha", status: text }, "*");
+          } catch (error) {}
+        }
+
+        function reportError(code) {
+          var text = code == null || String(code).trim() === "" ? "unknown" : String(code);
+          try {
+            if (window.BookedCaptcha && typeof window.BookedCaptcha.onError === "function") {
+              window.BookedCaptcha.onError(text);
+            }
+          } catch (error) {}
+          try {
+            if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.bookedCaptchaError) {
+              window.webkit.messageHandlers.bookedCaptchaError.postMessage(text);
+            }
+          } catch (error) {}
+          try {
+            window.parent.postMessage({ source: "booked-captcha", error: text }, "*");
+          } catch (error) {}
+          fail("The security check didn't load (" + text + ").");
+          return text;
+        }
+
+        var widgetId = null;
+        var resetCount = 0;
+        var resetTimer = null;
+
+        function scheduleReset() {
+          if (resetCount >= 3) {
+            deliver("unavailable");
+            return;
+          }
+          var wait = 500 * Math.pow(2, resetCount);
+          resetCount += 1;
+          if (resetTimer) window.clearTimeout(resetTimer);
+          resetTimer = window.setTimeout(function () {
+            resetTimer = null;
+            try {
+              if (window.turnstile) window.turnstile.reset(widgetId || "#widget");
+              else deliver("unavailable");
+            } catch (error) {
+              deliver("unavailable");
+            }
+          }, wait);
+        }
+
+        window.onTurnstileReady = function () {
+          if (!window.turnstile) return;
+          if (siteKey.length === 0) {
+            // No key means the server has the challenge switched off. Say so in
+            // the one word the shell listens for, so the app carries straight on
+            // rather than parking a person in front of an empty box.
+            deliver("unconfigured");
+            return;
+          }
+          try {
+            widgetId = window.turnstile.render("#widget", {
+              sitekey: siteKey,
+              theme: theme,
+              appearance: "interaction-only",
+              size: "flexible",
+              action: "signin",
+              retry: "auto",
+              "refresh-expired": "auto",
+              callback: function (token) {
+                resetCount = 0;
+                if (resetTimer) window.clearTimeout(resetTimer);
+                deliver(token);
+              },
+              "before-interactive-callback": function () {
+                reportStatus("ready");
+                reportStatus("rendered");
+                reportStatus("interactive");
+              },
+              "after-interactive-callback": function () {
+                reportStatus("interactive");
+              },
+              "error-callback": function (code) {
+                reportError(code);
+                scheduleReset();
+              },
+              "expired-callback": function () {
+                // A token is good once and briefly. Reset rather than leaving a
+                // stale one that the server would refuse with no explanation.
+                if (window.turnstile) window.turnstile.reset(widgetId || "#widget");
+              },
+            });
+            reportStatus("rendered");
+            reportStatus("ready");
+          } catch (error) {
+            reportError("render");
+            deliver("unavailable");
+          }
+        };
+
+        // If the script itself never arrives, don't strand the person behind a
+        // blank panel — tell the shell to carry on. The server still rate-limits
+        // every one of these doors, so this degrades rather than opens up.
+        window.setTimeout(function () {
+          if (!window.turnstile) deliver("unavailable");
+        }, 9000);
+      })();
+    </script>
+    <script>
+      (function () {
+        function protectsWidget(el) {
+          var widget = document.getElementById("widget");
+          if (!widget || !el || el.nodeType !== 1) return false;
+          // The check, everything inside it, and every ancestor that holds it.
+          return el === widget || widget.contains(el) || el.contains(widget);
+        }
+        function classText(el) {
+          try {
+            if (typeof el.className === "string") return el.className;
+            return (el.getAttribute && el.getAttribute("class")) || "";
+          } catch (error) {
+            return "";
+          }
+        }
+        function marked(el) {
+          if (!el || protectsWidget(el)) return false;
+          var text = ((el.innerText || (el.getAttribute && el.getAttribute("aria-label")) || "") + "").replace(/\s+/g, " ").trim();
+          var mark = ((el.id || "") + " " + classText(el)).toLowerCase();
+          return /^publish$/i.test(text) || /in preview/i.test(text) || /share your work/i.test(text) || /rork/i.test(text) || mark.indexOf("rork") >= 0 || mark.indexOf("preview") >= 0;
+        }
+        function hide(el) {
+          if (!marked(el)) return;
+          var node = el;
+          for (var i = 0; i < 4 && node.parentElement && node.parentElement !== document.body; i++) {
+            if (protectsWidget(node.parentElement)) break;
+            var parentText = (node.parentElement.innerText || "") + "";
+            if (parentText.length < 500 && /preview|publish|rork/i.test(parentText)) node = node.parentElement;
+            else break;
+          }
+          if (node === document.body || node === document.documentElement || protectsWidget(node)) return;
+          node.style.setProperty("display", "none", "important");
+          node.style.setProperty("visibility", "hidden", "important");
+        }
+        function sweep() {
+          var nodes = document.querySelectorAll("button,a,div,span,section");
+          for (var i = 0; i < nodes.length; i++) hide(nodes[i]);
+        }
+        sweep();
+        new MutationObserver(sweep).observe(document.documentElement, { childList: true, subtree: true });
+      })();
+    </script>
+  </body>
+</html>
