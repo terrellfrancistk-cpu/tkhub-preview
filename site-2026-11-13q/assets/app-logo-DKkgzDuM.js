@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-NZYk81nU.js";import{u as t}from"./site-shell-CovPWsit.js";var n=e();function r({product:e,size:r=48}){return(0,n.jsx)(`img`,{src:t(e),alt:`${e.name} logo`,width:r,height:r,className:`shrink-0 overflow-hidden rounded-xl object-contain`,style:{width:r,height:r,background:`transparent`}})}export{r as t};
