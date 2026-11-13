@@ -1,1 +1,0 @@
-TK Hub preview: Claude live static home + WRACE→TORQ footer + PR#12 emails + theme-fix (sections follow light/dark). Noindex intent. Not production. Absolute / asset paths expect tkhub.app; open HTML for copy review or use local server.
