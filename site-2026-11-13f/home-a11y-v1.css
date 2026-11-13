@@ -1,0 +1,4 @@
+/* home-a11y-v1.css (Nov 13): WCAG AA contrast for the homepage "See the pass" link in light mode.
+   Live: #00cbf6 inside a .8-opacity line on the cream page = 1.72:1 (AA needs 4.5:1). Same cyan hue, deeper, so the
+   blended colour reaches about 5:1. Dark mode keeps the live colour (it already passes). Additive; nothing removed. */
+[data-theme=light] .ux5-pass a{color:#00566e}
