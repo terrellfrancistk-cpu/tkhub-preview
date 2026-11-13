@@ -1,0 +1,14 @@
+# Cloudflare-style headers. The web host already sends HSTS and
+# X-Content-Type-Options. These add the rest of the basic set where the host
+# reads a _headers file. Geolocation stays available to this origin because
+# Curb Roadside uses it. Camera and microphone are not used on the site.
+/*
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: camera=(), microphone=(), geolocation=(self)
+
+/.well-known/apple-app-site-association
+  Content-Type: application/json
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Content-Type-Options: nosniff
