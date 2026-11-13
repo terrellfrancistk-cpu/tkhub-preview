@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-BWRPWl8p.js";import t,{SALON_PRIVE as n}from"./Blackjack-6uf1QOjA.js";var r=e(),i=()=>(0,r.jsx)(t,{room:n});export{i as default};
