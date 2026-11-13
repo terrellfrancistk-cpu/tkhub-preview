@@ -1,0 +1,1 @@
+import{St as e,Wt as t,b as n}from"./index-BJ0xIr4Z.js";function r(){let{user:r,isLoading:i}=e(),a=t({queryKey:[`studio-access`,r?.id??`signed-out`],queryFn:n,enabled:!!r&&!i,retry:!1,staleTime:6e4});return{user:r,isLoading:i||!!r&&a.isLoading,isOwner:a.data?.owner===!0}}export{r as t};

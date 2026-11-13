@@ -1,0 +1,1 @@
+import{i as e}from"./types-OLodn-20.js";var t=e().trim().toLowerCase().min(1,`Enter your email address.`).max(254,`That address is too long to be real.`).email(`That does not look like an email address.`).regex(/^[^\s@]+@[^\s@.]+(\.[^\s@.]+)*\.[a-z]{2,}$/i,`Check the part after the @ — it needs a domain like gmail.com.`);export{t};

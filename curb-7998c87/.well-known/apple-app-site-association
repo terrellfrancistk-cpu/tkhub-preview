@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "GF7Q89UD42.app.rork.ltw99ny0sidk35iz88wvt",
+        "paths": ["/join/*", "/t/*", "/c/*", "/i/*", "/auth/*"]
+      }
+    ]
+  }
+}
