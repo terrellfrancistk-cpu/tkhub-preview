@@ -1,0 +1,15 @@
+{
+  "name": "NOIR — Nights of Riches",
+  "short_name": "NOIR",
+  "description": "A social casino of virtual tables. Virtual gold. No cash out.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0A0A0A",
+  "theme_color": "#0A0A0A",
+  "icons": [
+    { "src": "/tkhub-preview/noir-1113-review/noir-icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/tkhub-preview/noir-1113-review/noir-icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/tkhub-preview/noir-1113-review/icon.png", "sizes": "1024x1024", "type": "image/png" }
+  ]
+}
