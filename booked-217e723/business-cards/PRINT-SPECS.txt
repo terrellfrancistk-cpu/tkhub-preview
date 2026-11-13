@@ -1,0 +1,39 @@
+BOOKED — BUSINESS CARD PRINT SPECS
+==================================
+
+Size            3.5 x 2 in (standard US business card), landscape
+Resolution      300 DPI
+Bleed           0.125 in on all four sides (files marked "-bleed")
+Safe area       Keep 0.125 in clear inside the trim — already respected
+Colour          RGB files. Any print shop converts to CMYK; the terracotta
+                (#A5461A) prints closest to Pantone 1675 C if asked.
+Paper advice    16pt or 18pt uncoated / matte. The design is warm paper and
+                ink — a glossy stock fights it.
+Finish          Matte or soft-touch. No UV gloss.
+
+FILES
+-----
+booked-card-homeowners.pdf   Front + back, ready to upload (homeowner back)
+booked-card-pros.pdf         Front + back, ready to upload (pro/contractor back)
+
+booked-front-bleed.png             Front, with bleed (1126 x 676 px)
+booked-back-homeowners-bleed.png   Back for homeowners, with bleed
+booked-back-pros-bleed.png         Back for pros, with bleed
+
+*-trim.png                   Same art cut to the finished 1050 x 600 px size,
+                             for anywhere that does not want bleed.
+
+WHAT IS ON THEM
+---------------
+Front (shared)   App icon, Booked wordmark, tagline, the one-line pitch,
+                 The Booked team, booked@tkhub.app, Dallas-Fort Worth,
+                 and a QR code to the Booked site.
+Back A           For homeowners: how it works in three steps, the 8% service
+                 fee, $15 minimum job, and what Booked Plus removes.
+Back B           For pros: how it works in three steps, keep 90% of every job,
+                 $0 to join, no lead fees, and what Pro+ adds.
+
+ORDERING
+--------
+Upload the PDF and pick "double-sided". If the shop asks whether the file
+includes bleed, the answer is yes — 0.125 in.
