@@ -1,1 +1,0 @@
-function e(e,t,n,r){let i=!0,a=!1,o=t(e=>{i&&(a=!0,n(e))});return e().then(e=>{i&&!a&&n(e)}).catch(()=>{i&&!a&&r()}),()=>{i=!1,o()}}export{e as t};

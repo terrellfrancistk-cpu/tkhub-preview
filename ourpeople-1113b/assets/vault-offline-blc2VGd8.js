@@ -1,1 +1,0 @@
-var e=e=>`op.vault.offline.v1.${e.toLowerCase()}`;function t(t){try{let n=window.localStorage.getItem(e(t)),r=n?JSON.parse(n):null;if(r&&Array.isArray(r.items))return r}catch{}return{keyRow:null,items:[]}}function n(t,n){try{window.localStorage.setItem(e(t),JSON.stringify(n))}catch{}}function r(t){try{window.localStorage.removeItem(e(t))}catch{}}export{t as n,n as r,r as t};

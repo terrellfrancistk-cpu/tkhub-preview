@@ -1,1 +1,0 @@
-import{i as e,t}from"./react-B8IZ02wI.js";import{l as n,r}from"./dist-ChUpJWiJ.js";var i=e(t(),1),a=()=>{let e=n(),[t]=r();return(0,i.useEffect)(()=>{let n=t.get(`next`);e(n?`/account?next=${encodeURIComponent(n)}`:`/account`,{replace:!0})},[e,t]),null};export{a as default};

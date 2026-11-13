@@ -1,0 +1,4 @@
+ROLE website preview of tryrole main at 2000c5f (Nov 13, 2026). NOT live.
+This is exactly what publishing tryrole main would put on tryrole.app's public pages:
+#31 (never published), #33 security fixes, #34 privacy fixes. Static snapshot of the production build;
+sign-in and the app open on tryrole.app. Publish only after Terrell approves this exact build.

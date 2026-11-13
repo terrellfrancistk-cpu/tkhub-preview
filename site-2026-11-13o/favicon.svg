@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" fill="#050607"/>
-  <path fill="#2ee6ff" d="M16 3.2 L28.6 13.6 V27.4 C28.6 28.5 27.7 29.4 26.6 29.4 H5.4 C4.3 29.4 3.4 28.5 3.4 27.4 V13.6 Z"/>
-  <path fill="#050607" d="M16 5.6 L26.4 14.2 V26.8 C26.4 27.3 26 27.7 25.5 27.7 H6.5 C6 27.7 5.6 27.3 5.6 26.8 V14.2 Z"/>
-  <path fill="#2ee6ff" d="M16 7.2 L24.6 14.8 V25.8 C24.6 26.3 24.2 26.7 23.7 26.7 H8.3 C7.8 26.7 7.4 26.3 7.4 25.8 V14.8 Z"/>
-  <text x="16" y="23.2" text-anchor="middle" font-family="Arial Black, Helvetica, sans-serif" font-size="8.4" font-weight="900" fill="#050607">TK</text>
-</svg>

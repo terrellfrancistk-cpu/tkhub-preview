@@ -1,0 +1,173 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ROLE · Try it (demo)</title><meta name="robots" content="noindex">
+<style>
+@font-face{font-family:Fr;src:url(a/fr500.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:SS;src:url(a/ss400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:SS;src:url(a/ss600.woff2) format("woff2");font-weight:600;font-display:swap}
+:root{--bg:#121714;--sf:#1c2420;--ink:#efeae0;--mut:#9a958a;--ln:#2e3a34;--acc:#c4d4c8;--afg:#121714;--warn:#e08a7a;--ok:#8fb89a;--tint:#c4d4c8}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:#070908;overflow:hidden;font:15px/1.45 -apple-system,"SF Pro Text",SS,system-ui,sans-serif;color:var(--ink)}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+input{font:inherit;color:var(--ink)}
+#wrap{position:absolute;inset:0;display:grid;place-items:center}
+#stage{position:relative;width:393px;height:852px;overflow:hidden;background:var(--bg);transform-origin:center}
+.sb{position:absolute;left:0;right:0;top:0;height:50px;z-index:90;display:flex;align-items:center;justify-content:space-between;padding:0 30px 0 50px;font:600 16.5px -apple-system,"SF Pro Text",system-ui,sans-serif;pointer-events:none;color:#fff}
+.isl{position:absolute;left:50%;top:11px;width:124px;height:36px;border-radius:20px;background:#000;transform:translateX(-50%)}.sbi{display:flex;gap:6px;align-items:center}
+.sbg{position:absolute;left:0;right:0;top:0;height:50px;background:var(--bg);z-index:80}
+#web{position:absolute;left:0;right:0;top:0;bottom:83px;overflow:hidden}
+.pre{position:absolute;inset:0;z-index:65;background:var(--bg);overflow-y:auto;scrollbar-width:none;padding-top:50px}.pre::-webkit-scrollbar,.scr::-webkit-scrollbar{display:none}
+.hide{display:none!important}
+.F{font-family:Fr,"Fraunces",Georgia,serif;font-weight:500}
+/* login (web /login inside the WKWebView) */
+.lh{display:flex;justify-content:space-between;align-items:center;padding:20px 16px}
+.lh .F{font-size:25px;color:var(--acc);letter-spacing:-.01em}
+.ob{height:44px;padding:0 16px;border:1px solid var(--ln);background:var(--sf);border-radius:10px;font-size:14px;font-weight:500}
+.lm{padding:24px 20px 30px}
+.bars{display:block;margin:22px auto 0;width:48px;height:28px}
+.lt{text-align:center;font-size:30px;color:var(--acc);margin-top:6px}
+.ac{text-align:center;font-size:12.5px;color:var(--mut);margin-top:8px}
+.lt2{text-align:center;font-size:29px;line-height:1.25;margin-top:20px}
+.door{display:block;width:100%;height:46px;border:1px solid var(--ln);background:var(--sf);border-radius:10px;font-size:14.5px;font-weight:500;margin-top:12px}
+.door:first-child{margin-top:0}
+.hr{height:1px;background:var(--ln);margin:32px 0 26px}
+.lab{font-size:14px;color:var(--mut);display:block;margin-top:12px}
+.inp{display:block;width:100%;height:44px;margin-top:6px;padding:0 13px;border:1px solid var(--ln);background:var(--sf);border-radius:10px;outline:0;font-size:15px}
+.inp::placeholder{color:#76736b}
+.pri{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:46px;margin-top:14px;border-radius:10px;background:var(--acc);color:var(--afg);font-weight:600}
+.tx{display:block;width:100%;height:40px;margin-top:6px;font-size:14px;color:var(--acc);font-weight:500}
+.ln{font-size:13.5px;color:var(--mut);margin-top:10px}
+.err{font-size:14px;color:var(--warn);margin-top:10px}
+.tkm{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:22px;color:var(--mut);font-size:12px;letter-spacing:.08em}
+.foot{border-top:1px solid var(--ln);padding:20px 20px 30px;font-size:13px;color:var(--mut);display:flex;flex-wrap:wrap;gap:8px 16px}
+.spin{width:16px;height:16px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:sp .8s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+/* app content (web /app) */
+#app{position:absolute;inset:0;display:flex;flex-direction:column}
+.demo{position:absolute;top:54px;left:50%;transform:translateX(-50%);z-index:60;font-size:10px;letter-spacing:.14em;font-weight:700;background:var(--acc);color:var(--afg);padding:3px 9px;border-radius:99px}
+.scr{flex:1;overflow-y:auto;padding:84px 16px 28px;scrollbar-width:none}
+.h1{font-family:Fr,Georgia,serif;font-size:30px;font-weight:500;letter-spacing:-.01em}.h2{font-family:Fr,Georgia,serif;font-size:22px;font-weight:500}.mut{color:var(--mut);font-size:13.5px}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:12px;padding:14px;margin-top:12px}
+.btn{display:block;width:100%;padding:13px;border-radius:10px;background:var(--acc);color:var(--afg);font-weight:600;text-align:center;margin-top:12px}
+.btn.ghost{background:var(--sf);border:1px solid var(--ln);color:var(--ink)}.btn:disabled{opacity:.45}
+.row{display:flex;align-items:center;gap:10px}.sp{flex:1}
+.pill{display:inline-block;font-size:11px;font-weight:600;padding:3px 8px;border-radius:99px;background:#24332b;color:var(--ok)}.pill.w{background:#3a2622;color:var(--warn)}.pill.g{background:#2a2f2b;color:var(--mut)}
+.score{font-family:Fr,Georgia,serif;font-size:40px}.bar{height:6px;border-radius:9px;background:var(--ln);overflow:hidden;margin-top:6px}.bar i{display:block;height:100%;background:var(--acc);transition:width .4s}
+.toast{position:absolute;left:14px;right:14px;bottom:14px;background:var(--ink);color:var(--bg);padding:12px 14px;border-radius:10px;font-weight:600;z-index:70;font-size:14px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.chip{padding:7px 12px;border-radius:99px;border:1px solid var(--ln);font-size:13px}.chip.on{background:var(--acc);color:var(--afg);border-color:var(--acc)}
+ul.l{margin:6px 0 0 18px;font-size:14px}
+/* native tab bar (SwiftUI, .ultraThinMaterial) */
+.tb{position:absolute;left:0;right:0;bottom:0;height:83px;z-index:75;display:flex;padding-top:6px;background:rgba(44,48,46,.94);backdrop-filter:blur(20px);border-top:.5px solid rgba(255,255,255,.12)}
+.tb button{flex:1;height:44px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font:400 11px -apple-system,"SF Pro Text",system-ui,sans-serif;color:#98989f}
+.tb button.on{color:var(--tint)}.tb svg{width:24px;height:22px}
+.hi{position:absolute;bottom:8px;left:50%;width:134px;height:5px;border-radius:3px;background:#fff;transform:translateX(-50%);z-index:95}
+/* native App sheet (Form) */
+.dim{position:absolute;inset:0;background:rgba(0,0,0,.45);z-index:85}
+.sh{position:absolute;left:0;right:0;bottom:0;top:58px;z-index:86;background:#000;border-radius:12px 12px 0 0;overflow-y:auto;font-family:-apple-system,"SF Pro Text",system-ui,sans-serif;padding:0 16px 40px;transition:transform .3s}
+.sh .nb{display:flex;justify-content:space-between;align-items:center;height:52px}.sh .nb b{font-size:17px}.sh .nb button{color:var(--tint);font-size:17px;font-weight:600}
+.gh{font-size:13px;color:#8d8d93;text-transform:uppercase;margin:22px 16px 7px}
+.gp{background:#1c1c1e;border-radius:10px;overflow:hidden}
+.gr{display:flex;align-items:center;justify-content:space-between;min-height:44px;padding:0 16px;font-size:17px;border-top:.5px solid #38383a;width:100%;text-align:left}.gr:first-child{border-top:0}
+.gr.a{color:var(--tint)}.gr .v{color:#8d8d93}
+.tg{width:51px;height:31px;border-radius:16px;background:#39393d;position:relative;transition:.2s}.tg::after{content:"";position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#fff;transition:.2s}.tg.on{background:#34c759}.tg.on::after{left:22px}
+.note{font-size:13px;color:#8d8d93;padding:8px 16px}
+</style></head><body><div id="wrap"><div id="stage">
+<div id="web"><div id="app"></div>
+<div class="pre" id="si">
+ <div class="lh"><span class="F">ROLE</span><button class="ob" onclick="tst('Ads opens the ROLE ads page in the app. Demo only.')">Ads</button></div>
+ <div class="lm">
+  <button class="ob" onclick="tst('Back returns to the ROLE home page. You are already at the start of the demo.')">Back</button>
+  <svg class="bars" viewBox="0 0 48 28"><rect x="2" y="6" width="8" height="18" rx="1.5" fill="#3d5c4e"/><rect x="20" y="2" width="8" height="22" rx="1.5" fill="#3d5c4e"/><rect x="38" y="6" width="8" height="18" rx="1.5" fill="#3d5c4e"/></svg>
+  <p class="F lt">ROLE</p>
+  <p class="ac">Resume. Optimized. Letter. Evidence.</p>
+  <h1 class="F lt2" id="ttl">One role. One packet.<br>No fiction.</h1>
+  <div style="margin-top:26px" id="doors">
+   <button class="door" onclick="door('Apple')">Continue with Apple</button>
+   <button class="door" onclick="door('Google')">Continue with Google</button>
+   <button class="door" onclick="door('X')">Continue with X</button>
+  </div>
+  <div class="hr"></div>
+  <p class="ln" style="margin-top:0">Email and password. Nothing is texted.</p>
+  <form onsubmit="return mail(event)">
+   <label class="lab" style="margin-top:8px"><span class="hide">Email</span><input class="inp" id="em" type="email" placeholder="you@email.com" autocomplete="off"></label>
+   <label class="lab"><span class="hide">Password</span><input class="inp" id="pw" type="password" placeholder="8 or more characters" autocomplete="off"></label>
+   <p class="err hide" id="er"></p>
+   <button class="pri" id="go" type="submit">Create account</button>
+   <button class="door" type="button" style="margin-top:12px" onclick="link()">Email me a link</button>
+   <p class="ln hide" id="lk"></p>
+   <button class="tx" type="button" id="sw" onclick="sw()">Already have an account? Sign in</button>
+  </form>
+  <p style="text-align:center;margin-top:16px;font-size:14px;color:var(--mut)">Back to ROLE</p>
+  <div class="tkm"><svg width="18" height="18" viewBox="0 0 18 18"><rect x="1" y="1" width="16" height="16" rx="4" fill="none" stroke="currentColor"/><path d="M5 6h8M9 6v7" stroke="currentColor" stroke-width="1.6"/></svg>A TK HUB LLC APP</div>
+ </div>
+ <div class="foot"><span>Privacy</span><span>Terms</span><span>Support</span><span>support@tkhub.app</span><span style="flex-basis:100%">© 2026 TK Hub LLC. Sample screens; nothing is sent.</span></div>
+</div>
+</div>
+<div class="sbg"></div>
+<div class="sb"><span>9:41</span><span class="sbi"><svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor"><path d="M9 2.2c2.6 0 5 1 6.8 2.7l1.2-1.2A11.3 11.3 0 0 0 9 .5 11.3 11.3 0 0 0 1 3.7l1.2 1.2A9.6 9.6 0 0 1 9 2.2m0 3.4c1.7 0 3.2.6 4.4 1.7l1.2-1.2A8 8 0 0 0 9 3.9a8 8 0 0 0-5.6 2.2l1.2 1.2A6.3 6.3 0 0 1 9 5.6m0 3.4c.8 0 1.5.3 2 .8L9 12 7 9.8c.5-.5 1.2-.8 2-.8"/></svg><svg width="27" height="13" viewBox="0 0 27 13"><rect x=".5" y=".5" width="23" height="12" rx="3.8" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="20" height="9" rx="2.5" fill="currentColor"/><path d="M25 4.5v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2" fill="currentColor" opacity=".4"/></svg></span></div>
+<nav class="tb" id="tb"></nav><div class="hi"></div>
+<div id="sheet"></div>
+</div></div>
+<script src="try-bridge.js"></script>
+<script>
+/* ROLE iPhone demo: SwiftUI shell (tab bar, App sheet) around the ROLE web app. Nothing is sent, charged or read. */
+let MODE='up',tsT;
+function g(i){return document.getElementById(i)}
+function tst(t){clearTimeout(tsT);let e=document.querySelector('.toast');if(!e){e=document.createElement('div');e.className='toast';g('web').appendChild(e)}e.textContent=t;tsT=setTimeout(()=>e.remove(),1600)}
+function busy(lbl){const b=g('go');b.innerHTML='<span class="spin"></span> '+lbl;document.querySelectorAll('#si button,#si input').forEach(x=>x.disabled=true);setTimeout(enterApp,1100)}
+function door(p){g('go').scrollIntoView&&0;busy('Opening sign-in…')}
+function mail(e){e.preventDefault();const em=g('em').value.trim(),pw=g('pw').value;const er=g('er');if(!em.includes('@')){er.textContent='Enter your email first.';er.classList.remove('hide');return false}if(pw.length<8){er.textContent='Use 8 or more characters for your password.';er.classList.remove('hide');return false}er.classList.add('hide');busy(MODE==='up'?'Creating your account…':'Signing in…');return false}
+function link(){const em=g('em').value.trim(),er=g('er');if(!em.includes('@')){er.textContent='Enter your email first.';er.classList.remove('hide');return}er.classList.add('hide');const l=g('lk');l.textContent='Check your email for the sign-in link. Nothing is texted. (Demo: no email is sent, opening the app…)';l.classList.remove('hide');setTimeout(enterApp,3000)}
+function sw(){MODE=MODE==='up'?'in':'up';lab()}
+function lab(){g('go').textContent=MODE==='up'?'Create account':'Sign in';g('sw').textContent=MODE==='up'?'Already have an account? Sign in':'New here? Create account';g('er').classList.add('hide');g('lk').classList.add('hide')}
+function resetSi(){document.querySelectorAll('#si button,#si input').forEach(x=>x.disabled=false);g('em').value='';g('pw').value='';lab();g('si').scrollTop=0}
+function enterApp(){g('si').classList.add('hide');S.screen='app';S.tab='home';render();tabbar()}
+function signOut(){closeSheet();MODE='in';resetSi();g('si').classList.remove('hide');S.screen='signin';tabbar()}
+const IC={home:'<svg viewBox="0 0 24 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 10 12 2.5 21 10M5.5 8v11.5h4.5v-6h4v6h4.5V8"/></svg>',
+homeF:'<svg viewBox="0 0 24 22" fill="currentColor"><path d="M12 2 2.5 10l1 1.2L5 10v10h5v-6h4v6h5V10l1.5 1.2 1-1.2z"/></svg>',
+tracker:'<svg viewBox="0 0 24 22" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="3" width="19" height="16" rx="3"/><path d="M6.5 8h2M11 8h7M6.5 11h2M11 11h7M6.5 14h2M11 14h7"/></svg>',
+hunt:'<svg viewBox="0 0 24 22" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="11" r="7.5"/><circle cx="12" cy="11" r="1.6" fill="currentColor"/><path d="M12 1v4.5M12 16.5V21M2 11h4.5M17.5 11H22"/></svg>',
+settings:'<svg viewBox="0 0 24 22" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="11" r="3"/><path d="M12 1.8l1.6 2.4 2.8-.7.6 2.8 2.6 1.3-1.1 2.6 1.1 2.6-2.6 1.3-.6 2.8-2.8-.7L12 20.2l-1.6-2.4-2.8.7-.6-2.8-2.6-1.3L5.5 11.8 4.4 9.2 7 7.9l.6-2.8 2.8.7z"/></svg>',
+app:'<svg viewBox="0 0 24 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 5h11M18 5h3M3 11h4M11 11h10M3 17h13M20 17h1"/><circle cx="16" cy="5" r="2"/><circle cx="9" cy="11" r="2"/><circle cx="18" cy="17" r="2"/></svg>'};
+function tabbar(){const sel=S.screen!=='app'?'':({home:'home',resume:'home',tracker:'tracker',interviews:'tracker',hunt:'hunt',settings:'settings',plan:'settings'})[S.tab]||'';
+ g('tb').innerHTML=[['home','Home'],['tracker','Tracker'],['hunt','Hunt'],['settings','Settings']].map(([k,l])=>`<button class="${sel===k?'on':''}" onclick="tabGo('${k}')">${sel===k&&k==='home'?IC.homeF:IC[k]}<span>${l}${k==='tracker'&&S.screen==='app'&&S.tracker.length?' •':''}</span></button>`).join('')+`<button onclick="openSheet()">${IC.app}<span>App</span></button>`}
+function tabGo(k){if(S.screen!=='app'){tst('Sign in first. Your '+k[0].toUpperCase()+k.slice(1)+' opens after sign-in.');return}go(k)}
+let SH={lock:false,hap:true,notif:false,note:''};
+function openSheet(){g('sheet').innerHTML=`<div class="dim" onclick="closeSheet()"></div><div class="sh"><div class="nb"><span></span><b>App</b><button onclick="closeSheet()">Done</button></div>
+<p class="gh">Security</p><div class="gp"><div class="gr">Lock with Face ID<button class="tg ${SH.lock?'on':''}" onclick="SH.lock=!SH.lock;openSheet()"></button></div></div>
+<p class="gh">Feel</p><div class="gp"><div class="gr">Haptics<button class="tg ${SH.hap?'on':''}" onclick="SH.hap=!SH.hap;openSheet()"></button></div><div class="gr">Notifications<button class="tg ${SH.notif?'on':''}" onclick="SH.notif=!SH.notif;openSheet()"></button></div></div>
+<p class="gh">Plan</p><div class="gp"><button class="gr a" onclick="sheetGo('plan')">Seat and Bench plans</button><button class="gr a" onclick="SH.note='Manage subscription opens the App Store sheet. Nothing is charged in this demo.';openSheet()">Manage subscription</button><button class="gr a" onclick="SH.note='No active ROLE plan found for this Apple Account. (Demo)';openSheet()">Restore purchases</button>${SH.note?`<p class="note">${SH.note}</p>`:''}</div>
+<p class="gh">About</p><div class="gp"><button class="gr a" onclick="closeSheet();tst('Privacy Policy: tryrole.app/privacy')">Privacy Policy</button><button class="gr a" onclick="closeSheet();tst('Terms: tryrole.app/terms')">Terms</button><div class="gr">Version<span class="v">1.9.5 (3)</span></div></div>
+<p class="note" style="margin-top:14px">Demo settings. Nothing here is saved or sent.</p></div>`}
+function sheetGo(k){closeSheet();if(S.screen==='app')go(k);else tst('Plans: Seat $14.99/mo, Bench $29.99/mo. Sign in to pick one.')}
+function closeSheet(){g('sheet').innerHTML=''}
+function showLogin(){g('si').classList.remove('hide')}
+/* ROLE demo. Runs entirely in this page: no account, no resume upload, no applications sent, no email read. */
+const $=s=>document.querySelector(s),app=$('#app');
+const JOBS=[['Product Analyst','Northwind Health','Fort Worth, TX · Hybrid','$78–92k',91,88],['Operations Analyst','Brightline Freight','Dallas, TX · On-site','$70–84k',86,82],['Data Analyst II','Cedar Bank','Remote (US)','$85–100k',79,74],['Senior BI Engineer','Halcyon Labs','Austin, TX · Hybrid','$140–160k',58,61]];
+const S={screen:'app',tab:'home',locked:[],packets:{},tracker:[],titles:['Product Analyst','Operations Analyst','Data Analyst'],sent:0};
+let toastT;function toast(t){clearTimeout(toastT);let e=$('.toast');if(!e){e=document.createElement('div');e.className='toast';app.appendChild(e)}e.textContent=t;toastT=setTimeout(()=>e.remove(),1600)}
+function go(t){S.tab=t;clearTimeout(toastT);const e=$('.toast');if(e)e.remove();render();const s=$('.scr');if(s)s.scrollTop=0}
+function render(){let h='<div class="demo">DEMO</div>';if(S.screen==='signin')h+=signin();else h+=`<div class="scr">${({home,resume,hunt,tracker,interviews,plan,settings})[S.tab]()}</div>`+tabs();app.innerHTML=h}
+function tabs(){return ''}
+function signin(){showLogin();return ''}
+function resume(){return `<div class="h1">Your record</div><p class="mut">ROLE writes only from this. It never invents a job you did not do.</p><div class="card"><b>Jordan Reyes</b> <span class="pill">Sample</span><p class="mut">Fort Worth, TX · 6 years in operations and analytics</p></div><div class="card"><b>Logistics Analyst · Cargo Plains</b><p class="mut">2021 – now</p><ul class="l"><li>Cut late shipments 18% with a weekly carrier scorecard</li><li>Built the SQL + Tableau ops dashboard used by 40 managers</li></ul></div><div class="card"><b>Operations Coordinator · Lakeview Clinics</b><p class="mut">2018 – 2021</p><ul class="l"><li>Scheduled 9 clinics; no-shows down 11%</li></ul></div><div class="card"><b>Titles you'll take</b><div class="chips">${S.titles.map(t=>`<span class="chip on">${t}</span>`).join('')}</div></div><button class="btn" onclick="go('hunt')">Find jobs for these titles</button>`}
+function hunt(){return `<div class="h1">Hunt</div><p class="mut">Company career pages that match your titles. Lock the ones you want; ROLE writes a packet for each.</p>${JOBS.map((j,i)=>{const p=S.packets[i];return `<div class="card"><div class="row"><div><b>${j[0]}</b><br><span class="mut">${j[1]} · ${j[2]}</span></div><span class="sp"></span><span class="mut">${j[3]}</span></div>${p?packetView(i):`<button class="btn ${S.locked.includes(i)?'ghost':''}" onclick="lock(${i})">${S.locked.includes(i)?'Writing packet…':'🔒 Lock this job'}</button>`}</div>`}).join('')}`}
+function lock(i){if(S.locked.includes(i))return;S.locked.push(i);render();let r=40,c=38;const j=JOBS[i];const t=setInterval(()=>{r=Math.min(j[4],r+9);c=Math.min(j[5],c+9);S.packets[i]={r,c,done:r===j[4]&&c===j[5]};if(S.packets[i].done)clearInterval(t);if(S.tab==='hunt')render()},450)}
+function packetView(i){const p=S.packets[i],j=JOBS[i],pass=p.r>=70&&p.c>=70,sent=S.tracker.some(x=>x.i===i);return `<div class="row" style="margin-top:12px;gap:16px"><div class="sp"><span class="mut">Resume ATS</span><div class="score">${p.r}</div><div class="bar"><i style="width:${p.r}%"></i></div></div><div class="sp"><span class="mut">Cover letter</span><div class="score">${p.c}</div><div class="bar"><i style="width:${p.c}%"></i></div></div></div>${!p.done?'<p class="mut" style="margin-top:8px">Tailoring from your record, aiming for 99…</p>':sent?'<p class="mut" style="margin-top:8px">✓ In your Tracker.</p>':pass?`<button class="btn" onclick="send(${i})">Apply on ${j[1]}'s career page</button>`:`<p style="margin-top:10px;color:var(--warn);font-size:14px"><b>Held.</b> Under 70, so ROLE won't send it. Your record doesn't support this level yet.</p>`}`}
+function send(i){S.tracker.unshift({i,step:0});S.sent++;toast('Applied (demo). Nothing was actually sent.');render();const x=S.tracker[0];const t=setInterval(()=>{x.step++;if(x.step>=3)clearInterval(t);if(x.step===2)toast('📬 Interview request from '+JOBS[i][1]);if(S.screen==='app')render()},5000)}
+const ST=['Applied','Confirmation in mailbox','Interview requested','Interview booked'];
+function tracker(){return `<div class="h1">Tracker</div><p class="mut">${S.sent} of 50 this month on Seat (demo)</p>${S.tracker.length?S.tracker.map(x=>{const j=JOBS[x.i];return `<div class="card"><div class="row"><div><b>${j[0]}</b><br><span class="mut">${j[1]}</span></div><span class="sp"></span><span class="pill ${x.step>=2?'':'g'}">${ST[x.step]}</span></div>${x.step===2?`<button class="btn" onclick="go('interviews')">Pick an interview time</button>`:''}</div>`}).join(''):'<div class="card"><b>Nothing sent yet</b><p class="mut">Lock a job in Hunt. Sent applications and replies show up here.</p></div>'}<div class="card"><div class="row"><b>Captcha at Halcyon Labs</b><span class="sp"></span><span class="pill w">Skipped</span></div><p class="mut">Sample: when a site blocks bots, ROLE keeps the packet so you can send it yourself. It never counts it as sent.</p></div>`}
+function interviews(){const x=S.tracker.find(t=>t.step>=2);if(!x)return `<div class="h1">Interviews</div><div class="card"><b>No requests yet</b><p class="mut">When an employer replies, ROLE reads the request and offers times that fit your calendar. You confirm.</p></div><button class="btn ghost" onclick="toast('Practice question: Tell me about a time you used data to change a process.')">Practice a question</button>`;const j=JOBS[x.i];
+ return `<div class="h1">Interviews</div><div class="card"><b>${j[1]} · ${j[0]}</b><p class="mut">30-minute video call with the hiring manager</p>${x.step>=3?`<p style="margin-top:10px"><span class="pill">Booked</span> ${x.time} (demo, no invite sent)</p>`:`<div class="chips">${['Tue 10:00 AM','Tue 2:30 PM','Wed 11:00 AM'].map(t=>`<button class="chip" onclick="book('${t}')">${t}</button>`).join('')}</div>`}</div><button class="btn ghost" onclick="toast('Practice question: Tell me about a time you used data to change a process.')">Practice a question</button>`}
+function book(t){const x=S.tracker.find(t=>t.step>=2);x.step=3;x.time=t;toast('Time confirmed (demo). No calendar invite was sent.');render()}
+function plan(){return `<div class="h1">Plan</div><div class="card"><div class="row"><b>Seat</b><span class="sp"></span><b>$14.99/mo</b></div><p class="mut">50 applications a month</p></div><div class="card"><div class="row"><b>Bench</b><span class="sp"></span><b>$29.99/mo</b></div><p class="mut">150 applications a month</p></div><p class="mut" style="margin-top:10px">14-day trial in the app. Nothing is charged in this demo.</p><button class="btn ghost" onclick="signOut()">Sign out of demo</button>`}
+
+function home(){return `<div class="h1">Home</div><p class="mut">Jordan Reyes · Seat plan (demo)</p><div class="card"><div class="row"><b>This month</b><span class="sp"></span><span class="pill">${S.sent} of 50 sent</span></div><p class="mut" style="margin-top:4px">Lock jobs in Hunt. Only packets at ATS 70 or higher are sent.</p></div><div class="row" style="gap:8px"><button class="btn" onclick="go('hunt')">Open Hunt</button><button class="btn ghost" onclick="go('interviews')">Interviews</button></div><div style="margin-top:22px"></div>`+resume()}
+function settings(){return `<div class="h1">Settings</div><p class="mut">Account, plan and interview practice.</p><div class="card"><b>Account</b><p class="mut">demo@tryrole.app · sample data only</p></div><button class="btn ghost" onclick="go('interviews')">Interviews and practice</button><div style="margin-top:22px"></div>`+plan().replace('<div class="h1">Plan</div>','<div class="h2">Plan</div>')}
+
+const _render=render;render=function(){_render();tabbar()};
+S.screen='signin';tabbar();
+function fit(){const k=Math.min(innerWidth/393,innerHeight/852);g('stage').style.transform='scale('+k+')'}addEventListener('resize',fit);fit();
+</script><script id="nologin">/* Website demo: no sign-in. Opens straight into the signed-in app. */
+function signOut(){try{closeSheet()}catch(e){}S.screen='app';S.tab='home';render();tabbar()}
+enterApp();
+</script></body></html>
