@@ -1,0 +1,134 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=yes">
+<meta name="robots" content="noindex,nofollow"><title>Drive · TK Hub</title>
+<meta http-equiv="Cache-Control" content="no-cache">
+<link rel="preload" href="../logos/tkhub-mark.png?v=23" as="image">
+<style>
+:root{--c:#00CBF6;--bg:#07080a;--glass:rgba(12,14,18,.58);--line:rgba(255,255,255,.12);--st:env(safe-area-inset-top,0px);--sl:env(safe-area-inset-left,0px);--sr:env(safe-area-inset-right,0px);--sbm:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html,body{margin:0;height:100%;background:var(--bg);color:#fff;font:500 14px/1.3 system-ui,-apple-system,Segoe UI,sans-serif;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none}
+#c{position:fixed;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .9s ease}.ready #c{opacity:1}
+.hud,.spd,.help,.pad,#z60{opacity:0;transition:opacity .6s ease .35s}.ready .hud,.ready .spd,.ready .help,.ready .pad,.ready #z60{opacity:1}
+#loading{position:fixed;inset:0;z-index:10;display:grid;place-items:center;background:radial-gradient(120% 80% at 50% 110%,#0b2a36 0%,#07080a 60%);transition:opacity .8s ease,visibility .8s}
+.ready #loading{opacity:0;visibility:hidden}
+.ld{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center}
+.ld img{width:min(150px,38vw);height:auto;filter:drop-shadow(0 0 24px rgba(0,203,246,.35))}
+.ld .bar{width:min(280px,66vw);height:6px;border-radius:6px;background:rgba(255,255,255,.1);overflow:hidden}
+.ld .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#0aa7cc,var(--c));border-radius:6px;transition:width .35s ease;box-shadow:0 0 12px rgba(0,203,246,.6)}
+.ld small{opacity:.65;letter-spacing:.14em;font-size:11px;text-transform:uppercase;font-variant-numeric:tabular-nums}
+.hud{position:fixed;z-index:4;top:calc(var(--st) + 10px);left:calc(var(--sl) + 10px);right:calc(var(--sr) + 10px);display:flex;align-items:center;gap:10px;padding:6px 8px 6px 10px;border-radius:16px;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);pointer-events:none}
+.id{min-width:0;flex:1 1 auto;display:flex;align-items:center;gap:10px}.id img{height:34px;width:auto;flex:0 0 auto}
+#carname{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.acts{display:flex;gap:6px;align-items:center;flex:0 1 auto;overflow-x:auto;scrollbar-width:none}.acts::-webkit-scrollbar{display:none}
+button,.cta{pointer-events:auto;font:600 12px system-ui;color:#fff;background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:10px;padding:8px 11px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+button:hover{background:rgba(255,255,255,.13)}button:focus-visible{outline:2px solid var(--c);outline-offset:2px}
+#snd.off{color:#ffb4a8}.cta{background:var(--c);color:#04141a;border-color:var(--c);text-decoration:none;font-weight:800}
+/* speedometer: bottom-right corner, out of the way */
+.spd{position:fixed;right:calc(var(--sr) + 16px);bottom:calc(var(--sbm) + 16px);z-index:2;pointer-events:none;padding:10px 14px 10px;border-radius:14px;background:rgba(12,14,18,.5);border:1px solid var(--line);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);min-width:136px}
+.spd .row{display:flex;align-items:baseline;gap:8px}#mph{font:800 34px/1 system-ui;font-variant-numeric:tabular-nums;min-width:2.6ch;text-align:right}.spd small{opacity:.6;letter-spacing:.18em;font-size:10px}
+#gear{margin-left:auto;font:800 18px/1 system-ui;color:var(--c)}
+#rpmw{height:4px;border-radius:4px;background:rgba(255,255,255,.12);margin-top:7px;overflow:hidden}#rpm{height:100%;background:var(--c);transform-origin:left;transform:scaleX(0)}#rpmw.red #rpm{background:#ff4d4d}
+#drift{position:fixed;left:50%;top:calc(var(--st) + 76px);transform:translateX(-50%);font:900 14px system-ui;letter-spacing:.3em;color:var(--c);opacity:0;transition:opacity .2s;pointer-events:none;text-shadow:0 0 12px rgba(0,203,246,.6)}#drift.on{opacity:1}
+#z60{position:fixed;left:calc(var(--sl) + 12px);top:calc(var(--st) + 68px);z-index:2;pointer-events:none;font-size:11px;padding:7px 10px;border-radius:10px;background:rgba(12,14,18,.5);border:1px solid var(--line);font-variant-numeric:tabular-nums}
+#z60 b{display:block;font-size:10px;letter-spacing:.16em;opacity:.65;font-weight:700}#t60{font:800 18px/1.2 system-ui}#z60.pb{border-color:var(--c);box-shadow:0 0 16px rgba(0,203,246,.5)}
+.help{position:fixed;z-index:2;pointer-events:none;font-size:11px;color:rgba(255,255,255,.75);background:rgba(12,14,18,.45);border:1px solid var(--line);border-radius:10px;padding:6px 10px;bottom:calc(var(--sbm) + 16px);left:calc(var(--sl) + 12px);max-width:calc(100vw - 200px)}
+.help kbd{font:700 10px system-ui;border:1px solid rgba(255,255,255,.25);border-radius:4px;padding:1px 4px}
+.pad{display:none;position:fixed;bottom:calc(var(--sbm) + 14px);z-index:3;gap:8px}
+.pad button{border-radius:16px;font-size:12px;letter-spacing:.06em;padding:0;touch-action:none;justify-content:center;background:rgba(12,14,18,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-weight:800}.pad button.on{background:var(--c);color:#04141a}
+#wheel{width:128px;height:128px;border-radius:50%;border:2px solid rgba(255,255,255,.25);background:rgba(9,10,12,.55);touch-action:none;pointer-events:auto;display:grid;place-items:center}#wheel i{width:96px;height:96px;border-radius:50%;border:8px solid rgba(255,255,255,.55);border-top-color:var(--c);display:block}#wheel.on{border-color:var(--c)}
+.pad.l{left:calc(var(--sl) + 12px)}.pad.r{right:calc(var(--sr) + 12px);display:none;align-items:flex-end}
+.pad .gas{width:70px;height:110px}.pad .brk{width:66px;height:80px}.pad .col{display:flex;flex-direction:column;gap:8px}.pad .sm2{width:66px;height:44px;font-size:11px}
+.touch .pad{display:flex}.touch .help{display:none}
+.touch .spd{right:calc(var(--sr) + 12px);bottom:calc(var(--sbm) + 132px);min-width:0;padding:8px 10px}.touch #mph{font-size:26px}
+#pm{display:none;position:fixed;left:50%;bottom:calc(var(--sbm) + 18px);transform:translateX(-50%);z-index:5;gap:8px;align-items:center;padding:8px;border-radius:14px;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(10px)}
+#pm small{opacity:.7;font-size:11px;max-width:300px}
+#pm{padding:4px 6px;gap:5px;flex-wrap:nowrap!important;width:auto!important;max-width:96vw;bottom:calc(var(--sbm) + 6px)}#pm button{padding:5px 9px;font-size:12px;min-height:0}#pm small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:150px;font-size:10px}.touch #rtb,.touch #spp{display:none!important}
+.photo #pm{display:flex}.photo .pad,.photo .spd,.photo .help,.photo .hud,.photo #z60,.photo #drift,.photo #drag{display:none!important}
+.shooting #pm{visibility:hidden}
+#flash{position:fixed;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:9}#flash.go{animation:fl .5s ease}@keyframes fl{from{opacity:.7}to{opacity:0}}
+#drag{display:none;position:fixed;z-index:4;right:calc(var(--sr) + 16px);top:calc(var(--st) + 68px);pointer-events:none;text-align:center}.dragmode #drag{display:block}
+#dtree{display:inline-grid;grid-template-columns:1fr;gap:6px;padding:10px;border-radius:12px;background:rgba(10,11,13,.75);border:1px solid var(--line)}
+#dtree i{width:22px;height:22px;border-radius:50%;background:#222;display:block;box-shadow:inset 0 0 6px #000}
+#dtree i.st.on{background:#ffeaa0}#dtree i.am.on{background:#ffa000;box-shadow:0 0 14px #ffa000}#dtree i.gr.on{background:#2bff5c;box-shadow:0 0 18px #2bff5c}#dtree i.rd.on{background:#ff2a2a;box-shadow:0 0 18px #ff2a2a}
+#dhint{font-size:12px;margin-top:6px;opacity:.8;max-width:160px}
+#dres{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:6;pointer-events:auto;background:rgba(10,12,15,.85);border:1px solid var(--line);border-radius:18px;padding:18px 20px;min-width:min(420px,90vw);backdrop-filter:blur(12px);text-align:center}
+#dwin{font:900 28px/1.1 system-ui;letter-spacing:.06em}#dwin.w{color:#3dff7a}#dwin.l{color:#ff5a5a}
+#dstats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}#dstats div{display:flex;flex-direction:column;gap:3px;font-variant-numeric:tabular-nums;font-size:13px}#dstats b{color:var(--c);font-size:12px;letter-spacing:.08em}
+@media (max-width:700px){.acts button span{font-size:10.5px}.acts{gap:4px}.hud{top:calc(var(--st) + 6px);left:calc(var(--sl) + 6px);right:calc(var(--sr) + 6px);padding:5px 6px;gap:6px;border-radius:14px}.id img{height:28px}#carname{display:none}
+ button,.cta{padding:6px 7px;font-size:10.5px}.cta .lg{display:none}#z60{top:calc(var(--st) + 56px)}#drag{top:calc(var(--st) + 56px)}}
+@media (min-width:701px){.cta .sm{display:none}}
+@media (min-width:701px) and (max-width:1180px){#carname{display:none}.cta .lg{display:none}.cta .sm{display:inline}.acts{gap:4px}.acts button,.cta{padding:7px 8px;font-size:11.5px}}
+@media (min-width:701px) and (max-width:900px){.acts{gap:3px}.acts button,.cta{padding:6px 6px;font-size:10.5px}.hud{gap:6px}}
+.ic{width:16px;height:16px;flex:none;display:none}
+@media (max-width:700px){.acts{overflow:visible;gap:3px}.acts button{padding:6px;width:32px;height:32px;justify-content:center}.acts button .ic{display:block}.acts button span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.cta{height:32px;padding:0 9px}#snd.off .ic{opacity:.75}}
+@media (max-width:360px){.id img{height:24px}.acts button{width:29px;padding:5px}}
+
+#tsp{position:fixed;z-index:4;left:50%;transform:translateX(-50%);top:calc(var(--st) + 14px);pointer-events:none;text-align:center;color:#fff;background:rgba(10,12,16,.55);backdrop-filter:blur(8px);border-radius:14px;padding:8px 18px;font:600 12px system-ui;letter-spacing:.06em}#tsp b{display:block;font-size:34px;line-height:1.05;font-variant-numeric:tabular-nums}#tsp span{opacity:.75}#tsp em{display:block;font-style:normal;opacity:.7;margin-top:2px;letter-spacing:0}#tsp[hidden]{display:none}
+
+/* v25 */
+.hud{flex-wrap:nowrap}.acts{pointer-events:auto;min-width:0;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 22px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 22px),transparent);padding-right:18px}
+#tsp{top:calc(var(--st) + 66px);padding:6px 14px}#tsp b{font-size:28px}
+#recb.rec{background:#c0162a;border-color:#ff4d5e}#recb.rec .ic circle:last-child{animation:blink 1s steps(2) infinite}@keyframes blink{50%{opacity:0}}#repb.hot{border-color:#ffb300;color:#ffd166}
+#racep{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:7;pointer-events:auto;background:rgba(10,12,15,.9);border:1px solid var(--line);border-radius:18px;padding:16px 18px;width:min(420px,92vw);backdrop-filter:blur(12px)}
+#racep[hidden],#cdown[hidden],#rpb[hidden]{display:none!important}#racep h3{margin:0 0 10px;font:800 18px system-ui}#racep label{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.7;margin:10px 0 5px}
+.seg{display:flex;gap:6px}.seg button{flex:1;justify-content:center}.seg button.on{background:var(--c);color:#04141a;border-color:var(--c)}.rnote{font-size:12px;opacity:.7;margin:8px 0 0}
+#racep label.chk{display:flex;gap:8px;align-items:center;text-transform:none;letter-spacing:0;font-size:13px;opacity:1}.racts{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}
+#cdown{position:fixed;left:50%;top:38%;transform:translate(-50%,-50%);z-index:6;pointer-events:none;font:900 110px/1 system-ui;color:#fff;text-shadow:0 0 30px rgba(0,0,0,.6)}#cdown.go{color:#3dff7a}
+.rbtns{margin-top:10px;display:flex;gap:8px;justify-content:center}.rbtns [hidden]{display:none}
+#rpb{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--sbm) + 14px);z-index:6;display:flex;gap:6px;align-items:center;padding:8px;border-radius:14px;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(10px);width:min(760px,96vw)}
+#rps{flex:1;min-width:60px;accent-color:var(--c)}#rpt{font:600 11px system-ui;font-variant-numeric:tabular-nums;opacity:.85;white-space:nowrap}
+.replaybar .pad,.replaybar .help,.replaybar #z60{display:none!important}.replaybar .spd{bottom:calc(var(--sbm) + 76px)}
+#wxdrops{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}#wxflash{position:fixed;inset:0;background:#dfe8ff;opacity:0;pointer-events:none;z-index:1}
+.photo #wxdrops,.photo #rpb,.photo #tsp{display:none!important}#spp{font-size:11px;opacity:.8;white-space:nowrap}.raytrace #pm small.ph{display:none}
+.hrace #z60{display:none}
+@media (max-width:700px){.acts{overflow-x:auto;overflow-y:hidden;touch-action:pan-x;flex:1 1 auto}.id{flex:0 0 auto}#tsp{top:calc(var(--st) + 52px);padding:4px 10px;font-size:10px}#tsp b{font-size:20px}
+ .speedmode #z60,.dragmode #z60{display:none}#rpb{flex-wrap:wrap;gap:5px}#rpb button{padding:6px 8px}#rps{order:-1;flex-basis:100%}#cdown{font-size:80px}
+ .dragmode #drag{top:calc(var(--st) + 52px)}#dres{padding:14px}#dwin{font-size:22px}#pm{flex-wrap:wrap;justify-content:center;width:94vw}}
+.touch #credits{max-width:62vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:9px!important}
+#thrb{display:none}.roadster #thrb{display:flex}#thrb .ic{color:#5ec8ff}
+#tank{display:none;position:fixed;z-index:4;left:50%;transform:translateX(-50%);bottom:calc(var(--sb,0px) + 14px);width:220px;height:22px;border-radius:11px;background:rgba(10,12,16,.6);overflow:hidden;pointer-events:none;font:700 10px/22px system-ui;letter-spacing:.12em;color:#fff;text-align:center}
+#tank i{position:absolute;inset:0;background:linear-gradient(90deg,#1b7fb8,#5ec8ff);transform-origin:0 50%}#tank b{position:relative}.thrust #tank{display:block}
+.touch #tank{bottom:auto;top:calc(var(--st,0px) + 110px)}
+.pad .thr2{display:none}.touch.thrust .pad .thr2{display:flex;width:62px;height:52px;font-size:11px;background:rgba(94,200,255,.25);border-color:#5ec8ff;color:#dff4ff}
+</style>
+<script>(function(){var t=matchMedia('(any-pointer: coarse)').matches||('ontouchstart' in window)||navigator.maxTouchPoints>0;var f=matchMedia('(any-pointer: fine)').matches&&matchMedia('(hover: hover)').matches;if(/[?&]touch/.test(location.search)||(t&&!f))document.documentElement.classList.add('touch');
+window.__tkProg=function(p,s){var b=document.getElementById('ldb'),e=document.getElementById('ldt');if(b)b.style.width=Math.round(p*100)+'%';if(e)e.textContent=s+' · '+Math.round(p*100)+'%';var r=document.getElementById('loading');r&&r.setAttribute('aria-valuenow',Math.round(p*100));};
+window.__tkStage=function(s){var e=document.getElementById('ldt');if(e)e.textContent=s;};window.__tkReady=function(){document.documentElement.classList.add('ready');};})();</script>
+<style id="qa-a11y">.qa-skip{position:absolute;left:-9999px;top:0;z-index:99999;background:#000;color:#fff;padding:10px 14px;border-radius:6px}.qa-skip:focus{left:8px;top:8px}a:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #c6ff3d;outline-offset:2px}html,body{overflow-x:hidden}</style></head><body><a class="qa-skip" href="#main">Skip to content</a><span id="main" tabindex="-1"></span>
+<div id="loading" role="progressbar" aria-label="Loading" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="ld"><img src="../logos/tkhub-mark.png?v=23" alt="TK Hub" width="300" height="300"><div class="bar"><i id="ldb"></i></div><small id="ldt">Loading · 0%</small></div></div>
+<canvas id="c" tabindex="0" aria-label="Drive game. WASD or arrows to drive, Space handbrake drift, X reverse."></canvas>
+<header class="hud" aria-label="Drive controls">
+  <div class="id"><img src="../logos/tkhub-mark.png?v=23" alt="TK Hub"><div id="carname"></div></div>
+  <div class="acts">
+    <button id="snd" type="button" title="Engine sound" aria-pressed="false"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg><span>Start engine</span></button>
+    <button id="swap" type="button" title="Switch car"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15l2-5 3-2h7l4 4 2 1v3H3z"/><circle cx="7.5" cy="16.5" r="1.8"/><circle cx="16.5" cy="16.5" r="1.8"/></svg><span>Car</span></button>
+    <button id="thrb" type="button" title="Roadster Thrust mode (Y): Shift/B boost, H hop"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 3 4 6 4 10l-4 4-4-4c0-4 1-7 4-10z"/><path d="M9 18l-2 4M15 18l2 4M12 17v5"/></svg><span>Thrust on</span></button>
+    <button id="paint" type="button" title="Paint"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.3 0 1.8-1 1.3-2-.6-1.2.2-2.5 1.5-2.5H17a4 4 0 0 0 4-4C21 7 17 3 12 3z"/><circle cx="7.5" cy="11" r="1"/><circle cx="11" cy="7.5" r="1"/><circle cx="15.5" cy="8.5" r="1"/></svg><span>Paint</span></button>
+    <button id="dn" type="button" title="Day / night"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><span>Night</span></button>
+    <button id="dragb" type="button" title="Drag strip"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h13l-2.5 4L18 12H5"/></svg><span>Drag strip</span></button>
+    <button id="speedb" type="button" title="Top Speed Run (T)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14l4-4"/><path d="M3.3 19a9 9 0 1 1 17.4 0"/></svg><span>Top Speed Run</span></button>
+    <button id="raceb" type="button" title="Head-to-head race"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V5M4 5h7v6H4M11 5h7v6h-7M11 11v0"/><path d="M4 11h7M11 8h7"/></svg><span>Race</span></button>
+    <button id="recb" type="button" title="Record / replay"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><span>Record</span></button>
+    <button id="wxb" type="button" title="Weather"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17a4 4 0 1 1 .8-7.9A5.5 5.5 0 0 1 18 10a3.5 3.5 0 0 1 0 7z"/><path d="M9 20l-1 2M14 20l-1 2"/></svg><span>Clear</span></button>
+    <button id="repb" type="button" title="Repair"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg><span>Repair</span></button>
+    <button id="photo" type="button" title="Photo mode"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><span>Photo</span></button>
+    <a class="cta" href="/tkhub-preview/site-2026-11-13m/#quote" target="_top" title="Start your build"><span class="lg">Start your build</span><span class="sm">Build</span></a>
+  </div>
+</header>
+<div id="z60" aria-live="polite"><b>0–60 MPH</b><span id="t60">0.00 s</span><br><span style="opacity:.7">Best <span id="best">—</span></span></div>
+<div id="drift">DRIFT</div>
+<div id="drag"><div id="dtree" aria-label="Start tree"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div id="dhint"></div></div>
+<div id="tsp" hidden></div><div id="dres" hidden><div id="dwin"></div><div id="dstats"></div><button id="again" type="button">Race again</button> <button id="dexit" type="button">Back to city</button><div class="rbtns"><button id="drp" type="button" hidden>&#9654; Play replay</button> <button id="ddl" type="button" class="cta" hidden>Download video</button></div></div>
+<div id="racep" hidden><h3>Head-to-head race</h3><label>Track</label><div class="seg" id="rtrack"><button type="button" data-v="drag" class="on">Drag strip &middot; &frac14; mile</button><button type="button" data-v="hwy">Highway &middot; 6.0 km</button></div><label>Your car</label><div class="seg" id="rcar"><button type="button" data-v="sedan">Sedan</button><button type="button" data-v="coupe">Coupe</button><button type="button" data-v="roadster">Roadster</button></div><label>AI vs Roadster</label><div class="seg" id="ropp"><button type="button" data-v="sedan">Sedan</button><button type="button" data-v="coupe" class="on">Coupe</button></div><p class="rnote">The AI drives the other car with its real power, grip and top speed.</p><label class="chk"><input type="checkbox" id="rrec" checked> Record race (replay + video)</label><div class="racts"><button id="rcancel" type="button">Cancel</button><button id="rgo" type="button" class="cta">Start race</button></div></div>
+<div id="cdown" hidden></div>
+<div id="rpb" hidden><button id="rpp" type="button">Play</button><input id="rps" type="range" min="0" max="1" step="0.01" value="0" aria-label="Scrub replay"><span id="rpt">0:00.0</span><button id="rpc" type="button">Cam: Chase</button><button id="rpx" type="button">1&times;</button><button id="rpdl" type="button" class="cta">Download</button><button id="rpq" type="button">Exit</button></div>
+<div id="pm"><button id="pzo" type="button" aria-label="Zoom out">−</button><button id="pzi" type="button" aria-label="Zoom in">+</button><button id="save" type="button" class="cta">Capture PNG</button><button id="rtb" type="button" title="Path-traced render (max quality)">Ray trace</button><span id="spp"></span><button id="pexit" type="button">Exit</button><small class="ph" title="Drag to orbit · scroll/pinch to zoom · right-drag or WASD/QE to fly">Drag orbit · pinch zoom</small></div>
+<div id="flash"></div>
+<div class="spd"><div class="row"><span id="mph">0</span><small>MPH</small><span id="gear">N</span></div><div id="rpmw"><div id="rpm"></div></div></div>
+<div class="help"><kbd>W</kbd>/<kbd>↑</kbd> gas · <kbd>S</kbd> brake (hold to reverse) · <kbd>X</kbd> reverse · <kbd>A</kbd><kbd>D</kbd> steer · <kbd>Space</kbd> handbrake drift · <kbd>C</kbd> car · <kbd>N</kbd> day/night · <kbd>G</kbd> drag strip · <kbd>P</kbd> photo · <kbd>R</kbd> reset</div>
+<div class="pad l"><div id="wheel" role="slider" aria-label="Steering: drag left or right"><i></i></div></div>
+<div class="pad r"><div class="col"><button data-k="hb" class="sm2" aria-label="Handbrake drift">DRIFT</button><button data-k="rev" class="sm2" aria-label="Reverse">REVERSE</button></div><button data-k="boost" class="thr2" aria-label="Thruster boost">BOOST</button><button id="hopb" class="thr2" aria-label="Thruster hop">HOP</button><button data-k="brake" class="brk" aria-label="Brake">BRAKE</button><button data-k="up" class="gas" aria-label="Accelerate">GAS</button></div>
+<noscript>This game needs JavaScript and WebGL2.</noscript>
+<div id="tank"><i></i><b>THRUST AIR &middot; SHIFT boost &middot; H hop</b></div>
+<div id="credits" style="position:fixed;left:8px;bottom:4px;z-index:5;font:10px/1.3 system-ui,sans-serif;color:rgba(255,255,255,.6);text-shadow:0 1px 2px #000;pointer-events:auto">3D models (CC BY 4.0, modified): <a style="color:inherit" target="_blank" rel="noopener" href="https://sketchfab.com/3d-models/bmw-m5-g90-a1f2894ca5c5457fa09f13e7ad547285">Sedan model</a> by romanian_guy_0069 · <a style="color:inherit" target="_blank" rel="noopener" href="https://sketchfab.com/3d-models/2023-porsche-911-gt3-rs-992-bbb0f6181a52416bb776713cfd4987dd">Coupe model</a> by supercarmodels · <a style="color:inherit" target="_blank" rel="noopener" href="https://sketchfab.com/3d-models/7630c9fe842d4f5ea86fc1f122753b89">Roadster 2026</a> by asiphy007 · <a style="color:inherit" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">License</a></div>
+<script type="module" src="./game-v29.js?v=290"></script>
+</body></html>
