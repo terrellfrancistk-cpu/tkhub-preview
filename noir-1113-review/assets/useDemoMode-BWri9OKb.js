@@ -1,1 +1,0 @@
-import{r as e}from"./chunk-QTnfLwEv.js";import{n as t}from"./jsx-runtime-BWRPWl8p.js";import{g as n}from"./Chrome-Cztz7Ekt.js";var r=e(t(),1),[i,a]=n(()=>{let[e,t]=(0,r.useState)(!1);return{isActive:e,turnOn:(0,r.useCallback)(()=>t(!0),[]),turnOff:(0,r.useCallback)(()=>t(!1),[])}});export{a as n,i as t};
