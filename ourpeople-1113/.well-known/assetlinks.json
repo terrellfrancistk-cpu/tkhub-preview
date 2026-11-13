@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.terrellfrancis.ourpeople",
+      "sha256_cert_fingerprints": [
+        "A6:B8:4F:7C:9C:DF:B3:56:48:DF:8D:09:25:FF:0F:5A:F8:9F:FE:40:B4:A2:B6:12:8A:C8:9C:05:FF:00:32:07"
+      ]
+    }
+  }
+]
