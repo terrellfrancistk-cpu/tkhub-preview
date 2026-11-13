@@ -11,6 +11,10 @@
             "comment": "Sign-in links open Zilt itself instead of a browser tab."
           },
           {
+            "/": "/auth/callback",
+            "comment": "Sign-in returns (Apple/Google/X) open Zilt itself; matches the Android app links."
+          },
+          {
             "/": "/c/*",
             "comment": "Circle links open the add-to-circle screen in Zilt. They never add anyone by themselves."
           }
