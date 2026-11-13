@@ -1,0 +1,620 @@
+{
+  "generatedAt": "2026-09-13T19:43:04Z",
+  "previewWidth": 420,
+  "locales": [
+    {
+      "locale": "de-DE",
+      "devices": [
+        {
+          "id": "iphone",
+          "storeSize": [
+            1284,
+            2778
+          ],
+          "slides": [
+            {
+              "order": 1,
+              "label": "The Scope",
+              "kicker": "TEMPO LIVE + H\u00d6CHSTGESCHWINDIGKEIT",
+              "headline": "Kenne die Stra\u00dfe, bevor du sie erreichst.",
+              "file": "01_the_scope.jpg",
+              "width": 420,
+              "height": 909
+            },
+            {
+              "order": 2,
+              "label": "Black Box",
+              "kicker": "SEKUNDENGENAUES FAHRTENBUCH",
+              "headline": "Jede gefahrene Meile, im Protokoll.",
+              "file": "02_black_box.jpg",
+              "width": 420,
+              "height": 909
+            },
+            {
+              "order": 3,
+              "label": "Officer Mode",
+              "kicker": "AUFNAHME NUR AUF DEINEM GER\u00c4T",
+              "headline": "Niemals ohne Beweis angehalten werden.",
+              "file": "03_officer_mode.jpg",
+              "width": 420,
+              "height": 909
+            },
+            {
+              "order": 4,
+              "label": "Alerts Feed",
+              "kicker": "POLIZEI - KAMERA - GEFAHR",
+              "headline": "Was vor dir liegt, vorgelesen.",
+              "file": "04_alerts_feed.jpg",
+              "width": 420,
+              "height": 909
+            },
+            {
+              "order": 5,
+              "label": "Defence File",
+              "kicker": "TELEMETRIE ALS GUTACHTEN",
+              "headline": "Beweise statt blo\u00dfer Worte.",
+              "file": "05_defence_file.jpg",
+              "width": 420,
+              "height": 909
+            }
+          ]
+        },
+        {
+          "id": "ipad",
+          "storeSize": [
+            2048,
+            2732
+          ],
+          "slides": [
+            {
+              "order": 1,
+              "label": "The Scope",
+              "kicker": "TEMPO LIVE + H\u00d6CHSTGESCHWINDIGKEIT",
+              "headline": "Kenne die Stra\u00dfe im Voraus.",
+              "file": "01_the_scope.jpg",
+              "width": 420,
+              "height": 560
+            },
+            {
+              "order": 2,
+              "label": "Black Box",
+              "kicker": "SEKUNDENGENAUES FAHRTENBUCH",
+              "headline": "Jede Meile im Protokoll.",
+              "file": "02_black_box.jpg",
+              "width": 420,
+              "height": 560
+            },
+            {
+              "order": 3,
+              "label": "Officer Mode",
+              "kicker": "AUFNAHME NUR AUF DEINEM GER\u00c4T",
+              "headline": "Nie ohne Beweis gestoppt.",
+              "file": "03_officer_mode.jpg",
+              "width": 420,
+              "height": 560
+            },
+            {
+              "order": 4,
+              "label": "Alerts Feed",
+              "kicker": "POLIZEI - KAMERA - GEFAHR",
+              "headline": "Was vorn liegt, vorgelesen.",
+              "file": "04_alerts_feed.jpg",
+              "width": 420,
+              "height": 560
+            },
+            {
+              "order": 5,
+              "label": "Defence File",
+              "kicker": "TELEMETRIE ALS GUTACHTEN",
+              "headline": "Mit Beweisen ankommen.",
+              "file": "05_defence_file.jpg",
+              "width": 420,
+              "height": 560
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "locale": "en-US",
+      "devices": [
+        {
+          "id": "iphone",
+          "storeSize": [
+            1284,
+            2778
+          ],
+          "slides": [
+            {
+              "order": 1,
+              "label": "The Scope",
+              "kicker": "LIVE SPEED + POSTED LIMIT",
+              "headline": "Know the road before you reach it.",
+              "file": "01_the_scope.jpg",
+              "width": 420,
+              "height": 909
+            },
+            {
+              "order": 2,
+              "label": "Black Box",
+              "kicker": "SECOND-BY-SECOND TRIP LOG",
+              "headline": "Every mile you drove, on the record.",
+              "file": "02_black_box.jpg",
+              "width": 420,
+              "height": 909
+            },
+            {
+              "order": 3,
+              "label": "Officer Mode",
+              "kicker": "RECORDS TO YOUR DEVICE ONLY",
+              "headline": "Never get pulled over with no record.",
+              "file": "03_officer_mode.jpg",
+              "width": 420,
+              "height": 909
+            },
+            {
+              "order": 4,
+              "label": "Alerts Feed",
+              "kicker": "POLICE - CAMERA - HAZARD",
+              "headline": "What's ahead, read out to you.",
+              "file": "04_alerts_feed.jpg",
+              "width": 420,
+              "height": 909
+            },
+            {
+              "order": 5,
+              "label": "Defence File",
+              "kicker": "TELEMETRY BUILT INTO A BRIEF",
+              "headline": "Walk in with evidence, not just your word.",
+              "file": "05_defence_file.jpg",
+              "width": 420,
+              "height": 909
+            }
+          ]
+        },
+        {
+          "id": "ipad",
+          "storeSize": [
+            2048,
+            2732
+          ],
+          "slides": [
+            {
+              "order": 1,
+              "label": "The Scope",
+              "kicker": "LIVE SPEED + POSTED LIMIT",
+              "headline": "Know the road before you reach it.",
+              "file": "01_the_scope.jpg",
+              "width": 420,
+              "height": 560
+            },
+            {
+              "order": 2,
+              "label": "Black Box",
+              "kicker": "SECOND-BY-SECOND TRIP LOG",
+              "headline": "Every mile you drove, on the record.",
+              "file": "02_black_box.jpg",
+              "width": 420,
+              "height": 560
+            },
+            {
+              "order": 3,
+              "label": "Officer Mode",
+              "kicker": "RECORDS TO YOUR DEVICE ONLY",
+              "headline": "Never pulled over with no record.",
+              "file": "03_officer_mode.jpg",
+              "width": 420,
+              "height": 560
+            },
+            {
+              "order": 4,
+              "label": "Alerts Feed",
+              "kicker": "POLICE - CAMERA - HAZARD",
+              "headline": "What's ahead, read out to you.",
+              "file": "04_alerts_feed.jpg",
+              "width": 420,
+              "height": 560
+            },
+            {
+              "order": 5,
+              "label": "Defence File",
+              "kicker": "TELEMETRY BUILT INTO A BRIEF",
+              "headline": "Walk in with evidence.",
+              "file": "05_defence_file.jpg",
+              "width": 420,
+              "height": 560
+            }
+          ]
+        },
+        {
+          "id": "android",
+          "storeSize": [
+            1080,
+            1920
+          ],
+          "slides": [
+            {
+              "order": 1,
+              "label": "The Scope",
+              "kicker": "LIVE SPEED + POSTED LIMIT",
+              "headline": "Know the road before you reach it.",
+              "file": "01_the_scope.jpg",
+              "width": 420,
+              "height": 747
+            },
+            {
+              "order": 2,
+              "label": "Black Box",
+              "kicker": "SECOND-BY-SECOND TRIP LOG",
+              "headline": "Every mile you drove, on the record.",
+              "file": "02_black_box.jpg",
+              "width": 420,
+              "height": 747
+            },
+            {
+              "order": 3,
+              "label": "Officer Mode",
+              "kicker": "RECORDS TO YOUR DEVICE ONLY",
+              "headline": "Never get pulled over with no record.",
+              "file": "03_officer_mode.jpg",
+              "width": 420,
+              "height": 747
+            },
+            {
+              "order": 4,
+              "label": "Alerts Feed",
+              "kicker": "POLICE - CAMERA - HAZARD",
+              "headline": "What's ahead, read out to you.",
+              "file": "04_alerts_feed.jpg",
+              "width": 420,
+              "height": 747
+            },
+            {
+              "order": 5,
+              "label": "Defence File",
+              "kicker": "TELEMETRY BUILT INTO A BRIEF",
+              "headline": "Walk in with evidence, not just your word.",
+              "file": "05_defence_file.jpg",
+              "width": 420,
+              "height": 747
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "locale": "es-ES",
+      "devices": [
+        {
+          "id": "iphone",
+          "storeSize": [
+            1284,
+            2778
+          ],
+          "slides": [
+            {
+              "order": 1,
+              "label": "The Scope",
+              "kicker": "VELOCIDAD EN VIVO + L\u00cdMITE",
+              "headline": "Conoce la carretera antes de llegar.",
+              "file": "01_the_scope.jpg",
+              "width": 420,
+              "height": 909
+            },
+            {
+              "order": 2,
+              "label": "Black Box",
+              "kicker": "REGISTRO DEL VIAJE AL SEGUNDO",
+              "headline": "Cada milla recorrida, queda registrada.",
+              "file": "02_black_box.jpg",
+              "width": 420,
+              "height": 909
+            },
+            {
+              "order": 3,
+              "label": "Officer Mode",
+              "kicker": "SE GRABA SOLO EN TU DISPOSITIVO",
+              "headline": "Que nunca te paren sin evidencia.",
+              "file": "03_officer_mode.jpg",
+              "width": 420,
+              "height": 909
+            },
+            {
+              "order": 4,
+              "label": "Alerts Feed",
+              "kicker": "POLIC\u00cdA - C\u00c1MARA - PELIGRO",
+              "headline": "Lo que viene, le\u00eddo en voz alta.",
+              "file": "04_alerts_feed.jpg",
+              "width": 420,
+              "height": 909
+            },
+            {
+              "order": 5,
+              "label": "Defence File",
+              "kicker": "TELEMETR\u00cdA CONVERTIDA EN EXPEDIENTE",
+              "headline": "Llega con pruebas, no solo tu palabra.",
+              "file": "05_defence_file.jpg",
+              "width": 420,
+              "height": 909
+            }
+          ]
+        },
+        {
+          "id": "ipad",
+          "storeSize": [
+            2048,
+            2732
+          ],
+          "slides": [
+            {
+              "order": 1,
+              "label": "The Scope",
+              "kicker": "VELOCIDAD EN VIVO + L\u00cdMITE",
+              "headline": "Conoce la v\u00eda de antemano.",
+              "file": "01_the_scope.jpg",
+              "width": 420,
+              "height": 560
+            },
+            {
+              "order": 2,
+              "label": "Black Box",
+              "kicker": "REGISTRO DEL VIAJE AL SEGUNDO",
+              "headline": "Cada milla, registrada.",
+              "file": "02_black_box.jpg",
+              "width": 420,
+              "height": 560
+            },
+            {
+              "order": 3,
+              "label": "Officer Mode",
+              "kicker": "SE GRABA SOLO EN TU DISPOSITIVO",
+              "headline": "Nunca te paren sin pruebas.",
+              "file": "03_officer_mode.jpg",
+              "width": 420,
+              "height": 560
+            },
+            {
+              "order": 4,
+              "label": "Alerts Feed",
+              "kicker": "POLIC\u00cdA - C\u00c1MARA - PELIGRO",
+              "headline": "Lo que viene, en voz alta.",
+              "file": "04_alerts_feed.jpg",
+              "width": 420,
+              "height": 560
+            },
+            {
+              "order": 5,
+              "label": "Defence File",
+              "kicker": "TELEMETR\u00cdA CONVERTIDA EN EXPEDIENTE",
+              "headline": "Llega con pruebas.",
+              "file": "05_defence_file.jpg",
+              "width": 420,
+              "height": 560
+            }
+          ]
+        },
+        {
+          "id": "android",
+          "storeSize": [
+            1080,
+            1920
+          ],
+          "slides": [
+            {
+              "order": 1,
+              "label": "The Scope",
+              "kicker": "VELOCIDAD EN VIVO + L\u00cdMITE",
+              "headline": "Conoce la carretera antes de llegar.",
+              "file": "01_the_scope.jpg",
+              "width": 420,
+              "height": 747
+            },
+            {
+              "order": 2,
+              "label": "Black Box",
+              "kicker": "REGISTRO DEL VIAJE AL SEGUNDO",
+              "headline": "Cada milla recorrida, queda registrada.",
+              "file": "02_black_box.jpg",
+              "width": 420,
+              "height": 747
+            },
+            {
+              "order": 3,
+              "label": "Officer Mode",
+              "kicker": "SE GRABA SOLO EN TU DISPOSITIVO",
+              "headline": "Que nunca te paren sin evidencia.",
+              "file": "03_officer_mode.jpg",
+              "width": 420,
+              "height": 747
+            },
+            {
+              "order": 4,
+              "label": "Alerts Feed",
+              "kicker": "POLIC\u00cdA - C\u00c1MARA - PELIGRO",
+              "headline": "Lo que viene, le\u00eddo en voz alta.",
+              "file": "04_alerts_feed.jpg",
+              "width": 420,
+              "height": 747
+            },
+            {
+              "order": 5,
+              "label": "Defence File",
+              "kicker": "TELEMETR\u00cdA CONVERTIDA EN EXPEDIENTE",
+              "headline": "Llega con pruebas, no solo tu palabra.",
+              "file": "05_defence_file.jpg",
+              "width": 420,
+              "height": 747
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "locale": "fr-FR",
+      "devices": [
+        {
+          "id": "iphone",
+          "storeSize": [
+            1284,
+            2778
+          ],
+          "slides": [
+            {
+              "order": 1,
+              "label": "The Scope",
+              "kicker": "VITESSE EN DIRECT + LIMITATION",
+              "headline": "Connais la route avant de l'aborder.",
+              "file": "01_the_scope.jpg",
+              "width": 420,
+              "height": 909
+            },
+            {
+              "order": 2,
+              "label": "Black Box",
+              "kicker": "JOURNAL DE TRAJET SECONDE PAR SECONDE",
+              "headline": "Chaque mile conduit, noir sur blanc.",
+              "file": "02_black_box.jpg",
+              "width": 420,
+              "height": 909
+            },
+            {
+              "order": 3,
+              "label": "Officer Mode",
+              "kicker": "ENREGISTR\u00c9 UNIQUEMENT SUR L'APPAREIL",
+              "headline": "Jamais arr\u00eat\u00e9 sans preuve.",
+              "file": "03_officer_mode.jpg",
+              "width": 420,
+              "height": 909
+            },
+            {
+              "order": 4,
+              "label": "Alerts Feed",
+              "kicker": "POLICE - CAM\u00c9RA - DANGER",
+              "headline": "Ce qui arrive, lu \u00e0 voix haute.",
+              "file": "04_alerts_feed.jpg",
+              "width": 420,
+              "height": 909
+            },
+            {
+              "order": 5,
+              "label": "Defence File",
+              "kicker": "T\u00c9L\u00c9M\u00c9TRIE EN UN DOSSIER",
+              "headline": "Des preuves, pas des mots.",
+              "file": "05_defence_file.jpg",
+              "width": 420,
+              "height": 909
+            }
+          ]
+        },
+        {
+          "id": "ipad",
+          "storeSize": [
+            2048,
+            2732
+          ],
+          "slides": [
+            {
+              "order": 1,
+              "label": "The Scope",
+              "kicker": "VITESSE EN DIRECT + LIMITATION",
+              "headline": "La route, avant de l'aborder.",
+              "file": "01_the_scope.jpg",
+              "width": 420,
+              "height": 560
+            },
+            {
+              "order": 2,
+              "label": "Black Box",
+              "kicker": "JOURNAL DE TRAJET SECONDE PAR SECONDE",
+              "headline": "Chaque mile, consign\u00e9.",
+              "file": "02_black_box.jpg",
+              "width": 420,
+              "height": 560
+            },
+            {
+              "order": 3,
+              "label": "Officer Mode",
+              "kicker": "ENREGISTR\u00c9 UNIQUEMENT SUR L'APPAREIL",
+              "headline": "Jamais arr\u00eat\u00e9 sans preuve.",
+              "file": "03_officer_mode.jpg",
+              "width": 420,
+              "height": 560
+            },
+            {
+              "order": 4,
+              "label": "Alerts Feed",
+              "kicker": "POLICE - CAM\u00c9RA - DANGER",
+              "headline": "Ce qui arrive, \u00e0 voix haute.",
+              "file": "04_alerts_feed.jpg",
+              "width": 420,
+              "height": 560
+            },
+            {
+              "order": 5,
+              "label": "Defence File",
+              "kicker": "T\u00c9L\u00c9M\u00c9TRIE EN UN DOSSIER",
+              "headline": "Arrive avec des preuves.",
+              "file": "05_defence_file.jpg",
+              "width": 420,
+              "height": 560
+            }
+          ]
+        },
+        {
+          "id": "android",
+          "storeSize": [
+            1080,
+            1920
+          ],
+          "slides": [
+            {
+              "order": 1,
+              "label": "The Scope",
+              "kicker": "VITESSE EN DIRECT + LIMITATION",
+              "headline": "Connais la route avant de l'aborder.",
+              "file": "01_the_scope.jpg",
+              "width": 420,
+              "height": 747
+            },
+            {
+              "order": 2,
+              "label": "Black Box",
+              "kicker": "JOURNAL DE TRAJET SECONDE PAR SECONDE",
+              "headline": "Chaque mile conduit, noir sur blanc.",
+              "file": "02_black_box.jpg",
+              "width": 420,
+              "height": 747
+            },
+            {
+              "order": 3,
+              "label": "Officer Mode",
+              "kicker": "ENREGISTR\u00c9 UNIQUEMENT SUR L'APPAREIL",
+              "headline": "Jamais arr\u00eat\u00e9 sans preuve.",
+              "file": "03_officer_mode.jpg",
+              "width": 420,
+              "height": 747
+            },
+            {
+              "order": 4,
+              "label": "Alerts Feed",
+              "kicker": "POLICE - CAM\u00c9RA - DANGER",
+              "headline": "Ce qui arrive, lu \u00e0 voix haute.",
+              "file": "04_alerts_feed.jpg",
+              "width": 420,
+              "height": 747
+            },
+            {
+              "order": 5,
+              "label": "Defence File",
+              "kicker": "T\u00c9L\u00c9M\u00c9TRIE EN UN DOSSIER",
+              "headline": "Des preuves, pas des mots.",
+              "file": "05_defence_file.jpg",
+              "width": 420,
+              "height": 747
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

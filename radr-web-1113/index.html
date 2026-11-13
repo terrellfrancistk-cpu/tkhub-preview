@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head><meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0A0D0A" />
+    <script>
+      // Theme before first paint (lib/theme.ts): Light / Dark / System, Dark default
+      // (Terrell, 2026-11-13). Nothing stored, or storage blocked, means Dark.
+      (function () {
+        var root = document.documentElement;
+        root.setAttribute("data-theme", "dark");
+        try {
+          var t = localStorage.getItem("radr.theme.v1");
+          if (t === "light") root.setAttribute("data-theme", "light");
+          if (t === "system") root.removeAttribute("data-theme");
+          if (t !== "light" && t !== "system") t = "dark";
+          var light = t === "light" || (t !== "dark" && window.matchMedia && matchMedia("(prefers-color-scheme: light)").matches);
+          if (light) root.classList.remove("dark");
+        } catch (e) {}
+      })();
+    </script>
+    <title>RADR — See it before it sees you</title>
+    <meta
+      name="description"
+      content="RADR is a tactical driving companion: a live map of police, radar, cameras and hazards, a Black Box that logs every drive, trip summaries and Share ETA links, and a defence network that helps you fight the ticket."
+    />
+    <meta name="author" content="TK Hub LLC" />
+
+    <link rel="canonical" href="https://radr-drive.rork.app/" />
+    <meta property="og:title" content="RADR — See it before it sees you" />
+    <meta
+      property="og:description"
+      content="Live police, radar and camera alerts, a Black Box that logs every drive, and a network of practices that bid to fight your ticket."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="RADR" />
+    <meta property="og:url" content="https://radr-drive.rork.app/" />
+    <meta
+      property="og:image"
+      content="https://radr-drive.rork.app/og-image.jpg"
+    />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="The RADR mark glowing green on a near-black radar scope, above the tagline See it before it sees you."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="RADR — See it before it sees you" />
+    <meta
+      name="twitter:description"
+      content="Live police, radar and camera alerts, a Black Box that logs every drive, and a network of practices that bid to fight your ticket."
+    />
+    <meta
+      name="twitter:image"
+      content="https://radr-drive.rork.app/og-image.jpg"
+    />
+
+    <link rel="icon" href="./favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" /></noscript>
+    <script type="module" crossorigin src="./assets/index-DypK9Q7o.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/router-shim-CwImlHS4.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-D5vSFQtp.css">
+  </head>
+
+  <body>
+    <script>
+      // A NOIR (or other app) Google return can fall back onto this site's
+      // homepage with a token in the hash or a code in the query. Drop it
+      // before the app boots. /auth/callback keeps its own ?code=.
+      (function () {
+        var path = location.pathname || "/";
+        var onCallback = path.indexOf("/auth/callback") !== -1;
+        var hash = location.hash || "";
+        var search = location.search || "";
+        var foreignHash = hash.indexOf("access_token=") !== -1 || hash.indexOf("refresh_token=") !== -1;
+        var strayCode = !onCallback && search.indexOf("code=") !== -1;
+        if (!foreignHash && !strayCode) return;
+        var keep = onCallback ? search : "";
+        history.replaceState(null, "", path + keep);
+      })();
+    </script>
+    <div id="root"></div>
+  </body>
+</html>

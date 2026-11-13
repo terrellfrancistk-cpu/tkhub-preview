@@ -1,0 +1,49 @@
+{
+  "generatedAt": "2026-09-11T23:04:02Z",
+  "logTailLines": 400,
+  "builds": [
+    {
+      "id": "20260911T230402Z",
+      "task": "help",
+      "finishedAt": "2026-09-11T23:04:02Z",
+      "succeeded": true,
+      "exitCode": 0,
+      "durationSeconds": 17.2,
+      "taskCount": 1,
+      "warningCount": 0,
+      "errors": [],
+      "slowestTasks": [
+        {
+          "name": ":help",
+          "seconds": 0.2
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "android/app/build/outputs/apk/release/app-release.apk",
+          "size": "14.9 MB"
+        },
+        {
+          "path": "android/app/build/outputs/bundle/release/app-release.aab",
+          "size": "14.5 MB"
+        }
+      ],
+      "log": [
+        "To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.",
+        "Daemon will be stopped at the end of the build",
+        "Calculating task graph as no cached configuration is available for tasks: help",
+        "> Task :help",
+        "Welcome to Gradle 8.14.1.",
+        "To run a build, run gradlew <task> ...",
+        "To see a list of available tasks, run gradlew tasks",
+        "To see more detail about a task, run gradlew help --task <task>",
+        "To see a list of command-line options, run gradlew --help",
+        "For more detail on using Gradle, see https://docs.gradle.org/8.14.1/userguide/command_line_interface.html",
+        "For troubleshooting, visit https://help.gradle.org",
+        "BUILD SUCCESSFUL in 16s",
+        "1 actionable task: 1 executed",
+        "Configuration cache entry stored."
+      ]
+    }
+  ]
+}
