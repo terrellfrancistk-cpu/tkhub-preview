@@ -1,0 +1,217 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zilt · Try it</title><meta name="robots" content="noindex">
+<style>
+@font-face{font-family:ZC;src:url(a/bc9.woff) format("woff");font-weight:900;font-display:swap}
+@font-face{font-family:ZC;src:url(a/bc7.woff) format("woff");font-weight:700;font-display:swap}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:#0B0B0B;overflow:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Segoe UI",Roboto,system-ui,sans-serif;color:#F4F6F2}
+button{font:inherit;border:0;background:none;color:inherit;cursor:pointer}
+input{font:inherit;color:#F4F6F2;background:none;border:0;outline:0;width:100%}
+#stage{position:absolute;left:0;top:0;width:393px;height:852px;transform-origin:0 0;overflow:hidden;background:#0B0B0B}
+.abs{position:absolute}.c{left:0;right:0;text-align:center}
+.scr{position:absolute;inset:0;display:none;overflow:hidden;background:#0B0B0B}.scr.on{display:block}
+.sb{position:absolute;top:0;left:0;right:0;height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 36px 0 50px;font:600 17px -apple-system,system-ui,sans-serif;z-index:30;pointer-events:none;color:#fff}
+.isl{position:absolute;left:136px;top:2px;width:124px;height:36px;border-radius:20px;background:#000;z-index:31}
+.zc{font-family:ZC,"Arial Narrow",sans-serif;font-weight:900}
+.lime{color:#C8FF3D}.mut{color:#8A8A8A}
+/* hub */
+.hub{position:absolute;left:20px;right:20px;top:50px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.row{width:100%;display:flex;align-items:center;gap:14px;padding:14px;border-radius:16px;background:rgba(255,255,255,.06);text-align:left}
+.row img{width:48px;height:48px;border-radius:12px;flex:none}
+.row b{display:block;font-size:17px;font-weight:600;color:#fff}
+.row span{display:block;font-size:15px;color:rgba(255,255,255,.6);line-height:1.25}
+.row i{margin-left:auto;color:rgba(255,255,255,.4);font-style:normal;font-size:20px}
+/* auth */
+.btn{position:absolute;left:14px;width:365px;height:51px;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:9px;font-size:17px;font-weight:600;color:#fff}
+.btn.dk{background:#000;border:1px solid #2a2a2e}.btn.gr{background:#1F1F24;border:1px solid #2e2e35;font-size:16px}
+.seg{position:absolute;top:533px;width:177px;height:87px;border-radius:12px;background:#17171C;border:1px solid #2a2a30;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:.8px;color:#d8d8d8}
+.seg.on{background:#C8FF3D;color:#0B0B0B;border-color:#C8FF3D}
+.lbl{position:absolute;left:14px;font-size:11px;font-weight:700;letter-spacing:.6px;color:#9a9a9a}
+.fld{position:absolute;left:14px;width:365px;height:50px;border-radius:12px;background:#1A1A1F;border:1px solid #26262c;padding:0 16px;display:flex;align-items:center;font-size:16px}
+.fld input::placeholder{color:#5f5f66}
+.cta{position:absolute;left:14px;width:365px;height:53px;border-radius:14px;background:#2A2A30;color:#5f5f66;font-size:17px;font-weight:600}
+.cta.go{background:#C8FF3D;color:#0B0B0B}
+/* app */
+.tb{position:absolute;left:16px;right:16px;bottom:4px;height:60px;border-radius:30px;background:rgba(23,23,28,.94);border:1px solid rgba(255,255,255,.07);box-shadow:0 8px 22px rgba(0,0,0,.55);display:flex;align-items:center;padding:0 6px;z-index:20}
+.ti{flex:1;height:44px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:10px;font-weight:500;color:rgba(244,246,242,.55)}
+.ti svg{width:22px;height:22px;fill:currentColor}.ti.on{color:#C8FF3D;font-weight:700}
+.cap{flex:1;display:flex;justify-content:center}.cap span{width:46px;height:38px;border-radius:13px;background:#C8FF3D;box-shadow:0 2px 14px rgba(200,255,61,.45);display:flex;align-items:center;justify-content:center}
+.gb{position:absolute;left:50%;bottom:72px;transform:translateX(-50%);white-space:nowrap;display:flex;align-items:center;gap:9px;padding:8px 13px;border-radius:20px;background:rgba(0,0,0,.75);border:1px solid rgba(200,255,61,.35);font-size:12px;z-index:19}
+.gb i{width:22px;height:22px;border-radius:50%;background:#C8FF3D;display:flex;align-items:center;justify-content:center}
+.pg{position:absolute;inset:0;background:#111 center/cover}
+.pg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0,rgba(0,0,0,0) 26%,rgba(0,0,0,0) 52%,rgba(0,0,0,.78) 100%)}
+.rail{position:absolute;right:8px;bottom:150px;display:flex;flex-direction:column;gap:6px;z-index:5}
+.rb{width:54px;height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font:700 13px ZC,sans-serif;filter:drop-shadow(0 1px 4px rgba(0,0,0,.6))}
+.rb svg{width:27px;height:27px}
+.lane{font:900 14px ZC,sans-serif;letter-spacing:.3px;padding:0 5px;color:rgba(244,246,242,.55)}.lane.on{color:#F4F6F2;text-decoration:underline 3px #C8FF3D;text-underline-offset:7px}
+.pill{display:inline-flex;align-items:center;gap:5px;height:28px;padding:0 10px;border-radius:14px;font-size:11px;font-weight:900;letter-spacing:.8px}
+.av{border-radius:50%;object-fit:cover;border:2px solid #C8FF3D}
+.nav{position:absolute;top:54px;left:0;right:0;height:44px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:600}
+.sec{font-size:12px;font-weight:800;letter-spacing:.9px;color:#8A8A8A;margin:0 20px 9px}
+.card{margin:0 16px;background:#17171C;border-radius:18px;overflow:hidden}
+.li{display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid #23232B;width:100%;text-align:left}.li:last-child{border-bottom:0}
+.scroll{position:absolute;left:0;right:0;top:98px;bottom:0;overflow-y:auto;padding-bottom:110px;scrollbar-width:none}.scroll::-webkit-scrollbar{display:none}
+.toast{position:absolute;left:50%;top:64px;transform:translateX(-50%);background:#17171C;border:1px solid rgba(200,255,61,.4);color:#F4F6F2;font-size:12px;font-weight:600;padding:9px 14px;border-radius:18px;z-index:60;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap}
+.toast.on{opacity:1}
+</style></head><body>
+<div id="stage">
+<div class="sb"><span id="clk">22:54</span><span style="display:flex;gap:6px;align-items:center"><svg width="18" height="12" viewBox="0 0 18 12" fill="#fff"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg><svg width="16" height="12" viewBox="0 0 16 12" fill="#fff"><path d="M8 2.5c2.3 0 4.4.9 6 2.4l1.2-1.3A10.3 10.3 0 0 0 8 .7 10.3 10.3 0 0 0 .8 3.6L2 4.9a8.5 8.5 0 0 1 6-2.4zm0 3.6c1.3 0 2.5.5 3.4 1.3l1.3-1.3A6.6 6.6 0 0 0 8 4.3a6.6 6.6 0 0 0-4.7 1.8l1.3 1.3c.9-.8 2.1-1.3 3.4-1.3zM8 9.5l2-2a2.9 2.9 0 0 0-4 0z"/></svg><svg width="27" height="13" viewBox="0 0 27 13"><rect x=".5" y=".5" width="23" height="12" rx="3.5" fill="none" stroke="#fff" opacity=".4"/><rect x="2" y="2" width="20" height="9" rx="2" fill="#fff"/><rect x="24.5" y="4.5" width="1.5" height="4" rx=".7" fill="#fff" opacity=".4"/></svg></span></div>
+
+<div class="toast" id="toast"></div>
+
+<!-- HUB (ZiltHubView) -->
+<section class="scr on" id="s-hub">
+ <div class="hub">
+  <div class="zc" style="font-size:34px;color:#fff;line-height:1.1">Zilt</div>
+  <div style="font-size:17px;color:rgba(255,255,255,.6);margin-top:-2px">Pick where to go</div>
+  <div id="hubrows" style="display:flex;flex-direction:column;gap:14px;width:100%"></div>
+  <button onclick="go('auth')" style="font-size:17px;font-weight:600;color:#C8FF3D;margin-top:8px">Sign in or create account</button>
+ </div>
+</section>
+
+<!-- AUTH (SignInView) -->
+<section class="scr" id="s-auth" style="background:radial-gradient(120% 45% at 50% 0%,#1d2a08 0%,#0B0B0B 70%)"><div id="asc" style="position:absolute;inset:0;overflow-y:auto;scrollbar-width:none"><div style="position:relative;height:1070px">
+ <button class="abs" onclick="go('hub')" style="left:12px;top:56px;display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:#d8d8d8"><svg width="13" height="13" viewBox="0 0 13 13" fill="#d8d8d8"><rect width="5.5" height="5.5" rx="1.2"/><rect x="7.5" width="5.5" height="5.5" rx="1.2"/><rect y="7.5" width="5.5" height="5.5" rx="1.2"/><rect x="7.5" y="7.5" width="5.5" height="5.5" rx="1.2"/></svg>Zilt hub</button>
+ <img src="a/SectionSocial.svg" class="abs" style="left:168px;top:86px;width:58px;height:58px;filter:drop-shadow(0 0 18px rgba(200,255,61,.45))" alt="">
+ <div class="abs c zc lime" style="top:160px;font-size:31px;letter-spacing:.3px" id="atitle">CREATE YOUR ACCOUNT</div>
+ <div class="abs" style="left:30px;width:333px;top:205px;text-align:center;font-size:13.5px;line-height:21px;color:#9a9a9a">One account, several ways into it. Your email address is your username, and Apple, Google, X, a password, or a magic link are keys to it.</div>
+ <button class="btn dk" style="top:295px" onclick="toast('Demo mode: Apple sign-in is not called')"><svg width="16" height="19" viewBox="0 0 16 19" fill="#fff"><path d="M13.2 10c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.9-3.5.9s-1.9-.8-3.1-.8C3.6 4.7 2.1 5.6 1.3 7c-1.7 2.9-.4 7.2 1.2 9.6.8 1.2 1.7 2.4 3 2.4 1.2-.1 1.6-.8 3.1-.8s1.8.8 3.1.8 2.1-1.2 2.9-2.4c.9-1.3 1.3-2.6 1.3-2.7 0 0-2.6-1-2.7-3.9zM10.9 2.9c.6-.8 1.1-1.8 1-2.9-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-1 2.8 1 .1 2-.5 2.7-1.3z"/></svg>Continue with Apple</button>
+ <button class="btn gr" style="top:359px" onclick="toast('Demo mode: Google sign-in is not called')"><img src="a/BrandGoogle.svg" width="20" height="20" alt="">Continue with Google</button>
+ <button class="btn dk" style="top:424px;font-size:16px" onclick="toast('Demo mode: X sign-in is not called')"><img src="a/BrandX.svg" width="15" height="15" alt="">Continue with X</button>
+ <div class="abs" style="left:14px;right:14px;top:502px;display:flex;align-items:center;gap:12px;font-size:12px;color:#77777d"><i style="flex:1;height:1px;background:#2a2a30"></i>or<i style="flex:1;height:1px;background:#2a2a30"></i></div>
+ <button class="seg on" id="sg-pw" style="left:14px" onclick="mode('pw')"><svg width="20" height="26" viewBox="0 0 20 26" fill="currentColor"><circle cx="10" cy="7" r="7"/><circle cx="10" cy="6" r="2.4" fill="#C8FF3D" class="kh"/><rect x="8" y="12" width="4" height="13" rx="1"/><rect x="12" y="18" width="4" height="2.5"/><rect x="12" y="22" width="3" height="2.5"/></svg>PASSWORD</button>
+ <button class="seg" id="sg-ml" style="left:202px" onclick="mode('ml')"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M11 15a5 5 0 0 0 7.5.5l3.5-3.5a5 5 0 0 0-7-7l-2 2"/><path d="M15 11a5 5 0 0 0-7.5-.5L4 14a5 5 0 0 0 7 7l2-2"/></svg>MAGIC LINK</button>
+ <div id="m-pw">
+  <div class="abs c" style="top:628px;font-size:11px;color:#9a9a9a">Use your email and password. Your email is your username.</div>
+  <div class="lbl" style="top:664px">EMAIL</div>
+  <label class="fld" style="top:685px"><input type="email" placeholder="you@example.com" autocomplete="off"></label>
+  <div class="lbl" style="top:745px">PASSWORD (AT LEAST 8 CHARACTERS)</div>
+  <label class="fld" style="top:765px"><input type="password" placeholder="At least 8 characters" oninput="pwc(this)"></label>
+  <div class="abs" id="pwrule" style="left:16px;top:827px;font-size:11px;color:#8A8A8A;display:flex;align-items:center;gap:6px"><i style="width:11px;height:11px;border-radius:50%;border:1.2px solid #8A8A8A;display:inline-block"></i>At least 8 characters</div>
+ </div>
+ <div id="m-ml" style="display:none">
+  <div class="abs" style="left:16px;width:360px;top:628px;font-size:11px;line-height:16px;color:#9a9a9a">Tap the sign-in link in your email. It expires in 15 minutes. Your email is your username.</div>
+  <div class="lbl" style="top:682px">EMAIL</div>
+  <label class="fld" style="top:703px"><input id="mle" type="email" placeholder="you@example.com" autocomplete="off" oninput="$('mlb').classList.toggle('go',/.+@.+\..+/.test(this.value))"></label>
+  <button class="cta" id="mlb" style="top:776px" onclick="if(this.classList.contains('go')){toast('Demo mode: no email is sent');setTimeout(enter,900)}">Email me a link</button>
+ </div>
+<div class="abs" style="left:16px;width:361px;top:872px;font-size:11.5px;line-height:17px;color:#9a9a9a;text-align:center">By continuing you agree to Zilt's <u style="color:#C8FF3D">Terms of Use</u> and <u style="color:#C8FF3D">Privacy Policy</u>. Zilt is 16+; dating in Zilt Meet and After Hours are 18+ and stay shut until that's proven. Games are played for in-app prizes — no wagering, no purchase to play, no cash payout. TK Hub LLC is the provider.</div>
+ <button class="abs c" style="top:985px;font-size:12.5px;font-weight:700;color:#C8FF3D" onclick="mode('pw');$('asc').scrollTop=0">Already have an account? Sign in</button>
+</div></div>
+</section>
+
+<!-- APP -->
+<section class="scr" id="s-app">
+ <!-- Current -->
+ <div id="t-current" class="tab-pane" style="position:absolute;inset:0">
+  <div id="feed" style="position:absolute;inset:0"></div>
+  <div class="abs" style="left:14px;right:12px;top:58px;display:flex;align-items:center;gap:8px;z-index:6">
+   <div class="zc" style="font-size:23px;letter-spacing:1px"><span style="color:#C8FF3D">Z</span>ILT</div>
+   <div style="display:flex;flex:1;overflow:hidden" id="lanes"></div>
+   <button class="pill" style="background:rgba(255,77,109,.18);color:#FF3D6E;border:1px solid rgba(255,61,110,.4)" onclick="toast('Live rooms open in the full app')"><i style="width:7px;height:7px;border-radius:50%;background:#FF3D6E"></i>LIVE</button>
+   <button style="width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center" onclick="toast('Demo mode: the camera stays off')"><svg width="17" height="14" viewBox="0 0 17 14" fill="#F4F6F2"><path d="M5.5 0h6l1.4 2H15a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h2.1z"/><circle cx="8.5" cy="7.7" r="3.2" fill="#0B0B0B"/></svg></button>
+  </div>
+  <div class="abs" id="flick" style="left:14px;right:0;top:100px;display:flex;gap:12px;z-index:6"></div>
+  <div class="abs" style="left:14px;top:176px;display:flex;background:rgba(118,118,128,.24);border-radius:9px;padding:2px;z-index:6;width:220px" id="mf"></div>
+ </div>
+ <!-- Air -->
+ <div id="t-air" class="tab-pane" style="position:absolute;inset:0;display:none">
+  <div class="nav zc" style="font-size:24px;justify-content:flex-start;padding-left:20px">ZILT <span class="lime" style="margin-left:6px">AIR</span></div>
+  <div class="scroll" id="airl"></div>
+ </div>
+ <!-- People -->
+ <div id="t-people" class="tab-pane" style="position:absolute;inset:0;display:none">
+  <div class="nav">People
+   <button class="pill abs" style="left:16px;background:#C8FF3D;color:#0B0B0B" onclick="toast('The Grid live map opens in the full app')"><svg width="12" height="10" viewBox="0 0 12 10" fill="#0B0B0B"><path d="M7 0 2 6h3l-1 4 6-6H7z"/></svg>GRID</button>
+   <span class="abs" style="right:18px;display:flex;gap:16px"><svg width="22" height="20" viewBox="0 0 22 20" fill="#C8FF3D"><circle cx="8" cy="5" r="4.5"/><path d="M0 19c0-4.5 3.6-7 8-7s8 2.5 8 7z"/><path d="M18 5v8M14 9h8" stroke="#C8FF3D" stroke-width="2"/></svg><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#F4F6F2" stroke-width="1.7"><circle cx="10" cy="10" r="8.5"/><path d="M7.5 7.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.6v.6"/><circle cx="10" cy="14.6" r=".6" fill="#F4F6F2"/></svg></span></div>
+  <div class="scroll" id="ppl"></div>
+ </div>
+ <!-- Close -->
+ <div id="t-close" class="tab-pane" style="position:absolute;inset:0;display:none">
+  <div class="nav">Close</div>
+  <div class="scroll" id="cls"></div>
+ </div>
+ <!-- Stage -->
+ <div id="t-stage" class="tab-pane" style="position:absolute;inset:0;display:none">
+  <div class="nav">Stage</div>
+  <div class="scroll" id="stg"></div>
+ </div>
+ <!-- Chat -->
+ <div id="chat" style="position:absolute;inset:0;background:#0B0B0B;display:none;z-index:25"></div>
+ <button class="gb" id="gb" onclick="go('auth')"><i><svg width="11" height="8" viewBox="0 0 11 8" fill="#0B0B0B"><path d="M5.5 0C2.5 0 .5 2.3 0 4c.5 1.7 2.5 4 5.5 4S10.5 5.7 11 4C10.5 2.3 8.5 0 5.5 0z"/><circle cx="5.5" cy="4" r="1.8" fill="#C8FF3D"/></svg></i><b style="font-weight:900">Looking around</b><span class="mut">·</span><b class="lime">Create an account</b><span class="lime" style="font-weight:900">→</span></button>
+ <nav class="tb" id="tb"></nav>
+</section>
+</div>
+<script src="try-bridge.js"></script>
+<script>
+const $=id=>document.getElementById(id),stage=$('stage');
+function fit(){const s=Math.min(innerWidth/393,innerHeight/852);stage.style.transform=`translate(${(innerWidth-393*s)/2}px,${(innerHeight-852*s)/2}px) scale(${s})`}addEventListener('resize',fit);fit();
+let tt;function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),1900)}
+function go(n){if($('asc'))$('asc').scrollTop=0;document.querySelectorAll('.scr').forEach(s=>s.classList.toggle('on',s.id=='s-'+n))}
+const HUB=[['social','Zilt Social','Pulses, Circles and messages.','SectionSocial'],['jolt','Zilt Jolt','Short videos. Swipe up for the next.','SectionJolt'],['air','Zilt Air','Long videos and channels.','SectionAir'],['airkids','Zilt Air Kids','Kid-safe videos with a grown-up timer.','SectionAirKids'],['wave','Zilt Wave','Music from Zilt creators.','SectionWave']];
+$('hubrows').innerHTML=HUB.map(([id,t,b,img])=>`<button class="row" onclick="hub('${id}')"><img src="a/${img}.svg" alt=""><div><b>${t}</b><span>${b}</span></div><i>›</i></button>`).join('');
+function hub(id){if(id=='jolt'||id=='wave'){toast('Zilt '+(id=='jolt'?'Jolt':'Wave')+' opens on the web in the full app');return}enter(id=='air'||id=='airkids'?'air':'current')}
+function mode(m){$('sg-pw').classList.toggle('on',m=='pw');$('sg-ml').classList.toggle('on',m=='ml');$('m-pw').style.display=m=='pw'?'block':'none';$('m-ml').style.display=m=='ml'?'block':'none';document.querySelectorAll('.kh').forEach(k=>k.setAttribute('fill',m=='pw'?'#C8FF3D':'#17171C'))}
+function pwc(i){const ok=i.value.length>=8;$('pwrule').style.color=ok?'#C8FF3D':'#8A8A8A';$('pwrule').querySelector('i').style.cssText+=ok?';background:#C8FF3D;border-color:#C8FF3D':';background:none;border-color:#8A8A8A';if(ok){clearTimeout(i._t);i._t=setTimeout(()=>{toast('Demo mode: signed in as a guest');enter()},1200)}}
+/* icons (SF Symbols equivalents) */
+const I={bolt:'<path d="M13 1 3 14h7l-2 9 11-14h-7z"/>',p2:'<circle cx="8" cy="6" r="4"/><path d="M0 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/><circle cx="17" cy="7" r="3.2" opacity=".9"/><path d="M17.5 12.5c3.6.3 6.5 2.6 6.5 6.5h-6.2c0-2.6-.9-4.8-2.6-6.2z" opacity=".9"/>',play:'<rect x="1" y="3" width="22" height="16" rx="3"/><path d="M10 7.5v7l6-3.5z" fill="#17171C"/><rect x="5" y="21" width="14" height="2" rx="1"/>',bub:'<path d="M12 2C6 2 1.5 5.9 1.5 10.7c0 2.8 1.5 5.2 3.9 6.8L4.3 22l5-2.6c.9.2 1.8.3 2.7.3 6 0 10.5-3.9 10.5-8.9S18 2 12 2z"/>',me:'<circle cx="12" cy="12" r="11"/><circle cx="12" cy="9.5" r="4" fill="#17171C"/><path d="M4.8 19c1.6-2.6 4.2-3.8 7.2-3.8s5.6 1.2 7.2 3.8" fill="#17171C"/>'};
+const svg=(k,vb='0 0 24 24')=>`<svg viewBox="${vb}">${I[k]}</svg>`;
+const TABS=[['current','bolt','Current'],['air','play','Zilt Air'],['people','p2','People'],['+'],['close','bub','Close'],['stage','me','Stage']];
+let cur='current';
+function drawTabs(){$('tb').innerHTML=TABS.map(([k,ic,t])=>k=='+'?`<div class="cap"><button onclick="toast('Demo mode: posting is off')"><span><svg width="19" height="19" viewBox="0 0 19 19"><path d="M9.5 1v17M1 9.5h17" stroke="#0B0B0B" stroke-width="3.6" stroke-linecap="round"/></svg></span></button></div>`:`<button class="ti ${cur==k?'on':''}" onclick="tab('${k}')">${svg(ic)}${t}</button>`).join('')}
+function tab(k){cur=k;['current','air','people','close','stage'].forEach(n=>$('t-'+n).style.display=n==k?'block':'none');$('chat').style.display='none';drawTabs()}
+function enter(t){go('app');tab(t||'current')}
+/* Current feed: ZiltStarters house posts */
+const P=[['@ziltpets','corgi_puppy_lightning_bandana','He\'s been training for this moment his whole life 🫧 #cat #perfecttiming','cat_leaping_bubble','Electric Spark Pop',1],['@zilteats','cheese_pull_lightning_bolt','The cheese pull went on for 11 seconds. Rate it 1–10 👇 #cheesepull #smashburger','cheese_pull_burger','Smooth R&B Late Night',1],['@ziltlaughs','lightning_bolt_grinning_mouth','Grandma said \'hold my tea\' and ended the whole battle 🔥 #breakdance #legend','grandma_breakdance_headspin','Confident Hip-Hop Trap',1],['@ziltstyle','sunglasses_lightning_bolt','Graphic liner in 4 minutes. Save this for Friday ⚡ #makeup #eyeliner','eye_graphic_eyeliner','Upbeat Summery Pop',1]];
+let pi=0,sp={},fol={};
+const cap=c=>c.split(' ').map(w=>w[0]=='#'?`<span class="lime">${w}</span>`:w).join(' ');
+const RS=(p,f='none',s='#F4F6F2')=>`<svg viewBox="0 0 24 24" fill="${f}" stroke="${s}" stroke-width="1.8" stroke-linejoin="round">${p}</svg>`;
+function feed(){const [h,av,c,img,snd]=P[pi];const on=sp[pi];$('feed').innerHTML=`<div class="pg" style="background-image:url(a/${img}.webp)"></div>
+<div class="rail">
+<button class="rb" onclick="sp[${pi}]=!sp[${pi}];feed()">${on?RS(I.bolt.replace(/<path /,'<path '),'#C8FF3D','#C8FF3D'):RS(I.bolt)}<span>${on?1:0}</span></button>
+<button class="rb" onclick="toast('Demo mode: comments are read-only')">${RS('<path d="M12 3C6.5 3 2.5 6.6 2.5 11c0 2.4 1.2 4.6 3.2 6l-.9 4 4.4-2.1c.9.2 1.8.3 2.8.3 5.5 0 9.5-3.6 9.5-8.2S17.5 3 12 3z"/>')}<span>0</span></button>
+<button class="rb" onclick="toast('Demo mode: stickers cost nothing here')">${RS('<rect x="3" y="9" width="18" height="12" rx="1.5"/><path d="M2 9h20M12 9v12M12 9c-1.5-4-6-5-6-2s6 2 6 2c1.5-4 6-5 6-2s-6 2-6 2"/>','#C8FF3D','#C8FF3D')}<span>Sticker</span></button>
+<button class="rb" onclick="toast('Demo mode: nothing is shared')">${RS('<path d="M13 4v4.5C6 9 3 13.5 3 20c2.2-3.8 5.5-5.4 10-5.4V19l8-7.5z"/>','#F4F6F2')}<span>0</span></button>
+<button class="rb" onclick="toast('Sound on')">${RS('<path d="M3 9h4l5-4v14l-5-4H3z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.8 6a8.5 8.5 0 0 1 0 12"/>','none')}<span>Sound</span></button>
+</div>
+<div class="abs" style="left:14px;right:78px;bottom:150px;z-index:5">
+<div style="display:flex;align-items:center;gap:10px"><img class="av" src="a/${av}.webp" width="42" height="42" alt=""><span class="zc" style="font-size:22px">${h}</span><svg width="15" height="15" viewBox="0 0 24 24" fill="#C8FF3D"><path d="M12 1l2.6 2.2 3.4-.4 1.1 3.2 3 1.7-.9 3.3.9 3.3-3 1.7-1.1 3.2-3.4-.4L12 23l-2.6-2.2-3.4.4-1.1-3.2-3-1.7.9-3.3-.9-3.3 3-1.7 1.1-3.2 3.4.4z"/><path d="M7.5 12l3 3 6-6" stroke="#0B0B0B" stroke-width="2.4" fill="none"/></svg>
+<button onclick="fol[${pi}]=!fol[${pi}];feed()" style="font-size:12px;font-weight:700;padding:5px 11px;border-radius:14px;${fol[pi]?'background:rgba(244,246,242,.16);color:#F4F6F2':'background:#C8FF3D;color:#0B0B0B'}">${fol[pi]?'Following':'Follow'}</button></div>
+<div style="font-size:15px;font-weight:500;line-height:1.3;margin-top:10px;text-shadow:0 1px 4px rgba(0,0,0,.5)">${cap(c)}</div>
+<div style="display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:6px 10px;border-radius:14px;background:rgba(0,0,0,.35);font-size:12px;font-weight:600">♪ ${snd} <span style="font-size:9px;opacity:.65">›</span></div></div>
+<div class="abs" style="right:4px;top:300px;display:flex;flex-direction:column;gap:5px;z-index:5">${P.map((_,i)=>`<i style="width:3px;height:${i==pi?18:7}px;border-radius:2px;background:${i==pi?'#C8FF3D':'rgba(244,246,242,.35)'}"></i>`).join('')}</div>`}
+let y0=null;$('feed').addEventListener('pointerdown',e=>y0=e.clientY);$('feed').addEventListener('pointerup',e=>{if(y0==null)return;const d=e.clientY-y0;y0=null;if(Math.abs(d)>30){pi=(pi+(d<0?1:P.length-1))%P.length;feed()}});
+$('feed').addEventListener('wheel',e=>{if(Math.abs(e.deltaY)<20||feed._l)return;feed._l=1;setTimeout(()=>feed._l=0,500);pi=(pi+(e.deltaY>0?1:P.length-1))%P.length;feed()},{passive:true});
+let lane='Current';function lanes(){$('lanes').innerHTML=['Current','Following','Circles','News'].map(l=>`<button class="lane ${l==lane?'on':''}" onclick="lane='${l}';lanes();pi=${'0'};feed()">${l}</button>`).join('')}
+let mf='All';function mfs(){$('mf').innerHTML=['All','Videos','Photos'].map(m=>`<button onclick="mf='${m}';mfs()" style="flex:1;height:26px;border-radius:7px;font-size:13px;font-weight:${m==mf?600:500};${m==mf?'background:#636366;':''}">${m}</button>`).join('')}
+$('flick').innerHTML=`<div style="text-align:center;font-size:10px;font-weight:600"><button onclick="toast('Demo mode: posting is off')" style="width:50px;height:50px;border-radius:50%;border:2px dashed rgba(200,255,61,.7);display:flex;align-items:center;justify-content:center;color:#C8FF3D;font-size:22px;font-weight:300">+</button><div style="margin-top:3px">You</div></div>`+[['woman_neon_rooftop','Nia'],['woman_profile_neon_light','Maya'],['man_neon_profile_photo','Kai'],['man_sunglasses_hoodie_club','Dex'],['woman_neon_profile_photo','Nova']].map(([a,n])=>`<div style="text-align:center;font-size:10px;font-weight:600"><img class="av" src="a/${a}.webp" width="50" height="50" style="border-width:2.5px" alt=""><div style="margin-top:1px">${n}</div></div>`).join('');
+/* People (CirclesView) */
+const CIR=[['Night Runners','runners_neon_crosswalk','3.2K',1,'Everyone who only exists between 11pm and 5am.'],['Breaking','glowing_wireframe_globe','88K',1,'Verified clips first, takes later. Headlines as Pulses.',1],['Bedroom Producers','midi_pad_synth_neon','1.1K',0,'Loops, stems, and unfinished 8-bar ideas.'],['Bass Therapy','warehouse_rave_crowd','5.4K',0,'']];
+let scope='All';
+function ppl(){$('ppl').innerHTML=`<div style="margin:0 16px 22px;display:flex;background:rgba(118,118,128,.24);border-radius:9px;padding:2px">${['All','Pages','Friends','Close'].map(s=>`<button onclick="scope='${s}';ppl()" style="flex:1;height:28px;border-radius:7px;font-size:13px;font-weight:${s==scope?600:500};${s==scope?'background:#636366':''}">${s}</button>`).join('')}</div>
+<div style="margin:0 16px 22px;height:38px;border-radius:12px;background:#17171C;display:flex;align-items:center;gap:8px;padding:0 12px;color:#8A8A8A;font-size:15px"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="#8A8A8A" stroke-width="1.8"><circle cx="6.3" cy="6.3" r="5"/><path d="M10 10l4 4"/></svg>Search ${scope=='All'?'pages and friends':scope.toLowerCase()=='pages'?'pages':scope=='Friends'?'friends':'close friends'}</div>
+${scope=='All'||scope=='Friends'?`<button class="card" style="display:flex;align-items:center;gap:12px;padding:14px;width:361px;margin-bottom:26px" onclick="toast('Demo mode: no friend requests are sent')"><span style="width:42px;height:42px;border-radius:50%;background:#C8FF3D;display:flex;align-items:center;justify-content:center"><svg width="20" height="18" viewBox="0 0 22 20" fill="#0B0B0B"><circle cx="8" cy="5" r="4.5"/><path d="M0 19c0-4.5 3.6-7 8-7s8 2.5 8 7z"/><path d="M18 5v8M14 9h8" stroke="#0B0B0B" stroke-width="2.2"/></svg></span><span style="text-align:left"><b style="display:block;font-size:15px;font-weight:900">Add friends</b><span class="mut" style="font-size:12px">Username · QR · Link</span></span><span style="margin-left:auto;color:#8A8A8A">›</span></button>
+<div class="sec">FRIENDS · 0</div><div class="mut" style="font-size:13px;padding:0 20px 26px">No friends yet. Tap Add friends — once someone accepts, they show up here.</div>`:''}
+${scope=='Close'?`<div class="sec">CLOSE FRIENDS · 0</div><div class="mut" style="font-size:13px;padding:0 20px">No close friends yet.</div>`:''}
+${scope=='All'||scope=='Pages'?`<div class="sec">PAGES</div><div class="card" style="margin-bottom:26px">${CIR.slice(0,3).map(c=>cr(c)).join('')}</div><div class="sec">SUGGESTED</div><div class="card">${cr(CIR[3],1)}</div>`:''}`}
+function cr([n,img,m,live,b,brk],sug){return `<button class="li" onclick="toast('${n}: ${m} members')"><img src="a/${img}.webp" width="62" height="62" style="border-radius:14px;object-fit:cover" alt=""><span style="flex:1;min-width:0"><b style="display:flex;align-items:center;gap:6px;font-size:15px;font-weight:900">${n}${brk?'<span style="font-size:9px;color:#FF3D6E;letter-spacing:.6px">BREAKING</span>':''}</b><span class="mut" style="font-size:12px;display:flex;gap:6px;align-items:center">${live?'<span style="color:#FF3D6E;font-weight:700">● Live</span>':''}<svg width="11" height="9" viewBox="0 0 24 20" fill="#8A8A8A">${I.p2}</svg>${m}</span></span>${sug?`<span onclick="event.stopPropagation();this.textContent=this.textContent=='Follow'?'Following':'Follow'" style="font-size:12px;font-weight:700;padding:6px 12px;border-radius:14px;background:#C8FF3D;color:#0B0B0B">Follow</span>`:'<span class="mut">›</span>'}</button>`}
+/* Close (InnerView) */
+const CV=[['Maya','@mayadaze','woman_profile_neon_light','omg yes come through','22m',1,1],['Kai','@kaiflips','man_neon_profile_photo','You: say less','1h',0,1],['Dex','@dexlowend','man_sunglasses_hoodie_club','this loop is the one, trust','5h',2,0],['Nova','@novawire','woman_neon_profile_photo','You: ⚡','1d',0,0]];
+$('cls').innerHTML=`<div class="card">${CV.map((c,i)=>`<button class="li" onclick="chat(${i})"><span style="position:relative"><img class="av" src="a/${c[2]}.webp" width="50" height="50" style="${c[6]?'':'border-color:#23232B'}" alt="">${c[6]?'<i style="position:absolute;right:1px;bottom:1px;width:12px;height:12px;border-radius:50%;background:#C8FF3D;border:2px solid #17171C"></i>':''}</span><span style="flex:1;min-width:0"><b style="display:block;font-size:15px;font-weight:900">${c[0]}</b><span style="font-size:13px;color:${c[5]?'#F4F6F2':'#8A8A8A'}">${c[3]}</span></span><span style="text-align:right"><span class="mut" style="font-size:11px;display:block">${c[4]}</span>${c[5]?`<span style="display:inline-block;margin-top:4px;min-width:18px;height:18px;border-radius:9px;background:#C8FF3D;color:#0B0B0B;font-size:11px;font-weight:900;text-align:center;line-height:18px">${c[5]}</span>`:''}</span></button>`).join('')}</div>`;
+const MS={0:[['you up? 🌃',0],['🎙 Voice note · 0:14',1],['omg yes come through',0]],1:[['board is fixed, we ride at 1',0],['say less',1]],2:[['🎙 Voice note · 0:32',0],['this loop is the one, trust',0]],3:[['can you verify the timestamp on that clip?',0],['⚡',1]]};
+function chat(i){const c=CV[i];const ch=$('chat');ch.style.display='block';ch.innerHTML=`<div class="nav" style="justify-content:flex-start;padding:0 14px;gap:10px;border-bottom:1px solid #17171C"><button onclick="$('chat').style.display='none'" style="font-size:28px;color:#C8FF3D;line-height:1">‹</button><img class="av" src="a/${c[2]}.webp" width="32" height="32" alt=""><span><b style="display:block;font-size:15px">${c[0]}</b><span class="mut" style="font-size:11px">${c[1]}</span></span></div><div id="msgs" style="position:absolute;left:0;right:0;top:104px;bottom:150px;overflow:auto;padding:12px 14px;display:flex;flex-direction:column;gap:8px">${MS[i].map(m).join('')}</div><div class="abs" style="left:12px;right:12px;bottom:84px;height:44px;border-radius:22px;background:#17171C;display:flex;align-items:center;padding:0 6px 0 16px"><input id="ci" placeholder="Message ${c[0]}" onkeydown="if(event.key=='Enter')send()" style="font-size:15px"><button onclick="send()" style="width:34px;height:34px;border-radius:50%;background:#C8FF3D;color:#0B0B0B;font-weight:900">↑</button></div>`}
+const m=([t,me])=>`<div style="max-width:72%;align-self:${me?'flex-end':'flex-start'};background:${me?'#C8FF3D':'#17171C'};color:${me?'#0B0B0B':'#F4F6F2'};padding:9px 13px;border-radius:18px;font-size:15px">${t}</div>`;
+function send(){const v=$('ci').value.trim();if(!v)return;$('msgs').insertAdjacentHTML('beforeend',m([v,1]));$('ci').value='';toast('Demo mode: kept on this device, not sent')}
+/* Stage */
+$('stg').innerHTML=`<div style="text-align:center;padding-top:6px"><img class="av" src="a/person_neon_glow_profile.webp" width="96" height="96" style="border-width:3px" alt=""><div class="zc" style="font-size:28px;margin-top:10px">Guest</div><div class="mut" style="font-size:14px">Looking around</div>
+<div style="display:flex;justify-content:center;gap:34px;margin:18px 0 22px">${[['0','Pulses'],['0','Sparks'],['0','Followers']].map(([n,l])=>`<div><div class="zc" style="font-size:24px">${n}</div><div class="mut" style="font-size:12px">${l}</div></div>`).join('')}</div>
+<button onclick="go('auth')" style="width:361px;height:50px;border-radius:25px;background:#C8FF3D;color:#0B0B0B;font-size:17px;font-weight:700">Sign in or create account</button></div>
+<div style="margin:26px 0 0">${[['Zilt+','Ad-free Current, bigger uploads','#C8FF3D'],['Zilt Air','Long videos and channels','#F4F6F2'],['Zilt AI','Captions, cutdowns and ideas','#C8FF3D'],['Invite friends','Share your link','#F4F6F2'],['Help and support','support@tkhub.app','#8A8A8A']].map(([t,s,c])=>`<button class="card" style="display:flex;align-items:center;gap:12px;padding:14px;width:361px;margin-bottom:12px;text-align:left" onclick="toast('${t} opens in the full app')"><span style="width:36px;height:36px;border-radius:10px;background:#23232B;display:flex;align-items:center;justify-content:center"><svg width="16" height="18" viewBox="0 0 24 24" fill="${c}">${I.bolt}</svg></span><span style="flex:1"><b style="display:block;font-size:15px;font-weight:800">${t}</b><span class="mut" style="font-size:12px">${s}</span></span><span class="mut">›</span></button>`).join('')}</div>`;
+/* Air */
+$('airl').innerHTML=`<div style="margin:0 16px 14px;display:flex;gap:8px">${['For you','Channels','Live','Kids'].map((c,i)=>`<span style="height:32px;padding:0 14px;border-radius:16px;display:inline-flex;align-items:center;font-size:13px;font-weight:700;${i?'background:#17171C;color:#F4F6F2':'background:#C8FF3D;color:#0B0B0B'}">${c}</span>`).join('')}</div>`+[['runners_neon_crosswalk','Night Runners: the 1am city loop','Zilt Nights','12:40'],['midi_pad_synth_neon','Building a track from one 8-bar idea','Zilt Money','24:05'],['glowing_wireframe_globe','How a clip gets verified before it spreads','Zilt Signal','9:18'],['warehouse_rave_crowd','Bass Therapy, live from the warehouse','Zilt Nights','58:11']].map(([img,t,ch,d])=>`<button style="display:block;width:361px;margin:0 16px 18px;text-align:left" onclick="toast('Demo mode: playback preview only')"><div style="position:relative;height:198px;border-radius:16px;background:#17171C url(a/${img}.webp) center/cover"><span style="position:absolute;right:8px;bottom:8px;background:rgba(0,0,0,.75);border-radius:6px;padding:2px 6px;font-size:11px;font-weight:700">${d}</span></div><b style="display:block;font-size:15px;font-weight:800;margin-top:9px">${t}</b><span class="mut" style="font-size:12px">${ch}</span></button>`).join('');
+drawTabs();lanes();mfs();feed();ppl();
+</script><script id="nologin">/* Website demo: no sign-in. Opens straight into the signed-in app. */
+
+enter();
+</script></body></html>

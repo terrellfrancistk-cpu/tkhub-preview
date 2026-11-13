@@ -1,0 +1,21 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "GF7Q89UD42.app.rork.sprwhmpu5bonqbm9vax3i"
+        ],
+        "components": [
+          {
+            "/": "/auth/link",
+            "comment": "Sign-in links open Zilt itself instead of a browser tab."
+          },
+          {
+            "/": "/c/*",
+            "comment": "Circle links open the add-to-circle screen in Zilt. They never add anyone by themselves."
+          }
+        ]
+      }
+    ]
+  }
+}
