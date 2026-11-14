@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-BHjaDo2T.js";import{i as t,r as n}from"./pricing-DqfVf1yB.js";var r=e();function i({className:e=``}){return(0,r.jsxs)(`div`,{className:`text-xs opacity-75 ${e}`,"data-testid":`web-cancel-notice`,children:[(0,r.jsx)(`p`,{children:n}),(0,r.jsx)(`p`,{className:`mt-1`,children:t})]})}export{i as t};
