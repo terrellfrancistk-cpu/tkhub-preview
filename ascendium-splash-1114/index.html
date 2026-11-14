@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ASCENDIUM launch screen</title>
+<style>
+  :root { color-scheme: dark; --bg: #0b0b0d; --fg: #e8e8ea; --muted: #9a9aa2; --line: #24242a; --gold: #ffbf33; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  h1 span { color: var(--gold); }
+  p { color: var(--muted); margin: 0 0 16px; }
+  figure { margin: 24px 0 0; }
+  figcaption { color: var(--muted); font-size: 14px; margin-top: 8px; }
+  img { display: block; max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 6px; }
+  .portrait img { max-width: 360px; width: 100%; }
+  ul { color: var(--muted); padding-left: 20px; }
+</style>
+</head>
+<body>
+<main>
+  <h1><span>ASCENDIUM</span> launch screen preview (14 Nov 2026)</h1>
+  <p>One screen, shown only while the game is loading (no added delay, D-026). Game logo large and centred; "by TK Hub"
+  with the TK Hub logo master beneath. Preview only, not a live build.</p>
+  <figure>
+    <img src="launch-landscape-1920x1080.png" width="1920" height="1080" alt="Black launch screen: ASCENDIUM in gold, large and centred; below it 'by TK Hub' and the cyan TK Hub logo">
+    <figcaption>PC / Steam Deck startup splash, 1920×1080.</figcaption>
+  </figure>
+  <figure class="portrait">
+    <img src="launch-portrait-720x1280.png" width="720" height="1280" alt="The same launch screen in portrait for phones">
+    <figcaption>Phone launch screen (portrait), shown at reduced size.</figcaption>
+  </figure>
+  <ul>
+    <li>The gold "ASCENDIUM" is a text stand-in until the game's wordmark is chosen (open decision #11).</li>
+    <li>The TK Hub logo is Terrell's vector master (<code>brand/tkhub-logo-master/tkhub-logo-2048-transparent.png</code>), same look, sharp at any size.</li>
+    <li>Source: branch <code>claude/handoff</code> of the ascendium-unreal repo (<code>Scripts/branding/make_splash.py</code>); not yet built or run in Unreal.</li>
+  </ul>
+</main>
+</body>
+</html>
