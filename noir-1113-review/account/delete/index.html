@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head><script>location.replace("/tkhub-preview/noir-1113-review/#/account/delete")</script><meta name="robots" content="noindex,nofollow">
+    <meta charset="UTF-8" />
+    <!-- Marks the page as handling Rork's toolkit sign-in itself, so the host does not inject its own copy, which asks
+         api.rork.com for a token on every visit and fails CORS (a console error and a 5 KB script before the charset). -->
+    <script data-rork-toolkit-auth="true">(function(s){s.__rorkToolkitAuthInstalled=true;s.__rorkToolkitAuthReady=Promise.resolve(null);s.__rorkGetToolkitToken=function(){return Promise.resolve(null)};s.__rorkLoadToolkitModule=function(u){return import(u)}})(window);</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0A0A0A" />
+    <link rel="preload" as="font" type="font/woff2" href="/tkhub-preview/noir-1113-review/fonts/bodoni-moda-normal-latin-v2.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/tkhub-preview/noir-1113-review/fonts/jost-normal-latin-v2.woff2" crossorigin />
+    <title>NOIR — Nights of Riches | Social casino for iPhone & Android</title>
+    <meta
+      name="description"
+      content="A black-tie social casino. Sixteen tables, five jackpot tiers and the Wildfire Wheel, played with virtual gold coins. Free, 18+, no real-money gambling."
+    />
+
+    <meta property="og:title" content="NOIR — Nights of Riches" />
+    <meta
+      property="og:description"
+      content="A black-tie social casino. Sixteen tables, five jackpot tiers and the Wildfire Wheel, played with virtual gold coins. Free, 18+, no real-money gambling."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/tkhub-preview/noir-1113-review/noir-icon-512.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="NOIR — Nights of Riches" />
+    <meta
+      name="twitter:description"
+      content="A black-tie social casino played with virtual gold coins. Free, 18+, no real-money gambling."
+    />
+
+    <link rel="icon" href="/tkhub-preview/noir-1113-review/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/tkhub-preview/noir-1113-review/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/tkhub-preview/noir-1113-review/apple-touch-icon.png" />
+    <link rel="manifest" href="/tkhub-preview/noir-1113-review/site.webmanifest" />
+
+      <!-- TK Hub launch sequence. Removed when it ends, so it does not override the app background. -->
+    <style id="launch-early-bg">
+      html, body { background: #000; margin: 0; }
+      #launch-sequence {
+        position: fixed; inset: 0; z-index: 10000; display: flex;
+        align-items: center; justify-content: center; background: #000;
+      }
+      #launch-sequence img { -o-object-fit: contain; object-fit: contain; }
+      #launch-mark { width: 140px; height: 140px; border-radius: 32px; }
+      #launch-tk { width: 140px; height: 140px; display: none; }
+    </style>
+    <link rel="stylesheet" crossorigin href="/tkhub-preview/noir-1113-review/assets/index-DUq5afgF.css">
+  </head>
+
+  <body>
+    <script>
+      (function () {
+        var path = location.pathname || "/";
+        if (path.indexOf("/auth/callback") === -1) return;
+        var search = location.search || "";
+        var hash = location.hash || "";
+        if (!search && !hash) return;
+        try { sessionStorage.setItem("noir.auth.handoff", search + hash); } catch (e) {}
+        if (hash.indexOf("access_token=") === -1 && hash.indexOf("refresh_token=") === -1) return;
+        history.replaceState(null, "", path + search);
+        var frame = document.createElement("iframe");
+        frame.style.display = "none";
+        frame.src = "noir://auth-callback" + search + hash;
+        document.body.appendChild(frame);
+      })();
+    </script>
+    <div id="launch-sequence" role="img" aria-label="NOIR">
+      <!-- data-src: the logos are only fetched when the sequence actually plays (not for automation, not twice) -->
+      <img id="launch-mark" data-src="/tkhub-preview/noir-1113-review/brand/mark-280.webp" alt="NOIR" width="140" height="140" />
+      <img id="launch-tk" data-src="/tkhub-preview/noir-1113-review/brand/tk-hub-280.webp" alt="TK Hub LLC" width="140" height="140" />
+    </div>
+    <script>
+      (function () {
+        var launch = document.getElementById("launch-sequence");
+        var early = document.getElementById("launch-early-bg");
+        function clearEarly() { if (early && early.parentNode) early.parentNode.removeChild(early); }
+        if (navigator.webdriver || !launch) {
+          if (launch) launch.remove();
+          clearEarly();
+          return;
+        }
+        var mark = document.getElementById("launch-mark");
+        var tk = document.getElementById("launch-tk");
+        if (mark) mark.src = mark.getAttribute("data-src");
+        if (tk) tk.src = tk.getAttribute("data-src");
+        // Product logo 600ms -> TK Hub 1000ms -> fade 200ms (same as Our People).
+        setTimeout(function () {
+          if (mark) mark.style.display = "none";
+          if (tk) tk.style.display = "block";
+          launch.setAttribute("aria-label", "TK Hub LLC");
+        }, 600);
+        setTimeout(function () {
+          launch.style.transition = "opacity 200ms ease-out";
+          launch.style.opacity = "0";
+        }, 1600);
+        setTimeout(function () { launch.remove(); clearEarly(); }, 1800);
+      })();
+    </script>
+    <div id="root"><!--hero-shell--><script>(function(){try{var c=localStorage.getItem("noir.theme")}catch(e){}if(c!=="dark"&&c!=="light")c=window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";var r=document.documentElement;r.classList.toggle("dark",c==="dark");r.classList.toggle("light",c==="light");r.style.colorScheme=c})();</script><div class="min-h-screen bg-canvas" data-hero-shell="" data-route-shell="/account/delete"><header class="fixed inset-x-0 top-0 z-50 transition-all duration-500 bg-transparent"><div class="container flex h-20 items-center justify-between"><a class="group inline-flex flex-col items-start leading-none" href="#/"><span class="font-display text-xl font-semibold tracking-[0.5em] text-metal">NOIR</span><span class="mt-1 h-px w-full bg-gold/40 transition-colors group-hover:bg-gold/80"></span></a><nav aria-label="Main" class="hidden items-center gap-5 xl:flex"><a class="text-xs uppercase tracking-[0.24em] text-muted-foreground transition-colors hover:text-gold-pale" href="#/play">Play</a><a class="text-xs uppercase tracking-[0.24em] text-muted-foreground transition-colors hover:text-gold-pale" href="#/tables">Tables</a><a href="/#story" class="text-xs uppercase tracking-[0.24em] text-muted-foreground transition-colors hover:text-gold-pale">Watch</a><a class="text-xs uppercase tracking-[0.24em] text-muted-foreground transition-colors hover:text-gold-pale" href="#/play">Inside</a><a class="text-xs uppercase tracking-[0.24em] text-muted-foreground transition-colors hover:text-gold-pale" href="#/play">Games</a><a class="text-xs uppercase tracking-[0.24em] text-muted-foreground transition-colors hover:text-gold-pale" href="#/apps">The Apps</a><a class="text-xs uppercase tracking-[0.24em] text-muted-foreground transition-colors hover:text-gold-pale" href="#/beta">Beta</a><a class="text-xs uppercase tracking-[0.24em] text-muted-foreground transition-colors hover:text-gold-pale" href="#/support">Support</a><span class="inline-flex items-center gap-1"><button type="button" aria-label="Replay the NOIR jingle" title="Replay the jingle" class="inline-flex items-center justify-center border border-gold/25 p-2 text-gold/80 transition-colors hover:border-gold/60 hover:bg-gold/5"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg></button><button type="button" aria-pressed="true" aria-label="Jingle is silent" title="Silent" class="inline-flex items-center gap-2 border px-2 py-2 transition-colors border-gold/25 text-gold/50"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volume-x" aria-hidden="true"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"></path><line x1="22" x2="16" y1="9" y2="15"></line><line x1="16" x2="22" y1="9" y2="15"></line></svg><span aria-hidden="true" class="flex h-3 items-end gap-[2px]"><span class="w-[2px] origin-bottom bg-gold transition-all duration-300 h-[3px] opacity-45"></span><span class="w-[2px] origin-bottom bg-gold transition-all duration-300 h-[3px] opacity-45"></span><span class="w-[2px] origin-bottom bg-gold transition-all duration-300 h-[3px] opacity-45"></span><span class="w-[2px] origin-bottom bg-gold transition-all duration-300 h-[3px] opacity-45"></span></span></button></span><div role="radiogroup" aria-label="Colour theme" class="inline-flex items-center border border-gold/25"><button type="button" role="radio" aria-checked="false" aria-label="Light" title="Light" class="p-2 transition-colors text-muted-foreground hover:text-gold-pale"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg></button><button type="button" role="radio" aria-checked="true" aria-label="System" title="System" class="p-2 transition-colors bg-gold/15 text-gold"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-monitor" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"></rect><line x1="8" x2="16" y1="21" y2="21"></line><line x1="12" x2="12" y1="17" y2="21"></line></svg></button><button type="button" role="radio" aria-checked="false" aria-label="Dark" title="Dark" class="p-2 transition-colors text-muted-foreground hover:text-gold-pale"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path></svg></button></div><a class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-muted-foreground transition-colors hover:text-gold-pale" href="#/login"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round" aria-hidden="true"><circle cx="12" cy="8" r="5"></circle><path d="M20 21a8 8 0 0 0-16 0"></path></svg>Sign in</a><a class="relative overflow-hidden border border-gold/50 px-5 py-2.5 text-xs uppercase tracking-[0.24em] text-gold-pale transition-colors hover:border-gold hover:bg-gold/10" href="#/beta"><span class="relative z-10">Join the beta</span><span class="pointer-events-none absolute inset-y-0 -left-6 w-8 -skew-x-12 bg-gold/25 animate-sheen"></span></a></nav><div class="flex items-center gap-2 xl:hidden"><span class="inline-flex items-center gap-1"><button type="button" aria-label="Replay the NOIR jingle" title="Replay the jingle" class="inline-flex items-center justify-center border border-gold/25 p-2 text-gold/80 transition-colors hover:border-gold/60 hover:bg-gold/5"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg></button><button type="button" aria-pressed="true" aria-label="Jingle is silent" title="Silent" class="inline-flex items-center gap-2 border px-2 py-2 transition-colors border-gold/25 text-gold/50"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volume-x" aria-hidden="true"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"></path><line x1="22" x2="16" y1="9" y2="15"></line><line x1="16" x2="22" y1="9" y2="15"></line></svg><span aria-hidden="true" class="flex h-3 items-end gap-[2px]"><span class="w-[2px] origin-bottom bg-gold transition-all duration-300 h-[3px] opacity-45"></span><span class="w-[2px] origin-bottom bg-gold transition-all duration-300 h-[3px] opacity-45"></span><span class="w-[2px] origin-bottom bg-gold transition-all duration-300 h-[3px] opacity-45"></span><span class="w-[2px] origin-bottom bg-gold transition-all duration-300 h-[3px] opacity-45"></span></span></button></span><button type="button" aria-label="Open menu" class="border border-gold/30 p-2 text-gold"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button></div></div><div class="h-px transition-opacity duration-500 opacity-0"></div></header><main><div class="relative"><div class="pointer-events-none absolute inset-x-0 top-0 h-80 bloom"></div><div class="container relative pb-24 pt-36"><p class="eyebrow">Your data</p><h1 class="mt-4 font-display text-[clamp(2.2rem,6vw,3.6rem)] leading-tight text-metal">Delete your NOIR account</h1><p class="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">You can erase your NOIR account and everything in it at any time. Deleting removes this NOIR account only. It does not touch an account you may hold with another TK Hub app.</p><div class="mt-12 grid gap-6 md:grid-cols-3"><div class="panel flex flex-col gap-4 p-7"><div class="flex h-11 w-11 shrink-0 items-center justify-center border border-gold/30 bg-black/50"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-smartphone text-gold" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect><path d="M12 18h.01"></path></svg></div><h2 class="font-display text-xl text-metal">In the NOIR app</h2><p class="text-sm leading-relaxed text-muted-foreground">Open Profile (Android) or Settings (iPhone), choose Delete account, type DELETE and confirm. The account, its wallet, its ledger and its history are erased on every device.</p></div><div class="panel flex flex-col gap-4 p-7"><div class="flex h-11 w-11 shrink-0 items-center justify-center border border-gold/30 bg-black/50"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe text-gold" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg></div><h2 class="font-display text-xl text-metal">On this website</h2><p class="text-sm leading-relaxed text-muted-foreground">Sign in, open Account, choose Delete account, type DELETE and confirm. It is the same delete as in the app.</p><a class="mt-auto text-xs uppercase tracking-[0.24em] text-gold-pale underline decoration-gold/40 underline-offset-4" href="#/account">Go to Account</a></div><div class="panel flex flex-col gap-4 p-7"><div class="flex h-11 w-11 shrink-0 items-center justify-center border border-gold/30 bg-black/50"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail text-gold" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg></div><h2 class="font-display text-xl text-metal">By email</h2><p class="text-sm leading-relaxed text-muted-foreground">No longer have the app or the password? Write from the email address on the account and ask us to delete it. We confirm by reply before anything is erased, so nobody can delete an account that is not theirs.</p></div></div></div></div></main></div><!--/hero-shell--></div>
+    <script>
+      // The static first screen carries the 18+ gate. A visitor who already answered, or a page the gate never covers,
+      // drops it before the first paint; React then draws the real gate (or none) when it mounts.
+      (function () {
+        var gate = document.querySelector("[data-shell-extra]");
+        if (!gate) return;
+        var answered = false;
+        try { answered = localStorage.getItem("noir.age.confirmed") === "yes" || localStorage.getItem("noir.age.declined") === "yes"; } catch (e) { answered = true; }
+        if (answered || location.pathname !== "/") gate.remove();
+      })();
+    </script>
+  <script>(function(){function go(){var s=document.createElement("script");s.type="module";s.crossOrigin="";s.src="/tkhub-preview/noir-1113-review/assets/index-CRcQLds8.js";document.head.appendChild(s)}function after(){requestAnimationFrame(function(){setTimeout(go,0)})}function next(){var done=false,t;function once(){if(done)return;done=true;clearTimeout(t);after()}t=setTimeout(once,1500);try{var o=new PerformanceObserver(function(l){l.getEntries().forEach(function(e){if(e.name==="first-contentful-paint"){o.disconnect();once()}})});o.observe({type:"paint",buffered:true})}catch(x){once()}}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",next);else next()})();</script>
+</body>
+</html>
