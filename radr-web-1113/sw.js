@@ -8,7 +8,7 @@
  * new release shows as soon as there is a connection. Searches, routes,
  * limits, accounts and every other service are never cached here.
  */
-const VERSION = "2026-11-14c";
+const VERSION = "2026-11-14d";
 const SHELL = `radr-shell-${VERSION}`;
 const ASSETS = `radr-assets-${VERSION}`;
 const TILES = "radr-tiles-v1"; // kept across releases: tiles do not change with the app
