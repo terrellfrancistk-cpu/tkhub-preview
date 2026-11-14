@@ -1,0 +1,47 @@
+1:"$Sreact.fragment"
+2:"/tkhub-preview/site-2026-11-14c/_next/static/chunks/1eq1tgmq7a1n9-h2.js"
+3:I[138,["$2"],"Shell"]
+4:I[39756,["$2"],"default"]
+5:I[37457,["$2"],"default"]
+c:I[22016,["$2"],""]
+17:"ViewportBoundary"
+18:I[97367,["$2"],"$17"]
+19:"MetadataBoundary"
+1a:I[97367,["$2"],"$19"]
+1b:"$Sreact.suspense"
+1c:I[27201,["$2"],"IconMark"]
+:HL["/tkhub-preview/site-2026-11-14c/_next/static/chunks/0bx1-3ymae93r.css","style"]
+:HL["/tkhub-preview/site-2026-11-14c/logos/zilt.png?v=3","image"]
+:HL["/tkhub-preview/site-2026-11-14c/logos/booked.png?v=3","image"]
+:HL["/tkhub-preview/site-2026-11-14c/logos/curb.png?v=3","image"]
+:HL["/tkhub-preview/site-2026-11-14c/logos/afterglow.png?v=3","image"]
+7:X
+a:X
+a:C
+b:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","section",null,{"className":"panel","children":["$","div",null,{"className":"wrap","children":[["$","p",null,{"className":"kicker","children":"Sites"}],["$","h1",null,{"children":"One thousand. Five thousand."}],["$","p",null,{"className":"deck","children":"$$250 starts a site. $500 starts an app. The start counts toward the total. It is not extra."}],["$","div",null,{"className":"prices","children":[["$","article",null,{"className":"price","children":[["$","p",null,{"className":"kicker","children":"Website"}],["$","b",null,{"children":"$$1,000"}],["$","span",null,{"children":"$$250 to start."}],["$","$Lc",null,{"className":"btn btn-primary","href":"/tkhub-preview/site-2026-11-14c/order?kind=site","children":"Start a site"}]]}],["$","article",null,{"className":"price","children":[["$","p",null,{"className":"kicker","children":"App"}],["$","b",null,{"children":"$$5,000"}],["$","span",null,{"children":"$$500 to start."}],["$","$Lc",null,{"className":"btn btn-primary","href":"/tkhub-preview/site-2026-11-14c/order?kind=app","children":"Start an app"}]]}]]}],["$","div",null,{"className":"house-list","children":[["$","a","zilt",{"href":"https://tryzilt.app","target":"_blank","rel":"noreferrer","children":[["$","img",null,{"src":"/tkhub-preview/site-2026-11-14c/logos/zilt.png?v=3","alt":""}],["$","span",null,{"children":[["$","strong",null,{"children":"Zilt"}],"Post. Play. Get paid."]}],["$","em",null,{"children":"Visit"}]]}],["$","a","booked",{"href":"https://trybooked.app","target":"_blank","rel":"noreferrer","children":[["$","img",null,{"src":"/tkhub-preview/site-2026-11-14c/logos/booked.png?v=3","alt":""}],["$","span",null,{"children":[["$","strong",null,{"children":"Booked"}],"Keep more of the job."]}],["$","em",null,{"children":"Visit"}]]}],["$","a","curb",{"href":"https://getoncurb.app","target":"_blank","rel":"noreferrer","children":[["$","img",null,{"src":"/tkhub-preview/site-2026-11-14c/logos/curb.png?v=3","alt":""}],["$","span",null,{"children":[["$","strong",null,{"children":"Curb"}],"From both seats. Driver-built. Rider-ready."]}],["$","em",null,{"children":"Visit"}]]}],["$","a","afterglow",{"href":"https://tryafterglow.app","target":"_blank","rel":"noreferrer","children":[["$","img",null,{"src":"/tkhub-preview/site-2026-11-14c/logos/afterglow.png?v=3","alt":""}],"$Ld","$Le"]}],"$Lf","$L10","$L11","$L12","$L13","$L14"]}]]}]}],null,"$L15"]}],"p":"$@16","v":null,"s":"$7"}}]]
+8:[["children",{"s":"sites","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@9","v":"$a","s":"$7"},"c":"$Qb"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/tkhub-preview/site-2026-11-14c/_next/static/chunks/0bx1-3ymae93r.css","precedence":"next"}],["$","script","script-0",{"src":"/tkhub-preview/site-2026-11-14c/_next/static/chunks/1eq1tgmq7a1n9-h2.js","async":true}]],["$","html",null,{"lang":"en","className":"rG64oW_variable DkRRXa_variable OELc7G_variable","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","meta",null,{"name":"theme-color","content":"#eef3f6"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var k=localStorage.getItem(\"tk-theme\");var d=window.matchMedia(\"(prefers-color-scheme: dark)\").matches;var t=k===\"light\"||k===\"dark\"?k:(d?\"dark\":\"light\");document.documentElement.setAttribute(\"data-theme\",t);document.documentElement.setAttribute(\"data-theme-choice\",k||\"system\");}catch(e){}})();"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"setTimeout(function(){var b=document.querySelector('.boot');if(b){b.style.display='none'}},1200)"}}]]}],["$","body",null,{"children":["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]}]]}]]}],"p":"$@6","v":null,"s":"$7"},"c":"$Q8"},"h":{"r":["$","$1","h",{"children":[null,["$","$L18",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L1a",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1b",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"TK Hub - Sites"}],["$","meta","1",{"name":"description","content":"Websites $1,000. Apps $5,000. $250 starts a site. Texas. 469-903-1262."}],["$","link","2",{"rel":"shortcut icon","href":"/tkhub-preview/site-2026-11-14c/favicon.ico"}],["$","link","3",{"rel":"icon","href":"/tkhub-preview/site-2026-11-14c/favicon.ico?favicon.08gz29o148is-.ico","sizes":"16x16","type":"image/x-icon"}],["$","link","4",{"rel":"icon","href":"/tkhub-preview/site-2026-11-14c/logos/tkhub-mark.png"}],["$","link","5",{"rel":"apple-touch-icon","href":"/tkhub-preview/site-2026-11-14c/logos/tkhub-mark.png"}],["$","$L1c","6",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@1d","v":null,"s":"$7"}},"a":"$@1e","u":"$@1f","b":"ew3n0RO2hU1JxZZvBDg3H"}
+20:I[97367,["$2"],"OutletBoundary"]
+:HL["/tkhub-preview/site-2026-11-14c/logos/people.png?v=3","image"]
+:HL["/tkhub-preview/site-2026-11-14c/logos/radr.png?v=4","image"]
+:HL["/tkhub-preview/site-2026-11-14c/logos/noir.png?v=3","image"]
+:HL["/tkhub-preview/site-2026-11-14c/logos/apex.png?v=3","image"]
+:HL["/tkhub-preview/site-2026-11-14c/logos/role.png?v=3","image"]
+d:["$","span",null,{"children":[["$","strong",null,{"children":"Afterglow"}],"Nights that pay you back."]}]
+e:["$","em",null,{"children":"Visit"}]
+f:["$","a","people",{"href":"https://tryourpeople.app","target":"_blank","rel":"noreferrer","children":[["$","img",null,{"src":"/tkhub-preview/site-2026-11-14c/logos/people.png?v=3","alt":""}],["$","span",null,{"children":[["$","strong",null,{"children":"Our People"}],"Friends. Real circle. 16+."]}],["$","em",null,{"children":"Visit"}]]}]
+10:["$","a","radr",{"href":"https://tkhub.app/radr","target":"_blank","rel":"noreferrer","children":[["$","img",null,{"src":"/tkhub-preview/site-2026-11-14c/logos/radr.png?v=4","alt":""}],["$","span",null,{"children":[["$","strong",null,{"children":"RADR"}],"See it before it hits."]}],["$","em",null,{"children":"Visit"}]]}]
+11:["$","a","noir",{"href":"https://tkhub.app/noir","target":"_blank","rel":"noreferrer","children":[["$","img",null,{"src":"/tkhub-preview/site-2026-11-14c/logos/noir.png?v=3","alt":""}],["$","span",null,{"children":[["$","strong",null,{"children":"NOIR"}],"After dark. Open to play. 18+."]}],["$","em",null,{"children":"Visit"}]]}]
+12:["$","a","apex",{"href":"https://apexpeakofcare.app","target":"_blank","rel":"noreferrer","children":[["$","img",null,{"src":"/tkhub-preview/site-2026-11-14c/logos/apex.png?v=3","alt":""}],["$","span",null,{"children":[["$","strong",null,{"children":"APEX"}],"Get to the apex."]}],["$","em",null,{"children":"Visit"}]]}]
+13:null
+14:["$","a","role",{"href":"https://tryrole.app","target":"_blank","rel":"noreferrer","children":[["$","img",null,{"src":"/tkhub-preview/site-2026-11-14c/logos/role.png?v=3","alt":""}],["$","span",null,{"children":[["$","strong",null,{"children":"ROLE"}],"One role. One packet. No fiction."]}],["$","em",null,{"children":"Visit"}]]}]
+15:["$","$L20",null,{"children":["$","$1b",null,{"name":"Next.MetadataOutlet","children":"$@21"}]}]
+7:300
+21:null
+1f:true
+7:C
+1e:0
+9:"$undefined"
+6:"$undefined"
+1d:"$undefined"
+16:"$undefined"
