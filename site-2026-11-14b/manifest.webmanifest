@@ -1,0 +1,19 @@
+{
+  "name": "APEX",
+  "short_name": "APEX",
+  "description": "Get to the apex. Cloud dental chart. AI at the chair.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#050607",
+  "theme_color": "#050607",
+  "icons": [
+    { "src": "/tkhub-preview/site-2026-11-14b/icons/apex-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/tkhub-preview/site-2026-11-14b/icons/apex-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Open the chart", "short_name": "Chart", "url": "/tkhub-preview/site-2026-11-14b/app" },
+    { "name": "Imaging", "short_name": "Imaging", "url": "/tkhub-preview/site-2026-11-14b/office" }
+  ]
+}
