@@ -1,12 +1,15 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>APEX logos and splash · preview</title>
 <style>body{margin:0;background:#0b0c0d;color:#eef3ea;font:16px/1.5 system-ui,sans-serif}main{max-width:1100px;margin:0 auto;padding:24px 16px 64px}h1{font-size:28px;margin:0 0 4px}h2{font-size:20px;margin:36px 0 8px}p{color:#c9d0c6;margin:6px 0}img{max-width:100%;height:auto;border:1px solid #2a312b;border-radius:10px;display:block}.row{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start}.row figure{margin:0;flex:1 1 320px}figcaption{font-size:14px;color:#9aa396;margin-top:6px}.bar{background:#c6f04d;color:#0a0c08;font-weight:800;padding:8px 12px;border-radius:8px;display:inline-block;margin-bottom:12px}a{color:#c6f04d}</style></head><body><main>
-<span class="bar">Preview only · not live · build a6a73de on branch claude/hopeful-keller-j9tore</span>
+<span class="bar">Preview only · not live · build ddd00fe on branch claude/hopeful-keller-j9tore</span>
 <h1>APEX: sharp logos everywhere, one splash, no added delay</h1>
 <p>Terrell's urgent order, Nov 13–14. Full site snapshot with the new icons: <a href="../">apex-1114</a>.</p>
 <h2>1. One splash screen (was two)</h2>
 <p>Before: APEX logo 0.6 s, then a TK Hub screen 1 s, then a fade, on every page load (about 1.8 s added each visit). Now: one screen, APEX large with “by TK Hub” and the small TK Hub mark. It goes away the moment the page is ready, with no minimum time. The logos only appear if loading takes longer than 0.25 s, so fast and cached loads never show it, and reload/back skip it. Measured on the production build: fast load ready at ~0.24 s with no logo shown; throttled slow load ready at ~1.3 s.</p>
 <div class="row"><figure><img src="splash-phone.png" alt="One splash screen on a phone"><figcaption>Phone (what a slow load shows)</figcaption></figure><figure><img src="splash-laptop.png" alt="One splash screen on a laptop"><figcaption>Laptop</figcaption></figure></div>
 <p>The Android and iPhone apps get the same single screen (sharp marks), ending when sign-in or the first desk is on screen instead of on a timer. That reaches phones with the next store builds.</p>
+<h2>1b. TK Hub logo master</h2>
+<p>Every TK Hub logo in APEX now uses Terrell's TK Hub master (faithful vector rebuild, same look): the site header mark, “by TK Hub” on the splash above, and the Android and iPhone launch screens. Header at 3x phone resolution:</p>
+<img src="header-tkhub-3x.png" alt="TK Hub mark in the site header at 3x">
 <h2>2. Icons: favicon, apple-touch, install icons</h2>
 <p>Top row: new sharp set (from the exact APEX vector). Bottom row: the soft icons they replace (kept in the repo). Left to right: apple-touch 180, favicon 32, install 192, install 512, maskable 512.</p>
 <img src="icons-compare.png" alt="New sharp icons above the old soft ones">
