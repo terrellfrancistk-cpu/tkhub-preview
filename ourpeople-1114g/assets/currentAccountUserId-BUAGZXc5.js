@@ -1,0 +1,1 @@
+import"./tkHubAppRuntime-B3tfh8si.js";import{b as e}from"./site-BjtKZKvH.js";async function t(){let{data:t}=await e.auth.getSession();return t.session?.user.id??null}export{t};

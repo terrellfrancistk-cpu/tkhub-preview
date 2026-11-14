@@ -1,0 +1,15 @@
+{
+  "name": "OurPeople",
+  "short_name": "OurPeople",
+  "description": "One quiet place for the few people helping care for one person.",
+  "start_url": "/app",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FEF4E8",
+  "theme_color": "#FDF6EC",
+  "icons": [
+    { "src": "/tkhub-preview/ourpeople-1114g/icons/ourpeople-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/tkhub-preview/ourpeople-1114g/icons/ourpeople-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/tkhub-preview/ourpeople-1114g/icons/ourpeople-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -1,0 +1,3 @@
+TK Hub logo master (vector rebuild, same look as the original 300px logo).
+Brand cyan #00CBF6. Text is outlined, so the SVGs need no fonts.
+Source: the tkhub-preview repository, brand/tkhub-logo-master/ (see its README).
