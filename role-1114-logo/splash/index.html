@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ROLE splash and logos · preview</title>
+<style>body{margin:0;font:16px/1.5 system-ui,sans-serif;background:#f3efe6;color:#1d2420;padding:24px}h1{font-size:22px;margin:0 0 4px}p{max-width:720px}
+.row{display:flex;flex-wrap:wrap;gap:24px;margin:20px 0}figure{margin:0;background:#fff;border:1px solid #ddd6c8;border-radius:12px;padding:12px}
+figure img{display:block;width:260px;height:auto;border-radius:8px}figcaption{font-size:13px;color:#5b645f;margin-top:8px;max-width:260px}
+.icons img{background:#fff;border:1px solid #ddd6c8;border-radius:8px}</style></head><body>
+<h1>ROLE: one splash, no added wait, sharp logos</h1>
+<p>Screenshots from the work-branch build at 3x (phone sharpness). The splash is one screen: the ROLE logo large and centered, then “by TK Hub” with the small TK Hub logo. It shows only while the page or app is really loading and leaves the moment it is ready. On normal and cached loads it never appears; there is no timer and no second screen.</p>
+<div class="row">
+<figure><img src="website-splash.png" alt="Website splash"><figcaption>Website (tryrole.app pages): appears only if the page is not ready 0.4 s after it starts arriving; ends the moment it is.</figcaption></figure>
+<figure><img src="app-splash.png" alt="In-app splash"><figcaption>Inside the app (/app): shown only while your account loads.</figcaption></figure>
+</div>
+<h1>Icons and link preview</h1>
+<p>Favicon set: vector SVG (sharp at any size) plus a new 16/32/48 ICO drawn from the vector. Home-screen and install icons 180, 192 and 512 px. Link preview (og:image / twitter:image) 1200×630.</p>
+<div class="row icons"><img src="favicon.svg" width="64" height="64" alt="favicon.svg"><img src="apple-touch-icon.png" width="90" height="90" alt="apple-touch-icon 180"><img src="icon-512.png" width="128" height="128" alt="icon 512"><img src="og.jpg" width="381" height="200" alt="link preview 1200x630"></div>
+<p><a href="../">Open the full site preview (this build)</a></p>
+</body></html>
