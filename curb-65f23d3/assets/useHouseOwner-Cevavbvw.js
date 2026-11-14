@@ -1,0 +1,1 @@
+import{p as e}from"./SiteLayout-CyCDCgN2.js";import{t}from"./useQuery-BC8_jHmv.js";import{i as n}from"./useAuth-BrAmLwOR.js";function r(){let{user:r,isLoading:i}=n(),a=t({queryKey:[`studio-access`,r?.id??`signed-out`],queryFn:e,enabled:!!r&&!i,retry:!1,staleTime:6e4});return{user:r,isLoading:i||!!r&&a.isLoading,isOwner:a.data?.owner===!0}}export{r as t};
