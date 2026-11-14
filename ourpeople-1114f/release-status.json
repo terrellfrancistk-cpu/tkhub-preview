@@ -1,0 +1,23 @@
+{
+  "updatedAt": "Nov 4, 2026",
+  "platforms": [
+    {
+      "id": "ios",
+      "name": "iPhone",
+      "next": "2.0.0 (124)",
+      "tracks": [
+        { "name": "TestFlight", "version": "2.0.0 (124)", "state": "Ready to upload", "tone": "pending" },
+        { "name": "App Store", "version": "2.0.0", "state": "Not submitted", "tone": "idle" }
+      ]
+    },
+    {
+      "id": "android",
+      "name": "Android",
+      "next": "2.0.0",
+      "tracks": [
+        { "name": "Play internal", "version": "2.0.0", "state": "versionCode is the build clock", "tone": "pending" },
+        { "name": "Play closed", "version": "—", "state": "Needs a Play Console release", "tone": "idle" }
+      ]
+    }
+  ]
+}
