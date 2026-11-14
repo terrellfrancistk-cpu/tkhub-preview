@@ -1,0 +1,21 @@
+/* legacy-a11y-v1.css (Nov 13): WCAG AA contrast for the older tkhub.app pages (the Tailwind build in /assets).
+   Additive: only colors, only where axe measured a failure. Same hues, darker in light mode; dark mode unchanged
+   except where noted. Linked from each legacy page; nothing in those pages was removed. */
+html[data-theme=light] .text-cyan{color:#006a87}                 /* was #0096c2 on #eef3f6: 3.05 -> 5.51 */
+html[data-theme=light] .bg-cyan{background-color:#006a87}         /* white text on it: 3.11 -> 5.61 */
+html[data-theme=light] .text-lime{color:#3f6a0a}                 /* was #4d7c0f: 4.46 -> 5.73 */
+html[data-theme=light] .bg-lime{background-color:#9fd13a}         /* dark text on it: 3.71 -> 10.3 */
+html[data-theme=light] .text-warn{color:#7a4800}                 /* 3.97 -> 5.59 */
+/* "TestFlight" pills keep their near-black fill; their label must be light in both themes (was 1.06 in light). */
+a.bg-\[\#0a0b10\]{color:#f7f4ee}
+/* App names in their own accent on /beta: same hue, darker in light mode so large text meets 3:1. */
+html[data-theme=light] h2.font-display[style*="color:#e8c36a"]{color:#7a6230!important}
+html[data-theme=light] h2.font-display[style*="color:#2ee6ff"]{color:#14707d!important}
+html[data-theme=light] h2.font-display[style*="color:#c084fc"]{color:#734f97!important}
+/* A link inside small muted text is underlined so it does not rely on color alone. */
+.text-muted a.text-cyan,.text-xs a.text-cyan{text-decoration:underline;text-underline-offset:2px}
+/* Restored /noir and /apps/<id> pages (restore/2026-11-13): store badges are dark in both themes, so their small
+   "Download on the / Get it on" line must be light (was #526068 on #0e1418 = 2.85:1). */
+a[aria-label$="on the App Store"] .text-muted,a[aria-label$="on Google Play"] .text-muted{color:#a9b4ba}
+/* NOIR game names in gold on white cards in light mode: same hue, deeper (was 1.68:1). */
+html[data-theme=light] .font-display[style*="232, 195, 106"],html[data-theme=light] .font-display[style*="#e8c36a"]{color:#7a6230!important}
