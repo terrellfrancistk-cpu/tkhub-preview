@@ -1,0 +1,12 @@
+terrellfrancis.app preview (not the live site)
+
+Build fingerprint: 7927e4b2d0379fde
+Source: terrellfrancistk-cpu/terrell-francis-portfolio, branch claude/sharp-franklin-6cwtfa,
+commit 9bd7dfb (PR #7). Check before any merge: bash tests/build-fingerprint.sh prints the same.
+
+Built exactly as pages.yml publishes it (terser + clean-css), minus files that do nothing in a
+subfolder (CNAME, .github, README.md, .nojekyll). Preview-only edits, per this repo's convention:
+- noindex, nofollow on every page
+- 404.html: root links made relative so they work under /tkhub-preview/
+
+Nothing goes live until Terrell has seen and approved this exact build.
