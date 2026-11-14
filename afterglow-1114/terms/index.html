@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en" class="dark" style="color-scheme: dark">
+  <head><meta name="robots" content="noindex,nofollow">
+    <meta charset="UTF-8" />
+    <script>
+      /* Theme before first paint: a remembered Night or Day wins; "system"
+         (an added choice) follows the device; no choice is Night, the default. */
+      (function(){try{var c=localStorage.getItem("afterglow:theme");var t=c==="light"||c==="dark"?c:(c==="system"&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");var r=document.documentElement;r.classList.remove("light","dark");r.classList.add(t);r.style.colorScheme=t;}catch(e){}})();
+    </script>
+    <!-- Marks the page as handling Rork's toolkit sign-in itself, so the host does not inject its own copy, which asks
+         api.rork.com for a token on every visit and fails CORS (a console error and a 5 KB script before the charset). -->
+    <script data-rork-toolkit-auth="true">(function(s){s.__rorkToolkitAuthInstalled=true;s.__rorkToolkitAuthReady=Promise.resolve(null);s.__rorkGetToolkitToken=function(){return Promise.resolve(null)};s.__rorkLoadToolkitModule=function(u){return import(u)}})(window);</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Afterglow — Night Market Run</title>
+    <meta
+      name="description"
+      content="Support, privacy policy, and terms for Afterglow, a one-thumb neon night-market arcade game for iPhone, iPad and Android."
+    />
+
+    <meta property="og:title" content="Afterglow — Night Market Run" />
+    <meta
+      property="og:description"
+      content="Support, privacy policy, and terms for Afterglow, a one-thumb neon night-market arcade game for iPhone, iPad and Android."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tryafterglow.app/" />
+    <meta property="og:image" content="https://terrellfrancistk-cpu.github.io/tkhub-preview/afterglow-1114/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="The Afterglow lantern logo over a neon night market" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Afterglow — Night Market Run" />
+    <meta name="twitter:image" content="https://terrellfrancistk-cpu.github.io/tkhub-preview/afterglow-1114/og-image.jpg" />
+
+    <link rel="icon" href="/tkhub-preview/afterglow-1114/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/tkhub-preview/afterglow-1114/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/tkhub-preview/afterglow-1114/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/tkhub-preview/afterglow-1114/icon-512.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/tkhub-preview/afterglow-1114/apple-touch-icon.png" />
+    <link rel="manifest" href="/tkhub-preview/afterglow-1114/manifest.webmanifest" />
+      <!-- Launch screen: ONE screen (Afterglow large, "by TK Hub" beneath), shown only while the app is
+           actually loading. It stays invisible for the first 250 ms and is gone the moment the app has mounted,
+           so a fast or cached load never sees it and nothing waits on a timer (Terrell, Nov 13). -->
+    <style id="launch-early-bg">
+      html, body { background: #000; margin: 0; }
+      #launch-sequence {
+        position: fixed; inset: 0; z-index: 10000; display: flex; flex-direction: column; gap: 22px;
+        align-items: center; justify-content: center; background: #000;
+        opacity: 0; transition: opacity 160ms ease-out; pointer-events: none;
+      }
+      #launch-sequence.is-visible { opacity: 1; }
+      #launch-sequence img { -o-object-fit: contain; object-fit: contain; display: block; }
+      #launch-mark { width: 160px; height: 160px; border-radius: 36px; }
+      #launch-by {
+        display: flex; flex-direction: column; align-items: center; gap: 8px;
+        font: 700 11px/1 system-ui, -apple-system, "Segoe UI", sans-serif; letter-spacing: 0.32em;
+        text-transform: uppercase; color: rgba(255, 255, 255, 0.72);
+      }
+      #launch-tk { width: 44px; height: 64px; }
+    </style>
+    <link rel="stylesheet" crossorigin href="/tkhub-preview/afterglow-1114/assets/index-CeBgYWSC.css">
+  </head>
+
+  <body>
+    <div id="launch-sequence" role="img" aria-label="Afterglow, by TK Hub">
+      <img id="launch-mark" src="/tkhub-preview/afterglow-1114/brand/mark-160.webp" srcset="/tkhub-preview/afterglow-1114/brand/mark-160.webp 1x, /tkhub-preview/afterglow-1114/brand/mark-320.webp 2x, /tkhub-preview/afterglow-1114/brand/mark-480.webp 3x" alt="" width="160" height="160" />
+      <div id="launch-by">
+        <span>by TK Hub</span>
+        <img id="launch-tk" src="/tkhub-preview/afterglow-1114/brand/tk-hub-mark.webp" alt="" width="44" height="64" />
+      </div>
+    </div>
+    <script>
+      (function () {
+        var launch = document.getElementById("launch-sequence");
+        var early = document.getElementById("launch-early-bg");
+        var done = false;
+        function clearEarly() { if (early && early.parentNode) early.parentNode.removeChild(early); }
+        function finish() {
+          if (done) return;
+          done = true;
+          if (observer) observer.disconnect();
+          if (!launch) { clearEarly(); return; }
+          if (launch.classList.contains("is-visible")) {
+            launch.classList.remove("is-visible");
+            setTimeout(function () { launch.remove(); clearEarly(); }, 170);
+          } else {
+            launch.remove();
+            clearEarly();
+          }
+        }
+        // The app has mounted once React replaces the static first screen.
+        // #root is parsed after this script, so it is looked up each time.
+        function mounted() {
+          var root = document.getElementById("root");
+          return !!root && root.childElementCount > 0 && !root.querySelector("[data-hero-shell]");
+        }
+        if (navigator.webdriver || !launch || mounted()) { finish(); return; }
+        var observer = window.MutationObserver ? new MutationObserver(function () { if (mounted()) finish(); }) : null;
+        if (observer) observer.observe(document.documentElement, { childList: true, subtree: true });
+        // Only a load that is still going after 250 ms ever shows the screen.
+        setTimeout(function () { if (!done && launch) launch.classList.add("is-visible"); }, 250);
+        // If the script bundle never arrives, the static first screen is readable: never trap it under the logo.
+        window.addEventListener("load", function () { setTimeout(finish, 1500); }, { once: true });
+      })();
+    </script>
+    <div id="root"><!--hero-shell--><div class="relative min-h-screen overflow-hidden bg-ag-night text-ag-ink" data-hero-shell=""><div aria-hidden="true" class="pointer-events-none absolute inset-0" style="background: radial-gradient(900px 520px at 12% -6%, rgba(255, 61, 154, 0.26), transparent 62%), radial-gradient(760px 460px at 88% 2%, rgba(47, 230, 224, 0.2), transparent 60%), radial-gradient(1200px 620px at 50% 112%, rgba(255, 201, 60, 0.2), transparent 66%);"></div><div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-[0.05]" style="background-image: repeating-linear-gradient(0deg, rgba(255, 247, 221, 0.9) 0px, rgba(255, 247, 221, 0.9) 1px, transparent 1px, transparent 4px);"></div><div class="relative mx-auto flex min-h-screen w-full max-w-6xl flex-col px-6 pb-16 pt-6"><header class="flex justify-end"><div role="group" aria-label="Appearance" class="inline-flex items-center gap-0.5 rounded-full border border-ag-ink/15 bg-ag-night/70 p-0.5 backdrop-blur-sm"><button type="button" aria-pressed="true" class="inline-flex min-h-[44px] items-center gap-1.5 rounded-full px-3 text-[0.625rem] font-black uppercase tracking-[0.18em] transition-colors active:scale-95 bg-ag-gold/15 text-ag-gold"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon h-3.5 w-3.5" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path></svg>Night</button><button type="button" aria-pressed="false" class="inline-flex min-h-[44px] items-center gap-1.5 rounded-full px-3 text-[0.625rem] font-black uppercase tracking-[0.18em] transition-colors active:scale-95 text-ag-ink/70 hover:text-ag-ink/80"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun h-3.5 w-3.5" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>Day</button><button type="button" aria-pressed="false" class="min-h-[44px] items-center gap-1.5 rounded-full text-[0.625rem] font-black uppercase tracking-[0.18em] transition-colors active:scale-95 hidden min-w-[44px] justify-center px-2.5 sm:inline-flex sm:px-3 text-ag-ink/70 hover:text-ag-ink/80"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-monitor h-3.5 w-3.5" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"></rect><line x1="8" x2="16" y1="21" y2="21"></line><line x1="12" x2="12" y1="17" y2="21"></line></svg><span class="sr-only sm:not-sr-only">System</span></button></div></header><svg aria-hidden="true" viewBox="0 0 100 14" preserveAspectRatio="none" class="pointer-events-none h-10 w-full"><path d="M0 2 Q 50 12 100 2" fill="none" stroke="rgb(var(--ag-ink))" stroke-opacity="0.22" stroke-width="0.4"></path><circle cx="6" cy="4.256" r="1.5" fill="#FFC93C" style="filter: drop-shadow(rgb(255, 201, 60) 0px 0px 2.5px);"></circle><circle cx="19" cy="8.155999999999999" r="1.5" fill="#FF3D9A" style="filter: drop-shadow(rgb(255, 61, 154) 0px 0px 2.5px);"></circle><circle cx="32" cy="10.704" r="1.5" fill="#2FE6E0" style="filter: drop-shadow(rgb(47, 230, 224) 0px 0px 2.5px);"></circle><circle cx="45" cy="11.9" r="1.5" fill="#FF7A2F" style="filter: drop-shadow(rgb(255, 122, 47) 0px 0px 2.5px);"></circle><circle cx="58" cy="11.744" r="1.5" fill="#FFC93C" style="filter: drop-shadow(rgb(255, 201, 60) 0px 0px 2.5px);"></circle><circle cx="71" cy="10.236" r="1.5" fill="#FF3D9A" style="filter: drop-shadow(rgb(255, 61, 154) 0px 0px 2.5px);"></circle><circle cx="84" cy="7.376000000000001" r="1.5" fill="#2FE6E0" style="filter: drop-shadow(rgb(47, 230, 224) 0px 0px 2.5px);"></circle><circle cx="96" cy="3.536000000000002" r="1.5" fill="#FFC93C" style="filter: drop-shadow(rgb(255, 201, 60) 0px 0px 2.5px);"></circle></svg><main class="flex flex-1 flex-col items-center pt-4 text-center"><a href="https://tkhub.app" target="_blank" rel="noreferrer" class="group flex w-full items-center justify-center gap-2 rounded-full border border-ag-ink/12 bg-ag-panel/60 px-4 py-2 text-[0.625rem] font-bold uppercase tracking-[0.22em] text-ag-ink/70 transition-colors hover:border-ag-cyan/50 hover:text-ag-cyan"><span class="text-ag-gold">TK Hub</span><span aria-hidden="true" class="h-3 w-px bg-ag-ink/20"></span><span>More apps from one house</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right h-3 w-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><section class="mt-6 grid w-full items-center gap-10 text-center lg:mt-10 lg:min-h-[72vh] lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:text-left" aria-label="Afterglow"><div class="flex flex-col items-center lg:items-start"><div class="flex items-center gap-3"><img decoding="async" sizes="48px" alt="" width="56" height="56" class="h-12 w-12 rounded-[14px]" srcset="/tkhub-preview/afterglow-1114/icon-112.webp 112w, /tkhub-preview/afterglow-1114/icon-224.webp 224w" src="/tkhub-preview/afterglow-1114/icon-112.webp" style="box-shadow: rgba(255, 201, 60, 0.42) 0px 0px 40px;"><a class="inline-flex rounded-full border border-ag-gold/40 px-3 py-1 text-[0.625rem] font-black uppercase tracking-[0.18em] text-ag-gold" href="/the-game#whats-new">v2.0.0 · release notes</a></div><h1 class="mt-7 text-[13vw] font-black uppercase leading-[0.85] tracking-[0.02em] text-ag-ink sm:text-7xl lg:text-[7.5rem]" style="text-shadow: rgba(255, 201, 60, 0.45) 0px 0px 44px;">Afterglow</h1><p class="mt-4 text-[0.75rem] font-black uppercase tracking-[0.34em] text-ag-gold sm:text-sm">Night Market Run</p><p class="mt-6 max-w-md text-lg leading-snug text-ag-ink/80 sm:text-xl">Pull the lever · Light the street.</p><p class="mt-3 max-w-md text-[0.6875rem] font-black uppercase tracking-[0.22em] text-ag-cyan sm:text-xs">Night standing. Walk it. Earn it. The street remembers.</p><div class="mt-9 flex flex-col items-center gap-4 sm:flex-row lg:items-center"><a href="https://play.google.com/store/apps/details?id=com.terrellfrancis.afterglow" target="_blank" rel="noopener noreferrer" class="rounded-full border border-ag-bull/70 bg-ag-bull/10 px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-ag-bull sm:px-8 sm:text-sm sm:tracking-[0.2em]" style="box-shadow: rgba(57, 255, 136, 0.35) 0px 0px 40px;">Available now on Google Play</a><button type="button" aria-label="Hear the jingle" class="group inline-flex items-center gap-2.5 rounded-full border border-ag-gold/45 bg-ag-panel/70 px-4 py-2 text-[0.625rem] font-black uppercase tracking-[0.2em] text-ag-gold transition-shadow hover:shadow-[0_0_26px_rgba(255,201,60,0.45)]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volume2 lucide-volume-2 h-3.5 w-3.5" aria-hidden="true"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"></path><path d="M16 9a5 5 0 0 1 0 6"></path><path d="M19.364 18.364a9 9 0 0 0 0-12.728"></path></svg><span>Hear the jingle</span><span aria-hidden="true" class="flex items-end gap-[3px]"><span class="w-[3px] rounded-full bg-ag-cyan" style="height: 4px;"></span><span class="w-[3px] rounded-full bg-ag-cyan" style="height: 6px;"></span><span class="w-[3px] rounded-full bg-ag-cyan" style="height: 8px;"></span><span class="w-[3px] rounded-full bg-ag-cyan" style="height: 10px;"></span></span></button></div><a class="mt-5 inline-flex min-h-[48px] items-center gap-2 rounded-full border border-ag-pink/60 px-5 text-[0.6875rem] font-black uppercase tracking-[0.2em] text-ag-ink transition-colors hover:border-ag-pink hover:text-ag-pink" href="/night">Walk tonight's market — no download <span aria-hidden="true">›</span></a><a href="#iphone-list" class="mt-4 inline-flex min-h-[44px] items-center text-[0.625rem] font-bold uppercase tracking-[0.28em] text-ag-ink/70 underline-offset-4 hover:text-ag-gold hover:underline">iPhone: Coming soon to the App Store</a></div><div id="play" class="relative mx-auto w-[min(78vw,330px)] scroll-mt-6"><div aria-hidden="true" class="absolute -inset-10 rounded-full" style="background: radial-gradient(closest-side, rgba(255, 61, 154, 0.35), rgba(47, 230, 224, 0.12) 60%, transparent);"></div><div class="relative aspect-[9/16] overflow-hidden rounded-[44px] border-[6px] border-black/80 bg-black shadow-[0_40px_120px_-20px_rgba(0,0,0,0.9)] ring-1 ring-ag-gold/30"><video class="block aspect-[9/16] w-full object-cover" poster="/tkhub-preview/afterglow-1114/ads/master_poster_v3.webp" loop="" playsinline="" preload="metadata" aria-label="Afterglow gameplay"></video><button type="button" class="group absolute inset-0 flex flex-col items-center justify-end bg-gradient-to-t from-black/85 via-black/10 to-transparent pb-8"><span class="inline-flex items-center gap-2 rounded-full bg-ag-gold px-6 py-3 text-xs font-black uppercase tracking-[0.18em] text-[#1a0f2e] transition-transform group-hover:scale-105 group-focus-visible:scale-105" style="box-shadow: rgba(255, 201, 60, 0.55) 0px 0px 40px;"><span aria-hidden="true">▶</span> Play it here</span><span class="mt-2 text-[0.625rem] font-bold uppercase tracking-[0.22em] text-white/75">No download · nothing saved</span></button></div></div></section></main></div></div><!--/hero-shell--></div>
+  <script>(function(){function go(){var s=document.createElement("script");s.type="module";s.crossOrigin="";s.src="/tkhub-preview/afterglow-1114/assets/index-ngbE_APs.js";document.head.appendChild(s)}function after(){requestAnimationFrame(function(){setTimeout(go,0)})}function next(){var done=false,t;function once(){if(done)return;done=true;clearTimeout(t);after()}t=setTimeout(once,1500);try{var o=new PerformanceObserver(function(l){l.getEntries().forEach(function(e){if(e.name==="first-contentful-paint"){o.disconnect();once()}})});o.observe({type:"paint",buffered:true})}catch(x){once()}}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",next);else next()})();</script>
+</body>
+</html>
