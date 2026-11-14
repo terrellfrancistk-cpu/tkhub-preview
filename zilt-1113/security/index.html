@@ -12,12 +12,13 @@
          it), never on a reload or back/forward, never in frames or under automation. No minimum time and no
          forced animation: it goes the moment the app has rendered (src/main.tsx). The 8 s animation is only a cap
          in case the script never runs. Logos are CSS backgrounds (nothing downloads when it is skipped): the Zilt
-         mark is an SVG, the TK Hub logo a 300 px source shown at 56 px (sharp at 3x). */
+         mark is an SVG, the TK Hub logo the vector master
+         (public/brand/tkhub-logo.svg, Terrell's Nov 14 rebuild). */
       #zl-splash{display:none}
       html.zl-launch #zl-splash{display:flex;position:fixed;inset:0;z-index:2147483000;flex-direction:column;align-items:center;justify-content:center;gap:28px;background:#000;color:#f5f5f5;font:600 13px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.08em;text-transform:uppercase;animation:zl-splash-cap 0s linear 8s forwards}
       #zl-splash .zl-app{width:120px;height:120px;background:url(/tkhub-preview/zilt-1113/brand/zilt-social.svg) center/contain no-repeat}
       #zl-splash .zl-by{display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.8}
-      #zl-splash .zl-tk{width:56px;height:56px;background:url(/tkhub-preview/zilt-1113/tkhub-logo.png) center/contain no-repeat}
+      #zl-splash .zl-tk{width:56px;height:56px;background:url(/tkhub-preview/zilt-1113/brand/tkhub-logo.svg) center/contain no-repeat}
       @keyframes zl-splash-cap{to{visibility:hidden}}
     </style>
     <script>
@@ -65,6 +66,6 @@
         <p>Child safety point of contact: <a href="mailto:support@tkhub.app">support@tkhub.app</a>. Enable JavaScript to see the full standards at <a href="https://tryzilt.app/child-safety">tryzilt.app/child-safety</a>.</p>
       </main>
     </noscript>
-  <script>(function(){function go(){var s=document.createElement("script");s.type="module";s.crossOrigin="";s.src="/tkhub-preview/zilt-1113/assets/index-Dk9ZqAp0.js";document.head.appendChild(s)}function after(){requestAnimationFrame(function(){setTimeout(go,0)})}function next(){var done=false,t;function once(){if(done)return;done=true;clearTimeout(t);after()}t=setTimeout(once,1500);try{var o=new PerformanceObserver(function(l){l.getEntries().forEach(function(e){if(e.name==="first-contentful-paint"){o.disconnect();once()}})});o.observe({type:"paint",buffered:true})}catch(x){once()}}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",next);else next()})();</script>
+  <script>(function(){function go(){var s=document.createElement("script");s.type="module";s.crossOrigin="";s.src="/tkhub-preview/zilt-1113/assets/index-Cfmr43un.js";document.head.appendChild(s)}function after(){requestAnimationFrame(function(){setTimeout(go,0)})}function next(){var done=false,t;function once(){if(done)return;done=true;clearTimeout(t);after()}t=setTimeout(once,1500);try{var o=new PerformanceObserver(function(l){l.getEntries().forEach(function(e){if(e.name==="first-contentful-paint"){o.disconnect();once()}})});o.observe({type:"paint",buffered:true})}catch(x){once()}}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",next);else next()})();</script>
 </body>
 </html>
