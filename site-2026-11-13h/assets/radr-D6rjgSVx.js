@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-NZYk81nU.js";import{t}from"./product-site-ty1qHNhF.js";var n=e(),r=()=>(0,n.jsx)(t,{id:`radr`});export{r as component};

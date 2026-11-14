@@ -1,1 +1,0 @@
-import{t as e}from"./useNavigate-BsveBshA.js";import{t}from"./jsx-runtime-NZYk81nU.js";var n=t(),r=()=>(0,n.jsx)(e,{to:`/tkhub-preview/site-2026-11-13i/team`,hash:`terrell`,replace:!0});export{r as component};

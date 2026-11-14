@@ -1,8 +1,0 @@
-/* blank-pages-v1.css (Nov 13): the ten pages that open blank on live get one sentence and a working link.
-   Additive: the original page content (the big "APEX" word, or the empty body) is kept underneath. Light/Dark aware. */
-.sp{--sp-ink:#16130f;--sp-bg:#f3f0e8;--sp-line:#cfc6b6;box-sizing:border-box;max-width:640px;margin:0 auto;padding:40px 20px 24px;font-family:Manrope,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--sp-ink)}
-[data-theme=dark] .sp{--sp-ink:#f4f0e6;--sp-bg:#090a0c;--sp-line:#3a3732}
-.sp p{margin:0 0 16px;font-size:20px;line-height:1.4;font-weight:650}
-.sp a{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;margin:0 8px 8px 0;border-radius:999px;font-weight:800;text-decoration:none;border:1px solid var(--sp-line);color:var(--sp-ink)}
-.sp a.sp-go{background:var(--sp-ink);color:var(--sp-bg);border-color:var(--sp-ink)}
-.sp a:focus-visible{outline:2px solid #0e5c64;outline-offset:2px}

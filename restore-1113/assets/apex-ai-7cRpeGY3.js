@@ -1,1 +1,0 @@
-import{o as e,u as t}from"./traffic-beacon-CBJvHU0p.js";var n=e({method:`POST`}).handler(t(`75135ff468f54f0c3fd1646a2e69853029e4f55870f2c688aa435f135796c62f`));export{n as t};
