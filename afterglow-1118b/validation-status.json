@@ -1,0 +1,120 @@
+{
+ "at": "2026-11-08 17:29 UTC",
+ "version": "2.0.0",
+ "iosBuild": "156",
+ "androidCode": "1792369743",
+ "platforms": [
+  {
+   "id": "ios",
+   "name": "App Store / TestFlight",
+   "state": "blocked",
+   "checks": [
+    {
+     "label": "Store fields, icons and launch assets",
+     "ok": false,
+     "blocks": true,
+     "reading": "30 passed, 4 failing, 0 warnings",
+     "fix": "Run publish-watch/release_gate.py and fix the FAIL rows."
+    },
+    {
+     "label": "iOS, Android and web versions agree",
+     "ok": true,
+     "blocks": true,
+     "reading": "iOS 2.0.0 · Android 2.0.0 · web 2.0.0",
+     "fix": null
+    },
+    {
+     "label": "Local binary validation (ITMS checks)",
+     "ok": true,
+     "blocks": true,
+     "reading": "20 of 20 pass",
+     "fix": null
+    },
+    {
+     "label": "App Store Connect readings",
+     "ok": null,
+     "blocks": false,
+     "reading": "skipped (--offline)",
+     "fix": null
+    }
+   ],
+   "invalidBuilds": []
+  },
+  {
+   "id": "android",
+   "name": "Google Play",
+   "state": "blocked",
+   "checks": [
+    {
+     "label": "Store fields, icons and launch assets",
+     "ok": false,
+     "blocks": true,
+     "reading": "30 passed, 4 failing, 0 warnings",
+     "fix": "Run publish-watch/release_gate.py and fix the FAIL rows."
+    },
+    {
+     "label": "iOS, Android and web versions agree",
+     "ok": true,
+     "blocks": true,
+     "reading": "iOS 2.0.0 · Android 2.0.0 · web 2.0.0",
+     "fix": null
+    },
+    {
+     "label": "Package matches the Play record",
+     "ok": true,
+     "blocks": true,
+     "reading": "com.terrellfrancis.afterglow",
+     "fix": null
+    },
+    {
+     "label": "Target SDK meets Play's floor (35)",
+     "ok": true,
+     "blocks": true,
+     "reading": "targetSdk 36",
+     "fix": null
+    },
+    {
+     "label": "Release signing left to Rork's upload key",
+     "ok": true,
+     "blocks": true,
+     "reading": "release uses the debug entry; Rork injects the persistent upload key when exporting an AAB",
+     "fix": null
+    },
+    {
+     "label": "Tree clean enough to cut an AAB",
+     "ok": false,
+     "blocks": false,
+     "reading": "2 source + 1 other file(s) modified",
+     "fix": "Cut the AAB as the FIRST action of a turn, before any file is written."
+    },
+    {
+     "label": "Internal testing (last tool reading)",
+     "ok": true,
+     "blocks": false,
+     "reading": "1.8.1 published, Play code 1790491954 (submission 2177a3af) -- the market board · read 2026-09-26",
+     "fix": null
+    },
+    {
+     "label": "Closed testing (last tool reading)",
+     "ok": false,
+     "blocks": false,
+     "reading": "refused: GOOGLE_PLAY_RELEASE_CONTROL_FAILED -- the app is still a draft in Play Console · read 2026-09-26",
+     "fix": "Play Console > Publishing overview: finish the listed tasks and send the first release."
+    },
+    {
+     "label": "Public listing images (last tool reading)",
+     "ok": false,
+     "blocks": false,
+     "reading": "phone screenshots, feature graphic and icon slots empty on the live listing · read 2026-09-26",
+     "fix": "Upload real Android phone screenshots, the feature graphic and the icon in Play Console."
+    }
+   ],
+   "invalidBuilds": []
+  }
+ ],
+ "owed": [
+  "Apple's ITMS email -- the only authoritative reason for an INVALID build.",
+  "Live Play track state -- only the typed backend tools read it; rows above carry the last reading and its date.",
+  "EU trader status -- no API exposes it in either store."
+ ]
+}

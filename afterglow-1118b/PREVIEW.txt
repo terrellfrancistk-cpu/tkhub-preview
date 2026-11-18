@@ -1,0 +1,3 @@
+AfterGlow website PREVIEW — not live.
+Built from rork-afterglow-live @ ad7ac2a (branch claude/wonderful-gauss-fwaece).
+Base: /tkhub-preview/afterglow-1118b/
