@@ -1,0 +1,88 @@
+================================================================
+GOOGLE PLAY LISTING PACK - ZILT
+Package: com.terrellfrancis.zilt   versionName 1.5.9
+Store listing language: en-US
+Generated: 17 Sep 2026
+================================================================
+
+----------------------------------------------------------------
+1) APP NAME            (Play limit: 30 characters)
+----------------------------------------------------------------
+Zilt: Post, Play, Get Paid
+
+----------------------------------------------------------------
+2) SHORT DESCRIPTION   (Play limit: 80 characters)
+----------------------------------------------------------------
+A neon arcade, a creator sticker market, and a wallet that prints the split.
+
+----------------------------------------------------------------
+3) FULL DESCRIPTION    (Play limit: 4000 characters)
+----------------------------------------------------------------
+Zilt is a night-out app with an arcade bolted to it. Post what you are doing, play the arcade for free, and keep 70% of what your stickers earn.
+
+THE CURRENT
+Your feed of Pulses - short clips and photos from the people you follow. Double-tap to Spark one. Pull down and the refresh actually waits for the server instead of redrawing the same screen. Portrait, full-bleed, built for one hand.
+
+THE ZONE
+The arcade. The Watt Wheel has a published odds screen you can open before you spin, and spins are earned by playing - never sold. Triple Bolt shows its full paytable up front and its tokens refill free every 30 minutes. On top of both: daily quests, a streak that multiplies what every win pays, and a weekly board.
+
+NO WAGERING, NO PURCHASE, NO CASH PRIZES
+The Watt Wheel and Triple Bolt are free arcade games. There is no wager, no purchase, no deposit and no entry fee of any kind. Spins and tokens are earned by playing or refill free on a timer, and they cannot be bought with money. Nothing in the arcade pays out cash or anything of real-world value - anything you win is spendable inside Zilt only. These are not gambling games, and no real money can be staked or lost.
+
+MARKETPLACE
+Sticker packs made by named artists, bought with coins you earn in the Zone. Every row prints the artist's cut, so you can see who gets paid before you spend. Common, Rare, Epic and Mythic stickers behave differently when you send them.
+
+THE WALLET
+Two currencies, and the app is plain about which is which: coins spend, zaps earn. Creators keep 70% of what their stickers make. 1,000 zaps is $5.00, the minimum cash-out is 10,000 zaps, and processing takes 5%. Payouts are paid from net profits and are not guaranteed income - the full terms are linked below and inside the app.
+
+SIX THEMES
+Voltage, Riptide, Ember, Nocturne, Signal and Bubblegum. Switch any time in Settings; the whole app repaints without losing your place.
+
+YOUR DATA, AND THE HOUSE POOL
+The house data pool is switched off unless you turn it on. Today it is a counter only, running toward 10,000 people, and opting in adds you to that count - it is not permission to collect anything. Your name, your messages and your location are never in it. There is no location permission in this app at all. If the pool ever opens, you get asked again.
+
+SIGNING IN
+Continue with Google, protected by two-step verification. Codes come from an authenticator app on your phone, so nothing has to arrive by email or text for you to get in.
+
+SEND FEEDBACK
+A real feedback screen at the top of The Current. Pick bug, idea or something else, say where in the app you were, and the build and device details are attached automatically - shown on screen first. No photos, no contacts, no location are ever attached.
+
+HONEST NOTES ABOUT THIS RELEASE
+This is an early Android release. Some feed content is example content while the feed backend is being built. Several features from the iPhone build are not here yet. Coins in this build are granted free for testing and nothing is charged.
+
+Terms of Use: https://tryzilt.app/terms
+Privacy Policy: https://tryzilt.app/privacy
+Support: support@tkhub.app
+
+----------------------------------------------------------------
+4) CATEGORY TO PICK
+----------------------------------------------------------------
+App or game:   App  (not a game - the arcade is a feature inside a
+               social app, and the content rating answers in Play
+               Console are filed on that basis)
+Category:      Social
+Tags:          Social networking, Video, Creator tools
+
+Why Social and not Entertainment or Casual: the feed, the Circles
+and the creator marketplace are the product; the arcade is one tab
+inside it. Filing it under a game category would also put it in a
+review queue that judges it as a game and would conflict with the
+"App" declaration already on the listing.
+
+----------------------------------------------------------------
+5) CONTACT DETAILS FOR THE LISTING
+----------------------------------------------------------------
+Support email:  support@tkhub.app
+Website:        https://tryzilt.app
+Privacy policy: https://tryzilt.app/privacy
+Phone:          (469) 903-1262   [optional on the listing]
+
+----------------------------------------------------------------
+6) FILES IN THIS PACK
+----------------------------------------------------------------
+icon-512.png                512x512, 24-bit RGB, no alpha channel,
+                            full-bleed square - Play applies its own
+                            rounding and shadow, so no mask is baked in
+feature-1024x500.png        1024x500, 24-bit RGB, no alpha channel
+listing.txt                 this file
+screenshots/                see README-screenshots.txt
