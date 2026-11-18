@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Security check</title>
+  <!--
+    Cloudflare Turnstile, Managed mode.
+    Allowed hostnames: tryourpeople.app, www.tryourpeople.app, localhost.
+    The site key is public. The secret stays in TURNSTILE_SECRET_KEY and is not in this file.
+    iOS WKWebView and Android WebView load this page and read the token from the bridge.
+  -->
+  <style>
+    html, body { margin: 0; background: transparent; }
+    body { display: flex; justify-content: center; padding: 8px 0; }
+  </style>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+</head>
+<body>
+  <div id="turnstile"></div>
+  <script>
+    var SITE_KEY = "0x4AAAAAAFi6Nt7icXzjBuBB";
+    function deliver(token) {
+      var value = token || "";
+      var ios = window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.turnstile;
+      if (ios) window.webkit.messageHandlers.turnstile.postMessage(value);
+      if (window.TurnstileBridge && window.TurnstileBridge.postToken) window.TurnstileBridge.postToken(value);
+    }
+    function mount() {
+      // <div id="turnstile"> is also exposed as window.turnstile until
+      // Cloudflare's script replaces it with the API, so wait for render().
+      if (!window.turnstile || typeof window.turnstile.render !== "function") {
+        setTimeout(mount, 50);
+        return;
+      }
+      window.turnstile.render("#turnstile", {
+        sitekey: SITE_KEY,
+        callback: function (token) { deliver(token); },
+        "expired-callback": function () { deliver(""); },
+        "error-callback": function () { deliver(""); }
+      });
+    }
+    mount();
+  </script>
+</body>
+</html>
