@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["GF7Q89UD42.app.rork.onvzjml70cixkvuxmssx4"],
+        "components": [
+          { "/": "/open/*", "comment": "Review and support links that open one screen in Booked" }
+        ]
+      }
+    ]
+  }
+}
