@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Afterglow · Try it (demo)</title><meta name="robots" content="noindex">
+<link rel="preload" href="a/neon_night_market_skyline.webp" as="image">
+<style>
+@font-face{font-family:R;src:url(a/nunito.ttf) format("truetype");font-weight:400 1000;font-display:block}
+:root{--gold:#FFC93C;--pink:#FF3D9A;--cyan:#2FE6E0;--hot:#FFF7DD;--ember:#FF7A2F;--bull:#39FF88;--mana:#B661FF;--deep:#0B0620;--sky:#1A0B3A}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;user-select:none}
+html,body{height:100%;background:#000;overflow:hidden}
+body{font-family:R,ui-rounded,system-ui,sans-serif;color:#fff}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+#stage{position:absolute;left:0;top:0;width:393px;height:852px;transform-origin:0 0;overflow:hidden;background:#05020f}
+.scr{position:absolute;inset:0;display:none}.scr.on{display:block}
+.abs{position:absolute}.c{left:0;right:0;text-align:center}
+.bg{position:absolute;inset:0;background:url(a/neon_night_market_skyline.webp) center top/cover}
+.bg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,6,32,0) 0%,rgba(11,6,32,.55) 42%,rgba(11,6,32,.94) 72%,#0B0620 100%)}
+.gold-t{background:linear-gradient(180deg,#FFF2B8 0%,#FFD25A 45%,#E89B1E 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 10px rgba(255,170,40,.55))}
+.sb{position:absolute;top:0;left:0;right:0;height:50px;display:flex;align-items:center;padding:0 34px 0 46px;font:600 16px system-ui,-apple-system,sans-serif;justify-content:space-between;z-index:5}
+.sb i{font-style:normal;font-size:13px;letter-spacing:1px}
+/* title */
+.icon{left:133px;top:218px;width:132px;height:132px;border-radius:28px;background:url(a/afterglow_mark.webp) center/cover;box-shadow:0 0 0 1.5px rgba(255,201,60,.55),0 0 26px rgba(255,170,40,.35)}
+.btn-gold{background:linear-gradient(180deg,#FFF3C4 0%,#FFD86A 45%,#F2AE2E 100%);color:#1a0d00;border-radius:28px;font-weight:900;letter-spacing:1.6px;box-shadow:0 0 22px rgba(255,190,60,.55),inset 0 1px 0 rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;gap:12px}
+.pill-o{border:1.3px solid rgba(255,201,60,.6);border-radius:24px;color:var(--gold);font-weight:900;font-size:10.5px;letter-spacing:1.5px;display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(0,0,0,.35)}
+/* signin */
+.sbtn{left:19px;width:348px;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:10px;font:500 17px system-ui,-apple-system,"Helvetica Neue",sans-serif}
+.sbtn img{width:22px;height:22px}
+.tile{top:648px;width:168px;height:85px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font-weight:900;font-size:11px;letter-spacing:1.4px}
+/* home */
+.circ{width:35px;height:35px;border-radius:50%;border:1.3px solid rgba(255,201,60,.65);background:rgba(10,4,24,.6);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;color:var(--gold)}
+.chip{height:32px;border-radius:17px;border:1.3px solid rgba(255,201,60,.55);background:rgba(10,4,24,.6);display:flex;align-items:center;gap:5px;padding:0 9px;font-weight:900}
+.card{border:1.2px solid rgba(255,201,60,.5);border-radius:12px;background:rgba(14,6,30,.82)}
+.band{left:33px;width:320px;height:21px;border-radius:11px;border:1.1px solid rgba(255,201,60,.5);background:rgba(14,6,30,.75);font-weight:900;font-size:8.5px;letter-spacing:1.3px;color:var(--hot);display:flex;align-items:center;justify-content:center;gap:6px}
+.grid{left:35px;top:377px;width:320px;display:grid;grid-template-columns:repeat(5,56px);gap:8px 10px}
+.st{height:56px;border-radius:11px;background:rgba(18,10,34,.86);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);font-size:15px}
+.st.open{background:linear-gradient(180deg,#FFE58A,#F4B02E);border:1.5px solid #FFE9A6;color:#2a1600;flex-direction:column;font-weight:900;font-size:19px;line-height:1;box-shadow:0 0 16px rgba(255,190,60,.55)}
+.st.open small{font-size:9px;margin-top:3px}.st.done{background:linear-gradient(180deg,#5ef5ad,#1fbf73);border-color:#a9ffd4;color:#04210f}
+.bigbtn{left:34px;width:319px;border-radius:12px;display:flex;align-items:center;padding:0 16px;gap:12px;font-weight:900}
+.stat{top:760px;width:154px;height:60px;border-radius:10px;border:1.2px solid rgba(47,230,224,.45);background:rgba(8,6,20,.85);text-align:center;font-weight:900}
+/* how to */
+.ht{background:#06040d}
+.hbar{left:96px;width:206px;height:24px;border-radius:12px;border:2px solid #E8B65A;display:flex;overflow:hidden;background:#20142a}
+.hbar span{height:100%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:#06210f}
+.dots{left:0;right:0;display:flex;justify-content:center;gap:6px}.dots i{width:6px;height:6px;border-radius:3px;background:rgba(255,255,255,.3)}.dots i.on{width:20px;background:#FFF2CF}
+.sm{height:42px;border-radius:21px;display:flex;align-items:center;justify-content:center;gap:7px;font-weight:900;font-size:12.5px;letter-spacing:1.2px}
+/* game */
+.hud{left:22px;width:350px;border-radius:12px;border:1.1px solid rgba(255,201,60,.45);background:rgba(10,4,22,.85)}
+.pw{top:494px;width:86px;height:50px;border-radius:12px;border:1.4px solid;text-align:center;font-weight:900;line-height:1.05;padding-top:6px;background:rgba(10,4,22,.85)}
+.pw b{display:block;font-size:12px;letter-spacing:.6px}.pw span{display:block;font-size:11px}.pw small{display:block;font-size:6.5px;letter-spacing:.4px;opacity:.85}
+.gbar{left:16px;width:358px;top:466px;height:17px;border-radius:9px;border:1.6px solid #E8B65A;background:#170c22;overflow:hidden}
+.gbar .z{position:absolute;top:0;bottom:0}
+#cart{position:absolute;top:430px;width:52px;height:40px;transition:none}
+.lane{top:593px;height:51px;border-radius:12px;text-align:center;font-weight:900;font-size:13px;letter-spacing:.8px;line-height:1.25;padding-top:9px}
+.toast{left:0;right:0;top:395px;text-align:center;font-weight:1000;font-size:28px;letter-spacing:1px;opacity:0;transition:opacity .2s;text-shadow:0 0 14px currentColor;pointer-events:none}.toast.on{opacity:1}
+.dim{position:absolute;inset:0;background:rgba(4,2,12,.86)}
+.lantern-f{border-radius:50%;background:radial-gradient(circle at 45% 40%,#FFF4C9,#FFC24D 55%,#E88A1E);box-shadow:0 0 24px rgba(255,190,80,.7)}
+</style></head><body>
+<div id="stage">
+
+<!-- 1 TITLE -->
+<section class="scr on" id="s-title">
+ <div class="bg" style="filter:brightness(.85)"></div>
+ <div class="abs icon"></div>
+ <div class="abs c gold-t" style="top:372px;font-size:44px;font-weight:1000;letter-spacing:3.5px">AFTERGLOW</div>
+ <div class="abs c" style="top:424px;font-size:10px;font-weight:900;letter-spacing:4.2px;color:var(--pink);text-shadow:0 0 8px rgba(255,61,154,.7)">NIGHT MARKET RUN</div>
+ <div class="abs" style="top:457px;left:30px;width:42px;height:1px;background:rgba(255,201,60,.4)"></div><div class="abs" style="top:457px;right:30px;width:42px;height:1px;background:rgba(255,201,60,.4)"></div>
+ <div class="abs c" style="top:450px;font-size:10px;font-weight:900;letter-spacing:1.8px;color:#EDE6D8">PULL THE LEVER · LIGHT THE STREET</div>
+ <button class="abs btn-gold" style="left:30px;top:487px;width:337px;height:52px;font-size:17px" onclick="go('signin')"><span class="lantern-f" style="width:15px;height:17px;display:inline-block"></span>START PLAYING</button>
+ <button class="abs pill-o" style="left:75px;top:730px;width:248px;height:42px" onclick="toast2('THE BOARD IS IN THE APP')">☰ THE BOARD · TONIGHT &amp; BEST</button>
+ <div class="abs c" style="top:786px;font:500 8px system-ui,sans-serif;color:rgba(255,255,255,.55)">By entering the market you agree to the Terms and the Privacy Policy.</div>
+ <div class="abs c" style="top:802px;font-size:9.5px;font-weight:900;letter-spacing:1.4px;color:var(--gold)"><u>TERMS</u> &nbsp;·&nbsp; <u>PRIVACY</u> &nbsp;·&nbsp; <u>SUPPORT</u></div>
+</section>
+
+<!-- 2 SIGN IN -->
+<section class="scr" id="s-signin">
+ <div class="bg" style="filter:brightness(.55) saturate(.9)"></div>
+ <div class="sb"><span>22:32</span><i>▂▄▆ ᯤ ▭</i></div>
+ <img class="abs" src="a/login_lantern.webp" style="left:146px;top:72px;width:104px" alt="">
+ <div class="abs c gold-t" style="top:206px;font-size:23.5px;font-weight:1000;letter-spacing:.6px">CREATE YOUR ACCOUNT</div>
+ <button class="abs sbtn" style="top:256px;height:47px;background:#fff;color:#000" onclick="nope()"><b style="font-size:19px"></b>Continue with Apple</button>
+ <button class="abs sbtn" style="top:316px;height:61px;background:#2c2c2e" onclick="nope()"><img src="a/google.svg" alt="">Continue with Google</button>
+ <button class="abs sbtn" style="top:390px;height:62px;background:#000;border:1px solid #1d1d1f" onclick="nope()"><img src="a/x.svg" alt="" style="width:18px">Continue with X</button>
+ <button class="abs sbtn" style="top:465px;height:62px;background:#1877F2" onclick="nope()"><img src="a/facebook.svg" alt="">Continue with Facebook</button>
+ <button class="abs sbtn" style="top:540px;height:62px;background:#C6F43C;color:#000" onclick="nope()"><img src="a/zilt.svg" alt="" style="width:12px;height:22px">Continue with Zilt</button>
+ <div class="abs" style="top:622px;left:19px;width:152px;height:1px;background:rgba(255,255,255,.3)"></div><div class="abs c" style="top:613px;font:500 13px system-ui;color:#ddd">or</div><div class="abs" style="top:622px;right:26px;width:152px;height:1px;background:rgba(255,255,255,.3)"></div>
+ <button class="abs tile" style="left:19px;background:#1d1433;border:1px solid #3b2d58;color:#c9c2d8" onclick="nope()"><span style="font-size:26px">🔑</span>PASSWORD</button>
+ <button class="abs tile" style="left:199px;background:#FFC93C;color:#1a0d00" onclick="nope()"><span style="font-size:24px">🔗</span>EMAIL LINK</button>
+ <button class="abs" style="left:19px;top:743px;width:348px;height:47px;border-radius:10px;background:#1a1130;border:1px solid #3b2d58;font:700 14.5px system-ui,sans-serif" onclick="go('home')">Continue as Guest</button>
+ <div class="abs c" style="top:798px;font:500 9.5px/1.35 system-ui,sans-serif;color:rgba(255,255,255,.75);padding:0 24px">Progress stays on this phone. Purchases, versus and the public boards need an account.</div>
+ <div class="abs" style="left:19px;top:826px;width:348px;height:40px;border-radius:10px;background:#120b20;border:1px solid #2b2140;padding:10px 14px;font:400 15px system-ui;color:#6e6680">you@example.com</div>
+</section>
+
+<!-- 3 HOME -->
+<section class="scr" id="s-home">
+ <div class="bg" style="filter:brightness(.62)"></div>
+ <div class="abs c gold-t" style="top:70px;font-size:34px;font-weight:1000;letter-spacing:2.6px">AFTERGLOW</div>
+ <div class="abs chip" style="left:34px;top:125px;font-size:17px;color:#fff"><span class="lantern-f" style="width:13px;height:16px"></span><span id="h-coin">40</span></div>
+ <div class="abs chip" style="left:99px;top:131px;height:20px;font-size:8px;color:#ff7a5a;border-color:rgba(255,120,90,.6)">⚠ <span style="opacity:.7">04·</span></div>
+ <div class="abs" style="left:155px;top:123px;display:flex;gap:6px">
+  <div class="circ">⊘</div><div class="circ" style="border-color:var(--cyan);color:var(--cyan);background:rgba(47,230,224,.2)">✋</div><button class="circ" style="color:var(--cyan);border-color:var(--cyan)" onclick="howto(0)">?</button><div class="circ">●</div><div class="circ" style="color:#fff;border-color:#fff">☰</div></div>
+ <div class="abs card" style="left:35px;top:163px;width:319px;height:94px;padding:10px 11px" id="acct">
+  <div style="font-size:9.5px;font-weight:900;letter-spacing:1.4px;color:var(--gold)">CREATE AN ACCOUNT LATER</div>
+  <div style="font:500 10.5px/1.35 system-ui,sans-serif;color:#ddd;margin-top:5px">Your streets stay on this phone. An account is only for purchases, versus and the public boards.</div>
+  <div style="display:flex;gap:14px;align-items:center;margin-top:8px"><button onclick="nope()" style="background:var(--gold);color:#1a0d00;border-radius:13px;padding:6px 11px;font:800 11px system-ui">Create account</button><button onclick="document.getElementById('acct').style.visibility='hidden'" style="font:800 11px system-ui;color:#fff">Not now</button></div></div>
+ <div class="abs band" style="top:267px">WEEKEND · EMBER NIGHT · CLEAR <span id="h-clear">0</span>/5 · +500 ✷</div>
+ <div class="abs band" style="top:296px;color:var(--pink)">🎉 CLUBHOUSE · TIER 0/30</div>
+ <div class="abs c" style="top:331px;font-size:18px;font-weight:1000;letter-spacing:2px;color:var(--pink);text-shadow:0 0 10px rgba(255,61,154,.6)">LANTERN MARKET</div>
+ <div class="abs c" style="top:351px;font-size:9.5px;font-weight:900;letter-spacing:1.6px;color:#bdb6cc">STREETS 1–10 &nbsp;·&nbsp; ★ <span id="h-stars">0</span>/30</div>
+ <div class="abs grid" id="grid"></div>
+ <button class="abs card" style="left:33px;top:507px;width:321px;height:38px;display:flex;align-items:center;padding:0 12px;gap:10px;border-color:rgba(255,255,255,.18);text-align:left" onclick="toast2('CLEAR STREET 10 FIRST')"><span style="opacity:.6">☾</span><span style="flex:1"><b style="display:block;font-size:13px;letter-spacing:1.5px;color:#9b95a8">TONIGHT'S STREET</b><span style="display:block;font-size:7.5px;letter-spacing:1px;color:#79738a;font-weight:900">CLEAR STREET 10 TO OPEN IT</span></span><span style="color:#8a849a">›</span></button>
+ <div class="abs c" style="top:558px;font-size:10px;font-weight:900;color:var(--gold)">🏅 Achievements</div>
+ <button class="abs bigbtn btn-gold" style="top:589px;height:53px;justify-content:flex-start;border-radius:12px" onclick="startRun()"><span style="font-size:20px">🔥</span><span style="flex:1;text-align:left"><b style="display:block;font-size:20px;letter-spacing:1.8px;line-height:1">START THE RUN</b><span style="display:block;font-size:8px;letter-spacing:1.3px" id="h-next">STREET 1 · LANTERN ROW</span></span><span style="font-size:20px">›</span></button>
+ <button class="abs bigbtn" style="top:652px;height:42px;border:1.5px solid var(--cyan);background:rgba(8,40,44,.75);color:var(--cyan)" onclick="toast2('UNLIMITED IS IN THE APP')"><span style="font-size:20px">∞</span><span style="flex:1;text-align:left;font-size:16px;letter-spacing:2.2px">UNLIMITED</span><span style="font-size:8px;letter-spacing:1.3px">3 LIVES · TOP 100</span></button>
+ <button class="abs bigbtn" style="top:705px;height:45px;width:262px;border:1.5px solid var(--pink);background:rgba(44,8,30,.75);color:var(--pink)" onclick="toast2('VERSUS NEEDS AN ACCOUNT')"><span>👥</span><span style="flex:1;text-align:left;font-size:16px;letter-spacing:2.2px">VERSUS</span><span style="font-size:6.5px;letter-spacing:1px">NEEDS AN ACCOUNT</span></button>
+ <div class="abs circ" style="left:305px;top:705px;width:47px;height:45px;border-radius:12px;color:var(--gold)">☰</div>
+ <div class="abs stat" style="left:35px"><div style="font-size:7px;letter-spacing:1.2px;color:#cfc8dc;margin-top:7px"><span style="color:var(--cyan)">●</span> IN THE MARKET</div><div style="font-size:20px;color:var(--cyan);line-height:1.1">1</div><div style="font-size:6.5px;letter-spacing:1.2px;color:#8f89a0">JUST YOU</div></div>
+ <div class="abs stat" style="left:198px;border-color:rgba(255,255,255,.15)"><div style="font-size:7px;letter-spacing:1.2px;color:#cfc8dc;margin-top:7px">● LOOKING TO RACE</div><div style="font-size:20px;color:#8f89a0;line-height:1.1">0</div><div style="font-size:6.5px;letter-spacing:1.2px;color:#8f89a0">NEEDS 2 HERE</div></div>
+</section>
+
+<!-- 4 HOW TO PLAY -->
+<section class="scr ht" id="s-howto">
+ <div class="abs" style="left:23px;top:186px;font-size:11px;font-weight:900;letter-spacing:.6px;color:var(--gold)" id="ht-n">HOW TO PLAY · 1 / 4</div>
+ <button class="abs" style="right:23px;top:184px;font-size:12px;font-weight:900;letter-spacing:1.5px;color:#9a96a3" onclick="htDone()">SKIP</button>
+ <div class="abs" style="left:0;right:0;top:250px;height:110px" id="ht-art"></div>
+ <div class="abs c" style="top:383px;font-size:31px;font-weight:1000;letter-spacing:1.4px;line-height:1.08" id="ht-t"></div>
+ <div class="abs c" style="top:0;font-weight:800;font-size:15.5px;line-height:1.38;color:#E6E0EE;padding:0 36px" id="ht-b"></div>
+ <div class="abs" style="left:0;right:0;display:flex;justify-content:center;gap:12px" id="ht-nav"><button class="sm" id="ht-back" style="width:90px;border:1.3px solid rgba(47,230,224,.3);color:var(--cyan)" onclick="howto(ht-1)">← BACK</button><button class="sm" style="width:138px;border:1.3px solid rgba(47,230,224,.6);color:var(--cyan)" onclick="toast2('FULL GUIDE IS IN THE APP')">📖 FULL GUIDE</button></div>
+ <div class="abs dots" id="ht-dots"><i></i><i></i><i></i><i></i></div>
+ <button class="abs" id="ht-next" style="left:34px;width:328px;height:58px;border-radius:29px;font-weight:1000;font-size:19px;letter-spacing:1.4px;display:flex;align-items:center;justify-content:center;gap:12px" onclick="howto(ht+1)">→ NEXT</button>
+</section>
+
+<!-- 5 GAME (story card + play) -->
+<section class="scr" id="s-game">
+ <div class="bg" style="background-position:center 30%;filter:brightness(.7)"></div>
+ <div class="abs" style="left:0;right:0;top:0;height:270px;background:linear-gradient(180deg,rgba(6,3,16,.75),rgba(6,3,16,.6))"></div>
+ <div class="abs hud" style="top:64px;height:52px;border:0;background:none;display:flex;align-items:center;gap:8px;padding:0 4px">
+  <button class="circ" style="width:34px;height:34px;color:#fff;border-color:rgba(255,255,255,.4)" onclick="go('home')">‹</button>
+  <span class="lantern-f" style="width:14px;height:17px;margin-left:8px"></span><span style="line-height:1"><b style="font-size:20px;color:var(--gold)" id="g-coin">40</b><br><small style="font-size:7.5px;font-weight:900;letter-spacing:1px;color:var(--cyan)">STONE <span id="g-stone">717</span></small></span>
+  <span style="flex:1"></span><div class="circ" style="border-color:var(--cyan);background:rgba(47,230,224,.25);color:var(--cyan)">🛍</div><div class="circ">📦</div><button class="circ" style="color:#fff;border-color:rgba(255,255,255,.4)" onclick="howtoIn()">?</button></div>
+ <div class="abs hud" style="top:116px;width:164px;height:44px;text-align:center;font-weight:900"><div style="font-size:7px;letter-spacing:1.3px;color:#bbb;margin-top:5px">STREET</div><div style="font-size:17px;color:var(--gold);line-height:1" id="g-street">1</div><div style="margin:3px 6px 0;height:3px;border-radius:2px;background:var(--gold)"></div></div>
+ <div class="abs hud" style="left:197px;top:116px;width:164px;height:44px;text-align:center;font-weight:900"><div style="font-size:7px;letter-spacing:1.3px;color:#bbb;margin-top:5px">PULLS LEFT</div><div style="font-size:17px;line-height:1"><span id="g-pulls">8</span><small style="font-size:9px;color:#999">/8</small></div><div style="margin:3px 6px 0;height:3px;border-radius:2px;background:#ddd" id="g-pbar"></div></div>
+ <div class="abs hud" style="top:172px;width:296px;height:30px;border-radius:15px;display:flex;align-items:center;padding:0 12px;gap:8px;font-weight:900"><span style="font-size:9px;letter-spacing:1.2px;color:#ccc">TO BEAT</span><b style="font-size:16px;color:var(--gold)">4.140</b><span style="flex:1"></span><span style="font-size:8px;letter-spacing:1px;color:#ccc">LEVEL 1 · MAX 16.000</span></div>
+ <div class="abs" style="left:325px;top:170px;width:42px;height:34px;border-radius:17px;background:var(--gold);display:flex;align-items:center;justify-content:center">🔒</div>
+ <div class="abs" style="left:22px;top:210px;font-size:8.5px;font-weight:900;letter-spacing:1px;color:#9fd0ff">MANA <span id="g-mana">100</span>/100</div>
+ <div class="abs" style="left:124px;top:214px;width:240px;height:4px;border-radius:2px;background:#2a2050"><div id="g-manab" style="height:100%;width:100%;border-radius:2px;background:#6b8cff"></div></div>
+ <div class="abs" style="left:135px;top:235px;width:116px;height:22px;border-radius:11px;border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;gap:6px;padding:0 10px;font-weight:900;font-size:11px;background:rgba(0,0,0,.4)">⏱ <span id="g-clock">11s</span><span style="flex:1;height:3px;border-radius:2px;background:#5b4a2a"><i id="g-clkb" style="display:block;height:100%;width:60%;background:var(--gold);border-radius:2px"></i></span></div>
+ <div class="abs" id="lan1" style="left:300px;top:298px;width:46px;height:58px"></div>
+ <div class="abs c" style="top:412px;font-size:8.5px;font-weight:900;letter-spacing:1.2px;color:#e8e2f0">STREET 1 · CLOCK 20s · 16s AT STREET 15</div>
+ <div class="abs gbar" id="gbar"></div>
+ <div id="cart"><svg viewBox="0 0 52 40" width="52" height="40"><rect x="7" y="9" width="38" height="20" rx="2" fill="#7a4a24" stroke="#c88a4a"/><path d="M7 15h38M7 22h38" stroke="#5a3418"/><circle cx="17" cy="33" r="5" fill="#3a2410" stroke="#d9a04a" stroke-width="2"/><circle cx="37" cy="33" r="5" fill="#3a2410" stroke="#d9a04a" stroke-width="2"/><ellipse cx="26" cy="7" rx="6" ry="6" fill="#ffcf6a"/><path d="M26 30l-4 8h8z" fill="#fff"/></svg></div>
+ <div class="abs pw" style="left:7px;border-color:#7fb0ff;color:#7fb0ff"><b>SLOW</b><span>20 MANA</span><small>SLOWS THE SWEEP</small></div>
+ <div class="abs pw" style="left:103px;border-color:var(--bull);color:var(--bull)"><b>WIDEN</b><span>25 MANA</span><small>BIGGER GREEN</small></div>
+ <div class="abs pw" style="left:199px;border-color:var(--mana);color:var(--mana)"><b>WARD</b><span>25 MANA</span><small>BLOCKS A GUST</small></div>
+ <div class="abs pw" style="left:294px;border-color:#e9d9a8;color:#fff"><b>BELT</b><span>12</span><small>PICK ANY 3</small></div>
+ <div class="abs c" style="top:553px;font-size:8.5px;font-weight:900;letter-spacing:1px;color:#8fc4ff" id="g-tip">SLOW MAKES THE SWEEP CRAWL · 20 MANA · 100 MANA LEFT</div>
+ <div class="abs c" style="top:571px;font-size:8.5px;font-weight:900;letter-spacing:1px;color:#ccc">NEXT: STOKE AT STREET 3</div>
+ <button class="abs lane" id="l-safe" style="left:7px;width:119px;background:var(--cyan);color:#062a2a" onclick="lane('safe')">SAFE<br>ON</button>
+ <button class="abs lane" style="left:134px;width:119px;background:rgba(40,160,110,.45);color:rgba(255,255,255,.5)" onclick="bank()">BANK<br><span id="g-cart">0</span></button>
+ <button class="abs lane" id="l-rich" style="left:261px;width:119px;border:1.6px solid var(--pink);color:var(--pink);background:rgba(30,6,24,.7)" onclick="lane('rich')">RICH<br>LANE</button>
+ <button class="abs pill-o" style="left:97px;top:660px;width:193px;height:42px;border-radius:12px;color:#fff;font-size:11.5px" onclick="toast2('+2 PULLS (DEMO, NO AD)');S.pulls+=2;draw()">▶ WATCH AD · +2 PULLS</button>
+ <div class="abs lantern-f" style="left:166px;top:718px;width:44px;height:44px"></div><div class="abs" style="left:184px;top:756px;width:8px;height:20px;background:#a87830"></div>
+ <button class="abs pill-o" id="pullbtn" style="left:100px;top:773px;width:187px;height:35px;border-radius:8px;color:var(--gold);font-size:13px;letter-spacing:2.5px">PULL</button>
+ <div class="abs c" style="top:815px;font-size:9px;font-weight:900;letter-spacing:1.5px;color:#a9a3b5">PULL DOWN ANYWHERE HERE</div>
+ <div class="abs toast" id="toast"></div>
+ <!-- story card -->
+ <div class="abs" id="story" style="inset:0">
+  <div class="dim"></div>
+  <div class="abs c" style="top:165px;font-size:11px;font-weight:1000;letter-spacing:3px;color:var(--gold)">STREET 1</div>
+  <div class="abs c" style="top:192px;font:700 21px system-ui,-apple-system,sans-serif">The Lamplighter's Cart</div>
+  <div class="abs c" style="top:236px;font:italic 500 15px system-ui,sans-serif;color:var(--cyan)">Old Wick</div>
+  <div class="abs" style="left:30px;right:28px;top:266px;font:400 15px/1.55 system-ui,-apple-system,sans-serif;color:#eee">The Night Market wakes only when the first lantern is lit, and tonight the matches are yours. Old Wick presses the cart's iron handle into your palm. "Every street has a light at the end," he says. "Somebody stole the one at the end of mine."</div>
+  <div class="abs" style="left:30px;right:28px;top:420px;font:600 15px/1.5 system-ui,sans-serif;color:var(--gold)">Behind you, a lantern goes out on its own.</div>
+  <button class="abs btn-gold" style="left:30px;top:598px;width:337px;height:58px;font-size:18px;letter-spacing:.6px" onclick="closeStory()">→ CONTINUE</button>
+  <button class="abs" style="left:30px;top:668px;width:337px;height:53px;border-radius:27px;border:1.5px solid rgba(47,230,224,.55);background:#1b0f33;color:var(--cyan);font-weight:900;font-size:17px" onclick="closeStory()">▶▶ Skip</button>
+ </div>
+ <div class="abs" id="ingame-ht" style="inset:0;display:none" onclick="this.style.display='none'">
+  <div class="dim" style="background:rgba(4,2,12,.6)"></div>
+  <div class="abs" style="left:23px;top:205px;font-size:11px;font-weight:900;letter-spacing:.6px;color:var(--gold)">HOW TO PLAY · 1 / 4</div><div class="abs" style="right:23px;top:205px;font-size:12px;font-weight:900;letter-spacing:1.5px;color:#9a96a3">SKIP</div>
+  <div class="abs" style="left:0;right:0;top:268px;height:80px"><div class="abs" style="left:186px;top:15px"><svg width="40" height="34" viewBox="0 0 52 40"><rect x="7" y="9" width="38" height="20" rx="2" fill="#7a4a24" stroke="#c88a4a"/><circle cx="17" cy="33" r="5" fill="#3a2410" stroke="#d9a04a" stroke-width="2"/><circle cx="37" cy="33" r="5" fill="#3a2410" stroke="#d9a04a" stroke-width="2"/><ellipse cx="26" cy="7" rx="6" ry="6" fill="#ffcf6a"/></svg></div><div class="abs hbar" style="top:51px"><span style="width:14%;background:#20142a"></span><span style="width:12%;background:#ff2d4f"></span><span style="width:8%;background:#20142a"></span><span style="width:15%;background:#3DFF9A">2x</span><span style="width:6%;background:#FFD54A"></span><span style="width:15%;background:#3DFF9A"></span><span style="width:9%;background:#20142a"></span><span style="width:10%;background:#000"></span><span style="width:11%;background:#20142a"></span></div></div>
+  <div class="abs c" style="top:378px;font-size:31px;font-weight:1000;letter-spacing:1.4px;color:#fff6e0">PULL AND LET GO</div>
+  <div class="abs c" style="top:420px;font-weight:800;font-size:15.5px;line-height:1.38;color:#ddd;padding:0 36px">Pull anywhere along the bottom, or pull the lever. Let go when the cart's lantern is on the green.</div>
+  <div class="abs c" style="top:530px;font-size:12.5px;font-weight:900;letter-spacing:1.2px;color:var(--cyan)">📖 FULL GUIDE</div>
+  <button class="abs" style="left:34px;top:618px;width:328px;height:58px;border-radius:29px;background:rgba(255,246,224,.82);color:#1a0d00;font-weight:1000;font-size:19px;box-shadow:0 0 26px rgba(255,240,200,.45)">→ NEXT</button>
+ </div>
+</section>
+<div class="abs toast" id="toast2" style="position:absolute;top:96px;font-size:13px;color:var(--gold);z-index:9"></div>
+</div>
+<script src="try-bridge.js"></script>
+<script>
+/* Afterglow demo. Rebuilt from the iOS app's own screens and art. Everything is in this tab's memory: no account, no network writes, no purchases, no ads. */
+const $=id=>document.getElementById(id),stage=$('stage');
+function fit(){const s=Math.min(innerWidth/393,innerHeight/852);stage.style.transform=`translate(${(innerWidth-393*s)/2}px,${(innerHeight-852*s)/2}px) scale(${s})`}
+addEventListener('resize',fit);fit();
+const S={coin:40,stars:{},front:1,cur:1,cart:0,pulls:8,lane:'safe',pos:0,dir:1,held:false,mana:100,cleared:0,raf:0,last:0,seenHT:false,clock:11};
+const NAMES=['Lantern Row','Paper Moon Alley','Ember Steps','Koi Bridge','Night Noodle Lane','Brass Bell Court','Velvet Gate','Firefly Wharf','Jade Arcade','Ash Market'];
+function go(s){document.querySelectorAll('.scr').forEach(e=>e.classList.toggle('on',e.id==='s-'+s));if(s==='home')home();if(s!=='game')cancelAnimationFrame(S.raf)}
+let t2;function toast2(t){const e=$('toast2');e.textContent=t;e.classList.add('on');clearTimeout(t2);t2=setTimeout(()=>e.classList.remove('on'),1400)}
+function nope(){toast2('DEMO · SIGN-IN IS IN THE APP')}
+function home(){const g=$('grid');g.innerHTML='';for(let i=1;i<=10;i++){const d=document.createElement('button');const st=S.stars[i];d.className='st'+(i<=S.front?' open':'')+(st?' done':'');d.innerHTML=i<=S.front?i+'<small>'+(st?'★'.repeat(st):'<svg width=8 height=10 viewBox="0 0 8 10"><path d="M4 0C5 3 8 4 8 7a4 3 0 0 1-8 0C0 5 2 4 2 2c1 1 1 2 2 2z" fill="#2a1600"/></svg>')+'</small>':"<svg width='12' height='14' viewBox='0 0 12 14'><rect x='1' y='6' width='10' height='8' rx='2' fill='#8a8496'/><path d='M3.2 6V4.3a2.8 2.8 0 0 1 5.6 0V6' stroke='#8a8496' stroke-width='1.6' fill='none'/></svg>";if(i<=S.front)d.onclick=()=>{S.cur=i;startRun(true)};g.appendChild(d)}
+ $('h-coin').textContent=S.coin;$('h-stars').textContent=Object.values(S.stars).reduce((a,b)=>a+b,0);$('h-clear').textContent=Math.min(S.cleared,5);$('h-next').textContent='STREET '+S.front+' · '+NAMES[S.front-1].toUpperCase()}
+/* how to play — the four cards from HowToPlayOverlay */
+const HT=[
+ {t:'PULL AND LET GO',c:'#FFF6E0',b:'Pull anywhere along the bottom, or pull the lever. Let go when the cart\'s lantern is on the green.',next:['→ NEXT','linear-gradient(180deg,#FFFBEF,#F2E6C6)','#1a0d00','0 0 26px rgba(255,240,200,.55)'],
+  art:'<div class="abs" style="left:186px;top:15px"><svg width="40" height="34" viewBox="0 0 52 40"><rect x="7" y="9" width="38" height="20" rx="2" fill="#7a4a24" stroke="#c88a4a"/><circle cx="17" cy="33" r="5" fill="#3a2410" stroke="#d9a04a" stroke-width="2"/><circle cx="37" cy="33" r="5" fill="#3a2410" stroke="#d9a04a" stroke-width="2"/><ellipse cx="26" cy="7" rx="6" ry="6" fill="#ffcf6a"/></svg></div><div class="abs hbar" style="top:51px"><span style="width:14%;background:#20142a"></span><span style="width:12%;background:#ff2d4f"></span><span style="width:8%;background:#20142a"></span><span style="width:15%;background:#3DFF9A">2x</span><span style="width:6%;background:#FFD54A"></span><span style="width:15%;background:#3DFF9A"></span><span style="width:9%;background:#20142a"></span><span style="width:10%;background:#000"></span><span style="width:11%;background:#20142a"></span></div>',ty:383,by:432,ny:528},
+ {t:'THE CART IS<br>THE PURSE',c:'#FFC93C',b:'A safe stop fills the cart. Bank keeps it. A red stop or an empty gap blows it empty. Banked lanterns are safe.',next:['→ NEXT','linear-gradient(180deg,#FFE58A,#F2AE2E)','#1a0d00','0 0 22px rgba(255,190,60,.5)'],
+  art:'<div class="abs" style="left:117px;top:2px;width:162px;height:14px;border-radius:7px;background:#1d1828"></div><div class="abs lantern-f" style="left:186px;top:-6px;width:20px;height:28px"></div><div class="abs" style="left:132px;top:30px;display:flex;gap:16px;font-weight:1000;font-size:12px">'+[['3','#FFC93C'],['2','#FF3D9A'],['1','#B8B0D8']].map(([n,c],i)=>`<div style="text-align:center"><div style="width:26px;height:26px;border-radius:13px;background:${c};color:#1a0d00;line-height:26px;margin:0 auto">${n}</div><div style="font-size:7px;letter-spacing:1px;margin-top:4px;color:#bbb">${i<2?'STONED':'STONE'}</div></div>`).join('')+'</div>',ty:190,by:261,ny:338},
+ {t:'SAFE AND RICH',c:'#2FE6E0',b:'On every street you can pick. Safe has fewer gusts. Rich has more. The speed and the green do not change. Tap the eye.',next:['→ NEXT','linear-gradient(180deg,#7ff7f1,#22c9c3)','#04201f','0 0 22px rgba(47,230,224,.5)'],
+  art:'<div class="abs" style="left:96px;top:20px;width:203px;height:58px;border-radius:29px;background:linear-gradient(180deg,#5ef59a,#24c86a);box-shadow:0 0 22px rgba(57,255,136,.5);text-align:center;color:#05200e;font-weight:1000;line-height:1.05;padding-top:8px"><div style="font-size:19px;letter-spacing:1px">BANK</div><div style="font-size:13px">1,240</div></div><div class="abs c" style="top:86px;font-size:8px;font-weight:900;letter-spacing:1px;color:var(--bull)">🔒 SAFE FOREVER</div>',ty:654,by:700,ny:796},
+ {t:'THE ROOMS',c:'#FFC93C',b:'Every 10th street a room blocks the lever. Enter it, or tap Not now. The wheel, the coins, and the cabinet pay lanterns into the cart.',next:['🔥 START PLAYING','linear-gradient(180deg,#FFE58A,#F2AE2E)','#1a0d00','0 0 22px rgba(255,190,60,.5)'],
+  art:'<div class="abs" style="left:174px;top:20px;width:48px;height:48px;border-radius:24px;border:2px solid var(--cyan);box-shadow:0 0 14px rgba(47,230,224,.5);color:var(--cyan);font-weight:1000;font-size:24px;text-align:center;line-height:44px">?</div>',ty:654,by:700,ny:796}];
+let ht=0,htFrom='home';
+function howto(i){if(i<0)return;if(i>3){htDone();return}ht=i;const h=HT[i];go('howto');$('ht-n').textContent='HOW TO PLAY · '+(i+1)+' / 4';
+ $('ht-art').innerHTML=h.art;const t=$('ht-t');t.innerHTML=h.t;t.style.color=h.c;t.style.textShadow='0 0 14px '+h.c+'66';
+ const two=h.t.includes('<br>');t.style.top=(two?372:388)+'px';const b=$('ht-b');b.textContent=h.b;b.style.top=(two?432:430)+'px';
+ const bh=b.offsetHeight,ny=Math.max(528,432+bh+30);$('ht-nav').style.top=ny+'px';$('ht-dots').style.top=(ny+64)+'px';
+ $('ht-back').style.opacity=i?1:.35;[...$('ht-dots').children].forEach((d,k)=>{d.className=k===i?'on':'';d.style.background=k===i?(i===3?'#FFC93C':i===2?'#2FE6E0':''):''});
+ const n=$('ht-next');n.innerHTML=h.next[0];n.style.background=h.next[1];n.style.color=h.next[2];n.style.boxShadow=h.next[3];n.style.top=(ny+90)+'px'}
+function htDone(){S.seenHT=true;if(htFrom==='run'){openGame()}else go('home')}
+function startRun(pick){if(!pick)S.cur=S.front;if(!S.seenHT){htFrom='run';howto(0);return}openGame()}
+/* game */
+const ZONES=[[0,.07,'#20142a'],[.07,.17,'#ff2d4f'],[.17,.33,'#20142a'],[.33,.43,'#3DFF9A','●'],[.43,.47,'#FFD54A'],[.47,.55,'#3DFF9A','2x'],[.55,.62,'#3DFF9A','●'],[.62,.72,'#20142a'],[.72,.82,'#ff2d4f'],[.82,1,'#20142a']];
+function buildBar(){const b=$('gbar');b.innerHTML=ZONES.map(z=>`<div class="z" style="left:${z[0]*100}%;width:${(z[1]-z[0])*100}%;background:${z[2]};color:#06210f;font-size:9px;font-weight:1000;text-align:center;line-height:14px">${z[3]||''}</div>`).join('')}
+function openGame(){S.cart=0;S.pulls=8;S.mana=100;S.clock=11;go('game');buildBar();$('g-street').textContent=S.cur;$('story').style.display=S.cur===1&&!S.storySeen?'block':'none';draw();S.last=performance.now();cancelAnimationFrame(S.raf);S.raf=requestAnimationFrame(loop)}
+function closeStory(){S.storySeen=true;$('story').style.display='none'}
+function howtoIn(){$('ingame-ht').style.display='block'}
+function draw(){$('g-coin').textContent=S.coin;$('g-pulls').textContent=S.pulls;$('g-pbar').style.width=(S.pulls/8*152)+'px';$('g-cart').textContent=S.cart;$('g-mana').textContent=S.mana;$('g-manab').style.width=S.mana+'%';
+ const sf=$('l-safe'),rc=$('l-rich');if(S.lane==='safe'){sf.style.background='var(--cyan)';sf.style.color='#062a2a';sf.style.border='0';sf.innerHTML='SAFE<br>ON';rc.style.background='rgba(30,6,24,.7)';rc.style.color='var(--pink)';rc.innerHTML='RICH<br>LANE'}else{rc.style.background='var(--pink)';rc.style.color='#2a0618';rc.innerHTML='RICH<br>ON';sf.style.background='rgba(6,30,30,.7)';sf.style.color='var(--cyan)';sf.style.border='1.6px solid var(--cyan)';sf.innerHTML='SAFE<br>LANE'}}
+function loop(t){const dt=Math.min((t-S.last)/1000,.05);S.last=t;const story=$('story').style.display!=='none';
+ if(!S.held&&!story){S.pos+=S.dir*.42*dt;if(S.pos>1){S.pos=1;S.dir=-1}if(S.pos<0){S.pos=0;S.dir=1}}
+ $('cart').style.left=(16+S.pos*358-26)+'px';S.raf=requestAnimationFrame(loop)}
+let tt;function toast(t,c){const e=$('toast');e.textContent=t;e.style.color=c;e.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>e.classList.remove('on'),900)}
+function pull(){if(S.held||$('story').style.display!=='none'||!$('s-game').classList.contains('on'))return;if(S.pulls<=0){toast('NO PULLS LEFT','#fff');return}
+ S.held=true;S.pulls--;const z=ZONES.find(z=>S.pos>=z[0]&&S.pos<=z[1]);const rich=S.lane==='rich';
+ if(z[2]==='#3DFF9A'||z[2]==='#FFD54A'){let v=(z[2]==='#FFD54A'?5:z[3]==='2x'?2:1)*(rich?2:1)*20;S.cart+=v;toast('+'+v,z[2]==='#FFD54A'?'#FFD54A':'#3DFF9A')}
+ else if(z[2]==='#ff2d4f'||(rich&&Math.random()<.25)){toast(S.cart?'GUST! −'+S.cart:'GUST!','#FF4747');S.cart=0}else{toast('MISS','#bbb')}
+ draw();setTimeout(()=>{S.held=false;if(S.pulls===0)endStreet()},700)}
+function bank(){if(!S.cart){toast('CART IS EMPTY','#fff');return}S.coin+=S.cart;toast('BANKED '+S.cart,'#FFC93C');S.cart=0;draw()}
+function endStreet(){S.coin+=S.cart;const st=S.coin>=200?3:S.coin>=110?2:1;S.stars[S.cur]=Math.max(S.stars[S.cur]||0,st);if(S.cur===S.front&&S.front<10)S.front++;S.cleared++;toast('STREET CLEAR '+'★'.repeat(st),'#FFC93C');setTimeout(()=>go('home'),1300)}
+function lane(l){S.lane=l;draw()}
+$('pullbtn').addEventListener('pointerdown',e=>{e.preventDefault();pull()});
+$('s-game').addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;if(e.clientY>stage.getBoundingClientRect().top+700*(stage.getBoundingClientRect().height/852))pull()});
+addEventListener('keydown',e=>{if(e.code==='Space')pull()});
+</script><script id="nologin">/* Website demo: no sign-in. Opens straight into the signed-in app. */
+
+go('home');
+</script></body></html>
