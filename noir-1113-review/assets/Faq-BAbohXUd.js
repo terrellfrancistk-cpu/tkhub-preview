@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-BWRPWl8p.js";import{t}from"./Chrome-BiDMUwNZ.js";import{n,t as r}from"./index-Mkm0sqKI.js";var i=e(),a=()=>(r(`FAQ · NOIR`),(0,i.jsx)(t,{children:(0,i.jsx)(`div`,{className:`pt-24`,children:(0,i.jsx)(n,{headingLevel:`h1`,className:`pt-12 sm:pt-12`})})}));export{a as default};
