@@ -1,0 +1,32 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": [
+          "GF7Q89UD42.app.rork.1nmwxolvv0nprr8q9nmji"
+        ],
+        "appID": "GF7Q89UD42.app.rork.1nmwxolvv0nprr8q9nmji",
+        "components": [
+          {
+            "/": "/join/*",
+            "comment": "Circle invite links"
+          },
+          {
+            "/": "/where/*",
+            "comment": "Live location links"
+          },
+          {
+            "/": "/member/*",
+            "comment": "Member map links (opens that person on the circle map)"
+          }
+        ],
+        "paths": [
+          "/join/*",
+          "/where/*",
+          "/member/*"
+        ]
+      }
+    ]
+  }
+}
