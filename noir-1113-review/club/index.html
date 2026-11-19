@@ -2,8 +2,8 @@
 <html lang="en">
   <head><script>location.replace("/tkhub-preview/noir-1113-review/#/club")</script><meta name="robots" content="noindex,nofollow">
     <meta charset="UTF-8" />
-    <!-- Marks the page as handling Rork's toolkit sign-in itself, so the host does not inject its own copy, which asks
-         api.rork.com for a token on every visit and fails CORS (a console error and a 5 KB script before the charset). -->
+    <!-- Tells the host this page handles the toolkit sign-in itself, so the host adds no copy of its own. That copy
+         asks the host for a token on every visit and fails CORS (a console error and a 5 KB script before the charset). -->
     <script data-rork-toolkit-auth="true">(function(s){s.__rorkToolkitAuthInstalled=true;s.__rorkToolkitAuthReady=Promise.resolve(null);s.__rorkGetToolkitToken=function(){return Promise.resolve(null)};s.__rorkLoadToolkitModule=function(u){return import(u)}})(window);</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0A0A0A" />
@@ -125,6 +125,6 @@
         if (answered || location.pathname !== "/") gate.remove();
       })();
     </script>
-  <script>(function(){function go(){var s=document.createElement("script");s.type="module";s.crossOrigin="";s.src="/tkhub-preview/noir-1113-review/assets/index-Mkm0sqKI.js";document.head.appendChild(s)}function after(){requestAnimationFrame(function(){setTimeout(go,0)})}function next(){var done=false,t;function once(){if(done)return;done=true;clearTimeout(t);after()}t=setTimeout(once,1500);try{var o=new PerformanceObserver(function(l){l.getEntries().forEach(function(e){if(e.name==="first-contentful-paint"){o.disconnect();once()}})});o.observe({type:"paint",buffered:true})}catch(x){once()}}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",next);else next()})();</script>
+  <script>(function(){function go(){var s=document.createElement("script");s.type="module";s.crossOrigin="";s.src="/tkhub-preview/noir-1113-review/assets/index-CkSCEkVG.js";document.head.appendChild(s)}function after(){requestAnimationFrame(function(){setTimeout(go,0)})}function next(){var done=false,t;function once(){if(done)return;done=true;clearTimeout(t);after()}t=setTimeout(once,1500);try{var o=new PerformanceObserver(function(l){l.getEntries().forEach(function(e){if(e.name==="first-contentful-paint"){o.disconnect();once()}})});o.observe({type:"paint",buffered:true})}catch(x){once()}}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",next);else next()})();</script>
 </body>
 </html>
