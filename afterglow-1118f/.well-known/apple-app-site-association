@@ -1,0 +1,8 @@
+{
+  "applinks": {
+    "details": [{
+      "appIDs": ["GF7Q89UD42.app.rork.lf0bje84pu37wqza6k3si"],
+      "components": [{ "/": "/signin", "?": { "token": "?*" } }]
+    }]
+  }
+}
