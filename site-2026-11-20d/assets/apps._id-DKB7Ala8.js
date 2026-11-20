@@ -1,0 +1,1 @@
+import{m as e}from"./traffic-beacon-CBJvHU0p.js";import{t}from"./jsx-runtime-NZYk81nU.js";import{r as n}from"./index-CmVGft8H.js";import{o as r}from"./site-shell-CovPWsit.js";import{t as i}from"./product-site-3PtUF1tD.js";var a=t();function o(){let{id:t}=n.useParams();if(!r(t))throw e();return(0,a.jsx)(i,{id:t})}export{o as component};
