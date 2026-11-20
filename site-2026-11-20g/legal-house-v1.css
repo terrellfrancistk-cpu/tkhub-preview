@@ -1,0 +1,64 @@
+/* tkhub.app: the two public legal pages that still used the old black site.css look (/child-safety, /data-deletion)
+   get the house look (Nov 20, 2026, design round 4). Scoped to pages with <main class="... legal">, so /apex and /ads
+   (same old stylesheet) are not affected. Style only: every link, button, form and line of text stays. Light by
+   default, dark when the device is in dark mode (these pages have no theme switch, so they follow the device, like
+   the house "Auto"). Values from the newer pages: cream #f3f0e8 / ink #16130f / line #ddd4c4 / teal #0e5c64; dark
+   #090a0c / #f4f0e6 / #2c2a26 / #2aa3ae; 92 px header, 72 px logo, Manrope 800 headings. */
+html:has(main.legal){--h-bg:#f3f0e8;--h-bg2:#fffdf8;--h-ink:#16130f;--h-muted:#3a342c;--h-line:#ddd4c4;--h-teal:#0e5c64;--h-teal-ink:#fff;color-scheme:light}
+@media (prefers-color-scheme:dark){html:has(main.legal){--h-bg:#090a0c;--h-bg2:#141618;--h-ink:#f4f0e6;--h-muted:#b1a898;--h-line:#2c2a26;--h-teal:#2aa3ae;--h-teal-ink:#041416;color-scheme:dark}}
+html:has(main.legal),html:has(main.legal) body{background:var(--h-bg);color:var(--h-ink);line-height:1.6}
+html:has(main.legal){font-size:16px}   /* rem = 16 px, as on the house pages (site.css set 20 px) */
+html:has(main.legal) body{font-size:17px}
+
+/* header: one 92 px bar, logo at the left edge, phone as the house button; the link row below in the house nav type */
+html:has(main.legal) header{background:var(--h-bg);border-bottom:1px solid var(--h-line);backdrop-filter:none}
+html:has(main.legal) header .bar{width:100%;max-width:none;min-height:91px;padding:0 22px;gap:16px}
+html:has(main.legal) header .brand img.mark{width:72px;height:72px;border-radius:0;background:none;object-fit:contain}
+html:has(main.legal) header .logo{color:var(--h-ink);font-size:26px}
+html:has(main.legal) header .logo span{color:var(--h-teal)}
+html:has(main.legal) header .bar>a[href="/tkhub-preview/site-2026-11-20g/ciara/"]{color:var(--h-teal)!important}
+html:has(main.legal) header .phone{background:var(--h-teal);color:var(--h-teal-ink);border-radius:999px;padding:0 18px;font-size:1.05rem;font-weight:750}
+html:has(main.legal) header .subnav{width:min(1120px,100% - 40px);gap:4px 22px;padding:2px 0 10px}
+html:has(main.legal) header .subnav a{color:var(--h-ink);font-size:1.05rem;font-weight:750;letter-spacing:-.01em;text-transform:none}
+html:has(main.legal) header .subnav a:hover,html:has(main.legal) header .subnav a[href="/tkhub-preview/site-2026-11-20g/child-safety/"]:hover{color:var(--h-teal)}
+
+/* text column and type */
+html:has(main.legal) main.legal{width:min(1120px,100% - 40px);max-width:none;padding-top:48px;padding-bottom:56px}
+html:has(main.legal) main.legal>*{max-width:46rem}
+html:has(main.legal) main.legal .lime{color:var(--h-teal)!important}
+html:has(main.legal) main.legal h1{font-family:Manrope,system-ui,sans-serif;font-weight:800;letter-spacing:-.045em;line-height:.9;font-size:clamp(3rem,7vw,5.4rem);margin:8px 0 22px;color:var(--h-ink)}
+html:has(main.legal) main.legal h2{font-family:Manrope,system-ui,sans-serif;font-weight:800;letter-spacing:-.03em;line-height:1.1;font-size:clamp(1.6rem,3vw,2.1rem);margin:34px 0 10px;color:var(--h-ink)}
+html:has(main.legal) main.legal h3{font-family:Manrope,system-ui,sans-serif;font-weight:800;letter-spacing:-.02em;color:var(--h-ink)}
+html:has(main.legal) main.legal p,html:has(main.legal) main.legal li{color:var(--h-ink)}
+html:has(main.legal) main.legal .lede,html:has(main.legal) main.legal .mute{color:var(--h-muted)}
+html:has(main.legal) main.legal a{color:var(--h-teal);text-decoration:underline;text-underline-offset:2px}
+
+/* forms on /data-deletion (typed DELETE): house fields and buttons */
+html:has(main.legal) main.legal input,html:has(main.legal) main.legal textarea,html:has(main.legal) main.legal select{background:var(--h-bg2);color:var(--h-ink);border:1px solid var(--h-line);border-radius:12px}
+html:has(main.legal) main.legal .btn,html:has(main.legal) main.legal button{border-radius:999px}
+html:has(main.legal) main.legal .btn-lime,html:has(main.legal) main.legal button[type=submit]{background:var(--h-teal);color:var(--h-teal-ink);border-color:var(--h-teal)}
+html:has(main.legal) main.legal .btn-line{background:var(--h-bg2);color:var(--h-ink);border:1px solid var(--h-line)}
+
+/* footer */
+html:has(main.legal) footer{background:var(--h-bg);border-top:1px solid var(--h-line);color:var(--h-muted)}
+html:has(main.legal) footer .wrap{width:min(1120px,100% - 40px)}
+html:has(main.legal) footer a{color:var(--h-ink);font-weight:700}
+
+/* phones: logo, phone button and menu button fit on one line from 360 px (wrap below that, never overlap) */
+@media (max-width:560px){
+  html:has(main.legal) header .bar{padding:0 16px;gap:10px;min-height:76px}
+  html:has(main.legal) header .brand img.mark{width:56px;height:56px}
+  html:has(main.legal) header .logo{font-size:18px;letter-spacing:.06em}
+  html:has(main.legal) header .phone{padding:0 12px;font-size:.9rem;min-height:44px}
+  html:has(main.legal) header .subnav{gap:2px 18px}
+}
+@media (max-width:359px){html:has(main.legal) header .bar{flex-wrap:wrap;row-gap:6px;padding-block:8px}}
+/* phone menu button (three lines) in the house colours */
+html:has(main.legal) header .menu{background:var(--h-bg2);border-color:var(--h-line);border-radius:999px}
+html:has(main.legal) header .menu span,html:has(main.legal) header .menu span:before,html:has(main.legal) header .menu span:after{background:var(--h-ink)}
+html:has(main.legal) header.nav-open .menu span{background:transparent}
+/* the phone menu panel (site.css paints it near-black) in the house colours */
+html:has(main.legal) header.nav-open>.subnav{background:var(--h-bg2);border-bottom:1px solid var(--h-line);width:auto;padding:8px 16px 16px}
+html:has(main.legal) header.nav-open>.subnav a{color:var(--h-ink)}
+/* the page script adds the phone menu button just after the first paint; keep its 44 px place so nothing jumps */
+@media (max-width:899px){html:has(main.legal) header .bar:not(:has(.menu))::after{content:"";flex:none;width:44px;height:44px}}
