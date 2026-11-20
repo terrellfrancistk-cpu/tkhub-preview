@@ -1,0 +1,1 @@
+import{s as e}from"./middleware-DVc3wOZi.js";import{t}from"./jsx-runtime-NZYk81nU.js";import{r as n}from"./index-USs__Uy-.js";import{a as r}from"./site-shell-Dl45ioAc.js";import{t as i}from"./product-site-ty1qHNhF.js";var a=t();function o(){let{id:t}=n.useParams();if(!r(t))throw e();return(0,a.jsx)(i,{id:t})}export{o as component};
