@@ -1,0 +1,8 @@
+/* tkhub.app: older pages use the newer pages' heading type and button shape. Design round 3, Nov 19 2026.
+   A separate file from legacy-chrome-v1.css so Terrell can say yes or no to it on its own (preview 19b).
+   Style only: same words, same colours (inline product colours stay), same links. Small labels and kickers keep
+   Bebas Neue, as on the newer pages ("SITES" over "One thousand."). Values copied from the newer pages:
+   h1 Manrope 800, -0.045em, clamp(3rem,7vw,5.4rem), line-height .9; buttons are pills (999px). */
+main h1.font-display{font-family:Manrope,"Manrope Fallback",system-ui,sans-serif;font-weight:800;letter-spacing:-.045em;line-height:.9;font-size:clamp(3rem,7vw,5.4rem)}
+main h2.font-display{font-family:Manrope,"Manrope Fallback",system-ui,sans-serif;font-weight:800;letter-spacing:-.035em;line-height:1.05}
+main a.rounded-lg.font-extrabold,main button.rounded-lg.font-extrabold{border-radius:999px}
