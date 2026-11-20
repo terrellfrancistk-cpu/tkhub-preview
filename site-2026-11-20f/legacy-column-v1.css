@@ -1,0 +1,8 @@
+/* tkhub.app: older pages start their content on the same 1120 px column as the newer pages (design round 5, Nov 20
+   2026). Before: product pages at x=60 (1160 px wrap), text pages in a 768 px column centred at x=256, /live at 304,
+   /about at 64; newer pages at x=80. Text pages keep their reading width (48rem / 42rem), now left-aligned on the
+   column like the newer pages. Style only. A separate file so Terrell can take it or leave it. */
+.house main.wrap,.house main.wrap.max-w-3xl,.house main.wrap.max-w-2xl{width:min(1120px,100% - 40px);max-width:none;margin-inline:auto}
+.house main.wrap.max-w-3xl>*{max-width:48rem}
+.house main.wrap.max-w-2xl>*{max-width:42rem}
+.house main.mx-auto.w-\[min\(72rem\,92vw\)\]{width:min(1120px,100% - 40px)}

@@ -1,0 +1,4 @@
+/* watermark-under-v1.css (Nov 18, design round 1: hierarchy). The big TK Hub watermark (body:before, fixed) was painted
+   ON TOP of headings, text and buttons, tinting them teal. The watermark stays exactly as it is; text and controls now
+   sit above it. :where() keeps specificity at zero, so anything that already sets its own position keeps it. */
+main :where(h1,h2,h3,h4,p,ul,ol,dl,form,figure,table,.btn,button,label){position:relative;z-index:1}
