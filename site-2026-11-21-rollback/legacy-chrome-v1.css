@@ -1,0 +1,47 @@
+/* tkhub.app: older pages (the ones built on /assets/styles-*.css) get the same header and footer look as the
+   newer pages (/sites, /pass, /founders, /contact). Design round 2, Nov 19 2026. Style only: every link, button
+   and line of text stays in the page. Colours use the page's own light/dark tokens, so dark mode keeps working.
+   Values copied from the newer pages' stylesheet: header 92px, 72px logo, 20px/750 nav, solid #0e5c64 button,
+   footer column 1120px, 36px app icons with the address under the name, pill theme switch. */
+
+/* Header */
+header.sticky.backdrop-blur-md>div:first-child{width:100%;max-width:none;height:91px;padding:0 22px;gap:22px}
+header.sticky.backdrop-blur-md .brand-logo{width:72px;height:72px;object-fit:contain;filter:none;transform:none}
+header.sticky.backdrop-blur-md>div:first-child>nav{flex:1 1 auto;justify-content:center;gap:28px}
+header.sticky.backdrop-blur-md>div:first-child>nav a{padding:0;border-radius:0;font-size:1.25rem;font-weight:750;letter-spacing:-.03em;color:var(--color-fg);line-height:30px}
+header.sticky.backdrop-blur-md>div:first-child>nav a:hover{background:transparent;color:#0e5c64}
+html[data-theme=dark] header.sticky.backdrop-blur-md>div:first-child>nav a:hover{color:#2aa3ae}
+header.sticky.backdrop-blur-md .fluid-cta{min-height:48px;padding:0 18px;font-size:1.05rem;font-weight:750;color:#fff;background:#0e5c64;box-shadow:none}
+header.sticky.backdrop-blur-md .fluid-cta::before,header.sticky.backdrop-blur-md .fluid-cta::after{animation:none;background:none}
+header.sticky.backdrop-blur-md button[aria-label=Menu]{min-width:4.5rem;text-align:right;font-size:1.15rem;font-weight:750;letter-spacing:-.03em}
+/* Nov 20: the "Sign in" link the newer pages have (ghost pill, 104 px+), in the old account slot (desktop) */
+header.sticky.backdrop-blur-md .legacy-signin{display:inline-flex;align-items:center;justify-content:center;min-height:48px;min-width:6.5rem;padding:0 18px;border:1px solid var(--color-line);border-radius:999px;background:var(--color-surface);color:var(--color-fg);font-size:1.05rem;font-weight:750;text-decoration:none;white-space:nowrap}
+header.sticky.backdrop-blur-md .legacy-signin:hover{border-color:var(--color-fg)}
+/* pages whose old bundle still draws its own signed-out "Sign in" (to /login, e.g. /about): same ghost pill */
+header.sticky.backdrop-blur-md>div:first-child>div:last-child a[href="/tkhub-preview/site-2026-11-21-rollback/login"]{min-height:48px;min-width:6.5rem;justify-content:center;padding:0 18px;border:1px solid var(--color-line);border-radius:999px;background:var(--color-surface);color:var(--color-fg);font-size:1.05rem;font-weight:750;letter-spacing:normal;text-transform:none}
+/* The newer pages show "Menu" at every width; the older menu already opens at desktop width (.merc-menu.is-open). */
+@media (min-width:1024px){header.sticky.backdrop-blur-md button[aria-label=Menu]{display:inline-flex;align-items:center;justify-content:flex-end}}
+
+/* Footer */
+.site-foot{margin-top:20px;padding-top:28px}
+.site-foot-in{width:min(1120px,100% - 40px)}
+.site-foot-brand{gap:18px}
+.site-foot-brand>nav{margin-right:auto}
+.site-foot-brand .brand-logo.sm{width:72px;height:72px;object-fit:contain}
+.site-foot-brand>nav a{width:42px;height:42px;border-radius:50%;background:transparent}
+.site-foot-brand>nav a svg{width:18px;height:18px}
+.site-foot-brand>p{color:var(--color-muted)}
+.site-foot-brand>p a{color:inherit}
+.site-foot-apps{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px 16px;margin:22px 0}
+.site-foot-apps li{grid-template-columns:36px minmax(0,1fr);column-gap:10px;row-gap:0}
+.site-foot-apps img{width:36px;height:36px;grid-row:1/span 2}
+.site-foot-apps li>span{font-weight:700;color:var(--color-fg);line-height:26px;align-self:end}
+.site-foot-apps li>a{font-size:1.05rem;line-height:1.35;align-self:start;white-space:normal;text-overflow:clip;overflow:visible;overflow-wrap:anywhere}
+@media (min-width:1160px){.site-foot-apps{grid-template-columns:repeat(4,max-content);justify-content:space-between}}
+@media (min-width:861px) and (max-width:1159px){.site-foot-apps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:860px){.site-foot-apps{grid-template-columns:1fr}}
+.site-foot>.site-foot-in>nav{margin-top:0;gap:16px;font-weight:700}
+.site-foot-legal{max-width:none;margin-top:18px;padding-top:14px;border-top:1px solid var(--color-line);font-size:1.05rem}
+.site-foot-live{font-size:1.05rem}
+.site-foot-theme>[role=group]{display:inline-flex;padding:3px}
+.site-foot-theme>[role=group] button{min-height:38px;padding:0 14px;font-size:1.05rem;font-weight:750}

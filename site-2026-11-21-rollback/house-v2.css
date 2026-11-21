@@ -1,0 +1,122 @@
+/* tkhub.app house v2 (redesign, Nov 21 2026; Terrell: "redesign the whole site to look premium, clean and modern").
+   First pass: the home page. Applies only where this file is linked (scoped by :has(link)), so pages opt in one by
+   one. Style only: every page, section, link, button and line of copy stays. Rules: one palette, one type scale, one
+   button system, one spacing rhythm.
+   Palette  bg #fbfaf7 · surface #fff · ink #0c0c0d · muted #57534b · line #e8e5de · accent #0e5c64 (house teal)
+   Type     Manrope; display 750 -0.045em; h2 750 -0.035em; body 17/1.6; kicker 12px 700 .14em uppercase teal
+   Space    8-pt rhythm; section padding 112px desktop / 64px phone; 1120 px column, 20 px phone gutters
+   Shape    radius 14 (inputs) / 22 (cards) / 999 (buttons); 1 px hairlines; one soft shadow */
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]){--v2-bg:#fbfaf7;--v2-surface:#fff;--v2-ink:#0c0c0d;--v2-ink2:#2a2926;--v2-muted:#57534b;--v2-line:#e8e5de;--v2-accent:#0e5c64;--v2-accent-ink:#fff;--v2-shadow:0 1px 2px rgba(12,12,13,.04),0 12px 32px -18px rgba(12,12,13,.18)}
+@media (prefers-color-scheme:dark){:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]):not([data-theme=light]){--v2-bg:#0b0b0c;--v2-surface:#141416;--v2-ink:#f4f2ec;--v2-ink2:#dcd8cf;--v2-muted:#a39e94;--v2-line:#26252a;--v2-accent:#2aa3ae;--v2-accent-ink:#041416;--v2-shadow:none}}
+:root[data-theme=dark]:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]){--v2-bg:#0b0b0c;--v2-surface:#141416;--v2-ink:#f4f2ec;--v2-ink2:#dcd8cf;--v2-muted:#a39e94;--v2-line:#26252a;--v2-accent:#2aa3ae;--v2-accent-ink:#041416;--v2-shadow:none}
+
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) body{background:var(--v2-bg);color:var(--v2-ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) body::before{opacity:.025!important}            /* watermark: a faint texture, not a stamp */
+
+/* header: 72 px, quiet nav, one primary action */
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .site-header{height:72px;padding:0 28px;background:color-mix(in srgb,var(--v2-bg) 86%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--v2-line);color:var(--v2-ink)}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .site-header .brand img{width:58px;height:58px}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .header-nav{gap:30px}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .header-nav a{font-size:15.5px;font-weight:600;letter-spacing:-.01em;color:var(--v2-muted)}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .header-nav a.is-on,:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .header-nav a:hover{color:var(--v2-ink)}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .header-actions .btn{min-height:42px;padding:0 18px;font-size:15px;font-weight:700}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .menu-word{font-size:15.5px;font-weight:700;color:var(--v2-ink)}
+
+/* buttons: one primary (teal), one secondary (outline) */
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) a.btn.btn-silk,:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .r2-go,:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .ux1-c{background:var(--v2-accent)!important;color:var(--v2-accent-ink)!important;border-radius:999px;box-shadow:none}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) a.btn.btn-silk span{color:var(--v2-accent-ink)}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) a.btn.btn-ghost{background:var(--v2-surface);color:var(--v2-ink);border:1px solid var(--v2-line)}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .r2-go{min-height:52px;padding:0 26px;font-size:16px;font-weight:700;display:inline-flex;align-items:center}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .r2-alt{color:var(--v2-ink);font-weight:650;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+
+/* hero */
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .hero{padding-top:84px}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .hero h1{font-size:clamp(2.5rem,5vw,4.25rem);font-weight:750;letter-spacing:-.045em;line-height:1.02;max-width:20ch;text-wrap:balance;color:var(--v2-ink)}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .hero h1 em{color:var(--v2-accent);font-weight:400}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .hero .deck{margin-top:22px;max-width:34rem;font-size:clamp(1.08rem,1.5vw,1.25rem);line-height:1.55;color:var(--v2-muted)}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .tk-drive-card{margin:32px 0 12px;border-radius:22px;box-shadow:var(--v2-shadow)}
+
+/* the "On this page" rail: light glass instead of a dark pill */
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) #rs-rail{background:color-mix(in srgb,var(--v2-surface) 82%,transparent)!important;backdrop-filter:blur(12px);border:1px solid var(--v2-line);box-shadow:var(--v2-shadow)}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) #rs-rail a{color:var(--v2-muted)!important;font-weight:650}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) #rs-rail a:hover,:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) #rs-rail a[aria-current]{color:var(--v2-ink)!important}
+
+/* price cards: white surfaces with one clear action each */
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .ux1-doors{gap:16px;margin-top:20px}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .ux1-door{background:var(--v2-surface)!important;color:var(--v2-ink)!important;border:1px solid var(--v2-line);border-radius:22px;box-shadow:var(--v2-shadow);padding:26px 26px 24px}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .ux1-k{color:var(--v2-accent)!important;font-size:12px;font-weight:700;letter-spacing:.14em}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .ux1-p{color:var(--v2-ink)!important;font-size:clamp(2.2rem,3.6vw,2.9rem);font-weight:750;letter-spacing:-.04em}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .ux1-s{color:var(--v2-muted)!important;font-size:15px}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .ux1-c{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;font-size:15px;font-weight:700;margin-top:14px}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .rs-price{color:var(--v2-ink);font-weight:600}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .r2-act{margin-top:28px;gap:22px}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .n6p{margin-top:36px}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .n6p-k{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--v2-muted)}
+
+/* sections: one rhythm and one heading style */
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .tkq,:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .tka-host,:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .rs-show,:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .rs-band,:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .tkf-close{background:var(--v2-bg)!important;border-top:1px solid var(--v2-line)}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) :is(.tkq,.tka,.rs-show,.tkf-close) h2{font-size:clamp(2rem,3.8vw,3.1rem);font-weight:750;letter-spacing:-.035em;line-height:1.05;color:var(--v2-ink)}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .site-footer{background:var(--v2-bg);border-top:1px solid var(--v2-line)}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .footer-links a{font-weight:650;color:var(--v2-ink)}
+
+/* quote builder: house teal instead of cyan; white card */
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .tkq{--c:var(--v2-accent)}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .tkq-card{background:var(--v2-surface)!important;border:1px solid var(--v2-line);border-radius:22px;box-shadow:var(--v2-shadow)}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .tkq-go{color:var(--v2-accent-ink)!important;font-weight:750}
+/* dark Drive band: a light button reads best on the night photo */
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .tdd-go{background:#f4f0e6!important;color:#0d0f12!important;font-weight:750}
+/* footer inbox grid: four columns on desktop so every address fits on one line */
+@media (min-width:861px){:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .site-footer .support-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
+
+/* ---------- newer pages (Sites, Pass, Founders, Contact, Account, Order, 404) ---------- */
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .kicker{font-family:Manrope,system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--v2-accent)}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) :is(.panel,.founders-page) h1{font-weight:750;letter-spacing:-.045em;text-wrap:balance}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .price{background:var(--v2-surface);border:1px solid var(--v2-line);border-radius:22px;box-shadow:var(--v2-shadow)}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .house-list a,:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .other-list a{border-color:var(--v2-line)}
+
+/* ---------- older pages: map their colour tokens onto v2 (the round 2–5 files stay underneath) ---------- */
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .house{--color-bg:var(--v2-bg);--color-surface:var(--v2-surface);--color-fg:var(--v2-ink);--color-muted:var(--v2-muted);--color-line:var(--v2-line);background:var(--v2-bg)!important;color:var(--v2-ink)}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) header.sticky.backdrop-blur-md{background:color-mix(in srgb,var(--v2-bg) 86%,transparent)!important;border-bottom-color:var(--v2-line)!important}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) header.sticky.backdrop-blur-md>div:first-child{height:71px!important}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) header.sticky.backdrop-blur-md .brand-logo{width:58px!important;height:58px!important}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) header.sticky.backdrop-blur-md>div:first-child>nav a{font-size:15.5px!important;font-weight:600!important;color:var(--v2-muted)!important;line-height:24px!important}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) header.sticky.backdrop-blur-md>div:first-child>nav a:hover{color:var(--v2-ink)!important}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) header.sticky.backdrop-blur-md .fluid-cta,:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) header.sticky.backdrop-blur-md .legacy-signin{min-height:42px!important;font-size:15px!important;font-weight:700!important}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) header.sticky.backdrop-blur-md .fluid-cta{background:var(--v2-accent)!important;color:var(--v2-accent-ink)!important}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) header.sticky.backdrop-blur-md button[aria-label=Menu]{font-size:15.5px!important;font-weight:700!important}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .site-foot{background:var(--v2-bg)!important;border-top-color:var(--v2-line)!important}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) main a.rounded-lg.font-extrabold.bg-cyan,:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) main a.bg-cyan{background:var(--v2-accent)!important;color:var(--v2-accent-ink)!important}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) main h2.font-display{letter-spacing:-.03em}
+
+/* ---------- old site.css pages (legal, /apex, /ads): their --h tokens follow v2 ---------- */
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]){--h-bg:var(--v2-bg);--h-bg2:var(--v2-surface);--h-ink:var(--v2-ink);--h-muted:var(--v2-muted);--h-line:var(--v2-line);--h-teal:var(--v2-accent);--h-teal-ink:var(--v2-accent-ink)}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) header .bar{min-height:71px}
+
+/* contrast keepers: dark "ink" badges (store buttons) keep light text; the hero subheading stays AA while it fades in */
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .house a.bg-ink{color:#f4f2ec!important}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .house a.bg-ink .text-muted{color:#c9c2b4!important}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .hero .deck{color:#3f3c36}
+@media (prefers-color-scheme:dark){:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]):not([data-theme=light]) .hero .deck{color:var(--v2-muted)}}
+
+/* older pages draw the logo watermark as .mark-field: toned to the same faint texture (kept, not removed) */
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .mark-field{opacity:.1!important}
+
+/* tap targets (WCAG 2.5.8): the Menu word and the footer contact row get 44 / 24 px+ hit areas */
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .menu-word{min-height:44px;display:inline-flex;align-items:center;justify-content:flex-end}
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) :is(.footer-contact,.site-foot-brand>p) a{display:inline-block;padding:6px 0;min-height:24px}
+
+/* narrow phones: price-card buttons stay on one line, the small print stays compact */
+@media (max-width:420px){:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .ux1-c{white-space:nowrap;font-size:14px;padding:0 14px;gap:6px}:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .ux1-s{font-size:13.5px;line-height:1.4}:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .ux1-door{padding:18px 14px}}
+
+/* product pages: label and headline get breathing room; on phones the Photos grid is one column at the photos' own
+   16:9 shape, so banners are never cropped into fragments */
+:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) main p + h1.font-display.font-display{margin-top:8px}
+@media (max-width:640px){:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) main .grid.grid-cols-2:has(> img.h-56.object-cover){grid-template-columns:1fr}:root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) main .grid.grid-cols-2 > img.h-56.object-cover{height:auto;aspect-ratio:16/9;object-fit:contain;background:#0b0b0c}}
+
+@media (max-width:640px){
+  :root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .site-header{height:64px;padding:0 20px}
+  :root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .site-header .brand img{width:50px;height:50px}
+  :root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .hero{padding-top:40px}
+  :root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .hero h1{font-size:2.45rem;line-height:1.04}
+  :root:has(link[href^="/tkhub-preview/site-2026-11-21-rollback/house-v2.css"]) .ux1-door{padding:20px 18px}
+}

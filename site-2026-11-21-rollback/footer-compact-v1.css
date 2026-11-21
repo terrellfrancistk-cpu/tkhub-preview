@@ -1,0 +1,18 @@
+/* tkhub.app: on phones the footer's support list (12 apps, every row now support@tkhub.app) took ~40% of every page.
+   Nov 20, 2026: two columns on phones from 360 px up, smaller icon and address text, so the list is half as tall.
+   Style only: every row, name, icon and address stays visible and every mailto link keeps a 24 px+ tap target.
+   Newer pages: .support-grid (whole row is one link). Older pages: .site-foot-apps (the address is the link). */
+@media (min-width:360px) and (max-width:560px){
+  .support-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 12px}
+  .support-grid a{gap:8px;min-height:44px}
+  .support-grid img{width:28px;height:28px}
+  .support-grid strong{font-size:.95rem;line-height:1.25}
+  .support-grid span span{font-size:.8rem;line-height:1.3}
+  .site-foot-apps{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px 12px!important}
+  .site-foot-apps li{grid-template-columns:28px minmax(0,1fr)!important;column-gap:8px!important}
+  .site-foot-apps img{width:28px!important;height:28px!important}
+  .site-foot-apps li>span{font-size:.95rem;line-height:1.25!important}
+  .site-foot-apps li>a{font-size:.8rem!important;line-height:1.3!important;padding:4px 0}
+}
+/* under 360 px the list stays one column; the older pages' address links still get a 24 px+ tap target */
+@media (max-width:359px){.site-foot-apps li>a{padding:4px 0}}
