@@ -1,0 +1,1 @@
+var e=`trybooked.app`,t=`https://${e}`;function n(e){return`${t}${e===`/`?``:e}`||`${t}/`}var r=e;export{n as i,t as n,r,e as t};
