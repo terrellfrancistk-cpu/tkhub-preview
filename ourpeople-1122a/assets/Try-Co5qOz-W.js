@@ -1,0 +1,1 @@
+import{i as e,t}from"./react-B8IZ02wI.js";import{l as n}from"./dist-ChUpJWiJ.js";import{jt as r}from"./index-DCEbLIwl.js";var i=e(t(),1);function a(){let e=n();return(0,i.useEffect)(()=>{r(!0),e(`/app`,{replace:!0})},[e]),null}export{a as default};
