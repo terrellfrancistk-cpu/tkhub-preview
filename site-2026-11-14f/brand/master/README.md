@@ -11,7 +11,7 @@ AI, PSD, or PDF master, was found after searching:
 
 - The box (`/workspace`, `/tmp`, `/home/box`, `/cursor/stores`), including every
   `tkhub` / `tk-hub` PNG and SVG in repos, publish trees, and backups
-- Gmail (`terrellfrancistk@gmail.com` and `iterrellfrancis@gmail.com`) — the only
+- Terrell's own Gmail (addresses withheld) — the only
   large PNG attached to a self-sent “TK Hub” email was an IRS EIN screenshot,
   not the logo
 - Canva (design search for “TK Hub” / “tkhub” / “logo”, brand kits, folders) —
