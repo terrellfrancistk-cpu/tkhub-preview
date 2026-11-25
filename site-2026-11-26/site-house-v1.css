@@ -1,0 +1,81 @@
+/* tkhub.app: /apex and /ads (the last pages on the old black site.css look) in the house look. Terrell, Nov 20 2026:
+   "YES, move /apex and /ads to the house look." Same rules as legal-house-v1.css (house palette, light by default and
+   dark when the device is dark, 92 px header with the house mark, house nav type, Manrope headings, house buttons),
+   scoped to the pages that link this file. Style only: every link, button and line of text stays; the APEX lime
+   becomes a darker APEX green in light mode so it passes AA contrast on cream (bright lime stays in dark mode). */
+
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]){--h-bg:#f3f0e8;--h-bg2:#fffdf8;--h-ink:#16130f;--h-muted:#3a342c;--h-line:#ddd4c4;--h-teal:#0e5c64;--h-teal-ink:#fff;color-scheme:light}
+@media (prefers-color-scheme:dark){html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]){--h-bg:#090a0c;--h-bg2:#141618;--h-ink:#f4f0e6;--h-muted:#b1a898;--h-line:#2c2a26;--h-teal:#2aa3ae;--h-teal-ink:#041416;color-scheme:dark}}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]),html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) body{background:var(--h-bg);color:var(--h-ink);line-height:1.6}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]){font-size:16px}   /* rem = 16 px, as on the house pages (site.css set 20 px) */
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) body{font-size:17px}
+
+/* header: one 92 px bar, logo at the left edge, phone as the house button; the link row below in the house nav type */
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header{background:var(--h-bg);border-bottom:1px solid var(--h-line);backdrop-filter:none}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .bar{width:100%;max-width:none;min-height:91px;padding:0 22px;gap:16px}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .brand img.mark{width:72px;height:72px;border-radius:0;background:none;object-fit:contain}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .logo{color:var(--h-ink);font-size:26px}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .logo span{color:var(--h-teal)}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .bar>a[href="/tkhub-preview/site-2026-11-26/ciara/"]{color:var(--h-teal)!important}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .phone{background:var(--h-teal);color:var(--h-teal-ink);border-radius:999px;padding:0 18px;font-size:1.05rem;font-weight:750}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .subnav{width:min(1120px,100% - 40px);gap:4px 22px;padding:2px 0 10px}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .subnav a{color:var(--h-ink);font-size:1.05rem;font-weight:750;letter-spacing:-.01em;text-transform:none}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .subnav a:hover,html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .subnav a[href="/tkhub-preview/site-2026-11-26/child-safety/"]:hover{color:var(--h-teal)}
+
+/* text column and type */
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main{width:min(1120px,100% - 40px);max-width:none;padding-top:48px;padding-bottom:56px}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main>*{max-width:46rem}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main .lime{color:var(--h-teal)!important}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main h1{font-family:Manrope,system-ui,sans-serif;font-weight:800;letter-spacing:-.045em;line-height:.9;font-size:clamp(3rem,7vw,5.4rem);margin:8px 0 22px;color:var(--h-ink)}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main h2{font-family:Manrope,system-ui,sans-serif;font-weight:800;letter-spacing:-.03em;line-height:1.1;font-size:clamp(1.6rem,3vw,2.1rem);margin:34px 0 10px;color:var(--h-ink)}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main h3{font-family:Manrope,system-ui,sans-serif;font-weight:800;letter-spacing:-.02em;color:var(--h-ink)}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main p,html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main li{color:var(--h-ink)}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main .lede,html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main .mute{color:var(--h-muted)}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main a{color:var(--h-teal);text-decoration:underline;text-underline-offset:2px}
+
+/* forms on /data-deletion (typed DELETE): house fields and buttons */
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main input,html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main textarea,html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main select{background:var(--h-bg2);color:var(--h-ink);border:1px solid var(--h-line);border-radius:12px}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main .btn,html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main button{border-radius:999px}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main .btn-lime,html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main button[type=submit]{background:var(--h-teal);color:var(--h-teal-ink);border-color:var(--h-teal)}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main .btn-line{background:var(--h-bg2);color:var(--h-ink);border:1px solid var(--h-line)}
+
+/* footer */
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) footer{background:var(--h-bg);border-top:1px solid var(--h-line);color:var(--h-muted)}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) footer .wrap{width:min(1120px,100% - 40px)}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) footer a{color:var(--h-ink);font-weight:700}
+
+/* phones: logo, phone button and menu button fit on one line from 360 px (wrap below that, never overlap) */
+@media (max-width:560px){
+  html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .bar{padding:0 16px;gap:10px;min-height:76px}
+  html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .brand img.mark{width:56px;height:56px}
+  html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .logo{font-size:18px;letter-spacing:.06em}
+  html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .phone{padding:0 12px;font-size:.9rem;min-height:44px}
+  html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .subnav{gap:2px 18px}
+}
+@media (max-width:359px){html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .bar{flex-wrap:wrap;row-gap:6px;padding-block:8px}}
+/* phone menu button (three lines) in the house colours */
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .menu{background:var(--h-bg2);border-color:var(--h-line);border-radius:999px}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .menu span,html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .menu span:before,html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .menu span:after{background:var(--h-ink)}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header.nav-open .menu span{background:transparent}
+/* the phone menu panel (site.css paints it near-black) in the house colours */
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header.nav-open>.subnav{background:var(--h-bg2);border-bottom:1px solid var(--h-line);width:auto;padding:8px 16px 16px}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header.nav-open>.subnav a{color:var(--h-ink)}
+/* the page script adds the phone menu button just after the first paint; keep its 44 px place so nothing jumps */
+@media (max-width:899px){html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .bar:not(:has(.menu))::after{content:"";flex:none;width:44px;height:44px}}
+
+/* product page extras (/apex): buttons, APEX colour, social row, logo */
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main .actions{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 6px}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border-radius:999px;font-size:1.05rem;font-weight:750;text-decoration:none!important}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main .btn-lime{background:var(--h-teal);color:var(--h-teal-ink)!important;border:1px solid var(--h-teal)}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main .btn-line{background:var(--h-bg2);color:var(--h-ink)!important;border:1px solid var(--h-line)}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main h1[style*="#c8ff3d"]{color:#4d7300!important}
+@media (prefers-color-scheme:dark){html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main h1[style*="#c8ff3d"]{color:#c8ff3d!important}}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main .lime{color:var(--h-teal)!important}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main img[src*="/tkhub-preview/site-2026-11-26/logos/apex"]{border-radius:22px}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .socials{width:min(1120px,100% - 40px);margin-inline:auto;padding:0 0 10px;display:flex;gap:10px}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .socials a{color:var(--h-ink);border:1px solid var(--h-line);border-radius:50%;width:42px;height:42px;display:inline-grid;place-items:center;background:transparent}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header .socials svg{width:18px;height:18px}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) header span.mark{width:56px;height:56px;border-radius:14px;background:var(--h-teal);color:var(--h-teal-ink)}
+/* /ads (no header): the page column and its size list */
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) body>main:first-child{padding-top:56px}
+html:has(link[href^="/tkhub-preview/site-2026-11-26/site-house-v1.css"]) main .mute{color:var(--h-muted)}

@@ -1,0 +1,14 @@
+/* tkhub.app home: the "Play the driving game" card near the top (Terrell, Nov 20, 2026: make the driving game easy to
+   reach). Dark card with the game's own poster, house type, one clear action. Light and dark site themes both use the
+   dark card (it shows the game at night). */
+.tk-drive-card{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);align-items:stretch;max-width:680px;margin:22px 0 10px;border-radius:22px;overflow:hidden;background:#0d0f12;color:#f4f0e6;text-decoration:none;box-shadow:0 22px 48px -28px rgba(10,12,16,.65);border:1px solid rgba(255,255,255,.06);transition:transform .2s ease,box-shadow .2s ease}
+.tk-drive-card:hover{transform:translateY(-2px);box-shadow:0 26px 56px -26px rgba(10,12,16,.7)}
+.tk-drive-card:focus-visible{outline:3px solid #2aa3ae;outline-offset:3px}
+.tk-drive-card img{display:block;width:100%;height:210px;object-fit:cover;object-position:50% 60%}
+.tk-drive-txt{display:flex;flex-direction:column;justify-content:center;gap:6px;padding:20px 22px}
+.tk-drive-k{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8fd9df}
+.tk-drive-txt strong{font-size:clamp(1.35rem,2.4vw,1.7rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;color:#fff}
+.tk-drive-s{font-size:.95rem;line-height:1.45;color:#c9c2b4}
+.tk-drive-go{align-self:flex-start;margin-top:8px;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;background:#f4f0e6;color:#0d0f12;font-weight:800;font-size:1rem}
+@media (max-width:640px){.tk-drive-card{grid-template-columns:1fr;max-width:none}.tk-drive-card img{aspect-ratio:16/9;height:auto}.tk-drive-txt{padding:16px 18px 18px}}
+@media (prefers-reduced-motion:reduce){.tk-drive-card{transition:none}.tk-drive-card:hover{transform:none}}
